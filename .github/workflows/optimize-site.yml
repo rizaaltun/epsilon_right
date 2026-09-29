@@ -1,0 +1,24 @@
+name: Optimize website assets
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install Pillow
+      - run: python scripts/optimize_site.py
+      - name: Save optimized assets
+        run: |
+          git config user.name 'Rıza Altun'
+          git config user.email '87552019+rizaaltun@users.noreply.github.com'
+          git add assets books authors publishers index.html contact catalogues services about-us fairs-events news representations
+          if ! git diff --cached --quiet; then
+            git commit -m 'Optimize book covers and update site content'
+            git push
+          fi
