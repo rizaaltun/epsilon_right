@@ -16,8 +16,8 @@ with GitHub Pages (or any static host — Netlify, S3, plain nginx, etc.).
   language, year, cover) used client-side by the search/filter page and the
   homepage category previews.
 - `assets/images/…` — every local image the site uses (team photos, fair
-  photos, brand marks, news photos). Book covers themselves are hotlinked
-  from epsilonyayingrubu.com and are not duplicated here.
+  photos, brand marks, news photos). Book covers are stored as responsive WebP variants in `assets/images/covers`.
+  Source URLs, dimensions and byte counts are recorded in `assets/cover-manifest.json`.
 - `assets/catalogues/…` — the two real Frankfurt 2026 rights catalogues
   (Adult Titles, Children's Titles), compressed to ~1MB PDFs.
 
@@ -43,3 +43,21 @@ file that does not exist. Add the real PDF at
 `assets/catalogues/ya-catalogue-2026.pdf` and re-enable those two links
 (remove the `aria-disabled`/`style="pointer-events:none…"` attributes) once
 it is available.
+
+## Asset maintenance
+
+Run `python scripts/optimize_site.py` with Pillow 11.3.0, or run the
+**Optimize website assets** workflow on main. The script downloads original
+covers, validates the images, generates WebP variants at up to 480 and 1000
+pixels wide (quality 86), and updates HTML and metadata. Failed downloads
+keep their original URLs and fail the workflow visibly. The workflow commits
+changes and explicitly requests a Pages build without altering the Pages
+source or CNAME. It also removes only the Services link inside footers.
+
+## Contact form
+
+The form uses FormSubmit with recipient pelin@epsilonyayingrubu.com, native
+required/email validation, whitespace validation, a honeypot and FormSubmit's
+default verification step. The recipient must confirm FormSubmit's activation
+email after the first submission. Deployment does not verify inbox delivery.
+Do not send test submissions without the site owner's permission.

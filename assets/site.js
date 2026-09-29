@@ -445,8 +445,7 @@
       for (const el of root.querySelectorAll("input[type=search], select"))
         if (el.closest("div")?.parentElement) el.disabled = true;
     }
-    for (const btn of root.querySelectorAll("button"))
-      if (!btn.hasAttribute("aria-controls") && !btn.closest("label")) btn.style.pointerEvents = "none";
+
   };
 
   /* ---- book cover lightbox: click a detail-page cover to see it in full ---- */
@@ -476,7 +475,32 @@
     });
   };
 
+  /* Native POST preserves FormSubmit verification and works without JavaScript. */
+  const wireContact = () => {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+    const status = document.getElementById("contact-status");
+    const fields = [...form.querySelectorAll("[required]")];
+    const validate = (field) => {
+      field.setCustomValidity(field.value.trim() ? "" : "Please complete this field.");
+      field.setAttribute("aria-invalid", String(!field.validity.valid));
+    };
+    for (const field of fields) {
+      field.addEventListener("input", () => validate(field));
+      field.addEventListener("invalid", () => {
+        field.setAttribute("aria-invalid", "true");
+        status.textContent = "Please complete all required fields and enter a valid email address.";
+      });
+    }
+    form.addEventListener("submit", (event) => {
+      for (const field of fields) validate(field);
+      if (!form.reportValidity()) { event.preventDefault(); return; }
+      status.textContent = "Opening secure verification. Your message has not yet been confirmed as delivered.";
+    });
+  };
+
   const boot = () => {
+    wireContact();
     wireHero(document);
     wireReveal(document);
     wireCountUp(document);
@@ -491,6 +515,9 @@
       fetch(PREFIX + "assets/meta.json")
         .then((r) => r.json())
         .then((m) => {
+          for (const item of Object.values(m)) {
+            if (item.p?.startsWith("/assets/")) item.p = PREFIX + item.p.slice(1);
+          }
           META = m;
           buildCatCovers();
           wireCatIndex(document);

@@ -1,24 +1,44 @@
 name: Optimize website assets
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/optimize_site.py'
+      - '.github/workflows/optimize-site.yml'
 permissions:
   contents: write
+  pages: write
+concurrency:
+  group: optimize-site-main
+  cancel-in-progress: false
 jobs:
   optimize:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install Pillow
+      - run: pip install Pillow==11.3.0
       - run: python scripts/optimize_site.py
+      - run: node --check assets/site.js
       - name: Save optimized assets
+        id: save
         run: |
-          git config user.name 'Rıza Altun'
-          git config user.email '87552019+rizaaltun@users.noreply.github.com'
-          git add assets books authors publishers index.html contact catalogues services about-us fairs-events news representations
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets '*.html'
           if ! git diff --cached --quiet; then
-            git commit -m 'Optimize book covers and update site content'
-            git push
+            git commit -m 'Optimize book covers'
+            git push origin HEAD:main
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
           fi
+      - name: Request branch-based Pages build
+        if: steps.save.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
