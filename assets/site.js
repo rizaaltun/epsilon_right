@@ -469,7 +469,7 @@
     if (!img || img.closest("a")) return;
     img.addEventListener("click", () => {
       const lb = ensureLightbox();
-      lb._img.src = img.currentSrc || img.src;
+      lb._img.src = img.src || img.currentSrc;
       lb._img.alt = img.alt || "";
       lb.classList.add("cover-lightbox-on");
     });
