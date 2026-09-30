@@ -1,0 +1,45 @@
+name: Import verified YA catalogue
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/ya-upload/**'
+      - 'scripts/import_catalogue.py'
+      - '.github/workflows/import-catalogue.yml'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: optimize-site-main
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install PyMuPDF==1.26.6
+      - run: python scripts/import_catalogue.py
+      - run: node --check assets/site.js
+      - name: Save catalogue and active links
+        id: save
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A .github assets/catalogues books catalogues
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish verified YA 2026 PDF and activate catalogue links'
+            git push origin HEAD:main
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Request branch-based Pages build
+        if: steps.save.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
