@@ -15,6 +15,14 @@
   let flip,ready=false,coverReady=false;
   const pages=[];
   let opened=false;
+  const fit=()=>{
+    if(!opened)return;
+    const w=window.innerWidth,h=window.innerHeight,small=w<=640;
+    root.style.width=w+'px';root.style.height=h+'px';
+    book.style.width=Math.max(1,w-(small?24:96))+'px';
+    book.style.height=Math.max(160,h-(small?34:38))+'px';
+  };
+  addEventListener('resize',fit);
   const preload=n=>{
     if(n<0||n>=count)return;
     const image=pages[n]?.querySelector('img');
@@ -30,9 +38,9 @@
     root.setAttribute('aria-label',root.dataset.title+', '+status.textContent);
   };
   const move=direction=>{
-    if(!ready||flip.getState()!=='read')return;
+    if(!opened||!ready||flip.getState()!=='read')return;
     const n=flip.getCurrentPageIndex();
-    const target=direction>0?(n===0?1:n+(flip.getOrientation()==='portrait'?1:2)):Math.max(0,n-(flip.getOrientation()==='portrait'?1:2));
+    const target=direction>0?(n+(flip.getOrientation()==='portrait'?1:2)):Math.max(0,n-(flip.getOrientation()==='portrait'?1:2));
     nearby(target);
     // Prepare both sides before beginning the physical turn; keep current spread visible.
     const images=[pages[target]?.querySelector('img'),pages[Math.min(target+1,count-1)]?.querySelector('img')].filter(Boolean);
@@ -42,7 +50,7 @@
       if(direction<0&&!previous.disabled)flip.flipPrev('bottom');
     });
   };
-  const close=()=>{opened=false;root.classList.remove('is-open');document.body.classList.remove('catalogue-reading');if(document.fullscreenElement===root)document.exitFullscreen().catch(()=>{});};
+  const close=()=>{magnifier.hidden=true;opened=false;root.classList.remove('is-open');document.body.classList.remove('catalogue-reading');if(document.fullscreenElement===root)document.exitFullscreen().catch(()=>{});};
   previous.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
   root.querySelector('.reader-exit').addEventListener('click',close);
   const closeZoom=()=>{magnifier.hidden=true;magnifier.querySelector('img').removeAttribute('src');book.focus();};
@@ -63,6 +71,7 @@
     if(event.key==='ArrowLeft'){event.preventDefault();move(-1);}
   });
   const initialize=()=>{
+    fit();
   if(flip){dispatchEvent(new Event('resize'));return;}
   try{
     const small=matchMedia('(max-width:640px)').matches;
@@ -89,10 +98,10 @@
   }catch(error){console.error(error);status.textContent='The reader could not load. Refresh to try again.';}
   };
   const open=()=>{
-    opened=true;root.classList.add('is-open');document.body.classList.add('catalogue-reading');
+    opened=true;root.classList.add('is-open');document.body.classList.add('catalogue-reading');fit();
     if(root.requestFullscreen){root.requestFullscreen().catch(()=>{}).finally(initialize);}else initialize();
   };
   document.querySelectorAll('a[href="#catalogue-reader"]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();open();}));
-  document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&opened)close();});
-  if(location.hash==='#catalogue-reader'){opened=true;root.classList.add('is-open');document.body.classList.add('catalogue-reading');initialize();}
+  document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&opened)close();else if(opened){fit();window.dispatchEvent(new Event('resize'));}});
+  if(location.hash==='#catalogue-reader'){opened=true;root.classList.add('is-open');document.body.classList.add('catalogue-reading');fit();initialize();}
 })();

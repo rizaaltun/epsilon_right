@@ -66,6 +66,7 @@ def main():
         (ROOT/"assets/vendor").mkdir(exist_ok=True)
         for name in ["flipbook.css", "flipbook.js"]:
             shutil.copyfile(staged/name, ROOT/"assets"/name)
+            shutil.copyfile(staged/name, ROOT/"assets"/name.replace('flipbook.', 'catalogue-reader-v3.'))
         for name in ["page-flip.browser.js", "page-flip.LICENSE"]:
             shutil.copyfile(staged/name, ROOT/"assets/vendor"/name)
     template = (ROOT / 'catalogues/adult-titles-2026/index.html').read_text()
@@ -129,14 +130,17 @@ def main():
 <div class="mt-9 flex flex-wrap gap-3"><a href="#catalogue-reader" class="btn btn-primary">Read catalogue</a><a href="../../assets/catalogues/{filename}" class="btn btn-outline" download>Download ({pdf.stat().st_size/1_000_000:.1f} MB)</a></div></div></div></div></section>{reader(title, filename, slug, pages, ratio, revision)}</main>'''
             source = re.sub(r'<main\b.*?</main>', lambda _: main, source, count=1, flags=re.S)
             source = source.replace('Adult Titles 2026', safe_title).replace('/catalogues/adult-titles-2026', '/catalogues/' + slug)
-        source = re.sub(r'<link[^>]*href="[^"]*assets/flipbook.css[^"]*"[^>]*>', '', source)
-        source = re.sub(r'<script[^>]*src="[^"]*assets/(?:flipbook.js|vendor/page-flip.browser.js)[^"]*"[^>]*></script>', '', source)
+        source = re.sub(r'<link[^>]*href="[^"]*assets/(?:flipbook.css|catalogue-reader-v3.css)[^"]*"[^>]*>', '', source)
+        source = re.sub(r'<script[^>]*src="[^"]*assets/(?:flipbook.js|catalogue-reader-v3.js|vendor/page-flip.browser.js)[^"]*"[^>]*></script>', '', source)
         source = re.sub(r'<link[^>]*data-reader-preload[^>]*>', '', source)
-        source = source.replace('</head>', f'<link rel="stylesheet" href="../../assets/flipbook.css?v={version}"><link data-reader-preload rel="preload" as="image" href="../../assets/images/catalogues/{slug}.webp"></head>')
-        source = source.replace('</body>', f'<script defer src="../../assets/vendor/page-flip.browser.js?v=2.0.7"></script><script defer src="../../assets/flipbook.js?v={version}"></script></body>')
+        source = re.sub(r'<style id="catalogue-layout">.*?</style>', '', source, flags=re.S)
+        source = source.replace('</head>', '<style id="catalogue-layout">html,body{background:#faf9f5!important;color-scheme:light}.catalogue-reader:not(.is-open){display:none!important}.catalogue-reader.is-open{display:grid!important;position:fixed!important;inset:0!important;width:100vw;height:100vh;background:#faf9f5!important}.catalogue-reader:fullscreen{background:#faf9f5!important}.catalogue-reader::backdrop{background:#faf9f5}</style></head>')
+        source = source.replace('</head>', f'<link rel="stylesheet" href="../../assets/catalogue-reader-v3.css?v={version}"><link data-reader-preload rel="preload" as="image" href="../../assets/images/catalogues/{slug}.webp"></head>')
+        source = source.replace('</body>', f'<script defer src="../../assets/vendor/page-flip.browser.js?v=2.0.7"></script><script defer src="../../assets/catalogue-reader-v3.js?v={version}"></script></body>')
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(source)
-        cards.append(f'''<article class="group"><a class="block" href="../catalogues/{slug}/"><div class="cover aspect-3/4"><img src="../assets/images/catalogues/{slug}.webp" alt="{safe_title} cover" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain"></div><div class="mt-3.5"><h3 class="font-display text-[1.0625rem] leading-snug">{safe_title}</h3><p class="mt-1 text-[0.8125rem] text-ink-3">{html.escape(category)} · 2026 · {pages} pages</p></div></a></article>''')
+        badge = '<span class="catalogue-new" style="position:absolute;top:12px;right:12px;background:#153f34;color:white;padding:5px 12px;border-radius:999px;font:600 12px Arial">New</span>' if slug in {'childrens-titles-2026', 'adult-titles-2026'} else ''
+        cards.append(f'''<article class="group"><a class="block" href="../catalogues/{slug}/"><div class="cover aspect-3/4" style="position:relative"><img src="../assets/images/catalogues/{slug}.webp" alt="{safe_title} cover" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">{badge}</div><div class="mt-3.5"><h3 class="font-display text-[1.0625rem] leading-snug">{safe_title}</h3><p class="mt-1 text-[0.8125rem] text-ink-3">{html.escape(category)} · 2026 · {pages} pages</p></div></a></article>''')
     index = ROOT / 'catalogues/index.html'
     source = index.read_text()
     source = re.sub(r'<div class="grid grid-cols-2[^>]*>.*?</div></div></div></section>', '<div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">' + ''.join(cards) + '</div></div></div></section>', source, count=1, flags=re.S)
