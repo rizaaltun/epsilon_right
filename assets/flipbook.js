@@ -14,7 +14,7 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let flip,ready=false,coverReady=false;
   const pages=[];
-  document.body.classList.add('catalogue-reading');
+  let opened=false;
   const preload=n=>{
     if(n<0||n>=count)return;
     const image=pages[n]?.querySelector('img');
@@ -42,7 +42,7 @@
       if(direction<0&&!previous.disabled)flip.flipPrev('bottom');
     });
   };
-  const close=()=>{location.href=root.dataset.return||'../';};
+  const close=()=>{opened=false;root.classList.remove('is-open');document.body.classList.remove('catalogue-reading');if(document.fullscreenElement===root)document.exitFullscreen().catch(()=>{});};
   previous.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
   root.querySelector('.reader-exit').addEventListener('click',close);
   const closeZoom=()=>{magnifier.hidden=true;magnifier.querySelector('img').removeAttribute('src');book.focus();};
@@ -56,11 +56,14 @@
     magnifier.querySelector('img').src=source(n);magnifier.hidden=false;magnifier.scrollTo(0,0);
   });
   addEventListener('keydown',event=>{
+    if(!opened)return;
     if(event.key==='Escape'){if(!magnifier.hidden)closeZoom();else close();}
     if(!magnifier.hidden)return;
     if(event.key==='ArrowRight'){event.preventDefault();move(1);}
     if(event.key==='ArrowLeft'){event.preventDefault();move(-1);}
   });
+  const initialize=()=>{
+  if(flip){dispatchEvent(new Event('resize'));return;}
   try{
     const small=matchMedia('(max-width:640px)').matches;
     const ratio=Number(root.dataset.ratio);
@@ -68,7 +71,7 @@
     const width=Math.min(height/ratio,(innerWidth-(small?24:96))/(small?1:2));
     flip=new St.PageFlip(book,{width:Math.floor(width),height:Math.floor(width*ratio),size:'stretch',
       minWidth:Math.min(320,Math.max(120,(innerWidth-24)*.8)),maxWidth:1800,minHeight:120,maxHeight:2500,usePortrait:true,
-      autoSize:false,showCover:true,drawShadow:true,maxShadowOpacity:.65,
+      autoSize:false,showCover:false,drawShadow:true,maxShadowOpacity:.65,
       flippingTime:reduced?1:850,mobileScrollSupport:false,swipeDistance:30,
       showPageCorners:!reduced,useMouseEvents:true,clickEventForward:false});
     for(let n=0;n<count;n++){
@@ -84,4 +87,12 @@
     book.querySelector('img').decode().then(()=>{cover.hidden=true;coverReady=true;if('requestIdleCallback' in window)requestIdleCallback(()=>nearby(0),{timeout:1000});else setTimeout(()=>nearby(0),150);}).catch(()=>{status.textContent='Preparing catalogue…';});
     // Corners can be dragged directly; future spreads have already been prefetched.
   }catch(error){console.error(error);status.textContent='The reader could not load. Refresh to try again.';}
+  };
+  const open=()=>{
+    opened=true;root.classList.add('is-open');document.body.classList.add('catalogue-reading');
+    if(root.requestFullscreen){root.requestFullscreen().catch(()=>{}).finally(initialize);}else initialize();
+  };
+  document.querySelectorAll('a[href="#catalogue-reader"]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();open();}));
+  document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&opened)close();});
+  if(location.hash==='#catalogue-reader'){opened=true;root.classList.add('is-open');document.body.classList.add('catalogue-reading');initialize();}
 })();
