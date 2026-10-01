@@ -11,3 +11,6 @@ html:has([data-catalogue-reader]){background:#000}.catalogue-reading{overflow:hi
 @media(prefers-reduced-motion:reduce){.reader-exit,.reader-edge{transition:none}}
 
 .reader-book .stf__wrapper{height:100%!important;padding-bottom:0!important}
+
+.reader-exit{right:10px;top:6px;width:36px;height:36px;font:30px Arial}.reader-edge{top:calc(50% - 48px);width:42px;height:96px;font:42px Arial}.reader-edge.prev{left:0}.reader-edge.next{right:0}.reader-exit:hover,.reader-edge:hover{opacity:1}.reader-edge:disabled{opacity:.08;cursor:default}
+@media(max-width:640px){.reader-exit{right:4px;top:3px;width:30px;height:30px;font-size:25px}.reader-edge{width:30px;height:60px;top:calc(50% - 30px);font-size:28px}}
