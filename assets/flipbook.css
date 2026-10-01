@@ -10,3 +10,5 @@
 @media(prefers-reduced-motion:reduce){.reader-turn{display:none}}
 
 .reader-stage.zoomed{justify-content:flex-start}.reader-stage.zoomed .reader-book{margin:auto}
+
+#catalogue-reader{scroll-margin-top:100px}

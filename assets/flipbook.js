@@ -116,7 +116,7 @@ class CatalogueReader {
       const first=await this.pdf.getPage(numbers[0]);
       const view=first.getViewport({scale:1});
       const ratio=view.height/view.width;
-      const maxHeight=document.fullscreenElement===this.root?innerHeight*.68:Math.min(680,innerHeight*.72);
+      const maxHeight=document.fullscreenElement===this.root?innerHeight*.68:Math.min(650,innerHeight*.61);
       const width=Math.floor(Math.max(110,Math.min((this.stage.clientWidth-40)/(this.small.matches?1:2),maxHeight/ratio))*this.zoom);
       const canvases=await Promise.all(numbers.map(n=>this.canvas(n,width)));
       const old=this.book.querySelector(direction>0?'.reader-sheet:last-child canvas':'.reader-sheet:first-child canvas');
