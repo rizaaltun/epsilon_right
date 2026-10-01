@@ -140,7 +140,7 @@ def main():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(source)
         badge = '<span class="catalogue-new" style="position:absolute;top:12px;right:12px;background:#153f34;color:white;padding:5px 12px;border-radius:999px;font:600 12px Arial">New</span>' if slug in {'childrens-titles-2026', 'adult-titles-2026'} else ''
-        cards.append(f'''<article class="group"><a class="block" href="../catalogues/{slug}/"><div class="cover aspect-3/4" style="position:relative"><img src="../assets/images/catalogues/{slug}.webp" alt="{safe_title} cover" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">{badge}</div><div class="mt-3.5"><h3 class="font-display text-[1.0625rem] leading-snug">{safe_title}</h3><p class="mt-1 text-[0.8125rem] text-ink-3">{html.escape(category)} · 2026 · {pages} pages</p></div></a></article>''')
+        cards.append(f'''<article class="group"><a class="block" href="../catalogues/{slug}/?reader=3"><div class="cover aspect-3/4" style="position:relative"><img src="../assets/images/catalogues/{slug}.webp" alt="{safe_title} cover" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">{badge}</div><div class="mt-3.5"><h3 class="font-display text-[1.0625rem] leading-snug">{safe_title}</h3><p class="mt-1 text-[0.8125rem] text-ink-3">{html.escape(category)} · 2026 · {pages} pages</p></div></a></article>''')
     index = ROOT / 'catalogues/index.html'
     source = index.read_text()
     source = re.sub(r'<div class="grid grid-cols-2[^>]*>.*?</div></div></div></section>', '<div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">' + ''.join(cards) + '</div></div></div></section>', source, count=1, flags=re.S)
