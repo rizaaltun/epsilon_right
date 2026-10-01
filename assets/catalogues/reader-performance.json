@@ -1,0 +1,42 @@
+[
+  {
+    "catalogue": "childrens-titles-2026",
+    "pages": 12,
+    "pdf_bytes": 977355,
+    "first_page_bytes": 93498,
+    "initial_three_page_bytes": 781882,
+    "all_page_images_bytes": 3765664
+  },
+  {
+    "catalogue": "adult-titles-2026",
+    "pages": 11,
+    "pdf_bytes": 1002904,
+    "first_page_bytes": 272658,
+    "initial_three_page_bytes": 1316562,
+    "all_page_images_bytes": 4754680
+  },
+  {
+    "catalogue": "young-adult-titles-2026",
+    "pages": 18,
+    "pdf_bytes": 2857746,
+    "first_page_bytes": 594702,
+    "initial_three_page_bytes": 997024,
+    "all_page_images_bytes": 6563262
+  },
+  {
+    "catalogue": "adult-catalogue-2026",
+    "pages": 48,
+    "pdf_bytes": 3372316,
+    "first_page_bytes": 231528,
+    "initial_three_page_bytes": 526002,
+    "all_page_images_bytes": 12346462
+  },
+  {
+    "catalogue": "children-catalogue-2026",
+    "pages": 70,
+    "pdf_bytes": 4325312,
+    "first_page_bytes": 226398,
+    "initial_three_page_bytes": 525548,
+    "all_page_images_bytes": 21466588
+  }
+]

@@ -1,159 +1,87 @@
-/* Only visible pages are rendered; original PDFs remain available to download. */
-const CDN = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@6.3.289/';
-let library;
-const loadLibrary = () => library ||= import(CDN + 'build/pdf.mjs').then(lib => {
-  lib.GlobalWorkerOptions.workerSrc = CDN + 'build/pdf.worker.mjs';
-  return lib;
-});
-
-class CatalogueReader {
-  constructor(root) {
-    this.root = root;
-    this.book = root.querySelector('.reader-book');
-    this.stage = root.querySelector('.reader-stage');
-    this.status = root.querySelector('.reader-status');
-    this.input = root.querySelector('input');
-    this.prev = root.querySelector('[data-prev]');
-    this.next = root.querySelector('[data-next]');
-    this.page = 1;
-    this.zoom = 1;
-    this.busy = false;
-    this.cache = new Map();
-    this.small = matchMedia('(max-width: 640px)');
-    this.reduced = matchMedia('(prefers-reduced-motion: reduce)');
-    this.prev.addEventListener('click', () => this.move(-1));
-    this.next.addEventListener('click', () => this.move(1));
-    root.querySelector('[data-jump]').addEventListener('submit', e => {
-      e.preventDefault();
-      if (!this.pdf || !this.input.reportValidity()) return;
-      this.show(Number(this.input.value));
+/* Same-origin page images: no PDF download, font parsing or third-party request. */
+(() => {
+  const root=document.querySelector('[data-catalogue-reader]');
+  if(!root)return;
+  const book=root.querySelector('.reader-book');
+  const status=root.querySelector('.reader-status');
+  const previous=root.querySelector('[data-prev]');
+  const next=root.querySelector('[data-next]');
+  const cover=root.querySelector('.reader-cover-fallback');
+  const magnifier=root.querySelector('.reader-magnifier');
+  const prefix=root.dataset.pages;
+  const count=Number(root.dataset.count);
+  const source=n=>prefix+String(n+1).padStart(3,'0')+'.webp';
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let flip,ready=false,coverReady=false;
+  const pages=[];
+  document.body.classList.add('catalogue-reading');
+  const preload=n=>{
+    if(n<0||n>=count)return;
+    const image=pages[n]?.querySelector('img');
+    if(image&&!image.getAttribute('src')){image.src=source(n);image.onerror=()=>{status.textContent='Page could not load. Refresh to try again.';};}
+  };
+  const nearby=n=>{for(let i=Math.max(0,n-2);i<Math.min(count,n+5);i++)preload(i);};
+  const update=n=>{
+    if(coverReady)nearby(n);previous.disabled=n===0;
+    const portrait=flip.getOrientation()==='portrait';
+    const end=portrait||n===0?n:Math.min(count-1,n+1);
+    next.disabled=end>=count-1;
+    status.textContent=(end===n?String(n+1):`${n+1}–${end+1}`)+' / '+count;
+    root.setAttribute('aria-label',root.dataset.title+', '+status.textContent);
+  };
+  const move=direction=>{
+    if(!ready||flip.getState()!=='read')return;
+    const n=flip.getCurrentPageIndex();
+    const target=direction>0?(n===0?1:n+(flip.getOrientation()==='portrait'?1:2)):Math.max(0,n-(flip.getOrientation()==='portrait'?1:2));
+    nearby(target);
+    // Prepare both sides before beginning the physical turn; keep current spread visible.
+    const images=[pages[target]?.querySelector('img'),pages[Math.min(target+1,count-1)]?.querySelector('img')].filter(Boolean);
+    Promise.all(images.map(img=>img.decode().catch(()=>{}))).then(()=>{
+      if(flip.getState()!=='read')return;
+      if(direction>0&&!next.disabled)flip.flipNext('bottom');
+      if(direction<0&&!previous.disabled)flip.flipPrev('bottom');
     });
-    root.querySelector('[data-zoom]').addEventListener('click', e => {
-      if (!this.pdf || this.busy) return;
-      this.zoom = this.zoom === 1 ? 1.65 : 1;
-      this.stage.classList.toggle('zoomed', this.zoom !== 1);
-      e.currentTarget.textContent = this.zoom === 1 ? 'Zoom in' : 'Fit pages';
-      e.currentTarget.setAttribute('aria-pressed', String(this.zoom !== 1));
-      this.show(this.page);
-    });
-    const fullscreen = root.querySelector('[data-fullscreen]');
-    if (!root.requestFullscreen) fullscreen.hidden = true;
-    fullscreen.addEventListener('click', async () => {
-      try { if (document.fullscreenElement) await document.exitFullscreen(); else await root.requestFullscreen(); }
-      catch { this.status.textContent = 'Full screen is unavailable. You can still zoom in.'; }
-    });
-    root.addEventListener('keydown', e => {
-      if (e.target.matches('input,a')) return;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        e.preventDefault(); this.move(e.key === 'ArrowRight' ? 1 : -1);
-      }
-    });
-    let touch;
-    this.stage.addEventListener('pointerdown', e => {
-      if (e.pointerType === 'touch' && this.zoom === 1) touch = {x:e.clientX,y:e.clientY};
-    });
-    this.stage.addEventListener('pointerup', e => {
-      if (!touch) return;
-      const dx=e.clientX-touch.x, dy=e.clientY-touch.y; touch=null;
-      if (Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.5) this.move(dx<0?1:-1);
-    });
-    this.stage.addEventListener('pointercancel', () => touch=null);
-    let timer;
-    this.resize = () => { clearTimeout(timer); timer=setTimeout(()=>this.pdf && !this.busy && this.show(this.page),160); };
-    window.addEventListener('resize',this.resize);
-    document.addEventListener('fullscreenchange',this.resize);
-    this.small.addEventListener('change',this.resize);
-    this.observer = new IntersectionObserver(entries => {
-      if (entries.some(e=>e.isIntersecting)) { this.observer.disconnect(); this.load(); }
-    }, {rootMargin:'200px'});
-    this.observer.observe(root);
-  }
-
-  async load() {
-    this.status.textContent = 'Loading catalogue…';
-    try {
-      const lib = await loadLibrary();
-      this.pdf = await lib.getDocument({url:this.root.dataset.pdf,
-        cMapUrl:CDN+'cmaps/',cMapPacked:true,standardFontDataUrl:CDN+'standard_fonts/',
-        wasmUrl:CDN+'wasm/',isEvalSupported:false}).promise;
-      this.input.max = this.pdf.numPages;
-      this.root.querySelector('[data-total]').textContent = this.pdf.numPages;
-      await this.show(1);
-    } catch (error) {
-      console.error('Catalogue reader:',error);
-      this.status.textContent = 'The reader could not load. Use “Open PDF” or “Download PDF” above.';
+  };
+  const close=()=>{location.href=root.dataset.return||'../';};
+  previous.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+  root.querySelector('.reader-exit').addEventListener('click',close);
+  const closeZoom=()=>{magnifier.hidden=true;magnifier.querySelector('img').removeAttribute('src');book.focus();};
+  magnifier.querySelector('button').addEventListener('click',closeZoom);
+  magnifier.addEventListener('dblclick',closeZoom);
+  book.addEventListener('dblclick',event=>{
+    if(!ready)return;
+    const rect=book.getBoundingClientRect();
+    let n=flip.getCurrentPageIndex();
+    if(flip.getOrientation()==='landscape'&&n>0&&event.clientX>rect.left+rect.width/2)n=Math.min(count-1,n+1);
+    magnifier.querySelector('img').src=source(n);magnifier.hidden=false;magnifier.scrollTo(0,0);
+  });
+  addEventListener('keydown',event=>{
+    if(event.key==='Escape'){if(!magnifier.hidden)closeZoom();else close();}
+    if(!magnifier.hidden)return;
+    if(event.key==='ArrowRight'){event.preventDefault();move(1);}
+    if(event.key==='ArrowLeft'){event.preventDefault();move(-1);}
+  });
+  try{
+    const small=matchMedia('(max-width:640px)').matches;
+    const ratio=Number(root.dataset.ratio);
+    const height=Math.max(160,innerHeight-(small?34:38));
+    const width=Math.min(height/ratio,(innerWidth-(small?24:96))/(small?1:2));
+    flip=new St.PageFlip(book,{width:Math.floor(width),height:Math.floor(width*ratio),size:'stretch',
+      minWidth:Math.min(320,Math.max(120,(innerWidth-24)*.8)),maxWidth:1800,minHeight:120,maxHeight:2500,usePortrait:true,
+      autoSize:false,showCover:true,drawShadow:true,maxShadowOpacity:.65,
+      flippingTime:reduced?1:850,mobileScrollSupport:false,swipeDistance:30,
+      showPageCorners:!reduced,useMouseEvents:true,clickEventForward:false});
+    for(let n=0;n<count;n++){
+      const sheet=document.createElement('div');sheet.className='reader-page';sheet.dataset.density='soft';
+      const image=document.createElement('img');image.alt='Catalogue page '+(n+1);image.decoding='async';
+      if(n===0){image.src=source(n);image.fetchPriority='high';}
+      sheet.appendChild(image);pages.push(sheet);book.appendChild(sheet);
     }
-  }
-
-  numbers(n) {
-    if (this.small.matches || n===1) return [n];
-    const left = n % 2 === 0 ? n : n-1;
-    return left < this.pdf.numPages ? [left,left+1] : [left];
-  }
-
-  async canvas(n,width) {
-    const key = n+':'+width;
-    if (this.cache.has(key)) return this.cache.get(key);
-    const page = await this.pdf.getPage(n);
-    const initial = page.getViewport({scale:1});
-    const viewport = page.getViewport({scale:width/initial.width*Math.min(devicePixelRatio||1,2)});
-    const canvas=document.createElement('canvas');
-    canvas.width=Math.ceil(viewport.width); canvas.height=Math.ceil(viewport.height);
-    canvas.setAttribute('role','img'); canvas.setAttribute('aria-label','Catalogue page '+n);
-    await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
-    this.cache.set(key,canvas);
-    // Bound memory even in the 70-page catalogue.
-    while(this.cache.size>6) this.cache.delete(this.cache.keys().next().value);
-    return canvas;
-  }
-
-  async show(number,direction=0) {
-    if (!this.pdf || this.busy) return;
-    this.busy=true; this.prev.disabled=true; this.next.disabled=true;
-    this.root.setAttribute('aria-busy','true');
-    const numbers=this.numbers(Math.max(1,Math.min(this.pdf.numPages,number)));
-    try {
-      const first=await this.pdf.getPage(numbers[0]);
-      const view=first.getViewport({scale:1});
-      const ratio=view.height/view.width;
-      const maxHeight=document.fullscreenElement===this.root?innerHeight*.68:Math.min(650,innerHeight*.61);
-      const width=Math.floor(Math.max(110,Math.min((this.stage.clientWidth-40)/(this.small.matches?1:2),maxHeight/ratio))*this.zoom);
-      const canvases=await Promise.all(numbers.map(n=>this.canvas(n,width)));
-      const old=this.book.querySelector(direction>0?'.reader-sheet:last-child canvas':'.reader-sheet:first-child canvas');
-      let turn;
-      if (old && direction && !this.reduced.matches) {
-        turn=document.createElement('div');turn.className='reader-turn '+(direction>0?'forward':'backward');
-        const copy=document.createElement('canvas');copy.width=old.width;copy.height=old.height;
-        copy.getContext('2d').drawImage(old,0,0);turn.appendChild(copy);
-        turn.style.width=width+'px';turn.style.height=width*ratio+'px';turn.setAttribute('aria-hidden','true');
-      }
-      this.book.replaceChildren(); this.book.classList.toggle('spread',numbers.length===2);
-      this.book.style.width=width*numbers.length+'px';this.book.style.maxWidth=this.zoom>1?'none':'100%';
-      for (const canvas of canvases) {
-        const sheet=document.createElement('div');sheet.className='reader-sheet';sheet.style.width=width+'px';sheet.style.height=width*ratio+'px';sheet.appendChild(canvas);this.book.appendChild(sheet);
-      }
-      this.page=numbers[0];this.input.value=this.page;
-      this.status.textContent=(numbers.length===2?'Pages '+numbers.join('–'):'Page '+this.page)+' of '+this.pdf.numPages;
-      if (turn) {
-        this.book.appendChild(turn);
-        await turn.animate([{transform:'rotateY(0deg)',filter:'brightness(1)'},{transform:'rotateY('+(direction>0?'-':'')+'170deg)',filter:'brightness(.75)'}],{duration:540,easing:'cubic-bezier(.35,.05,.2,1)',fill:'forwards'}).finished;
-        turn.remove();
-      }
-    } catch(error) {
-      console.error(error); this.status.textContent='This page could not load. Try again or open the PDF.';
-    } finally {
-      this.busy=false;this.root.setAttribute('aria-busy','false');
-      this.prev.disabled=this.page===1;
-      this.next.disabled=this.numbers(this.page).at(-1)>=this.pdf.numPages;
-    }
-  }
-
-  move(direction) {
-    if(!this.pdf || this.busy) return;
-    const numbers=this.numbers(this.page);
-    const next=direction>0?numbers.at(-1)+1:(this.small.matches?this.page-1:(this.page<=2?1:this.page-2));
-    if(next>=1 && next<=this.pdf.numPages) this.show(next,direction);
-  }
-}
-
-document.querySelectorAll('[data-catalogue-reader]').forEach(root=>new CatalogueReader(root));
+    flip.on('init',()=>{ready=true;update(0);book.focus({preventScroll:true});});
+    flip.on('flip',event=>update(event.data));
+    flip.on('changeOrientation',()=>{if(ready)update(flip.getCurrentPageIndex());});
+    flip.loadFromHTML(book.querySelectorAll('.reader-page'));
+    book.querySelector('img').decode().then(()=>{cover.hidden=true;coverReady=true;if('requestIdleCallback' in window)requestIdleCallback(()=>nearby(0),{timeout:1000});else setTimeout(()=>nearby(0),150);}).catch(()=>{status.textContent='Preparing catalogue…';});
+    // Corners can be dragged directly; future spreads have already been prefetched.
+  }catch(error){console.error(error);status.textContent='The reader could not load. Refresh to try again.';}
+})();
