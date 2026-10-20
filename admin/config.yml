@@ -139,6 +139,8 @@ collections:
         hint: Kitaplar sayfasındaki dil filtresinde kullanılır.
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
       - { name: new, label: Yeni, widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: authors
     label: Yazarlar
@@ -168,6 +170,8 @@ collections:
         required: false
         hint: İngilizce. Paragrafları boş bir satırla ayırın.
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: news
     label: Haberler
@@ -230,6 +234,8 @@ collections:
           - { name: image, label: Görsel, widget: image, choose_url: false }
           - { name: alt, label: Açıklama, widget: string, required: false }
       - { name: source, label: Kaynak notu, widget: string, required: false, hint: Haberin altında küçük yazıyla görünür. }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: events
     label: Fuarlar & Etkinlikler
@@ -281,6 +287,8 @@ collections:
         fields:
           - { name: image, label: Görsel, widget: image, choose_url: false }
           - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: publishers
     label: Yayınevleri
@@ -323,6 +331,8 @@ collections:
       - { name: email, label: E-posta, widget: string, required: false, hint: Boşsa site e-postası kullanılır. }
       - { name: website, label: Web sitesi, widget: string, required: false }
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: services
     label: Hizmetler
@@ -357,6 +367,8 @@ collections:
       - { name: image, label: Kart görseli, widget: image, required: false, choose_url: false }
       - { name: hero_image, label: Sayfa üst görseli, widget: image, required: false, choose_url: false, hint: Boşsa kart görseli kullanılır. }
       - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: catalogues
     label: Kataloglar
@@ -409,6 +421,8 @@ collections:
         public_folder: /assets/images/uploads/catalogues
         hint: Boş bırakılırsa PDF'in ilk sayfasından otomatik üretilir.
       - { name: new, label: '"New" etiketi', widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: pages
     label: Sayfa metinleri
@@ -452,6 +466,9 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
             editor_components: []
           - { name: cta_button, label: "Kapanış: düğme", widget: string }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: about
         label: "Hakkımızda"
         file: _src/content/pages/about-us/texts.json
@@ -506,6 +523,9 @@ collections:
                   - { name: role, label: "Görev", widget: string }
                   - { name: email, label: "E-posta", widget: string }
                   - { name: photo, label: "Fotoğraf", widget: image, choose_url: false }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: contact
         label: "İletişim"
         file: _src/content/pages/contact/texts.json
@@ -517,6 +537,9 @@ collections:
           - { name: form_title, label: "Form başlığı", widget: string }
           - { name: details_title, label: "İletişim bilgileri başlığı", widget: string }
           - { name: office_title, label: "Ofis başlığı", widget: string }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: books
         label: "Kitaplar sayfası"
         file: _src/content/pages/books/texts.json
@@ -525,6 +548,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: authors
         label: "Yazarlar sayfası"
         file: _src/content/pages/authors/texts.json
@@ -533,6 +559,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: publishers
         label: "Yayınevleri sayfası"
         file: _src/content/pages/publishers/texts.json
@@ -541,6 +570,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: news_page
         label: "Haberler sayfası"
         file: _src/content/pages/news/texts.json
@@ -549,6 +581,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: events_page
         label: "Fuarlar & Etkinlikler sayfası"
         file: _src/content/pages/fairs-events/texts.json
@@ -557,6 +592,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: catalogues
         label: "Kataloglar sayfası"
         file: _src/content/pages/catalogues/texts.json
@@ -565,6 +603,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: representations
         label: "Representations sayfası"
         file: _src/content/pages/representations/texts.json
@@ -573,6 +614,9 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
       - name: services_page
         label: "Hizmetler sayfası"
         file: _src/content/pages/services/texts.json
@@ -581,6 +625,8 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
 singletons:
   - name: home
@@ -634,6 +680,12 @@ singletons:
       - { name: instagram, label: Instagram adresi, widget: string }
       - { name: linkedin, label: LinkedIn adresi, widget: string }
       - { name: copyright, label: Telif satırı, widget: string }
+      - { name: site_url, label: Site adresi, widget: string, hint: "Canonical adresler ve sitemap için, örn. https://epsilonpublishinggroup.com" }
+      - { name: default_description, label: "Varsayılan SEO açıklaması", widget: text, hint: "Ana sayfanın ve kendi açıklaması olmayan sayfaların Google açıklaması (en fazla ~155 karakter)." }
+      - { name: share_image, label: "Varsayılan paylaşım görseli", widget: image, choose_url: false, hint: "WhatsApp, LinkedIn vb. paylaşımlarda görünen görsel; ideal ölçü 1200×630." }
+      - { name: logo, label: "Logo (Google için)", widget: image, choose_url: false }
+      - { name: founding_year, label: Kuruluş yılı, widget: string }
+      - { name: llms_intro, label: "Yapay zeka asistanları için tanıtım (llms.txt)", widget: text, hint: "ChatGPT, Claude gibi asistanların siteyi tanıması için kısa İngilizce tanıtım." }
 
   - name: stats
     label: Rakamlar

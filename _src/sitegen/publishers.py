@@ -11,10 +11,10 @@ import re
 import unicodedata
 from pathlib import Path
 
-from . import markdown, shell
+from . import markdown, seo, shell
 from .authors import initials
 from .components import book_card, breadcrumb, section_heading
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 from .imagesize import size
 
 
@@ -142,8 +142,17 @@ def render(ctx, slug: str) -> tuple:
         + titles_section
         + "<!--$--><!--/$--></main>"
     )
-    title = esc_title(f'{pub["name"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, title, main)
+    org = {"@type": "Organization", "name": pub["name"], "url": seo.url(ctx, path),
+           "parentOrganization": {"@type": "Organization", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")}}
+    if pub.get("logo"):
+        org["logo"] = seo.url(ctx, pub["logo"])
+    if pub.get("website"):
+        org["sameAs"] = pub["website"]
+    fallback = f'{pub["name"]} — {_summary(pub)} {len(books)} titles available for translation rights.'
+    meta = seo.Seo(path=path, title=pub["name"], description=seo.describe(pub, pub.get("summary"), fallback),
+                   jsonld=[org, seo.breadcrumbs(ctx, [("Home", ""), ("Publishers", "publishers/"), (pub["name"], path)])])
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, pub, pub["name"]), main,
+                            seo_html=seo.head_tags(ctx, meta))
 
 
 # ---- authors -------------------------------------------------------------

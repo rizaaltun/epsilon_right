@@ -31,12 +31,12 @@ BOOK_CATEGORY_LINKS = [
 NEWS_LINKS = [("fairs-events/", "Where to Meet Us"), ("news/", "Latest News")]
 
 
-def head(r: str, title_html: str, extra: str = "") -> str:
+def head(r: str, title_html: str, extra: str = "", seo_html: str = "") -> str:
     """``title_html`` is already escaped (see ``html.esc_title``)."""
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        f"<title>{title_html}</title>\n"
+        f"<title>{title_html}</title>{seo_html}\n"
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
         '<link rel="preconnect" href="https://www.epsilonyayingrubu.com">\n'
@@ -131,9 +131,9 @@ def header(r: str, path: str, lazy_logo: bool = True) -> str:
 
 FOOTER_CATALOGUE = [
     ("books/", "All books"),
-    ("books/?category=fiction", "Fiction"),
-    ("books/?category=nonfiction", "Nonfiction"),
-    ("books/?category=childrens", "Children's books"),
+    ("books/?category=adult-fiction", "Fiction"),
+    ("books/?category=non-fiction", "Nonfiction"),
+    ("books/?category=childrens-books", "Children's books"),
     ("catalogues/", "Catalogues"),
 ]
 FOOTER_AGENCY = [
@@ -218,10 +218,11 @@ def tail(r: str, extra: str = "") -> str:
 
 
 def page(r: str, path: str, settings: dict, title_html: str, main: str, *, head_extra: str = "",
-         tail_extra: str = "", lazy_logos: bool = True) -> str:
-    """Assemble a full HTML document around ``main`` (the <main> element)."""
+         tail_extra: str = "", lazy_logos: bool = True, seo_html: str = "") -> str:
+    """Assemble a full HTML document around ``main`` (the <main> element).
+    ``seo_html`` comes from seo.head_tags()."""
     return (
-        head(r, title_html, head_extra)
+        head(r, title_html, head_extra, seo_html)
         + header(r, path, lazy_logos)
         + main
         + footer(r, settings, lazy_logos)

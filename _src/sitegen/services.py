@@ -1,9 +1,9 @@
 """Services: /services/<slug>/ and the service cards (on /services/ and under
 "Other services" on each service page)."""
 
-from . import markdown, shell
+from . import markdown, seo, shell
 from .components import FILL
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 from .news import ZOOM
 
 CHECK = (
@@ -81,5 +81,11 @@ def render(ctx, slug: str) -> tuple:
         f'class="mt-10"><a class="btn btn-primary" href="{r}contact/">Talk to the team</a></div></div>{aside}</div></div>'
         f"</div></section>{others_html}<!--$--><!--/$--></main>"
     )
-    page_title = esc_title(f'{item["title"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, page_title, main)
+    service = {"@type": "Service", "name": item["title"], "serviceType": item["title"], "url": seo.url(ctx, path),
+               "description": item.get("summary", ""),
+               "provider": {"@type": "Organization", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")}}
+    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("summary"), item.get("body")),
+                   image=hero or "",
+                   jsonld=[service, seo.breadcrumbs(ctx, [("Home", ""), ("Services", "services/"), (item["title"], path)])])
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main,
+                            seo_html=seo.head_tags(ctx, meta))

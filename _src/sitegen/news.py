@@ -1,8 +1,8 @@
 """News articles: /news/<slug>/, plus the news cards used on /news/ and the home page."""
 
-from . import dates, markdown, shell
+from . import dates, markdown, seo, shell
 from .components import FILL
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 
 ZOOM = "object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,0.8,0.28,1)] group-hover:scale-[1.03]"
 
@@ -83,5 +83,23 @@ def render(ctx, slug: str) -> tuple:
         + source
         + "</div></article></div></div></section></main>"
     )
-    page_title = esc_title(f'{item["title"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, page_title, main, lazy_logos=False)
+    image = item.get("image") or ""
+    article = {
+        "@type": "NewsArticle",
+        "headline": item["title"],
+        "url": seo.url(ctx, path),
+        "mainEntityOfPage": seo.url(ctx, path),
+        "datePublished": d.isoformat(),
+        "articleSection": item["category"],
+        "author": {"@type": "Organization", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")},
+        "publisher": seo.organization(ctx),
+    }
+    if image:
+        article["image"] = [seo.url(ctx, image)]
+    if item.get("excerpt"):
+        article["description"] = item["excerpt"]
+    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("excerpt"), item.get("body")),
+                   image=image, type="article",
+                   jsonld=[article, seo.breadcrumbs(ctx, [("Home", ""), ("News", "news/"), (item["title"], path)])])
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main, lazy_logos=False,
+                            seo_html=seo.head_tags(ctx, meta))

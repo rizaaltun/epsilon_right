@@ -37,6 +37,12 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `catalogues/<slug>/index.html` | `content/catalogues/<slug>.json` + its PDF; reader images per `assets/catalogues/readers.json` (`sitegen/catalogues.py`) |
 | every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
 | `assets/meta.json` | all books (used by the /books search and filters) |
+| `sitemap.xml`, `robots.txt`, `llms.txt`, `404.html` | all pages / settings (`sitegen/seo.py`) |
+
+Every page gets a meta description, canonical URL, Open Graph/Twitter tags and
+schema.org JSON-LD (Book, ProfilePage, NewsArticle, Event, Organization, Service,
+DigitalDocument, BreadcrumbList…). Any item's `seo_title` / `seo_description`
+override the defaults, which are derived from its content.
 
 Book order everywhere follows each book's `order` field. A book links to its
 author's page when the author name's slug matches an author file.
@@ -74,9 +80,6 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 
 ## Known issues kept as-is (to fix in phase 2)
 
-- 95 book pages say "Rights are available worlwide"; other rights texts have
-  typos ("Rigths Sold to Mongolian", "Spanısh", "CROTIA", "Simplified Chines").
-- Rights-sold languages mix Turkish and English ("Arapça"/"Arabic", "Rusça"/"Russian").
 - Fixed in the publishers step: `/authors/` listed 24 of 59 authors behind a
   "Load more" button that did nothing, and `/authors/`, `/publishers/` and
   `/representations/` showed stale title counts (e.g. Epsilon 22 instead of 101).
@@ -84,7 +87,8 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
   wired up (site.js only implements them on `/books/`).
 - One author appears under three spellings: Şöhret Doğruyol Sağbaş / Şağbaş / Şabaş.
 - The "Okuyan Koala" imprint (3 books) has no publisher page.
-- Footer category links use slugs that don't exist (`fiction`, `nonfiction`, `childrens`).
+- Fixed in the SEO step: footer category links used slugs that don't exist; "worlwide"
+  (94 books) and other rights typos; rights-sold languages mixed Turkish and English.
 - Footer links to `/privacy-policy/` and `/terms/` return 404.
 - Fixed in the page-texts step: the contact page "View on map" pointed to
   `https://maps.example.com`; it now searches the office address on Google Maps.
@@ -92,7 +96,6 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 - Fixed in the news/events step: the fair page linked to `https://example.org` and
   showed template placeholder images as its gallery; Frankfurt (7–11 Oct) still said
   "Upcoming"; the Publishers Weekly article used a one-off layout.
-- No meta descriptions, Open Graph, canonical URLs, structured data, sitemap or robots.txt.
 - Book pages without a cover give hero loading hints to the first card in the rail.
 - Three news pages don't lazy-load the logos; `<title>` escaping is inconsistent.
 

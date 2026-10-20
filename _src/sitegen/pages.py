@@ -27,7 +27,9 @@ import json
 import re
 from pathlib import Path
 
-from . import catalogues, events, news, publishers, services, shell, template
+import html
+
+from . import catalogues, events, news, publishers, seo, services, shell, template
 from .components import book_card
 from .html import prefix_for
 
@@ -115,7 +117,47 @@ def render(ctx, record: dict) -> tuple:
         return publishers.featured_filter(ctx, args.get("kind", "publishers"))
 
     main = OTHER.sub(other, main)
+    texts = record["texts"]
+    title_html = record["title_html"]
+    if texts.get("seo_title"):
+        title_html = html.escape(texts["seo_title"], quote=False)
     return path, shell.page(
-        r, path, ctx.settings, record["title_html"], main,
+        r, path, ctx.settings, title_html, main,
         head_extra=record["head_extra"], tail_extra=record["tail_extra"], lazy_logos=record["lazy_logos"],
+        seo_html=seo.head_tags(ctx, page_seo(ctx, record)),
     )
+
+
+def page_seo(ctx, record: dict):
+    path, texts = record["path"], record["texts"]
+    name = texts.get("title") or html.unescape(record["title_html"]).split(" — ")[0]
+    if path == "":
+        name = ctx.settings["site_name"]
+    description = seo.describe(texts, texts.get("intro"), texts.get("lead"), texts.get("hero_text"),
+                               ctx.settings.get("default_description"))
+    if path == "":
+        description = seo.describe(texts, ctx.settings.get("default_description"))
+    image = texts.get("hero_image") or ""
+    org = seo.organization(ctx)
+    page_url = seo.url(ctx, path)
+    if path == "":
+        jsonld = [org, {"@type": "WebSite", "name": ctx.settings["site_name"], "url": page_url, "inLanguage": "en",
+                        "publisher": {"@id": org["@id"]}}]
+    elif path == "about-us/":
+        jsonld = [org, {"@type": "AboutPage", "name": name, "url": page_url, "mainEntity": {"@id": org["@id"]}}]
+    elif path == "contact/":
+        contact = ctx.shared.get("contact", {})
+        org["contactPoint"] = [{"@type": "ContactPoint", "contactType": "rights enquiries",
+                                "email": contact.get("rights_email") or ctx.settings["email"],
+                                **({"telephone": contact["phone"]} if contact.get("phone") else {})}]
+        jsonld = [org, {"@type": "ContactPage", "name": name, "url": page_url, "mainEntity": {"@id": org["@id"]}}]
+    else:
+        trail = [("Home", "")]
+        parent = path.rsplit("/", 2)[0] + "/" if path.count("/") > 1 else ""
+        if parent:
+            trail.append((parent.strip("/").replace("-", " ").title(), parent))
+        trail.append((name, path))
+        jsonld = [{"@type": "CollectionPage", "name": name, "url": page_url, "description": description,
+                   "isPartOf": {"@type": "WebSite", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")}},
+                  seo.breadcrumbs(ctx, trail)]
+    return seo.Seo(path=path, title=name, description=description, image=image, jsonld=jsonld)

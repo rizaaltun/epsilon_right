@@ -1,9 +1,9 @@
 """Author pages: /authors/<slug>/."""
 
-from . import shell
+from . import seo, shell
 from .books import paragraphs
 from .components import book_card, breadcrumb, section_heading
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 
 
 def initials(name: str) -> str:
@@ -38,5 +38,16 @@ def render(ctx, slug: str) -> tuple:
         + titles_section
         + "<!--$--><!--/$--></main>"
     )
-    title = esc_title(f'{author["name"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, title, main)
+    names = [b["title"] for _, b in titles]
+    listed = ", ".join(names[:3]) + ("…" if len(names) > 3 else "")
+    fallback = (f'{author["name"]} — author represented by {ctx.settings["site_name"]}'
+                + (f'. Titles: {listed}.' if names else "."))
+    person = {"@type": "Person", "name": author["name"], "url": seo.url(ctx, path)}
+    if author.get("bio"):
+        person["description"] = seo.clip(author["bio"], 500)
+    profile = {"@type": "ProfilePage", "url": seo.url(ctx, path), "mainEntity": person}
+    meta = seo.Seo(path=path, title=author["name"], description=seo.describe(author, author.get("bio"), fallback),
+                   type="profile", jsonld=[profile, seo.breadcrumbs(ctx, [("Home", ""), ("Authors", "authors/"),
+                                                                            (author["name"], path)])])
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, author, author["name"]), main,
+                            seo_html=seo.head_tags(ctx, meta))

@@ -15,7 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from sitegen import authors, books, catalogues, content, events, meta, news, pages, publishers, services  # noqa: E402
+from sitegen import (authors, books, catalogues, content, events, meta, news, pages, publishers, seo,  # noqa: E402
+                     services, shell)
 
 
 def generate(ctx) -> dict:
@@ -46,7 +47,51 @@ def generate(ctx) -> dict:
         path, text = pages.render(ctx, record)
         out[path + "index.html"] = text
     out["assets/meta.json"] = meta.render(ctx)
+    page_paths = [rel[: -len("index.html")] for rel in out if rel.endswith("index.html")]
+    out["sitemap.xml"] = seo.sitemap(ctx, page_paths)
+    out["robots.txt"] = seo.robots(ctx)
+    out["llms.txt"] = llms_txt(ctx)
+    out["404.html"] = not_found(ctx)
     return out
+
+
+def llms_txt(ctx) -> str:
+    cat_labels = {c["slug"]: c["label"] for c in ctx.settings["categories"]}
+    sections = [
+        ("Start here", [("About the group", "about-us/", "history, imprints and the rights team"),
+                        ("All titles", "books/", f"{len(ctx.books)} titles available for translation, with filters"),
+                        ("Catalogues", "catalogues/", "rights catalogues to read online or download as PDF"),
+                        ("Contact", "contact/", "rights enquiries")]),
+        ("Catalogues", [(c["title"], f"catalogues/{s}/", c.get("category", "")) for s, c in catalogues.ordered(ctx)]),
+        ("Books by category", [(label, f"books/?category={slug}", f"{len(ctx.books_in('category', slug))} titles")
+                               for slug, label in cat_labels.items()]),
+        ("Publishers", [(p["name"], f"publishers/{s}/", f"{len(publishers.titles(ctx, s))} titles") for s, p in publishers.ordered(ctx)]),
+        ("Services", [(v["title"], f"services/{s}/", v.get("summary", "")) for s, v in services.ordered(ctx)]),
+        ("News", [(n["title"], f"news/{s}/", str(n["date"])) for s, n in news.ordered(ctx)[:10]]),
+        ("Fairs and events", [(e["title"], f"fairs-events/{s}/", e.get("start_date", "")) for s, e in
+                              events.upcoming(ctx) + events.past(ctx)]),
+        ("Authors", [(ctx.authors[s]["name"], f"authors/{s}/", "") for s in publishers.authors_alphabetical(ctx)]),
+        ("Titles", [(b["title"], f"books/{s}/", f'{b["author"]} — {cat_labels.get(b["category"], "")}'
+                     + (f' — English title: {b["english_title"]}' if b.get("english_title") and b["english_title"] != b["title"] else ""))
+                    for s, b in ctx.books.items()]),
+    ]
+    return seo.llms(ctx, sections)
+
+
+def not_found(ctx) -> str:
+    """GitHub Pages serves /404.html for unknown URLs at any depth, so its links are absolute."""
+    r = "/"
+    main = (
+        '<main id="main" class="flex-1"><section class="py-14 md:py-20"><div class="shell"><div class="max-w-2xl">'
+        '<p class="eyebrow mb-4">Page not found</p><h1 class="text-display-lg">This page has moved or no longer exists</h1>'
+        '<p class="mt-5 text-lg leading-relaxed text-ink-2">The title you are looking for may still be in the catalogue.</p>'
+        f'<div class="mt-9 flex flex-wrap gap-3"><a class="btn btn-primary" href="{r}books/">Browse all titles</a>'
+        f'<a class="btn btn-outline" href="{r}">Home page</a><a class="btn btn-outline" href="{r}contact/">Contact us</a>'
+        "</div></div></div></section></main>"
+    )
+    meta = seo.Seo(path="404.html", title="Page not found", noindex=True)
+    return shell.page(r, "404/", ctx.settings, f'Page not found — {ctx.settings["site_name"]}', main,
+                      seo_html=seo.head_tags(ctx, meta))
 
 
 def orphans(files: dict) -> list:

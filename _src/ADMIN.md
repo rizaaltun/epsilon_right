@@ -31,6 +31,15 @@ kitaplardan hesaplanır; elle güncellenmez.
 Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
 çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
 
+## SEO
+
+Her kitap, yazar, haber, etkinlik, yayınevi, hizmet, katalog ve sayfa metninin sonunda
+**SEO başlığı** ve **SEO açıklaması** alanları vardır. Boş bırakılırsa içerikten otomatik
+üretilir (açıklama metnin ilk ~155 karakteri). Paylaşım görseli olarak kapak, haber/etkinlik
+görseli ya da Site ayarlarındaki varsayılan görsel kullanılır. `sitemap.xml`, `robots.txt`
+(yapay zeka tarayıcıları dahil herkese açık, `/admin/` hariç) ve `llms.txt` her derlemede
+güncellenir.
+
 ## Kimler girebilir
 
 Repoya **Write** yetkisi olan GitHub hesapları. Yeni bir editör için:

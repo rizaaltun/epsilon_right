@@ -1,10 +1,11 @@
 """Book detail pages: /books/<slug>/."""
 
+import re
 from urllib.parse import quote
 
-from . import shell
+from . import seo, shell
 from .components import FILL, HERO_SIZES, aspect, book_card, breadcrumb, cover_img, section_heading
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 
 DETAIL_ROWS = [
     ("original_title", "Original title"),
@@ -102,5 +103,50 @@ def render(ctx, slug: str) -> tuple:
         + '<div class="relative"><div class="rail" role="group" aria-label="More in this category" tabindex="0">'
         f"{rail}</div></div></div></div></section><!--$--><!--/$--></main>"
     )
-    title = esc_title(f'{book["title"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, title, main)
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, book, book["title"]), main,
+                            seo_html=seo.head_tags(ctx, book_seo(ctx, slug, path)))
+
+
+def book_seo(ctx, slug: str, path: str):
+    from .covers import resolve
+    book = ctx.books[slug]
+    category = category_label(ctx, book["category"])
+    fallback = f'{book["title"]} by {book["author"]} — {category}. {book.get("rights") or "Translation rights available"}.'
+    description = seo.describe(book, book.get("description"), fallback)
+    image = "/" + resolve(ctx, book["cover"])[0] if book["cover"] else ""
+    data = {
+        "@type": "Book",
+        "@id": seo.url(ctx, path) + "#book",
+        "name": book["title"],
+        "url": seo.url(ctx, path),
+        "author": {"@type": "Person", "name": book["author"]},
+        "genre": category,
+        "publisher": {"@type": "Organization", "name": book.get("imprint") or ctx.settings["site_name"]},
+    }
+    for pub_slug, pub in ctx.publishers.items():
+        if book.get("imprint") and pub.get("imprint") == book["imprint"]:
+            data["publisher"] = {"@type": "Organization", "name": pub["name"], "url": seo.url(ctx, f"publishers/{pub_slug}/")}
+    if book["author_slug"] in ctx.authors:
+        data["author"]["url"] = seo.url(ctx, f'authors/{book["author_slug"]}/')
+    if book.get("description"):
+        data["description"] = seo.clip(book["description"], 500)
+    if image:
+        data["image"] = seo.url(ctx, image)
+    if book.get("english_title") and book["english_title"] != book["title"]:
+        data["alternateName"] = book["english_title"]
+    language = seo.LANGUAGES.get((book.get("original_language") or "").strip().lower())
+    if language:
+        data["inLanguage"] = language
+    if str(book.get("pages", "")).strip().isdigit():
+        data["numberOfPages"] = int(book["pages"])
+    year = re.match(r"\s*(\d{4})", book.get("publication_year") or "")
+    if year:
+        data["datePublished"] = year.group(1)
+    if book.get("illustrator"):
+        data["illustrator"] = {"@type": "Person", "name": book["illustrator"]}
+    ages = seo.age_range(book.get("age_group"))
+    if ages:
+        data["typicalAgeRange"] = ages
+    crumbs = seo.breadcrumbs(ctx, [("Home", ""), ("Books", "books/"), (book["title"], path)])
+    return seo.Seo(path=path, title=book["title"], description=description, image=image, type="book",
+                   jsonld=[data, crumbs])

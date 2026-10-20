@@ -5,9 +5,9 @@ An event is upcoming until its end date has passed, so the site needs a
 rebuild each day (the Build site workflow runs daily) to move events to "Past".
 """
 
-from . import dates, markdown, shell
+from . import dates, markdown, seo, shell
 from .components import FILL
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 
 ARROW = (
     '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" '
@@ -153,5 +153,29 @@ def render(ctx, slug: str) -> tuple:
         f'class="prose-editorial mt-8 measure">{markdown.to_html(item.get("body", ""))}</div>{website}</div>{image}'
         f"</div>{gallery}</div></div></section><!--$--><!--/$--></main>"
     )
-    page_title = esc_title(f'{item["title"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, page_title, main)
+    event = {
+        "@type": "Event",
+        "name": item["title"],
+        "url": seo.url(ctx, path),
+        "startDate": start.isoformat(),
+        "endDate": end.isoformat(),
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {"@type": "Place", "name": item.get("venue") or item.get("city") or item["title"],
+                     "address": {"@type": "PostalAddress", **({"addressLocality": item["city"]} if item.get("city") else {}),
+                                 **({"addressCountry": item["country"]} if item.get("country") else {})}},
+    }
+    if item.get("summary") or item.get("body"):
+        event["description"] = seo.clip(item.get("summary") or item.get("body"), 500)
+    if item.get("image"):
+        event["image"] = [seo.url(ctx, item["image"])]
+    if item.get("website"):
+        event["sameAs"] = item["website"]
+    place = ", ".join(v for v in (item.get("venue"), item.get("city"), item.get("country")) if v)
+    stand = f' Stand {item["stand"]}.' if item.get("stand") else ""
+    fallback = f'{item["title"]}, {dates.span(start, end)}{", " + place if place else ""}.{stand} Meet the {ctx.settings["site_name"]} rights team.'
+    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("summary"), fallback),
+                   image=item.get("image") or "",
+                   jsonld=[event, seo.breadcrumbs(ctx, [("Home", ""), ("Fairs & Events", "fairs-events/"), (item["title"], path)])])
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main,
+                            seo_html=seo.head_tags(ctx, meta))

@@ -16,9 +16,9 @@ import shutil
 import sys
 from pathlib import Path
 
-from . import markdown, shell
+from . import markdown, seo, shell
 from .components import FILL, book_card
-from .html import esc, esc_title, prefix_for
+from .html import esc, prefix_for
 from .news import ZOOM
 
 MANIFEST = "assets/catalogues/readers.json"
@@ -223,5 +223,15 @@ def render(ctx, slug: str) -> tuple:
                       f'data-reader-preload rel="preload" as="image" href="~/{esc(cover(ctx, slug))}">')
         tail_extra = (f'<script defer src="~/assets/vendor/page-flip.browser.js?v=2.0.7"></script><script defer '
                       f'src="~/assets/catalogue-reader-v3.js?v={version}"></script>')
-    page_title = esc_title(f'{item["title"]} — {ctx.settings["site_name"]}')
-    return path, shell.page(r, path, ctx.settings, page_title, main, head_extra=head_extra, tail_extra=tail_extra)
+    pages_note = f'{info["pages"]}-page ' if info else ""
+    fallback = (f'{item["title"]}: {pages_note}rights catalogue from {ctx.settings["site_name"]}'
+                + (f' with {len(books)} titles' if books else "") + ". Read it online or download the PDF.")
+    doc = {"@type": "DigitalDocument", "name": item["title"], "url": seo.url(ctx, path),
+           "image": seo.url(ctx, cover(ctx, slug)), "encodingFormat": "application/pdf",
+           "publisher": {"@type": "Organization", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")},
+           "associatedMedia": {"@type": "MediaObject", "contentUrl": seo.url(ctx, item["pdf"]), "encodingFormat": "application/pdf"}}
+    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("description"), fallback),
+                   image="/" + cover(ctx, slug),
+                   jsonld=[doc, seo.breadcrumbs(ctx, [("Home", ""), ("Catalogues", "catalogues/"), (item["title"], path)])])
+    return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main, head_extra=head_extra,
+                            tail_extra=tail_extra, seo_html=seo.head_tags(ctx, meta))
