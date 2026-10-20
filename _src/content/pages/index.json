@@ -1,0 +1,39 @@
+{
+  "path": "",
+  "title_html": "Epsilon Publishing Group — We connect stories with the world.",
+  "head_extra": "<link rel=\"stylesheet\" href=\"assets/news-carousel.css?v=20261001\">",
+  "tail_extra": "<script src=\"assets/news-carousel.js?v=20261001\" defer></script>",
+  "lazy_logos": true,
+  "lists": {
+    "fiction-highlights": [
+      "kuzey-odanin-canavarlari",
+      "ah-tutku-beni-oldurur-musun",
+      "eflatun-koza",
+      "geceye-uyananlar",
+      "golgeler-cekildiginde",
+      "madalyonun-sirri",
+      "sozun-sirri",
+      "istanbul-un-kayip-adasi-vordonisi"
+    ],
+    "non-fiction-highlights": [
+      "devrim-mutfagi",
+      "samanlar-tanrilar-ateistler",
+      "anlam-cesaret-olum-hiclik",
+      "dogadaki-saglik-1-2",
+      "yazma-cesareti",
+      "iyi-aile-yoktur-iyi-toplum-yoktur-butun-cocuklar-iyidir",
+      "dort-kapi-bir-oda",
+      "sanatsal-yaratilcilik-ve-duygudurum-bozuklugu"
+    ],
+    "for-younger-readers": [
+      "duygunuzu-nasil-alirdiniz",
+      "hatalarimi-cebime-koydum",
+      "isik-kralligi",
+      "pirpir-sakinlesiyor",
+      "bir-soru-dustu-yola",
+      "robotlar-da-corap-giyer",
+      "siyam-1",
+      "siyam-2"
+    ]
+  }
+}

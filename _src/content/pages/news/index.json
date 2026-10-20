@@ -1,0 +1,8 @@
+{
+  "path": "news/",
+  "title_html": "Latest News — Epsilon Publishing Group",
+  "head_extra": "<link rel=\"stylesheet\" href=\"~/assets/news-carousel.css?v=20261001\">",
+  "tail_extra": "<script src=\"~/assets/news-carousel.js?v=20261001\" defer></script>",
+  "lazy_logos": true,
+  "lists": {}
+}

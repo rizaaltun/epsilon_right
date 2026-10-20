@@ -1,0 +1,8 @@
+{
+  "path": "catalogues/children-catalogue-2026/",
+  "title_html": "Children&#x27;s Catalogue 2026 — Epsilon Publishing Group",
+  "head_extra": "<style id=\"catalogue-layout\">html,body{background:#faf9f5!important;color-scheme:light}.catalogue-reader:not(.is-open){display:none!important}.catalogue-reader.is-open{display:grid!important;position:fixed!important;inset:0!important;width:100vw;height:100vh;background:#faf9f5!important}.catalogue-reader:fullscreen{background:#faf9f5!important}.catalogue-reader::backdrop{background:#faf9f5}</style><link rel=\"stylesheet\" href=\"~/assets/catalogue-reader-v3.css?v=35b55eada1\"><link data-reader-preload rel=\"preload\" as=\"image\" href=\"~/assets/images/catalogues/children-catalogue-2026.webp\">",
+  "tail_extra": "<script defer src=\"~/assets/vendor/page-flip.browser.js?v=2.0.7\"></script><script defer src=\"~/assets/catalogue-reader-v3.js?v=35b55eada1\"></script>",
+  "lazy_logos": true,
+  "lists": {}
+}
