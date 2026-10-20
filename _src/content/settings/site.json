@@ -5,11 +5,5 @@
   "location": "Istanbul, Türkiye",
   "instagram": "https://www.instagram.com/epsilonpublishinggroup",
   "linkedin": "https://www.linkedin.com/company/epsilon-publishing-group-international",
-  "copyright": "© 2026 Epsilon Publishing Group. All rights reserved.",
-  "categories": [
-    {"slug": "childrens-books", "label": "Children's Books"},
-    {"slug": "adult-fiction", "label": "Adult Fiction"},
-    {"slug": "non-fiction", "label": "Non-Fiction"},
-    {"slug": "young-adult", "label": "Young Adult"}
-  ]
+  "copyright": "© 2026 Epsilon Publishing Group. All rights reserved."
 }

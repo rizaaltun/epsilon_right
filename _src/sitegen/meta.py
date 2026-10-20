@@ -3,6 +3,8 @@
 import json
 import re
 
+from . import covers
+
 
 def year(publication_year: str):
     """The first year in a free-text publication year such as "2024-2025"."""
@@ -20,7 +22,7 @@ def render(ctx) -> str:
             "l": book.get("rights_sold", []),
             "f": bool(book.get("featured")),
             "n": bool(book.get("new")),
-            "p": "/" + book["cover"] if book["cover"] else None,
+            "p": "/" + covers.resolve(ctx, book["cover"])[0] if book["cover"] else None,
             "sq": bool(book.get("square_cover")),
         }
         for slug, book in ctx.books.items()

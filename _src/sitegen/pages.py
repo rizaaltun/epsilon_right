@@ -3,7 +3,8 @@
 Slots in a fragment are filled from content at build time:
   <!--@cards select="RULE" wrap=li|none [article="classes"]-->
       RULE: all | catalogue:<slug> | imprint:<name> | category:<slug> | list:<name>
-      (list names refer to the page record's "lists")
+      (list names refer to the page record's "lists", or to the JSON file
+      named by its "lists_file", e.g. settings/home.json for the home page)
   <!--@count select="RULE"-->   the number of books RULE selects
 """
 
@@ -25,6 +26,9 @@ def load_pages(root: str) -> list:
     for record_file in sorted(base.glob("**/index.json")):
         record = json.loads(record_file.read_text(encoding="utf-8"))
         record["main"] = (record_file.parent / "index.html").read_text(encoding="utf-8")
+        if record.get("lists_file"):
+            lists_file = Path(root, "_src/content", record["lists_file"])
+            record["lists"] = {**record.get("lists", {}), **json.loads(lists_file.read_text(encoding="utf-8"))}
         pages.append(record)
     return pages
 

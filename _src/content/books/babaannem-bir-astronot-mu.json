@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 98,
-  "cover": "assets/images/covers/b9e598ed4bc20fe20a37-1000.webp",
+  "cover": "/assets/images/covers/b9e598ed4bc20fe20a37-1000.webp",
   "square_cover": true,
   "description": "Published by Masalperest in 2023, illustrated by Emel Atar, 24 pages.",
   "original_title": "Babaannem Bir Astronot mu?",

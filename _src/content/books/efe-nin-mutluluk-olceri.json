@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 46,
-  "cover": "assets/images/covers/849e1027c1d42e59b35d-1000.webp",
+  "cover": "/assets/images/covers/849e1027c1d42e59b35d-1000.webp",
   "square_cover": false,
   "description": "Published by Uçan Fil in 2023, illustrated by Öykü Akarca, 88 pages.",
   "original_title": "Efe'nin Mutluluk Ölçeri",

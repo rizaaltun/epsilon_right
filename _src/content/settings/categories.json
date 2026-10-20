@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "slug": "childrens-books",
+      "label": "Children's Books"
+    },
+    {
+      "slug": "adult-fiction",
+      "label": "Adult Fiction"
+    },
+    {
+      "slug": "non-fiction",
+      "label": "Non-Fiction"
+    },
+    {
+      "slug": "young-adult",
+      "label": "Young Adult"
+    }
+  ]
+}

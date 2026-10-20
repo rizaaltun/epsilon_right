@@ -1,35 +1,11 @@
 """Markup pieces reused across page types: breadcrumbs, covers, book cards."""
 
-import re
-from functools import lru_cache
-from pathlib import Path
-
+from . import covers
 from .html import esc
 
 FILL = "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"
 HERO_SIZES = "(min-width: 1024px) 420px, 90vw"
 CARD_SIZES = "(min-width: 1280px) 220px, (min-width: 640px) 30vw, 45vw"
-
-
-@lru_cache(maxsize=None)
-def _cover_variants(root: str) -> dict:
-    """Map cover stem -> sorted widths, from the WebP files on disk."""
-    variants = {}
-    for path in Path(root, "assets/images/covers").glob("*.webp"):
-        match = re.fullmatch(r"(.+)-(\d+)\.webp", path.name)
-        if match:
-            variants.setdefault(match.group(1), []).append(int(match.group(2)))
-    return {stem: sorted(widths) for stem, widths in variants.items()}
-
-
-def cover_srcset(site_root: str, r: str, cover: str) -> str:
-    """``srcset`` for a cover; every width variant of the cover found on disk."""
-    folder, name = cover.rsplit("/", 1)
-    stem = re.fullmatch(r"(.+)-\d+\.webp", name).group(1)
-    widths = _cover_variants(site_root).get(stem)
-    if not widths:
-        raise FileNotFoundError(f"no WebP variants on disk for cover {cover}")
-    return ", ".join(f"{r}{folder}/{stem}-{w}.webp {w}w" for w in widths)
 
 
 def breadcrumb(r: str, trail: list, current: str) -> str:
@@ -52,9 +28,14 @@ def aspect(book: dict) -> str:
 
 def cover_img(ctx, r: str, book: dict, hero: bool) -> str:
     sizes, loading = (HERO_SIZES, 'loading="eager" fetchpriority="high"') if hero else (CARD_SIZES, 'loading="lazy"')
+    src, variants = covers.resolve(ctx, book["cover"])
+    srcset = ""
+    if variants:
+        widths = ", ".join(f"{r}{path} {w}w" for path, w in variants)
+        srcset = f' srcset="{widths}" sizes="{sizes}"'
     return (
         f'<img alt="{esc(book["title"])} — cover" decoding="async" class="object-cover" style="{FILL}" '
-        f'src="{r}{book["cover"]}" srcset="{cover_srcset(ctx.root, r, book["cover"])}" sizes="{sizes}" {loading}/>'
+        f'src="{r}{src}"{srcset} {loading}/>'
     )
 
 

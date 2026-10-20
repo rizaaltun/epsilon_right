@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 80,
-  "cover": "assets/images/covers/702f6cc8d83f52fe4b1f-1000.webp",
+  "cover": "/assets/images/covers/702f6cc8d83f52fe4b1f-1000.webp",
   "square_cover": true,
   "description": "Published by Uçan Fil in 2023, 32 pages.",
   "original_title": "Maya: Mutlu Bir Çocuğun Hikayesi",

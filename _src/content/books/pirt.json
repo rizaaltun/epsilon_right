@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 88,
-  "cover": "assets/images/covers/5c7d4dace97491b9b0ce-1000.webp",
+  "cover": "/assets/images/covers/5c7d4dace97491b9b0ce-1000.webp",
   "square_cover": true,
   "description": "Published by Masalperest in 2020, 32 pages.",
   "original_title": "Pırt!",

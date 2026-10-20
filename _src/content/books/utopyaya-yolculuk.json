@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 125,
-  "cover": "assets/images/covers/9a591eed9477213c1002-1000.webp",
+  "cover": "/assets/images/covers/9a591eed9477213c1002-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon in 2022, illustrated by Mehmet Sağbaş, 164 pages.",
   "original_title": "Ütopyaya Yolculuk",

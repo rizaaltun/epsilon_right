@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 101,
-  "cover": "assets/images/covers/41b58af826234b4a2147-1000.webp",
+  "cover": "/assets/images/covers/41b58af826234b4a2147-1000.webp",
   "square_cover": true,
   "description": "Published by Uçan Fil in 2021, illustrated by Kübra Aslan Ertap, 36 pages.",
   "original_title": "Kırmızı Balon Uçuyor",

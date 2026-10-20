@@ -1,0 +1,223 @@
+# Admin panel (Sveltia CMS) configuration. See _src/ADMIN.md.
+#
+# The panel edits the JSON files under _src/content/ and commits them to main.
+# The "Build site" workflow then regenerates the pages from that content.
+
+backend:
+  name: github
+  repo: rizaaltun/epsilon_right
+  branch: main
+  # OAuth sign-in goes through the Sveltia CMS Authenticator worker; set its URL
+  # here once it is deployed (see _src/ADMIN.md). Until then, collaborators can
+  # sign in with a GitHub personal access token.
+  # base_url: https://epsilon-cms-auth.<account>.workers.dev
+  commit_messages:
+    create: "İçerik eklendi: {{collection}} / {{slug}}"
+    update: "İçerik güncellendi: {{collection}} / {{slug}}"
+    delete: "İçerik silindi: {{collection}} / {{slug}}"
+    uploadMedia: "Görsel yüklendi: {{path}}"
+    deleteMedia: "Görsel silindi: {{path}}"
+
+app_title: Epsilon Publishing Group — Yönetim
+site_url: https://epsilonpublishinggroup.com
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+media_libraries:
+  default:
+    config:
+      max_file_size: 10000000
+      slugify_filename: true
+      # Uploaded photos are converted to WebP in the browser before upload;
+      # the site build then makes the 480px/1000px cover variants.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 90
+          width: 1600
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+output:
+  omit_empty_optional_fields: true
+  json:
+    indent_style: space
+    indent_size: 2
+
+collections:
+  - name: books
+    label: Kitaplar
+    label_singular: Kitap
+    description: Sitedeki her kitap. Sıralamayı değiştirmek için listede "Yeniden sırala"yı kullanın.
+    icon: menu_book
+    folder: _src/content/books
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Kitabın adresi, örn. /books/eflatun-koza/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{title}} — {{author}}"
+    sortable_fields: [title, author, publication_year]
+    thumbnail: cover
+    preview_path: books/{{slug}}/
+    media_folder: /assets/images/uploads/covers
+    public_folder: /assets/images/uploads/covers
+    view_filters:
+      - { label: "Children's Books", field: category, eq: childrens-books }
+      - { label: Adult Fiction, field: category, eq: adult-fiction }
+      - { label: Non-Fiction, field: category, eq: non-fiction }
+      - { label: Young Adult, field: category, eq: young-adult }
+      - { label: Kapağı olmayanlar, field: cover, empty: true }
+    view_groups:
+      - { label: Kategori, field: category }
+      - { label: Yayınevi, field: imprint }
+    fields:
+      - { name: title, label: Kitap adı, widget: string }
+      - name: author
+        label: Yazar
+        widget: string
+        hint: Yazarlar listesindeki adla aynı yazılırsa kitap, yazarın sayfasına bağlanır.
+      - name: category
+        label: Kategori
+        widget: select
+        options:
+          - { label: "Children's Books", value: childrens-books }
+          - { label: Adult Fiction, value: adult-fiction }
+          - { label: Non-Fiction, value: non-fiction }
+          - { label: Young Adult, value: young-adult }
+      - name: catalogue
+        label: Katalog
+        widget: select
+        hint: Kitap sayfasındaki "Read catalogue" düğmesi ve katalog sayfasındaki listesi için.
+        options:
+          - { label: "Children's Titles 2026", value: childrens-titles-2026 }
+          - { label: Adult Titles 2026, value: adult-titles-2026 }
+          - { label: Young Adult Titles 2026, value: young-adult-titles-2026 }
+      - name: cover
+        label: Kapak
+        widget: image
+        required: false
+        choose_url: false
+        hint: JPG, PNG veya WebP. Site için küçük ve büyük boyutları otomatik üretilir.
+      - { name: square_cover, label: Kare kapak, widget: boolean, default: false, hint: Kare formatlı (çoğunlukla resimli çocuk kitapları) kapaklar için açın. }
+      - name: description
+        label: Tanıtım metni
+        widget: text
+        required: false
+        hint: İngilizce. Paragrafları boş bir satırla ayırın.
+      - { name: original_title, label: Orijinal adı, widget: string, required: false }
+      - { name: original_language, label: Orijinal dili, widget: string, required: false, default: Turkish }
+      - { name: english_title, label: İngilizce adı, widget: string, required: false }
+      - name: imprint
+        label: Yayınevi
+        widget: select
+        required: false
+        hint: Kitap, seçilen yayınevinin sayfasında listelenir.
+        options: [Epsilon, Kafka, Masalperest, Nemesis, Okuyan Us, Uçan Fil, Okuyan Koala]
+      - { name: pages, label: Sayfa sayısı, widget: string, required: false }
+      - { name: publication_year, label: Yayın yılı, widget: string, required: false, hint: Örn. 2024 ya da 2024-2025 }
+      - { name: illustrator, label: Resimleyen, widget: string, required: false }
+      - { name: age_group, label: Yaş grubu, widget: string, required: false, hint: Örn. 6+ }
+      - name: rights
+        label: Haklar
+        widget: text
+        default: Rights are available worldwide
+        hint: Kitap sayfasındaki "Rights" kutusunda görünür.
+      - name: rights_sold
+        label: Hakları satılan diller
+        widget: list
+        required: false
+        hint: Kitaplar sayfasındaki dil filtresinde kullanılır.
+      - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+      - { name: new, label: Yeni, widget: boolean, default: false }
+
+  - name: authors
+    label: Yazarlar
+    label_singular: Yazar
+    icon: person
+    folder: _src/content/authors
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: name
+    slug:
+      template: "{{name}}"
+      editable: [create]
+      hint: Yazarın adresi, örn. /authors/cahide-birgul/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{name}}"
+    preview_path: authors/{{slug}}/
+    fields:
+      - name: name
+        label: Ad soyad
+        widget: string
+        hint: Kitaplardaki "Yazar" alanı bu adla eşleşir.
+      - name: bio
+        label: Biyografi
+        widget: text
+        required: false
+        hint: İngilizce. Paragrafları boş bir satırla ayırın.
+      - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+
+singletons:
+  - name: home
+    label: Ana sayfa vitrinleri
+    icon: home
+    file: _src/content/settings/home.json
+    format: json
+    preview_path: ""
+    fields:
+      - name: fiction_highlights
+        label: Fiction highlights
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        min: 1
+        hint: Sürükleyerek sıralayabilirsiniz.
+      - name: non_fiction_highlights
+        label: Non-fiction highlights
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        min: 1
+        hint: Sürükleyerek sıralayabilirsiniz.
+      - name: for_younger_readers
+        label: For younger readers
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        min: 1
+        hint: Sürükleyerek sıralayabilirsiniz.
+
+  - name: site
+    label: Site ayarları
+    icon: settings
+    file: _src/content/settings/site.json
+    format: json
+    fields:
+      - { name: site_name, label: Site adı, widget: string, hint: Sayfa başlıklarının sonunda görünür. }
+      - { name: tagline, label: Slogan, widget: string, hint: Alt bilgide (footer) görünür. }
+      - { name: email, label: E-posta, widget: string, hint: Haklar talebi düğmeleri ve alt bilgi bu adresi kullanır. }
+      - { name: location, label: Konum, widget: string }
+      - { name: instagram, label: Instagram adresi, widget: string }
+      - { name: linkedin, label: LinkedIn adresi, widget: string }
+      - { name: copyright, label: Telif satırı, widget: string }

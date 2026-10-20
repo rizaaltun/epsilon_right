@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 127,
-  "cover": "assets/images/covers/9f5dfd2c1b27e34dccfb-1000.webp",
+  "cover": "/assets/images/covers/9f5dfd2c1b27e34dccfb-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon in 2021, illustrated by Mehmet Sağbaş, 136 pages.",
   "original_title": "Silgi Ruhu",

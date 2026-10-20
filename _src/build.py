@@ -64,7 +64,7 @@ def main(argv=None) -> int:
     parser.add_argument("--show", metavar="PATH", help="with --check, print the first difference in PATH")
     args = parser.parse_args(argv)
 
-    ctx = content.load(ROOT)
+    ctx = content.load(ROOT, write=not args.check)
     files = generate(ctx)
 
     if args.check:

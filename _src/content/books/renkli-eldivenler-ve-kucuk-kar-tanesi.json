@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 105,
-  "cover": "assets/images/covers/397da8c7da1c3957b4cc-1000.webp",
+  "cover": "/assets/images/covers/397da8c7da1c3957b4cc-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by Beyza Tükel, 46 pages.",
   "original_title": "Renkli Eldivenler ve Küçük Kar Tanesi",

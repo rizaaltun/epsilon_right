@@ -4,7 +4,7 @@
   "category": "childrens-books",
   "catalogue": "childrens-titles-2026",
   "order": 99,
-  "cover": "assets/images/covers/caf853a5f4ac6400fd9d-1000.webp",
+  "cover": "/assets/images/covers/caf853a5f4ac6400fd9d-1000.webp",
   "square_cover": true,
   "description": "Published by Masalperest in 2022, illustrated by Öykü Akarca, 24 pages.",
   "original_title": "Ne Uzak Ne Yakın",

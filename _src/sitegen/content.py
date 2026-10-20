@@ -26,6 +26,7 @@ def _load_folder(folder: Path) -> dict:
 class Context:
     root: str
     settings: dict
+    write: bool = False                            # may the build create files (cover variants)?
     books: dict = field(default_factory=dict)      # slug -> book, in display order
     authors: dict = field(default_factory=dict)    # slug -> author
 
@@ -36,12 +37,18 @@ class Context:
         return [(s, b) for s, b in self.books.items() if b.get(key) == value]
 
 
-def load(root: Path) -> Context:
+def load(root: Path, write: bool = False) -> Context:
     content = root / "_src/content"
     settings = json.loads((content / "settings/site.json").read_text(encoding="utf-8"))
+    settings.update(json.loads((content / "settings/categories.json").read_text(encoding="utf-8")))
+    authors = _load_folder(content / "authors") if (content / "authors").exists() else {}
+    # Books name their author in free text; match it to an author file by the
+    # name's slug, so spelling variants such as Sağbaş/Şağbaş share one page.
+    by_name = {slugify(a["name"]): slug for slug, a in authors.items()}
     books = _load_folder(content / "books")
     for book in books.values():
-        book["author_slug"] = book.get("author_slug") or slugify(book["author"])
-    books = dict(sorted(books.items(), key=lambda kv: (kv[1].get("order", 10**9), kv[0])))
-    authors = _load_folder(content / "authors") if (content / "authors").exists() else {}
-    return Context(root=str(root), settings=settings, books=books, authors=authors)
+        name_slug = slugify(book["author"])
+        book["author_slug"] = by_name.get(name_slug, name_slug)
+    # New books without an order go last; the admin panel numbers from 1.
+    books = dict(sorted(books.items(), key=lambda kv: (kv[1].get("order") is None, kv[1].get("order") or 0, kv[0])))
+    return Context(root=str(root), settings=settings, write=write, books=books, authors=authors)
