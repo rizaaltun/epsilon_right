@@ -169,6 +169,117 @@ collections:
         hint: İngilizce. Paragrafları boş bir satırla ayırın.
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
 
+  - name: news
+    label: Haberler
+    label_singular: Haber
+    description: Haberler sayfası ve ana sayfadaki "From the desk" bölümü, en yeni haber önde olacak şekilde otomatik dolar.
+    icon: newspaper
+    folder: _src/content/news
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Haberin adresi, örn. /news/frankfurt-book-fair-2026-return/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{date}} — {{title}}"
+    sortable_fields:
+      fields: [date, title]
+      default: { field: date, direction: descending }
+    thumbnail: image
+    preview_path: news/{{slug}}/
+    media_folder: /assets/images/uploads/news
+    public_folder: /assets/images/uploads/news
+    fields:
+      - { name: title, label: Başlık, widget: string }
+      - { name: date, label: Tarih, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
+      - name: category
+        label: Tür
+        widget: select
+        default: Announcements
+        options: [Announcements, Press, Fairs, Rights deals, Awards]
+      - { name: byline, label: İmza, widget: string, default: Editorial desk, hint: 'Tarihin yanında görünür, örn. "Editorial desk".' }
+      - { name: excerpt, label: Özet, widget: text, hint: Haber kartlarında görünen kısa metin (1–2 cümle). }
+      - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false, hint: Görme engelliler ve Google için. Boş bırakılırsa başlık kullanılır. }
+      - name: image_ratio
+        label: Haber sayfasındaki görsel oranı
+        widget: select
+        default: 3/2
+        options:
+          - { label: Yatay (3:2), value: 3/2 }
+          - { label: Geniş (16:9), value: 16/9 }
+          - { label: Dikey (4:5), value: 4/5 }
+          - { label: Kare (1:1), value: 1/1 }
+      - { name: show_image, label: Görseli haber sayfasında göster, widget: boolean, default: true, hint: Kapalıysa görsel yalnızca haber kartlarında kullanılır. }
+      - name: body
+        label: Metin
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - name: gallery
+        label: Galeri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Görsel, widget: image, choose_url: false }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: source, label: Kaynak notu, widget: string, required: false, hint: Haberin altında küçük yazıyla görünür. }
+
+  - name: events
+    label: Fuarlar & Etkinlikler
+    label_singular: Etkinlik
+    description: Bitiş tarihi geçen etkinlikler kendiliğinden "Past" bölümüne geçer. Ana sayfadaki kart sıradaki etkinliği gösterir.
+    icon: event
+    folder: _src/content/events
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Etkinliğin adresi, örn. /fairs-events/frankfurter-buchmesse-2026/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{start_date}} — {{title}}"
+    sortable_fields:
+      fields: [start_date, title]
+      default: { field: start_date, direction: descending }
+    thumbnail: image
+    preview_path: fairs-events/{{slug}}/
+    media_folder: /assets/images/uploads/events
+    public_folder: /assets/images/uploads/events
+    fields:
+      - { name: title, label: Etkinlik adı, widget: string }
+      - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
+      - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
+      - { name: city, label: Şehir, widget: string, required: false }
+      - { name: country, label: Ülke, widget: string, required: false, hint: İngilizce, örn. Germany }
+      - { name: stand, label: Stant, widget: string, required: false, hint: Örn. Hall 5.1 · C20 }
+      - { name: summary, label: Kısa açıklama, widget: string, required: false, hint: Etkinlik listesinde görünür. }
+      - name: body
+        label: Metin
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - { name: website, label: Resmî site, widget: string, required: false, hint: "https:// ile başlayan adres" }
+      - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+      - name: gallery
+        label: Galeri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Görsel, widget: image, choose_url: false }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+
 singletons:
   - name: home
     label: Ana sayfa vitrinleri

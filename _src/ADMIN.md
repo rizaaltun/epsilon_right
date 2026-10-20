@@ -13,8 +13,11 @@ Pages kaynağı (`main` / root) ve `CNAME` değişmez. Derleme hata verirse (ör
 eksik bir alan) workflow kırmızı olur ve yayındaki site olduğu gibi kalır.
 
 Panelde yönetilenler: **Kitaplar** (ekle / düzenle / sil / sürükleyerek sırala, kapak
-yükleme), **Yazarlar**, **Ana sayfa vitrinleri**, **Site ayarları**. Haberler, blog ve
-diğer sayfalar sonraki aşamalarda eklenecek.
+yükleme), **Yazarlar**, **Haberler**, **Fuarlar & Etkinlikler**, **Ana sayfa vitrinleri**,
+**Site ayarları**. Yayınevleri, sayfa metinleri ve kataloglar sonraki adımlarda eklenecek.
+
+Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
+çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
 
 ## Kimler girebilir
 

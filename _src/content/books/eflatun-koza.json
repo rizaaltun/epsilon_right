@@ -1,9 +1,9 @@
 {
+  "order": 148,
   "title": "Eflatun Koza",
   "author": "Cahide Birgül",
   "category": "adult-fiction",
   "catalogue": "adult-titles-2026",
-  "order": 148,
   "cover": "/assets/images/covers/0ddb05916ec4cb069337-1000.webp",
   "square_cover": false,
   "description": "Evrim, a lonely young journalist, begins to unravel missing persons cases that her newspaper exploits for circulation. As she investigates the disappearance of two women, Çağla and Irmak, Evrim’s carefully constructed shell begins to crack, leading her into a hidden world of forbidden love. With detective-like precision and emotional force, the novel confronts prejudice and the yearning for a place where one can live freely.",
@@ -13,8 +13,7 @@
   "imprint": "Kafka",
   "pages": "216",
   "publication_year": "2022",
-  "rights": "Rights are available worlwide",
-  "rights_sold": [],
+  "rights": "Rights are available worldwide",
   "featured": false,
   "new": false
 }

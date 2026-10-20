@@ -6,17 +6,22 @@ Slots in a fragment are filled from content at build time:
       (list names refer to the page record's "lists", or to the JSON file
       named by its "lists_file", e.g. settings/home.json for the home page)
   <!--@count select="RULE"-->   the number of books RULE selects
+  <!--@news-cards [limit=N]-->   news cards, newest first
+  <!--@news-count-->             the number of news articles
+  <!--@event-sections-->         the Upcoming / Past lists of fairs & events
+  <!--@event-aside-->            the home page's next-fair card
 """
 
 import json
 import re
 from pathlib import Path
 
-from . import shell
+from . import events, news, shell
 from .components import book_card
 from .html import prefix_for
 
 COUNT = re.compile(r'<!--@count select="([^"]+)"-->')
+OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside)((?: \w+=\S+?)*)-->")
 SLOT = re.compile(r'<!--@cards select="([^"]+)" wrap=(li|none)(?: article="([^"]+)")?-->')
 
 
@@ -55,6 +60,18 @@ def render(ctx, record: dict) -> tuple:
 
     main = SLOT.sub(fill, record["main"])
     main = COUNT.sub(lambda m: str(len(select(ctx, record, m.group(1)))), main)
+
+    def other(match):
+        name, args = match.group(1), dict(a.split("=", 1) for a in match.group(2).split())
+        if name == "news-cards":
+            return news.cards(ctx, r, args.get("limit"))
+        if name == "news-count":
+            return str(len(ctx.news))
+        if name == "event-sections":
+            return events.sections(ctx, r)
+        return events.aside(ctx, r)
+
+    main = OTHER.sub(other, main)
     return path, shell.page(
         r, path, ctx.settings, record["title_html"], main,
         head_extra=record["head_extra"], tail_extra=record["tail_extra"], lazy_logos=record["lazy_logos"],

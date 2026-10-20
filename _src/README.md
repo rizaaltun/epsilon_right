@@ -30,7 +30,9 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | --- | --- |
 | `books/<slug>/index.html` (268) | `content/books/<slug>.json` |
 | `authors/<slug>/index.html` (59) | `content/authors/<slug>.json` + the books whose author has that slug |
-| every other page (31) | `content/pages/<path>/index.{json,html}` |
+| `news/<slug>/index.html` | `content/news/<slug>.json` (body in Markdown, see `sitegen/markdown.py`) |
+| `fairs-events/<slug>/index.html` | `content/events/<slug>.json`; upcoming until the end date has passed |
+| every other page | `content/pages/<path>/index.{json,html}` |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 
 Book order everywhere follows each book's `order` field. A book links to its
@@ -41,6 +43,8 @@ changed in one file updates every page that shows it:
 
 - `<!--@cards select="RULE" wrap=li|none [article="…"]-->` a run of book cards
 - `<!--@count select="RULE"-->` the number of books selected
+- `<!--@news-cards [limit=N]-->`, `<!--@news-count-->` news cards / count
+- `<!--@event-sections-->`, `<!--@event-aside-->` fairs lists / home fair card
 
 `RULE` is `all`, `catalogue:<slug>`, `imprint:<name>`, `category:<slug>` or
 `list:<name>` (a hand-picked list in the page's `index.json`, e.g. the home
@@ -51,6 +55,8 @@ category, wrapping round to the start of the list.
 
 Covers: a book stores the path of its largest WebP variant; the `srcset` is
 built from every `<stem>-<width>.webp` found in `assets/images/covers/`.
+
+Set `SITE_TODAY=YYYY-MM-DD` to build as of another date (fair status depends on it).
 
 ## Phase 1 guarantee
 
@@ -72,6 +78,9 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 - Footer category links use slugs that don't exist (`fiction`, `nonfiction`, `childrens`).
 - Footer links to `/privacy-policy/` and `/terms/` return 404.
 - Contact page "View on map" points to `https://maps.example.com`.
+- Fixed in the news/events step: the fair page linked to `https://example.org` and
+  showed template placeholder images as its gallery; Frankfurt (7–11 Oct) still said
+  "Upcoming"; the Publishers Weekly article used a one-off layout.
 - No meta descriptions, Open Graph, canonical URLs, structured data, sitemap or robots.txt.
 - Book pages without a cover give hero loading hints to the first card in the rail.
 - Three news pages don't lazy-load the logos; `<title>` escaping is inconsistent.

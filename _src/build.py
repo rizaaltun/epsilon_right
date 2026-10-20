@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from sitegen import authors, books, content, meta, pages  # noqa: E402
+from sitegen import authors, books, content, events, meta, news, pages  # noqa: E402
 
 
 def generate(ctx) -> dict:
@@ -27,6 +27,12 @@ def generate(ctx) -> dict:
     for slug in ctx.authors:
         path, text = authors.render(ctx, slug)
         out[path + "index.html"] = text
+    for slug in ctx.news:
+        path, text = news.render(ctx, slug)
+        out[path + "index.html"] = text
+    for slug in ctx.events:
+        path, text = events.render(ctx, slug)
+        out[path + "index.html"] = text
     for record in pages.load_pages(ctx.root):
         path, text = pages.render(ctx, record)
         out[path + "index.html"] = text
@@ -37,11 +43,11 @@ def generate(ctx) -> dict:
 def orphans(files: dict) -> list:
     """Generated pages on disk whose content was deleted.
 
-    Only books/<slug>/index.html and authors/<slug>/index.html are owned by the
-    build this way; nothing else is ever removed.
+    Only <section>/<slug>/index.html under the content-driven sections is owned
+    by the build this way; nothing else is ever removed.
     """
     stale = []
-    for section in ("books", "authors"):
+    for section in ("books", "authors", "news", "fairs-events"):
         for page in sorted((ROOT / section).glob("*/index.html")):
             rel = page.relative_to(ROOT).as_posix()
             if rel not in files:

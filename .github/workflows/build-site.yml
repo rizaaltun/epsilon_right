@@ -1,9 +1,12 @@
 name: Build site from content
 # Runs after the admin panel (or anyone) commits content to _src/ on main:
 # regenerates the pages, commits them and asks GitHub Pages to publish.
+# It also runs every morning so fairs move from "Upcoming" to "Past" on time.
 # The Pages source (main / root) and CNAME are not touched.
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '15 3 * * *'   # 06:15 Istanbul
   push:
     branches: [main]
     paths:

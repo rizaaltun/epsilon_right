@@ -29,6 +29,8 @@ class Context:
     write: bool = False                            # may the build create files (cover variants)?
     books: dict = field(default_factory=dict)      # slug -> book, in display order
     authors: dict = field(default_factory=dict)    # slug -> author
+    news: dict = field(default_factory=dict)       # slug -> article
+    events: dict = field(default_factory=dict)     # slug -> fair / event
 
     def books_by_author(self, author_slug: str) -> list:
         return [(s, b) for s, b in self.books.items() if b["author_slug"] == author_slug]
@@ -51,4 +53,7 @@ def load(root: Path, write: bool = False) -> Context:
         book["author_slug"] = by_name.get(name_slug, name_slug)
     # New books without an order go last; the admin panel numbers from 1.
     books = dict(sorted(books.items(), key=lambda kv: (kv[1].get("order") is None, kv[1].get("order") or 0, kv[0])))
-    return Context(root=str(root), settings=settings, write=write, books=books, authors=authors)
+    news = _load_folder(content / "news") if (content / "news").exists() else {}
+    events = _load_folder(content / "events") if (content / "events").exists() else {}
+    return Context(root=str(root), settings=settings, write=write, books=books, authors=authors,
+                   news=news, events=events)
