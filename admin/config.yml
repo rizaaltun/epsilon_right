@@ -185,7 +185,7 @@ collections:
       editable: [create]
       hint: Haberin adresi, örn. /news/frankfurt-book-fair-2026-return/. Kayıttan sonra değiştirilemez.
       pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
-    summary: "{{date}} — {{title}}"
+    summary: "{{pinned | ternary('📌 ', '')}}{{date}} — {{title}}"
     sortable_fields:
       fields: [date, title]
       default: { field: date, direction: descending }
@@ -200,7 +200,8 @@ collections:
         label: Tür
         widget: select
         default: Announcements
-        options: [Announcements, Press, Fairs, Rights deals, Awards]
+        options: [Announcements, Industry, Press, Fairs, Rights deals, Awards]
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: Açıksa haber, ana sayfada ve haberler sayfasında yeni haberlerin önünde kalır. }
       - { name: byline, label: İmza, widget: string, default: Editorial desk, hint: 'Tarihin yanında görünür, örn. "Editorial desk".' }
       - { name: excerpt, label: Özet, widget: text, hint: Haber kartlarında görünen kısa metin (1–2 cümle). }
       - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
@@ -246,7 +247,7 @@ collections:
       editable: [create]
       hint: Etkinliğin adresi, örn. /fairs-events/frankfurter-buchmesse-2026/. Kayıttan sonra değiştirilemez.
       pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
-    summary: "{{start_date}} — {{title}}"
+    summary: "{{pinned | ternary('📌 ', '')}}{{start_date}} — {{title}}"
     sortable_fields:
       fields: [start_date, title]
       default: { field: start_date, direction: descending }
@@ -257,6 +258,7 @@ collections:
     fields:
       - { name: title, label: Etkinlik adı, widget: string }
       - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: Açıksa ana sayfadaki fuar kartı, tarihi geçmiş olsa bile bu etkinliği gösterir. }
       - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
       - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
       - { name: city, label: Şehir, widget: string, required: false }

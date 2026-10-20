@@ -94,9 +94,12 @@ def sections(ctx, r: str) -> str:
 
 
 def aside(ctx, r: str) -> str:
-    """Contents of the home page's fair card: the next fair, else the latest one."""
-    nxt = upcoming(ctx)
-    label, items = ("Upcoming fair", nxt) if nxt else ("Latest fair", past(ctx))
+    """Contents of the home page's fair card: a pinned event if there is one
+    (the soonest upcoming pinned one, else the latest pinned one), otherwise
+    the next fair, otherwise the latest one."""
+    pinned = [kv for kv in upcoming(ctx) + past(ctx) if kv[1].get("pinned")]
+    items = pinned or upcoming(ctx) or past(ctx)
+    label = "Upcoming fair" if items and is_upcoming(items[0][1]) else "Latest fair"
     if not items:
         return (
             '<p class="eyebrow mb-3">Fairs</p><p class="font-display text-display-sm leading-tight text-balance">'

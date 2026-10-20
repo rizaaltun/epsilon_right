@@ -8,8 +8,8 @@ ZOOM = "object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,0
 
 
 def ordered(ctx) -> list:
-    """Newest first."""
-    return sorted(ctx.news.items(), key=lambda kv: (str(kv[1]["date"]), kv[0]), reverse=True)
+    """Pinned articles first, then newest first (also among the pinned ones)."""
+    return sorted(ctx.news.items(), key=lambda kv: (bool(kv[1].get("pinned")), str(kv[1]["date"]), kv[0]), reverse=True)
 
 
 def card(ctx, r: str, slug: str, item: dict) -> str:
