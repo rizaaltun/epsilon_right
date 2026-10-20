@@ -282,6 +282,48 @@ collections:
           - { name: image, label: Görsel, widget: image, choose_url: false }
           - { name: alt, label: Açıklama, widget: string, required: false }
 
+  - name: publishers
+    label: Yayınevleri
+    label_singular: Yayınevi
+    description: Yayınevleri sayfası panelde belirlediğiniz sırayla listelenir ("Yeniden sırala"). Kitap sayıları kitaplardan otomatik hesaplanır.
+    icon: apartment
+    folder: _src/content/publishers
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: name
+    slug:
+      template: "{{name}}"
+      editable: [create]
+      hint: Yayınevinin adresi, örn. /publishers/kafka-kitap/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{name}}"
+    thumbnail: logo
+    preview_path: publishers/{{slug}}/
+    media_folder: /assets/images/uploads/publishers
+    public_folder: /assets/images/uploads/publishers
+    fields:
+      - { name: name, label: Yayınevi adı, widget: string, hint: Sayfada görünen ad, örn. Kafka Kitap. }
+      - name: imprint
+        label: Kitaplardaki yayınevi adı
+        widget: string
+        hint: Kitapların "Yayınevi" alanındaki değerle birebir aynı olmalı (örn. Kafka). Bu yayınevinin kitap listesi buna göre oluşur.
+      - { name: country, label: Ülke, widget: string, default: Türkiye }
+      - { name: summary, label: Kart metni, widget: text, required: false, hint: Yayınevi kartlarında görünür (1–2 cümle). Boşsa tanıtım metninin ilk paragrafı kullanılır. }
+      - name: description
+        label: Tanıtım metni
+        widget: markdown
+        required: false
+        hint: İngilizce. Yayınevi sayfasında görünür.
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - { name: logo, label: Logo, widget: image, required: false, choose_url: false, hint: Yatay logo; şeffaf arka planlı PNG idealdir. Boşsa adın baş harfleri gösterilir. }
+      - { name: email, label: E-posta, widget: string, required: false, hint: Boşsa site e-postası kullanılır. }
+      - { name: website, label: Web sitesi, widget: string, required: false }
+      - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+
 singletons:
   - name: home
     label: Ana sayfa vitrinleri

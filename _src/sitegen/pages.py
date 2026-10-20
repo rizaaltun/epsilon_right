@@ -10,18 +10,25 @@ Slots in a fragment are filled from content at build time:
   <!--@news-count-->             the number of news articles
   <!--@event-sections-->         the Upcoming / Past lists of fairs & events
   <!--@event-aside-->            the home page's next-fair card
+  <!--@publisher-cards [order=titles]-->, <!--@publisher-count-->, <!--@publisher-summary-->,
+  <!--@publisher-countries-->    publisher cards, count, summary line and country filter
+  <!--@author-cards-->, <!--@author-count-->, <!--@top-authors limit=N-->, <!--@author-letters-->,
+  <!--@authors-with-titles-->    author cards (A–Z), count, most-published rail, A–Z jump list
+  <!--@featured-filter kind=publishers|authors-->  the "Featured" filter row, if any are featured
 """
 
 import json
 import re
 from pathlib import Path
 
-from . import events, news, shell
+from . import events, news, publishers, shell
 from .components import book_card
 from .html import prefix_for
 
 COUNT = re.compile(r'<!--@count select="([^"]+)"-->')
-OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside)((?: \w+=\S+?)*)-->")
+OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside|publisher-cards|publisher-count|"
+                   r"publisher-summary|publisher-countries|author-cards|author-count|top-authors|author-letters|"
+                   r"authors-with-titles|featured-filter)((?: \w+=\S+?)*)-->")
 SLOT = re.compile(r'<!--@cards select="([^"]+)" wrap=(li|none)(?: article="([^"]+)")?-->')
 
 
@@ -69,7 +76,27 @@ def render(ctx, record: dict) -> tuple:
             return str(len(ctx.news))
         if name == "event-sections":
             return events.sections(ctx, r)
-        return events.aside(ctx, r)
+        if name == "event-aside":
+            return events.aside(ctx, r)
+        if name == "publisher-cards":
+            return publishers.cards(ctx, r, args.get("order", "panel"))
+        if name == "publisher-count":
+            return str(len(ctx.publishers))
+        if name == "publisher-summary":
+            return publishers.summary_line(ctx)
+        if name == "publisher-countries":
+            return publishers.country_filter(ctx)
+        if name == "author-cards":
+            return publishers.author_cards(ctx, r)
+        if name == "author-count":
+            return str(len(ctx.authors))
+        if name == "top-authors":
+            return publishers.top_authors(ctx, r, int(args.get("limit", 8)))
+        if name == "author-letters":
+            return publishers.letter_nav(ctx)
+        if name == "authors-with-titles":
+            return str(publishers.authors_with_titles(ctx))
+        return publishers.featured_filter(ctx, args.get("kind", "publishers"))
 
     main = OTHER.sub(other, main)
     return path, shell.page(

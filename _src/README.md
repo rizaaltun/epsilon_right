@@ -32,6 +32,7 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `authors/<slug>/index.html` (59) | `content/authors/<slug>.json` + the books whose author has that slug |
 | `news/<slug>/index.html` | `content/news/<slug>.json` (body in Markdown, see `sitegen/markdown.py`) |
 | `fairs-events/<slug>/index.html` | `content/events/<slug>.json`; upcoming until the end date has passed |
+| `publishers/<slug>/index.html` | `content/publishers/<slug>.json` + the books whose `imprint` matches |
 | every other page | `content/pages/<path>/index.{json,html}` |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 
@@ -45,6 +46,7 @@ changed in one file updates every page that shows it:
 - `<!--@count select="RULE"-->` the number of books selected
 - `<!--@news-cards [limit=N]-->`, `<!--@news-count-->` news cards / count
 - `<!--@event-sections-->`, `<!--@event-aside-->` fairs lists / home fair card
+- publisher and author cards, counts and filters: see the list in `sitegen/pages.py`
 
 `RULE` is `all`, `catalogue:<slug>`, `imprint:<name>`, `category:<slug>` or
 `list:<name>` (a hand-picked list in the page's `index.json`, e.g. the home
@@ -69,10 +71,11 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 - 95 book pages say "Rights are available worlwide"; other rights texts have
   typos ("Rigths Sold to Mongolian", "Spanısh", "CROTIA", "Simplified Chines").
 - Rights-sold languages mix Turkish and English ("Arapça"/"Arabic", "Rusça"/"Russian").
-- `/authors/` lists only 24 of 59 authors, its per-author title counts are wrong
-  (e.g. Faruk Oğur shows "1 titles" with no books) and its filter counts are static.
-- `/publishers/` and `/representations/` title counts don't match the books
-  (e.g. Epsilon shows 22, the books list 101).
+- Fixed in the publishers step: `/authors/` listed 24 of 59 authors behind a
+  "Load more" button that did nothing, and `/authors/`, `/publishers/` and
+  `/representations/` showed stale title counts (e.g. Epsilon 22 instead of 101).
+- The search, sort and filter controls on `/authors/` and `/publishers/` are not
+  wired up (site.js only implements them on `/books/`).
 - One author appears under three spellings: Şöhret Doğruyol Sağbaş / Şağbaş / Şabaş.
 - The "Okuyan Koala" imprint (3 books) has no publisher page.
 - Footer category links use slugs that don't exist (`fiction`, `nonfiction`, `childrens`).
