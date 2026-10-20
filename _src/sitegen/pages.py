@@ -15,20 +15,25 @@ Slots in a fragment are filled from content at build time:
   <!--@author-cards-->, <!--@author-count-->, <!--@top-authors limit=N-->, <!--@author-letters-->,
   <!--@authors-with-titles-->    author cards (A–Z), count, most-published rail, A–Z jump list
   <!--@featured-filter kind=publishers|authors-->  the "Featured" filter row, if any are featured
+
+Before the slots are filled, the fragment is rendered as a template (see
+sitegen/template.py) with the page's editable texts (texts.json next to the
+page record) and the shared settings: {{stats.items}}, {{contact.…}}, {{site.…}}.
+  <!--@service-cards-->          all service cards
 """
 
 import json
 import re
 from pathlib import Path
 
-from . import events, news, publishers, shell
+from . import events, news, publishers, services, shell, template
 from .components import book_card
 from .html import prefix_for
 
 COUNT = re.compile(r'<!--@count select="([^"]+)"-->')
 OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside|publisher-cards|publisher-count|"
                    r"publisher-summary|publisher-countries|author-cards|author-count|top-authors|author-letters|"
-                   r"authors-with-titles|featured-filter)((?: \w+=\S+?)*)-->")
+                   r"authors-with-titles|featured-filter|service-cards)((?: \w+=\S+?)*)-->")
 SLOT = re.compile(r'<!--@cards select="([^"]+)" wrap=(li|none)(?: article="([^"]+)")?-->')
 
 
@@ -38,6 +43,8 @@ def load_pages(root: str) -> list:
     for record_file in sorted(base.glob("**/index.json")):
         record = json.loads(record_file.read_text(encoding="utf-8"))
         record["main"] = (record_file.parent / "index.html").read_text(encoding="utf-8")
+        texts_file = record_file.parent / "texts.json"
+        record["texts"] = json.loads(texts_file.read_text(encoding="utf-8")) if texts_file.exists() else {}
         if record.get("lists_file"):
             lists_file = Path(root, "_src/content", record["lists_file"])
             record["lists"] = {**record.get("lists", {}), **json.loads(lists_file.read_text(encoding="utf-8"))}
@@ -65,7 +72,8 @@ def render(ctx, record: dict) -> tuple:
         cards = (book_card(ctx, r, s, b, article_class=article) for s, b in select(ctx, record, rule))
         return "".join(f"<li>{c}</li>" if wrap == "li" else c for c in cards)
 
-    main = SLOT.sub(fill, record["main"])
+    main = template.render(record["main"], record["texts"], {"@r": r}, ctx.shared)
+    main = SLOT.sub(fill, main)
     main = COUNT.sub(lambda m: str(len(select(ctx, record, m.group(1)))), main)
 
     def other(match):
@@ -94,6 +102,8 @@ def render(ctx, record: dict) -> tuple:
             return publishers.top_authors(ctx, r, int(args.get("limit", 8)))
         if name == "author-letters":
             return publishers.letter_nav(ctx)
+        if name == "service-cards":
+            return services.cards(ctx, r)
         if name == "authors-with-titles":
             return str(publishers.authors_with_titles(ctx))
         return publishers.featured_filter(ctx, args.get("kind", "publishers"))

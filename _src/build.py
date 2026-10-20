@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from sitegen import authors, books, content, events, meta, news, pages, publishers  # noqa: E402
+from sitegen import authors, books, content, events, meta, news, pages, publishers, services  # noqa: E402
 
 
 def generate(ctx) -> dict:
@@ -36,6 +36,9 @@ def generate(ctx) -> dict:
     for slug in ctx.publishers:
         path, text = publishers.render(ctx, slug)
         out[path + "index.html"] = text
+    for slug in ctx.services:
+        path, text = services.render(ctx, slug)
+        out[path + "index.html"] = text
     for record in pages.load_pages(ctx.root):
         path, text = pages.render(ctx, record)
         out[path + "index.html"] = text
@@ -50,7 +53,7 @@ def orphans(files: dict) -> list:
     by the build this way; nothing else is ever removed.
     """
     stale = []
-    for section in ("books", "authors", "news", "fairs-events", "publishers"):
+    for section in ("books", "authors", "news", "fairs-events", "publishers", "services"):
         for page in sorted((ROOT / section).glob("*/index.html")):
             rel = page.relative_to(ROOT).as_posix()
             if rel not in files:

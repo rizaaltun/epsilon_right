@@ -13,8 +13,13 @@ Pages kaynağı (`main` / root) ve `CNAME` değişmez. Derleme hata verirse (ör
 eksik bir alan) workflow kırmızı olur ve yayındaki site olduğu gibi kalır.
 
 Panelde yönetilenler: **Kitaplar** (ekle / düzenle / sil / sürükleyerek sırala, kapak
-yükleme), **Yazarlar**, **Haberler**, **Fuarlar & Etkinlikler**, **Yayınevleri**,
-**Ana sayfa vitrinleri**, **Site ayarları**. Sayfa metinleri ve kataloglar sonraki adımlarda eklenecek.
+yükleme), **Yazarlar**, **Haberler**, **Fuarlar & Etkinlikler**, **Yayınevleri**, **Hizmetler**,
+**Sayfa metinleri** (Ana sayfa, Hakkımızda, İletişim ve liste sayfalarının başlık/metin/görselleri),
+**Ana sayfa vitrinleri**, **Site ayarları**, **Rakamlar** ("The group in numbers") ve
+**İletişim bilgileri**. Kataloglar sonraki adımda eklenecek.
+
+İletişim formu FormSubmit ile pelin@epsilonyayingrubu.com adresine gider; bu adres panelden
+değişmez (değişirse FormSubmit'te yeniden doğrulama gerekir).
 
 Kitap sayıları (yayınevi kartları, yazarlar listesi, Representations) her derlemede
 kitaplardan hesaplanır; elle güncellenmez.

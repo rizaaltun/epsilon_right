@@ -211,10 +211,10 @@ collections:
         widget: select
         default: 3/2
         options:
-          - { label: Yatay (3:2), value: 3/2 }
-          - { label: Geniş (16:9), value: 16/9 }
-          - { label: Dikey (4:5), value: 4/5 }
-          - { label: Kare (1:1), value: 1/1 }
+          - { label: "Yatay (3:2)", value: "3/2" }
+          - { label: "Geniş (16:9)", value: "16/9" }
+          - { label: "Dikey (4:5)", value: "4/5" }
+          - { label: "Kare (1:1)", value: "1/1" }
       - { name: show_image, label: Görseli haber sayfasında göster, widget: boolean, default: true, hint: Kapalıysa görsel yalnızca haber kartlarında kullanılır. }
       - name: body
         label: Metin
@@ -324,6 +324,212 @@ collections:
       - { name: website, label: Web sitesi, widget: string, required: false }
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
 
+  - name: services
+    label: Hizmetler
+    label_singular: Hizmet
+    icon: handshake
+    folder: _src/content/services
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Hizmetin adresi, örn. /services/licensing/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    thumbnail: image
+    preview_path: services/{{slug}}/
+    media_folder: /assets/images/uploads/services
+    public_folder: /assets/images/uploads/services
+    fields:
+      - { name: title, label: Başlık, widget: string }
+      - { name: summary, label: Kısa açıklama, widget: text, hint: Sayfanın üstünde ve hizmet kartlarında görünür. }
+      - name: body
+        label: Metin
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - { name: covers, label: '"What this covers" maddeleri', widget: list, required: false }
+      - { name: image, label: Kart görseli, widget: image, required: false, choose_url: false }
+      - { name: hero_image, label: Sayfa üst görseli, widget: image, required: false, choose_url: false, hint: Boşsa kart görseli kullanılır. }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+
+  - name: pages
+    label: Sayfa metinleri
+    icon: description
+    description: Sayfaların başlık, metin ve görselleri. Kitap, haber gibi listeler kendi bölümlerinden gelir.
+    files:
+      - name: home_texts
+        label: "Ana sayfa"
+        file: _src/content/pages/texts.json
+        format: json
+        fields:
+          - { name: h1, label: "Gizli ana başlık (H1)", widget: string, hint: "Ekranda görünmez; Google ve ekran okuyucular için sayfanın ana başlığıdır." }
+          - { name: hero_title, label: "Açılış başlığı", widget: string }
+          - { name: hero_text, label: "Açılış metni", widget: text }
+          - { name: hero_button, label: "Açılış düğmesi", widget: string }
+          - { name: intro_eyebrow, label: "Tanıtım: üst etiket", widget: string }
+          - { name: intro_title, label: "Tanıtım: başlık", widget: string }
+          - name: intro_body
+            label: "Tanıtım: metin"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - { name: intro_link, label: "Tanıtım: link metni", widget: string }
+          - { name: intro_image, label: "Tanıtım: görsel", widget: image, choose_url: false }
+          - { name: intro_image_alt, label: "Tanıtım: görsel açıklaması", widget: string }
+          - { name: catalogue_eyebrow, label: "Katalog: üst etiket", widget: string }
+          - { name: catalogue_title, label: "Katalog: başlık", widget: string }
+          - { name: fiction_title, label: "Vitrin 1 başlığı", widget: string }
+          - { name: non_fiction_title, label: "Vitrin 2 başlığı", widget: string }
+          - { name: younger_title, label: "Vitrin 3 başlığı", widget: string }
+          - { name: news_eyebrow, label: "Haberler: üst etiket", widget: string }
+          - { name: news_title, label: "Haberler: başlık", widget: string }
+          - { name: stats_title, label: "Rakamlar: başlık", widget: string, hint: "Rakamların kendisi \"Ayarlar › Rakamlar\"dan düzenlenir." }
+          - { name: cta_eyebrow, label: "Kapanış: üst etiket", widget: string }
+          - { name: cta_title, label: "Kapanış: başlık", widget: string }
+          - name: cta_body
+            label: "Kapanış: metin"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - { name: cta_button, label: "Kapanış: düğme", widget: string }
+      - name: about
+        label: "Hakkımızda"
+        file: _src/content/pages/about-us/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: hero_image, label: "Üst görsel", widget: image, choose_url: false }
+          - { name: hero_image_alt, label: "Üst görsel açıklaması", widget: string }
+          - { name: lead, label: "Öne çıkan giriş paragrafı", widget: text }
+          - name: body
+            label: Metin
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - name: brands
+            label: Yayınevi blokları
+            widget: list
+            fields:
+              - { name: eyebrow, label: "Üst etiket", widget: string }
+              - { name: quote, label: "Alıntı başlık", widget: string }
+              - name: body
+                label: Metin
+                widget: markdown
+                required: false
+                buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+                editor_components: []
+              - { name: image, label: "Görsel", widget: image, choose_url: false }
+              - { name: image_alt, label: "Görsel açıklaması", widget: string }
+          - { name: next_eyebrow, label: "Hedefler: üst etiket", widget: string }
+          - { name: next_title, label: "Hedefler: başlık", widget: string }
+          - name: next_body
+            label: "Hedefler: metin"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - { name: team_title, label: "Ekip: başlık", widget: string }
+          - { name: team_intro, label: "Ekip: açıklama", widget: text }
+          - name: departments
+            label: Ekip (bölümler)
+            widget: list
+            fields:
+              - { name: name, label: "Bölüm adı", widget: string }
+              - name: people
+                label: Kişiler
+                widget: list
+                fields:
+                  - { name: name, label: "Ad soyad", widget: string }
+                  - { name: role, label: "Görev", widget: string }
+                  - { name: email, label: "E-posta", widget: string }
+                  - { name: photo, label: "Fotoğraf", widget: image, choose_url: false }
+      - name: contact
+        label: "İletişim"
+        file: _src/content/pages/contact/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: form_title, label: "Form başlığı", widget: string }
+          - { name: details_title, label: "İletişim bilgileri başlığı", widget: string }
+          - { name: office_title, label: "Ofis başlığı", widget: string }
+      - name: books
+        label: "Kitaplar sayfası"
+        file: _src/content/pages/books/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: authors
+        label: "Yazarlar sayfası"
+        file: _src/content/pages/authors/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: publishers
+        label: "Yayınevleri sayfası"
+        file: _src/content/pages/publishers/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: news_page
+        label: "Haberler sayfası"
+        file: _src/content/pages/news/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: events_page
+        label: "Fuarlar & Etkinlikler sayfası"
+        file: _src/content/pages/fairs-events/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: catalogues
+        label: "Kataloglar sayfası"
+        file: _src/content/pages/catalogues/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: representations
+        label: "Representations sayfası"
+        file: _src/content/pages/representations/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+      - name: services_page
+        label: "Hizmetler sayfası"
+        file: _src/content/pages/services/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+
 singletons:
   - name: home
     label: Ana sayfa vitrinleri
@@ -376,3 +582,38 @@ singletons:
       - { name: instagram, label: Instagram adresi, widget: string }
       - { name: linkedin, label: LinkedIn adresi, widget: string }
       - { name: copyright, label: Telif satırı, widget: string }
+
+  - name: stats
+    label: Rakamlar
+    icon: query_stats
+    file: _src/content/settings/stats.json
+    format: json
+    fields:
+      - name: items
+        label: '"The group in numbers" (ana sayfa ve Hakkımızda)'
+        widget: list
+        fields:
+          - { name: label, label: Başlık, widget: string, hint: Örn. Languages }
+          - { name: value, label: Değer, widget: string, hint: 'Örn. 100+ ya da 70. Ana sayfada sayıya kadar sayarak görünür.' }
+          - { name: note, label: Not, widget: string, required: false, hint: Değerin altındaki küçük açıklama }
+
+  - name: contact_info
+    label: İletişim bilgileri
+    icon: call
+    file: _src/content/settings/contact.json
+    format: json
+    fields:
+      - { name: email, label: E-posta, widget: string, required: false }
+      - { name: rights_email, label: Haklar e-postası, widget: string, required: false }
+      - { name: phone, label: Telefon, widget: string, required: false, hint: "Örn. +90 543 529 93 00" }
+      - { name: address, label: Kısa adres, widget: string, required: false }
+      - name: offices
+        label: Ofisler
+        widget: list
+        fields:
+          - { name: name, label: Ofis adı, widget: string }
+          - { name: city, label: Şehir, widget: string, required: false }
+          - { name: address, label: Adres, widget: text, required: false, hint: Her satır ayrı satırda görünür. }
+          - { name: phone, label: Telefon, widget: string, required: false }
+          - { name: hours, label: Çalışma saatleri, widget: string, required: false }
+          - { name: map_url, label: Harita linki, widget: string, required: false, hint: "Google Maps'te konumu açıp Paylaş › Bağlantıyı kopyala ile alınan adres" }

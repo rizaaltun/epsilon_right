@@ -1,0 +1,14 @@
+{
+  "title": "Publishing Grants",
+  "summary": "Grant identification, eligibility checks and application support for translation and publication funding.",
+  "body": "Most translation grants go unclaimed because nobody assembled the paperwork in time. We track the calendar and prepare the file.",
+  "covers": [
+    "Programme identification by territory",
+    "Eligibility and deadline tracking",
+    "Application drafting support",
+    "Budget and reporting templates"
+  ],
+  "image": "/assets/images/demo/scene-05.jpg",
+  "hero_image": "/assets/images/demo/scene-03.jpg",
+  "order": 5
+}

@@ -33,7 +33,8 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `news/<slug>/index.html` | `content/news/<slug>.json` (body in Markdown, see `sitegen/markdown.py`) |
 | `fairs-events/<slug>/index.html` | `content/events/<slug>.json`; upcoming until the end date has passed |
 | `publishers/<slug>/index.html` | `content/publishers/<slug>.json` + the books whose `imprint` matches |
-| every other page | `content/pages/<path>/index.{json,html}` |
+| `services/<slug>/index.html` | `content/services/<slug>.json` |
+| every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 
 Book order everywhere follows each book's `order` field. A book links to its
@@ -47,6 +48,10 @@ changed in one file updates every page that shows it:
 - `<!--@news-cards [limit=N]-->`, `<!--@news-count-->` news cards / count
 - `<!--@event-sections-->`, `<!--@event-aside-->` fairs lists / home fair card
 - publisher and author cards, counts and filters: see the list in `sitegen/pages.py`
+
+Before the slots, a fragment is rendered as a small template (`sitegen/template.py`):
+`{{key}}` comes from the page's `texts.json`, `{{stats.items}}` / `{{contact.…}}` from
+`content/settings/`, with `{{#each}}`, `{{#if}}` and filters such as `|md` and `|path`.
 
 `RULE` is `all`, `catalogue:<slug>`, `imprint:<name>`, `category:<slug>` or
 `list:<name>` (a hand-picked list in the page's `index.json`, e.g. the home
@@ -80,7 +85,9 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 - The "Okuyan Koala" imprint (3 books) has no publisher page.
 - Footer category links use slugs that don't exist (`fiction`, `nonfiction`, `childrens`).
 - Footer links to `/privacy-policy/` and `/terms/` return 404.
-- Contact page "View on map" points to `https://maps.example.com`.
+- Fixed in the page-texts step: the contact page "View on map" pointed to
+  `https://maps.example.com`; it now searches the office address on Google Maps.
+- Services pages and cards use the template's abstract placeholder images (scene-0x.jpg).
 - Fixed in the news/events step: the fair page linked to `https://example.org` and
   showed template placeholder images as its gallery; Frankfurt (7–11 Oct) still said
   "Upcoming"; the Publishers Weekly article used a one-off layout.

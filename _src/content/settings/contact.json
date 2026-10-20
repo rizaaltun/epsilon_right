@@ -1,0 +1,16 @@
+{
+  "email": "pelin@epsilonyayingrubu.com",
+  "rights_email": "pelin@epsilonyayingrubu.com",
+  "phone": "+90 543 529 93 00",
+  "address": "Istanbul, Türkiye",
+  "offices": [
+    {
+      "name": "Head Office — Istanbul",
+      "city": "Istanbul, Türkiye",
+      "address": "Gümüşsuyu Mahallesi, Osmanlı Sokak No:18/4\nBeyoğlu, Istanbul, Türkiye\n(near Taksim metro station)",
+      "phone": "+90 212 252 38 21",
+      "hours": "Monday to Friday, 09:00–18:00 (UTC+3)",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=G%C3%BCm%C3%BC%C5%9Fsuyu+Mahallesi+Osmanl%C4%B1+Sokak+No%3A18%2F4+Beyo%C4%9Flu+Istanbul"
+    }
+  ]
+}
