@@ -33,6 +33,7 @@ class Context:
     events: dict = field(default_factory=dict)     # slug -> fair / event
     publishers: dict = field(default_factory=dict) # slug -> publisher (imprint)
     services: dict = field(default_factory=dict)   # slug -> service
+    catalogues: dict = field(default_factory=dict) # slug -> catalogue (PDF + reader)
     shared: dict = field(default_factory=dict)     # settings files usable in page templates
 
     def books_by_author(self, author_slug: str) -> list:
@@ -60,10 +61,12 @@ def load(root: Path, write: bool = False) -> Context:
     events = _load_folder(content / "events") if (content / "events").exists() else {}
     publishers = _load_folder(content / "publishers") if (content / "publishers").exists() else {}
     services = _load_folder(content / "services") if (content / "services").exists() else {}
+    catalogues = _load_folder(content / "catalogues") if (content / "catalogues").exists() else {}
     shared = {"site": settings}
     for name in ("stats", "contact"):
         path = content / "settings" / f"{name}.json"
         if path.exists():
             shared[name] = json.loads(path.read_text(encoding="utf-8"))
     return Context(root=str(root), settings=settings, write=write, books=books, authors=authors,
-                   news=news, events=events, publishers=publishers, services=services, shared=shared)
+                   news=news, events=events, publishers=publishers, services=services,
+                   catalogues=catalogues, shared=shared)

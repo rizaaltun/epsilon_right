@@ -34,6 +34,7 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `fairs-events/<slug>/index.html` | `content/events/<slug>.json`; upcoming until the end date has passed |
 | `publishers/<slug>/index.html` | `content/publishers/<slug>.json` + the books whose `imprint` matches |
 | `services/<slug>/index.html` | `content/services/<slug>.json` |
+| `catalogues/<slug>/index.html` | `content/catalogues/<slug>.json` + its PDF; reader images per `assets/catalogues/readers.json` (`sitegen/catalogues.py`) |
 | every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 
@@ -95,9 +96,13 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 - Book pages without a cover give hero loading hints to the first card in the rail.
 - Three news pages don't lazy-load the logos; `<title>` escaping is inconsistent.
 
-## Workflows that still edit HTML directly
+## Superseded workflows
 
-`scripts/optimize_site.py`, `scripts/build_catalogue_readers.py` and
-`scripts/import_catalogue.py` patch generated HTML on `main`. Once the build runs
-in CI, those edits must go into `content/` instead, or the next build reverts
-them. This is part of phase 3.
+`scripts/optimize_site.py` (cover WebP variants) and `scripts/build_catalogue_readers.py`
+(catalogue reader images) are now done by the build (`sitegen/covers.py`,
+`sitegen/catalogues.py`, same sizes and quality); `scripts/import_catalogue.py` was a
+one-off import. Their workflows patch generated HTML, which the next build would
+revert, so they should be removed when this branch is merged.
+
+- Fixed in the catalogues step: the two full catalogues used a plainer one-off page
+  layout, and "More in Books & Publications" showed template placeholder covers.

@@ -96,12 +96,12 @@ collections:
           - { label: Young Adult, value: young-adult }
       - name: catalogue
         label: Katalog
-        widget: select
-        hint: Kitap sayfasındaki "Read catalogue" düğmesi ve katalog sayfasındaki listesi için.
-        options:
-          - { label: "Children's Titles 2026", value: childrens-titles-2026 }
-          - { label: Adult Titles 2026, value: adult-titles-2026 }
-          - { label: Young Adult Titles 2026, value: young-adult-titles-2026 }
+        widget: relation
+        collection: catalogues
+        value_field: "{{slug}}"
+        display_fields: ["{{title}}"]
+        search_fields: [title]
+        hint: Kitap sayfasındaki "Read catalogue" düğmesi ve katalog sayfasındaki kitap listesi için.
       - name: cover
         label: Kapak
         widget: image
@@ -357,6 +357,58 @@ collections:
       - { name: image, label: Kart görseli, widget: image, required: false, choose_url: false }
       - { name: hero_image, label: Sayfa üst görseli, widget: image, required: false, choose_url: false, hint: Boşsa kart görseli kullanılır. }
       - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+
+  - name: catalogues
+    label: Kataloglar
+    label_singular: Katalog
+    description: PDF yükleyin; sayfa sayfa okuyucu ve kapak görseli yayına alınırken otomatik üretilir. Sıra "Yeniden sırala" ile değişir.
+    icon: auto_stories
+    folder: _src/content/catalogues
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Kataloğun adresi, örn. /catalogues/adult-titles-2026/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{title}}"
+    thumbnail: cover
+    preview_path: catalogues/{{slug}}/
+    media_folder: /assets/catalogues
+    public_folder: /assets/catalogues
+    fields:
+      - { name: title, label: Katalog adı, widget: string }
+      - { name: category, label: Tür, widget: string, hint: "Örn. Adult, Children's, Young Adult" }
+      - { name: year, label: Yıl, widget: string, default: "2026" }
+      - name: description
+        label: Açıklama
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link]
+        editor_components: []
+      - name: pdf
+        label: PDF dosyası
+        widget: file
+        accept: application/pdf
+        choose_url: false
+        hint: Yeni PDF yüklendiğinde okuyucu sayfaları yayına alınırken yeniden üretilir (birkaç dakika sürebilir).
+        media_libraries:
+          default:
+            config:
+              max_file_size: 40000000
+      - name: cover
+        label: Kapak görseli
+        widget: image
+        required: false
+        choose_url: false
+        media_folder: /assets/images/uploads/catalogues
+        public_folder: /assets/images/uploads/catalogues
+        hint: Boş bırakılırsa PDF'in ilk sayfasından otomatik üretilir.
+      - { name: new, label: '"New" etiketi', widget: boolean, default: false }
 
   - name: pages
     label: Sayfa metinleri

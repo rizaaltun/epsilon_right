@@ -16,7 +16,11 @@ Panelde yönetilenler: **Kitaplar** (ekle / düzenle / sil / sürükleyerek sır
 yükleme), **Yazarlar**, **Haberler**, **Fuarlar & Etkinlikler**, **Yayınevleri**, **Hizmetler**,
 **Sayfa metinleri** (Ana sayfa, Hakkımızda, İletişim ve liste sayfalarının başlık/metin/görselleri),
 **Ana sayfa vitrinleri**, **Site ayarları**, **Rakamlar** ("The group in numbers") ve
-**İletişim bilgileri**. Kataloglar sonraki adımda eklenecek.
+**İletişim bilgileri**, **Kataloglar** (PDF yükleme; okuyucu sayfaları ve kapak otomatik üretilir).
+
+Yeni bir katalog PDF'i yüklendiğinde workflow, PDF'in her sayfasını okuyucu için görsele
+çevirir (PyMuPDF). Büyük kataloglarda bu birkaç dakika sürebilir; o sırada sitede eski
+hali görünmeye devam eder.
 
 İletişim formu FormSubmit ile pelin@epsilonyayingrubu.com adresine gider; bu adres panelden
 değişmez (değişirse FormSubmit'te yeniden doğrulama gerekir).
@@ -80,9 +84,9 @@ Yükseltirken ikisini birlikte değiştirin:
 curl -sL https://unpkg.com/@sveltia/cms@<sürüm>/dist/sveltia-cms.js | openssl dgst -sha384 -binary | openssl base64 -A
 ```
 
-## Dikkat: HTML'i doğrudan değiştiren eski workflow'lar
+## Dikkat: eski workflow'lar artık kullanılmamalı
 
 `Optimize website assets`, `Publish catalogue readers` ve `Import verified YA catalogue`
-workflow'ları üretilmiş HTML'i doğrudan düzenler. Bir sonraki içerik derlemesi bu
-değişiklikleri geri alır. Bunlardan biri çalıştırılmadan önce ilgili değişikliğin
-`_src/content/` tarafına da yapılması gerekir (ayrıntı: `_src/README.md`).
+workflow'larının işleri (kapak optimizasyonu, katalog okuyucuları) artık **Build site from
+content** içinde yapılıyor. Eski üçü üretilmiş HTML'i doğrudan düzenlediği için çalıştırılırsa
+bir sonraki derleme değişikliklerini geri alır; birleştirme sırasında kaldırılmaları önerilir.
