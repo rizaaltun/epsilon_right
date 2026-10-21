@@ -44,7 +44,12 @@ yeni yazıların önünde kalır. İlk yazı yayınlanınca menüde ve alt bilgi
 Her kitap, yazar, haber, etkinlik, yayınevi, hizmet, katalog ve sayfa metninin sonunda
 **SEO başlığı** ve **SEO açıklaması** alanları vardır. Boş bırakılırsa içerikten otomatik
 üretilir (açıklama metnin ilk ~155 karakteri). Paylaşım görseli olarak kapak, haber/etkinlik
-görseli ya da Site ayarlarındaki varsayılan görsel kullanılır. `sitemap.xml`, `robots.txt`
+görseli ya da Site ayarlarındaki varsayılan görsel kullanılır.
+
+Liste sayfalarının (Kitaplar, Yazarlar, Yayınevleri, Haberler, Fuarlar, Kataloglar,
+Representations, Hizmetler, Blog) **Sayfa metinleri** girdisinde ayrıca **SEO metni** alanı
+vardır: sayfanın altında görünen, ara başlık ve link içerebilen tanıtım metni. Yazarlara
+**fotoğraf**, kitaplara **ISBN** eklenebilir; ikisi de Google'ın verisine de yansır. `sitemap.xml`, `robots.txt`
 (yapay zeka tarayıcıları dahil herkese açık, `/admin/` hariç) ve `llms.txt` her derlemede
 güncellenir.
 

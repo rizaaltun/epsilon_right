@@ -128,6 +128,7 @@ collections:
       - { name: publication_year, label: Yayın yılı, widget: string, required: false, hint: Örn. 2024 ya da 2024-2025 }
       - { name: illustrator, label: Resimleyen, widget: string, required: false }
       - { name: age_group, label: Yaş grubu, widget: string, required: false, hint: Örn. 6+ }
+      - { name: isbn, label: ISBN, widget: string, required: false, hint: "Örn. 978-605-173-453-8. Google'ın kitabı tanımasına yardımcı olur." }
       - name: rights
         label: Haklar
         widget: text
@@ -165,6 +166,14 @@ collections:
         label: Ad soyad
         widget: string
         hint: Kitaplardaki "Yazar" alanı bu adla eşleşir.
+      - name: photo
+        label: Fotoğraf
+        widget: image
+        required: false
+        choose_url: false
+        media_folder: /assets/images/uploads/authors
+        public_folder: /assets/images/uploads/authors
+        hint: Dikey (4:5) bir portre idealdir. Boşsa adın baş harfleri gösterilir.
       - name: bio
         label: Biyografi
         widget: text
@@ -617,6 +626,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -628,6 +644,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -639,6 +662,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -650,6 +680,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -661,6 +698,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -672,6 +716,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -683,6 +734,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -694,6 +752,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
@@ -705,6 +770,13 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 

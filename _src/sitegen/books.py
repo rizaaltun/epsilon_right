@@ -16,6 +16,7 @@ DETAIL_ROWS = [
     ("publication_year", "Publication year"),
     ("illustrator", "Illustrator"),
     ("age_group", "Age group"),
+    ("isbn", "ISBN"),
 ]
 RAIL_SIZE = 8
 
@@ -144,6 +145,8 @@ def book_seo(ctx, slug: str, path: str):
         data["datePublished"] = year.group(1)
     if book.get("illustrator"):
         data["illustrator"] = {"@type": "Person", "name": book["illustrator"]}
+    if book.get("isbn"):
+        data["isbn"] = re.sub(r"[^0-9Xx]", "", book["isbn"])
     ages = seo.age_range(book.get("age_group"))
     if ages:
         data["typicalAgeRange"] = ages

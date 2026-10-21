@@ -12,7 +12,7 @@ import unicodedata
 from pathlib import Path
 
 from . import markdown, seo, shell
-from .authors import initials
+from .authors import initials, portrait
 from .components import book_card, breadcrumb, section_heading
 from .html import esc, prefix_for
 from .imagesize import size
@@ -171,9 +171,9 @@ def author_card(ctx, r: str, slug: str) -> str:
     author = ctx.authors[slug]
     n = author_titles(ctx, slug)
     return (
-        f'<article class="group"><a class="block" href="{r}authors/{slug}/"><div class="flex items-center '
-        'justify-center bg-paper-3 text-ink-3 rounded-md" style="aspect-ratio:4/5" aria-hidden="false"><span '
-        f'class="font-display text-3xl text-ink-3">{esc(initials(author["name"]))}</span></div><div class="mt-4"><h3 '
+        f'<article class="group"><a class="block" href="{r}authors/{slug}/">'
+        + portrait(r, author, "text-3xl", lazy=True)
+        + '<div class="mt-4"><h3 '
         'class="font-display text-lg leading-snug transition-colors group-hover:text-accent">'
         f'{esc(author["name"])}</h3><p class="mt-1 text-[0.8125rem] text-ink-3">{plural(n, "title")}</p></div></a>'
         "</article>"
