@@ -7,10 +7,11 @@ backend:
   name: github
   repo: rizaaltun/epsilon_right
   branch: main
-  # OAuth sign-in goes through the Sveltia CMS Authenticator worker; set its URL
-  # here once it is deployed (see _src/ADMIN.md). Until then, collaborators can
-  # sign in with a GitHub personal access token.
-  # base_url: https://epsilon-cms-auth.<account>.workers.dev
+  # Editors sign in with a GitHub access token ("Erişim Token'ı Kullanarak Giriş
+  # Yap"); see _src/ADMIN.md. One-click GitHub sign-in would need an OAuth
+  # authenticator (Sveltia CMS Authenticator on Cloudflare Workers): add its
+  # URL as base_url and allow [oauth, token] here.
+  auth_methods: [token]
   commit_messages:
     create: "İçerik eklendi: {{collection}} / {{slug}}"
     update: "İçerik güncellendi: {{collection}} / {{slug}}"

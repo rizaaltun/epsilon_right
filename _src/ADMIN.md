@@ -55,28 +55,33 @@ repo → Settings → Collaborators → Add people → rol: Write. Yetkisi olmay
 paneli açsa bile hiçbir şeyi okuyamaz ya da değiştiremez. Editörlerin GitHub
 hesaplarında iki adımlı doğrulamanın açık olması önerilir.
 
-## GitHub ile giriş kurulumu (bir kez, ~15 dakika)
+## Panele giriş: erişim token'ı
 
-Site sunucusuz olduğu için "GitHub ile Giriş Yap" düğmesi, OAuth adımını yapan küçük
-ve ücretsiz bir Cloudflare Worker'a ihtiyaç duyar: [Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-auth).
-Ayrıntılı ve güncel adımlar o reponun README'sindedir; özetle:
+Panele **"Erişim Token'ı Kullanarak Giriş Yap"** ile girilir. Token, GitHub'ın sizin adınıza
+verdiği bir erişim anahtarıdır; her kullanıcı kendi token'ını bir kez oluşturur ve panele
+yapıştırır. Ek bir sunucu ya da Cloudflare kurulumu gerekmez.
 
-1. **Worker'ı kurun.** sveltia-cms-auth README'sindeki "Deploy to Cloudflare Workers"
-   düğmesiyle (ya da `wrangler deploy`) kurun. Adresini not edin, örn.
-   `https://epsilon-cms-auth.<hesap>.workers.dev`.
-2. **GitHub OAuth App oluşturun.** GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
-   - Homepage URL: `https://epsilonpublishinggroup.com`
-   - Authorization callback URL: `<worker adresi>/callback`
-3. **Worker'a değişkenleri girin** (Cloudflare → Workers → ayarlar → Variables):
-   - `GITHUB_CLIENT_ID`: OAuth App'in Client ID'si
-   - `GITHUB_CLIENT_SECRET`: OAuth App'in Client Secret'ı (secret olarak, şifreli)
-   - `ALLOWED_DOMAINS`: `epsilonpublishinggroup.com`
-4. **`admin/config.yml`** içindeki `base_url` satırının başındaki `#` işaretini kaldırıp
-   worker adresini yazın ve commit edin.
+**Repo sahibi (Rıza) için: fine-grained token**
+GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** →
+Generate new token
+- Repository access: **Only select repositories** → `epsilon_right`
+- Permissions → Repository permissions → **Contents: Read and write** (Metadata: Read-only otomatik gelir)
+- Expiration: örn. 90 gün
 
-O zamana kadar yetkili kişiler "Erişim Token'ı Kullanarak Giriş Yap" ile girebilir:
-GitHub → Settings → Developer settings → Fine-grained tokens, yalnızca bu repo,
-Contents: Read and write.
+**Repoda collaborator olanlar için: classic token**
+Fine-grained token'lar başkasının kişisel reposunu seçemediği için:
+GitHub → Settings → Developer settings → Personal access tokens → **Tokens (classic)** →
+Generate new token (classic)
+- Scope: **repo**
+- Expiration: örn. 90 gün
+
+Token yalnızca bir kez gösterilir; kopyalayıp panele yapıştırın. Panel token'ı yalnızca o
+tarayıcıda saklar; ortak bilgisayarlarda çıkış yapın. Süresi dolunca yeni token oluşturup
+tekrar girin. Token'ı kimseyle paylaşmayın; kaybolursa GitHub'dan iptal edin (Revoke).
+
+Teknik olmayan editörler eklenirse tek tıkla "GitHub ile Giriş" kurulabilir: Sveltia CMS
+Authenticator (ücretsiz Cloudflare Worker) + GitHub OAuth App; ardından `admin/config.yml`'de
+`base_url` eklenir ve `auth_methods` `[oauth, token]` yapılır.
 
 ## Bilgisayarda önizleme (canlıya dokunmadan)
 
