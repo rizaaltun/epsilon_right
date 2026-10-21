@@ -31,6 +31,14 @@ kitaplardan hesaplanır; elle güncellenmez.
 Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
 çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
 
+## Blog
+
+**Blog** bölümünden yazı eklenir: başlık, tarih, yazar, etiketler, özet, kapak, metin
+(ara başlık, liste, link) ve **Yazıda geçen kitaplar**. Seçilen kitaplar yazının altında kart
+olarak listelenir ve kitap sayfalarına iç link verir. "Vitrine sabitle" ile önemli yazılar
+yeni yazıların önünde kalır. İlk yazı yayınlanınca menüde ve alt bilgide "Blog" linki,
+`/blog/feed.xml` RSS beslemesi ve sitemap kayıtları kendiliğinden oluşur.
+
 ## SEO
 
 Her kitap, yazar, haber, etkinlik, yayınevi, hizmet, katalog ve sayfa metninin sonunda

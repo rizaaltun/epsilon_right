@@ -34,6 +34,7 @@ class Context:
     publishers: dict = field(default_factory=dict) # slug -> publisher (imprint)
     services: dict = field(default_factory=dict)   # slug -> service
     catalogues: dict = field(default_factory=dict) # slug -> catalogue (PDF + reader)
+    blog: dict = field(default_factory=dict)       # slug -> blog post
     shared: dict = field(default_factory=dict)     # settings files usable in page templates
 
     def books_by_author(self, author_slug: str) -> list:
@@ -62,6 +63,8 @@ def load(root: Path, write: bool = False) -> Context:
     publishers = _load_folder(content / "publishers") if (content / "publishers").exists() else {}
     services = _load_folder(content / "services") if (content / "services").exists() else {}
     catalogues = _load_folder(content / "catalogues") if (content / "catalogues").exists() else {}
+    blog = _load_folder(content / "blog") if (content / "blog").exists() else {}
+    settings["_has_blog"] = bool(blog)   # menus link to the blog only once it has posts
     shared = {"site": settings}
     for name in ("stats", "contact"):
         path = content / "settings" / f"{name}.json"
@@ -69,4 +72,4 @@ def load(root: Path, write: bool = False) -> Context:
             shared[name] = json.loads(path.read_text(encoding="utf-8"))
     return Context(root=str(root), settings=settings, write=write, books=books, authors=authors,
                    news=news, events=events, publishers=publishers, services=services,
-                   catalogues=catalogues, shared=shared)
+                   catalogues=catalogues, blog=blog, shared=shared)

@@ -370,6 +370,74 @@ collections:
       - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
+  - name: blog
+    label: Blog
+    label_singular: Yazı
+    description: Blog yazıları /blog/ sayfasında, sabitlenenler önde olmak üzere en yeniden eskiye listelenir. İlk yazı yayınlanınca menüde "Blog" linki görünür.
+    icon: edit_note
+    folder: _src/content/blog
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Yazının adresi, örn. /blog/selling-translation-rights/. Anahtar kelimeleri içeren kısa bir adres SEO için iyidir. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{pinned | ternary('📌 ', '')}}{{date}} — {{title}}"
+    sortable_fields:
+      fields: [date, title]
+      default: { field: date, direction: descending }
+    thumbnail: image
+    preview_path: blog/{{slug}}/
+    media_folder: /assets/images/uploads/blog
+    public_folder: /assets/images/uploads/blog
+    fields:
+      - { name: title, label: Başlık, widget: string, hint: "Okurun arayacağı ifadeleri içeren açık bir başlık (H1)." }
+      - { name: date, label: Tarih, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
+      - { name: author, label: Yazar, widget: string, required: false, hint: "Boşsa yazar olarak Epsilon Publishing Group görünür." }
+      - { name: tags, label: Etiketler, widget: list, required: false, hint: "Örn. Translation rights, Children's books. İlki kartlarda görünür." }
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: Açıksa yazı blog sayfasında yeni yazıların önünde kalır. }
+      - { name: excerpt, label: Özet, widget: text, hint: "Kartlarda ve RSS'te görünen 1–2 cümle." }
+      - { name: image, label: Kapak görseli, widget: image, required: false, choose_url: false }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+      - name: image_ratio
+        label: Görsel oranı
+        widget: select
+        default: "3/2"
+        options:
+          - { label: "Yatay (3:2)", value: "3/2" }
+          - { label: "Geniş (16:9)", value: "16/9" }
+          - { label: "Dikey (4:5)", value: "4/5" }
+          - { label: "Kare (1:1)", value: "1/1" }
+      - name: body
+        label: Metin
+        widget: markdown
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+        hint: "Ara başlıklar (H2/H3) kullanın; kitaplara link verin. İngilizce."
+      - name: books
+        label: Yazıda geçen kitaplar
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        required: false
+        hint: Yazının altında kitap kartları olarak listelenir ve kitap sayfalarına link verir.
+      - name: gallery
+        label: Galeri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Görsel, widget: image, choose_url: false }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
   - name: catalogues
     label: Kataloglar
     label_singular: Katalog
@@ -620,6 +688,17 @@ collections:
       - name: services_page
         label: "Hizmetler sayfası"
         file: _src/content/pages/services/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: blog_page
+        label: "Blog sayfası"
+        file: _src/content/pages/blog/texts.json
         format: json
         fields:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }

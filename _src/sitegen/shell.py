@@ -87,7 +87,7 @@ def _mobile_item(r, path, href, label, children=None, exact=False):
     return out + "</li>"
 
 
-def header(r: str, path: str, lazy_logo: bool = True) -> str:
+def header(r: str, path: str, lazy_logo: bool = True, has_blog: bool = False) -> str:
     """Site header; ``path`` (e.g. ``"books/x/"``) decides the active menu item."""
     lazy = ' loading="lazy"' if lazy_logo else ""
     desktop = (
@@ -95,7 +95,7 @@ def header(r: str, path: str, lazy_logo: bool = True) -> str:
         + _desktop_link(r, path, "about-us/", "About")
         + _desktop_menu(path, "Books & Rights", ["books/"])
         + _desktop_link(r, path, "catalogues/", "Catalogues")
-        + _desktop_menu(path, "News & Events", ["fairs-events/", "news/"])
+        + _desktop_menu(path, "News & Events", ["fairs-events/", "news/", "blog/"] if has_blog else ["fairs-events/", "news/"])
         + _desktop_link(r, path, "contact/", "Contact")
     )
     mobile = (
@@ -103,7 +103,7 @@ def header(r: str, path: str, lazy_logo: bool = True) -> str:
         + _mobile_item(r, path, "about-us/", "About")
         + _mobile_item(r, path, "books/", "Books & Rights", BOOK_CATEGORY_LINKS)
         + _mobile_item(r, path, "catalogues/", "Catalogues")
-        + _mobile_item(r, path, "fairs-events/", "News & Events", NEWS_LINKS)
+        + _mobile_item(r, path, "fairs-events/", "News & Events", NEWS_LINKS + ([("blog/", "Blog")] if has_blog else []))
         + _mobile_item(r, path, "contact/", "Contact")
     )
     return (
@@ -158,7 +158,9 @@ LINKEDIN_ICON = (
 )
 
 
-def _footer_nav(r, label, links):
+def _footer_nav(r, label, links, settings=None):
+    if settings and settings.get("_has_blog") and label == "Agency":
+        links = links[:4] + [("blog/", "Blog")] + links[4:]
     items = "".join(
         f'<li><a class="text-sm text-ink-inverse/80 transition-colors hover:text-ink-inverse" '
         f'href="{r}{href}">{esc(text)}</a></li>'
@@ -196,7 +198,7 @@ def footer(r: str, settings: dict, lazy_logo: bool = True) -> str:
         + _social(esc(settings["linkedin"]), "LinkedIn", LINKEDIN_ICON)
         + "</ul></div>"
         + _footer_nav(r, "Catalogue", FOOTER_CATALOGUE)
-        + _footer_nav(r, "Agency", FOOTER_AGENCY)
+        + _footer_nav(r, "Agency", FOOTER_AGENCY, settings)
         + '<div class="md:col-span-2"><h2 class="eyebrow mb-4 text-ink-inverse/60">Rights enquiries</h2>'
         f'<a href="mailto:{email}" class="text-sm break-words text-ink-inverse/80 hover:text-ink-inverse">'
         f'{email}</a></div></div><div class="border-t border-white/12 py-6"><div class="shell flex flex-col '
@@ -223,7 +225,7 @@ def page(r: str, path: str, settings: dict, title_html: str, main: str, *, head_
     ``seo_html`` comes from seo.head_tags()."""
     return (
         head(r, title_html, head_extra, seo_html)
-        + header(r, path, lazy_logos)
+        + header(r, path, lazy_logos, bool(settings.get("_has_blog")))
         + main
         + footer(r, settings, lazy_logos)
         + tail(r, tail_extra)

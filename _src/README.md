@@ -34,6 +34,7 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `fairs-events/<slug>/index.html` | `content/events/<slug>.json`; upcoming until the end date has passed |
 | `publishers/<slug>/index.html` | `content/publishers/<slug>.json` + the books whose `imprint` matches |
 | `services/<slug>/index.html` | `content/services/<slug>.json` |
+| `blog/<slug>/index.html`, `blog/feed.xml` | `content/blog/<slug>.json` (`sitegen/blog.py`); `/blog/` and the menu links appear once there is a post |
 | `catalogues/<slug>/index.html` | `content/catalogues/<slug>.json` + its PDF; reader images per `assets/catalogues/readers.json` (`sitegen/catalogues.py`) |
 | every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
 | `assets/meta.json` | all books (used by the /books search and filters) |

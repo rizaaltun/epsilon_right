@@ -15,8 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from sitegen import (authors, books, catalogues, content, events, meta, news, pages, publishers, seo,  # noqa: E402
-                     services, shell)
+from sitegen import (authors, blog, books, catalogues, content, events, meta, news, pages, publishers,  # noqa: E402
+                     seo, services, shell)
 
 
 def generate(ctx) -> dict:
@@ -43,7 +43,14 @@ def generate(ctx) -> dict:
     for slug in ctx.catalogues:
         path, text = catalogues.render(ctx, slug)
         out[path + "index.html"] = text
+    for slug in ctx.blog:
+        path, text = blog.render(ctx, slug)
+        out[path + "index.html"] = text
+    if ctx.blog:
+        out["blog/feed.xml"] = blog.feed(ctx)
     for record in pages.load_pages(ctx.root):
+        if record.get("requires") == "blog" and not ctx.blog:
+            continue
         path, text = pages.render(ctx, record)
         out[path + "index.html"] = text
     out["assets/meta.json"] = meta.render(ctx)
@@ -68,6 +75,7 @@ def llms_txt(ctx) -> str:
         ("Publishers", [(p["name"], f"publishers/{s}/", f"{len(publishers.titles(ctx, s))} titles") for s, p in publishers.ordered(ctx)]),
         ("Services", [(v["title"], f"services/{s}/", v.get("summary", "")) for s, v in services.ordered(ctx)]),
         ("News", [(n["title"], f"news/{s}/", str(n["date"])) for s, n in news.ordered(ctx)[:10]]),
+        ("Blog", [(p["title"], f"blog/{s}/", p.get("excerpt", "")) for s, p in blog.ordered(ctx)]),
         ("Fairs and events", [(e["title"], f"fairs-events/{s}/", e.get("start_date", "")) for s, e in
                               events.upcoming(ctx) + events.past(ctx)]),
         ("Authors", [(ctx.authors[s]["name"], f"authors/{s}/", "") for s in publishers.authors_alphabetical(ctx)]),
@@ -101,7 +109,7 @@ def orphans(files: dict) -> list:
     by the build this way; nothing else is ever removed.
     """
     stale = []
-    for section in ("books", "authors", "news", "fairs-events", "publishers", "services", "catalogues"):
+    for section in ("books", "authors", "news", "fairs-events", "publishers", "services", "catalogues", "blog"):
         for page in sorted((ROOT / section).glob("*/index.html")):
             rel = page.relative_to(ROOT).as_posix()
             if rel not in files:
