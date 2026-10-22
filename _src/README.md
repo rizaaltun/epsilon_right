@@ -105,8 +105,8 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 `scripts/optimize_site.py` (cover WebP variants) and `scripts/build_catalogue_readers.py`
 (catalogue reader images) are now done by the build (`sitegen/covers.py`,
 `sitegen/catalogues.py`, same sizes and quality); `scripts/import_catalogue.py` was a
-one-off import. Their workflows patch generated HTML, which the next build would
-revert, so they should be removed when this branch is merged.
+one-off import. Their workflows patched generated HTML and have been removed; the
+scripts are kept for reference.
 
 - Fixed in the catalogues step: the two full catalogues used a plainer one-off page
   layout, and "More in Books & Publications" showed template placeholder covers.

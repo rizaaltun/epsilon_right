@@ -111,9 +111,9 @@ Yükseltirken ikisini birlikte değiştirin:
 curl -sL https://unpkg.com/@sveltia/cms@<sürüm>/dist/sveltia-cms.js | openssl dgst -sha384 -binary | openssl base64 -A
 ```
 
-## Dikkat: eski workflow'lar artık kullanılmamalı
+## Kaldırılan eski workflow'lar
 
 `Optimize website assets`, `Publish catalogue readers` ve `Import verified YA catalogue`
-workflow'larının işleri (kapak optimizasyonu, katalog okuyucuları) artık **Build site from
-content** içinde yapılıyor. Eski üçü üretilmiş HTML'i doğrudan düzenlediği için çalıştırılırsa
-bir sonraki derleme değişikliklerini geri alır; birleştirme sırasında kaldırılmaları önerilir.
+kaldırıldı: kapak dönüştürme ve katalog okuyucuları artık **Build site from content**
+içinde yapılıyor; YA kataloğu içe aktarımı tek seferlikti. Betikleri `scripts/` altında ve
+Git geçmişinde duruyor.
