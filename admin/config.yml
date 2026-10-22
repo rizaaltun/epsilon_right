@@ -1,0 +1,875 @@
+# Admin panel (Sveltia CMS) configuration. See _src/ADMIN.md.
+#
+# The panel edits the JSON files under _src/content/ and commits them to main.
+# The "Build site" workflow then regenerates the pages from that content.
+
+backend:
+  name: github
+  repo: rizaaltun/epsilon_right
+  branch: main
+  # Editors sign in with a GitHub access token ("Erişim Token'ı Kullanarak Giriş
+  # Yap"); see _src/ADMIN.md. One-click GitHub sign-in would need an OAuth
+  # authenticator (Sveltia CMS Authenticator on Cloudflare Workers): add its
+  # URL as base_url and allow [oauth, token] here.
+  auth_methods: [token]
+  commit_messages:
+    create: "İçerik eklendi: {{collection}} / {{slug}}"
+    update: "İçerik güncellendi: {{collection}} / {{slug}}"
+    delete: "İçerik silindi: {{collection}} / {{slug}}"
+    uploadMedia: "Görsel yüklendi: {{path}}"
+    deleteMedia: "Görsel silindi: {{path}}"
+
+app_title: Epsilon Publishing Group — Yönetim
+site_url: https://epsilonpublishinggroup.com
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+media_libraries:
+  default:
+    config:
+      max_file_size: 10000000
+      slugify_filename: true
+      # Uploaded photos are converted to WebP in the browser before upload;
+      # the site build then makes the 480px/1000px cover variants.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 90
+          width: 1600
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+output:
+  omit_empty_optional_fields: true
+  json:
+    indent_style: space
+    indent_size: 2
+
+collections:
+  - name: books
+    label: Kitaplar
+    label_singular: Kitap
+    description: Sitedeki her kitap. Sıralamayı değiştirmek için listede "Yeniden sırala"yı kullanın.
+    icon: menu_book
+    folder: _src/content/books
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Kitabın adresi, örn. /books/eflatun-koza/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{title}} — {{author}}"
+    sortable_fields: [title, author, publication_year]
+    thumbnail: cover
+    preview_path: books/{{slug}}/
+    media_folder: /assets/images/uploads/covers
+    public_folder: /assets/images/uploads/covers
+    view_filters:
+      - { label: "Children's Books", field: category, eq: childrens-books }
+      - { label: Adult Fiction, field: category, eq: adult-fiction }
+      - { label: Non-Fiction, field: category, eq: non-fiction }
+      - { label: Young Adult, field: category, eq: young-adult }
+      - { label: Kapağı olmayanlar, field: cover, empty: true }
+    view_groups:
+      - { label: Kategori, field: category }
+      - { label: Yayınevi, field: imprint }
+    fields:
+      - { name: title, label: Kitap adı, widget: string }
+      - name: author
+        label: Yazar
+        widget: string
+        hint: Yazarlar listesindeki adla aynı yazılırsa kitap, yazarın sayfasına bağlanır.
+      - name: category
+        label: Kategori
+        widget: select
+        options:
+          - { label: "Children's Books", value: childrens-books }
+          - { label: Adult Fiction, value: adult-fiction }
+          - { label: Non-Fiction, value: non-fiction }
+          - { label: Young Adult, value: young-adult }
+      - name: catalogue
+        label: Katalog
+        widget: relation
+        collection: catalogues
+        value_field: "{{slug}}"
+        display_fields: ["{{title}}"]
+        search_fields: [title]
+        hint: Kitap sayfasındaki "Read catalogue" düğmesi ve katalog sayfasındaki kitap listesi için.
+      - name: cover
+        label: Kapak
+        widget: image
+        required: false
+        choose_url: false
+        hint: JPG, PNG veya WebP. Site için küçük ve büyük boyutları otomatik üretilir.
+      - { name: square_cover, label: Kare kapak, widget: boolean, default: false, hint: Kare formatlı (çoğunlukla resimli çocuk kitapları) kapaklar için açın. }
+      - name: description
+        label: Tanıtım metni
+        widget: text
+        required: false
+        hint: İngilizce. Paragrafları boş bir satırla ayırın.
+      - { name: original_title, label: Orijinal adı, widget: string, required: false }
+      - { name: original_language, label: Orijinal dili, widget: string, required: false, default: Turkish }
+      - { name: english_title, label: İngilizce adı, widget: string, required: false }
+      - name: imprint
+        label: Yayınevi
+        widget: select
+        required: false
+        hint: Kitap, seçilen yayınevinin sayfasında listelenir.
+        options: [Epsilon, Kafka, Masalperest, Nemesis, Okuyan Us, Uçan Fil, Okuyan Koala]
+      - { name: pages, label: Sayfa sayısı, widget: string, required: false }
+      - { name: publication_year, label: Yayın yılı, widget: string, required: false, hint: Örn. 2024 ya da 2024-2025 }
+      - { name: illustrator, label: Resimleyen, widget: string, required: false }
+      - { name: age_group, label: Yaş grubu, widget: string, required: false, hint: Örn. 6+ }
+      - { name: isbn, label: ISBN, widget: string, required: false, hint: "Örn. 978-605-173-453-8. Google'ın kitabı tanımasına yardımcı olur." }
+      - name: rights
+        label: Haklar
+        widget: text
+        default: Rights are available worldwide
+        hint: Kitap sayfasındaki "Rights" kutusunda görünür.
+      - name: rights_sold
+        label: Hakları satılan diller
+        widget: list
+        required: false
+        hint: Kitaplar sayfasındaki dil filtresinde kullanılır.
+      - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+      - { name: new, label: Yeni, widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: authors
+    label: Yazarlar
+    label_singular: Yazar
+    icon: person
+    folder: _src/content/authors
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: name
+    slug:
+      template: "{{name}}"
+      editable: [create]
+      hint: Yazarın adresi, örn. /authors/cahide-birgul/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{name}}"
+    preview_path: authors/{{slug}}/
+    fields:
+      - name: name
+        label: Ad soyad
+        widget: string
+        hint: Kitaplardaki "Yazar" alanı bu adla eşleşir.
+      - name: photo
+        label: Fotoğraf
+        widget: image
+        required: false
+        choose_url: false
+        media_folder: /assets/images/uploads/authors
+        public_folder: /assets/images/uploads/authors
+        hint: Dikey (4:5) bir portre idealdir. Boşsa adın baş harfleri gösterilir.
+      - name: bio
+        label: Biyografi
+        widget: text
+        required: false
+        hint: İngilizce. Paragrafları boş bir satırla ayırın.
+      - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: news
+    label: Haberler
+    label_singular: Haber
+    description: Haberler sayfası ve ana sayfadaki "From the desk" bölümü, en yeni haber önde olacak şekilde otomatik dolar.
+    icon: newspaper
+    folder: _src/content/news
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Haberin adresi, örn. /news/frankfurt-book-fair-2026-return/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{pinned | ternary('📌 ', '')}}{{date}} — {{title}}"
+    sortable_fields:
+      fields: [date, title]
+      default: { field: date, direction: descending }
+    thumbnail: image
+    preview_path: news/{{slug}}/
+    media_folder: /assets/images/uploads/news
+    public_folder: /assets/images/uploads/news
+    fields:
+      - { name: title, label: Başlık, widget: string }
+      - { name: date, label: Tarih, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
+      - name: category
+        label: Tür
+        widget: select
+        default: Announcements
+        options: [Announcements, Industry, Press, Fairs, Rights deals, Awards]
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: Açıksa haber, ana sayfada ve haberler sayfasında yeni haberlerin önünde kalır. }
+      - { name: byline, label: İmza, widget: string, default: Editorial desk, hint: 'Tarihin yanında görünür, örn. "Editorial desk".' }
+      - { name: excerpt, label: Özet, widget: text, hint: Haber kartlarında görünen kısa metin (1–2 cümle). }
+      - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false, hint: Görme engelliler ve Google için. Boş bırakılırsa başlık kullanılır. }
+      - name: image_ratio
+        label: Haber sayfasındaki görsel oranı
+        widget: select
+        default: 3/2
+        options:
+          - { label: "Yatay (3:2)", value: "3/2" }
+          - { label: "Geniş (16:9)", value: "16/9" }
+          - { label: "Dikey (4:5)", value: "4/5" }
+          - { label: "Kare (1:1)", value: "1/1" }
+      - { name: show_image, label: Görseli haber sayfasında göster, widget: boolean, default: true, hint: Kapalıysa görsel yalnızca haber kartlarında kullanılır. }
+      - name: body
+        label: Metin
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - name: gallery
+        label: Galeri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Görsel, widget: image, choose_url: false }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: source, label: Kaynak notu, widget: string, required: false, hint: Haberin altında küçük yazıyla görünür. }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: events
+    label: Fuarlar & Etkinlikler
+    label_singular: Etkinlik
+    description: Bitiş tarihi geçen etkinlikler kendiliğinden "Past" bölümüne geçer. Ana sayfadaki kart sıradaki etkinliği gösterir.
+    icon: event
+    folder: _src/content/events
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Etkinliğin adresi, örn. /fairs-events/frankfurter-buchmesse-2026/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{pinned | ternary('📌 ', '')}}{{start_date}} — {{title}}"
+    sortable_fields:
+      fields: [start_date, title]
+      default: { field: start_date, direction: descending }
+    thumbnail: image
+    preview_path: fairs-events/{{slug}}/
+    media_folder: /assets/images/uploads/events
+    public_folder: /assets/images/uploads/events
+    fields:
+      - { name: title, label: Etkinlik adı, widget: string }
+      - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: Açıksa ana sayfadaki fuar kartı, tarihi geçmiş olsa bile bu etkinliği gösterir. }
+      - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
+      - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
+      - { name: city, label: Şehir, widget: string, required: false }
+      - { name: country, label: Ülke, widget: string, required: false, hint: İngilizce, örn. Germany }
+      - { name: stand, label: Stant, widget: string, required: false, hint: Örn. Hall 5.1 · C20 }
+      - { name: summary, label: Kısa açıklama, widget: string, required: false, hint: Etkinlik listesinde görünür. }
+      - name: body
+        label: Metin
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - { name: website, label: Resmî site, widget: string, required: false, hint: "https:// ile başlayan adres" }
+      - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+      - name: gallery
+        label: Galeri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Görsel, widget: image, choose_url: false }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: publishers
+    label: Yayınevleri
+    label_singular: Yayınevi
+    description: Yayınevleri sayfası panelde belirlediğiniz sırayla listelenir ("Yeniden sırala"). Kitap sayıları kitaplardan otomatik hesaplanır.
+    icon: apartment
+    folder: _src/content/publishers
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: name
+    slug:
+      template: "{{name}}"
+      editable: [create]
+      hint: Yayınevinin adresi, örn. /publishers/kafka-kitap/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{name}}"
+    thumbnail: logo
+    preview_path: publishers/{{slug}}/
+    media_folder: /assets/images/uploads/publishers
+    public_folder: /assets/images/uploads/publishers
+    fields:
+      - { name: name, label: Yayınevi adı, widget: string, hint: Sayfada görünen ad, örn. Kafka Kitap. }
+      - name: imprint
+        label: Kitaplardaki yayınevi adı
+        widget: string
+        hint: Kitapların "Yayınevi" alanındaki değerle birebir aynı olmalı (örn. Kafka). Bu yayınevinin kitap listesi buna göre oluşur.
+      - { name: country, label: Ülke, widget: string, default: Türkiye }
+      - { name: summary, label: Kart metni, widget: text, required: false, hint: Yayınevi kartlarında görünür (1–2 cümle). Boşsa tanıtım metninin ilk paragrafı kullanılır. }
+      - name: description
+        label: Tanıtım metni
+        widget: markdown
+        required: false
+        hint: İngilizce. Yayınevi sayfasında görünür.
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - { name: logo, label: Logo, widget: image, required: false, choose_url: false, hint: Yatay logo; şeffaf arka planlı PNG idealdir. Boşsa adın baş harfleri gösterilir. }
+      - { name: email, label: E-posta, widget: string, required: false, hint: Boşsa site e-postası kullanılır. }
+      - { name: website, label: Web sitesi, widget: string, required: false }
+      - { name: featured, label: Öne çıkan, widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: services
+    label: Hizmetler
+    label_singular: Hizmet
+    icon: handshake
+    folder: _src/content/services
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Hizmetin adresi, örn. /services/licensing/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    thumbnail: image
+    preview_path: services/{{slug}}/
+    media_folder: /assets/images/uploads/services
+    public_folder: /assets/images/uploads/services
+    fields:
+      - { name: title, label: Başlık, widget: string }
+      - { name: summary, label: Kısa açıklama, widget: text, hint: Sayfanın üstünde ve hizmet kartlarında görünür. }
+      - name: body
+        label: Metin
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+      - { name: covers, label: '"What this covers" maddeleri', widget: list, required: false }
+      - { name: image, label: Kart görseli, widget: image, required: false, choose_url: false }
+      - { name: hero_image, label: Sayfa üst görseli, widget: image, required: false, choose_url: false, hint: Boşsa kart görseli kullanılır. }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: blog
+    label: Blog
+    label_singular: Yazı
+    description: Blog yazıları /blog/ sayfasında, sabitlenenler önde olmak üzere en yeniden eskiye listelenir. İlk yazı yayınlanınca menüde "Blog" linki görünür.
+    icon: edit_note
+    folder: _src/content/blog
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Yazının adresi, örn. /blog/selling-translation-rights/. Anahtar kelimeleri içeren kısa bir adres SEO için iyidir. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{pinned | ternary('📌 ', '')}}{{date}} — {{title}}"
+    sortable_fields:
+      fields: [date, title]
+      default: { field: date, direction: descending }
+    thumbnail: image
+    preview_path: blog/{{slug}}/
+    media_folder: /assets/images/uploads/blog
+    public_folder: /assets/images/uploads/blog
+    fields:
+      - { name: title, label: Başlık, widget: string, hint: "Okurun arayacağı ifadeleri içeren açık bir başlık (H1)." }
+      - { name: date, label: Tarih, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}" }
+      - { name: author, label: Yazar, widget: string, required: false, hint: "Boşsa yazar olarak Epsilon Publishing Group görünür." }
+      - { name: tags, label: Etiketler, widget: list, required: false, hint: "Örn. Translation rights, Children's books. İlki kartlarda görünür." }
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: Açıksa yazı blog sayfasında yeni yazıların önünde kalır. }
+      - { name: excerpt, label: Özet, widget: text, hint: "Kartlarda ve RSS'te görünen 1–2 cümle." }
+      - { name: image, label: Kapak görseli, widget: image, required: false, choose_url: false }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
+      - name: image_ratio
+        label: Görsel oranı
+        widget: select
+        default: "3/2"
+        options:
+          - { label: "Yatay (3:2)", value: "3/2" }
+          - { label: "Geniş (16:9)", value: "16/9" }
+          - { label: "Dikey (4:5)", value: "4/5" }
+          - { label: "Kare (1:1)", value: "1/1" }
+      - name: body
+        label: Metin
+        widget: markdown
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: []
+        hint: "Ara başlıklar (H2/H3) kullanın; kitaplara link verin. İngilizce."
+      - name: books
+        label: Yazıda geçen kitaplar
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        required: false
+        hint: Yazının altında kitap kartları olarak listelenir ve kitap sayfalarına link verir.
+      - name: gallery
+        label: Galeri
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Görsel, widget: image, choose_url: false }
+          - { name: alt, label: Açıklama, widget: string, required: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: catalogues
+    label: Kataloglar
+    label_singular: Katalog
+    description: PDF yükleyin; sayfa sayfa okuyucu ve kapak görseli yayına alınırken otomatik üretilir. Sıra "Yeniden sırala" ile değişir.
+    icon: auto_stories
+    folder: _src/content/catalogues
+    extension: json
+    format: json
+    create: true
+    delete: true
+    reorder: true
+    identifier_field: title
+    slug:
+      template: "{{title}}"
+      editable: [create]
+      hint: Kataloğun adresi, örn. /catalogues/adult-titles-2026/. Kayıttan sonra değiştirilemez.
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf (Türkçe karakter yok), rakam ve tire kullanın.']
+    summary: "{{title}}"
+    thumbnail: cover
+    preview_path: catalogues/{{slug}}/
+    media_folder: /assets/catalogues
+    public_folder: /assets/catalogues
+    fields:
+      - { name: title, label: Katalog adı, widget: string }
+      - { name: category, label: Tür, widget: string, hint: "Örn. Adult, Children's, Young Adult" }
+      - { name: year, label: Yıl, widget: string, default: "2026" }
+      - name: description
+        label: Açıklama
+        widget: markdown
+        required: false
+        buttons: [bold, italic, link]
+        editor_components: []
+      - name: pdf
+        label: PDF dosyası
+        widget: file
+        accept: application/pdf
+        choose_url: false
+        hint: Yeni PDF yüklendiğinde okuyucu sayfaları yayına alınırken yeniden üretilir (birkaç dakika sürebilir).
+        media_libraries:
+          default:
+            config:
+              max_file_size: 40000000
+      - name: cover
+        label: Kapak görseli
+        widget: image
+        required: false
+        choose_url: false
+        media_folder: /assets/images/uploads/catalogues
+        public_folder: /assets/images/uploads/catalogues
+        hint: Boş bırakılırsa PDF'in ilk sayfasından otomatik üretilir.
+      - { name: new, label: '"New" etiketi', widget: boolean, default: false }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+  - name: pages
+    label: Sayfa metinleri
+    icon: description
+    description: Sayfaların başlık, metin ve görselleri. Kitap, haber gibi listeler kendi bölümlerinden gelir.
+    files:
+      - name: home_texts
+        label: "Ana sayfa"
+        file: _src/content/pages/texts.json
+        format: json
+        fields:
+          - { name: h1, label: "Gizli ana başlık (H1)", widget: string, hint: "Ekranda görünmez; Google ve ekran okuyucular için sayfanın ana başlığıdır." }
+          - { name: hero_title, label: "Açılış başlığı", widget: string }
+          - { name: hero_text, label: "Açılış metni", widget: text }
+          - { name: hero_button, label: "Açılış düğmesi", widget: string }
+          - { name: intro_eyebrow, label: "Tanıtım: üst etiket", widget: string }
+          - { name: intro_title, label: "Tanıtım: başlık", widget: string }
+          - name: intro_body
+            label: "Tanıtım: metin"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - { name: intro_link, label: "Tanıtım: link metni", widget: string }
+          - { name: intro_image, label: "Tanıtım: görsel", widget: image, choose_url: false }
+          - { name: intro_image_alt, label: "Tanıtım: görsel açıklaması", widget: string }
+          - { name: catalogue_eyebrow, label: "Katalog: üst etiket", widget: string }
+          - { name: catalogue_title, label: "Katalog: başlık", widget: string }
+          - { name: fiction_title, label: "Vitrin 1 başlığı", widget: string }
+          - { name: non_fiction_title, label: "Vitrin 2 başlığı", widget: string }
+          - { name: younger_title, label: "Vitrin 3 başlığı", widget: string }
+          - { name: news_eyebrow, label: "Haberler: üst etiket", widget: string }
+          - { name: news_title, label: "Haberler: başlık", widget: string }
+          - { name: stats_title, label: "Rakamlar: başlık", widget: string, hint: "Rakamların kendisi \"Ayarlar › Rakamlar\"dan düzenlenir." }
+          - { name: cta_eyebrow, label: "Kapanış: üst etiket", widget: string }
+          - { name: cta_title, label: "Kapanış: başlık", widget: string }
+          - name: cta_body
+            label: "Kapanış: metin"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - { name: cta_button, label: "Kapanış: düğme", widget: string }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: about
+        label: "Hakkımızda"
+        file: _src/content/pages/about-us/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: hero_image, label: "Üst görsel", widget: image, choose_url: false }
+          - { name: hero_image_alt, label: "Üst görsel açıklaması", widget: string }
+          - { name: lead, label: "Öne çıkan giriş paragrafı", widget: text }
+          - name: body
+            label: Metin
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - name: brands
+            label: Yayınevi blokları
+            widget: list
+            fields:
+              - { name: eyebrow, label: "Üst etiket", widget: string }
+              - { name: quote, label: "Alıntı başlık", widget: string }
+              - name: body
+                label: Metin
+                widget: markdown
+                required: false
+                buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+                editor_components: []
+              - { name: image, label: "Görsel", widget: image, choose_url: false }
+              - { name: image_alt, label: "Görsel açıklaması", widget: string }
+          - { name: next_eyebrow, label: "Hedefler: üst etiket", widget: string }
+          - { name: next_title, label: "Hedefler: başlık", widget: string }
+          - name: next_body
+            label: "Hedefler: metin"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+            editor_components: []
+          - { name: team_title, label: "Ekip: başlık", widget: string }
+          - { name: team_intro, label: "Ekip: açıklama", widget: text }
+          - name: departments
+            label: Ekip (bölümler)
+            widget: list
+            fields:
+              - { name: name, label: "Bölüm adı", widget: string }
+              - name: people
+                label: Kişiler
+                widget: list
+                fields:
+                  - { name: name, label: "Ad soyad", widget: string }
+                  - { name: role, label: "Görev", widget: string }
+                  - { name: email, label: "E-posta", widget: string }
+                  - { name: photo, label: "Fotoğraf", widget: image, choose_url: false }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: contact
+        label: "İletişim"
+        file: _src/content/pages/contact/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: form_title, label: "Form başlığı", widget: string }
+          - { name: details_title, label: "İletişim bilgileri başlığı", widget: string }
+          - { name: office_title, label: "Ofis başlığı", widget: string }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: books
+        label: "Kitaplar sayfası"
+        file: _src/content/pages/books/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: authors
+        label: "Yazarlar sayfası"
+        file: _src/content/pages/authors/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: publishers
+        label: "Yayınevleri sayfası"
+        file: _src/content/pages/publishers/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: news_page
+        label: "Haberler sayfası"
+        file: _src/content/pages/news/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: events_page
+        label: "Fuarlar & Etkinlikler sayfası"
+        file: _src/content/pages/fairs-events/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: catalogues
+        label: "Kataloglar sayfası"
+        file: _src/content/pages/catalogues/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: representations
+        label: "Representations sayfası"
+        file: _src/content/pages/representations/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: services_page
+        label: "Hizmetler sayfası"
+        file: _src/content/pages/services/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+      - name: blog_page
+        label: "Blog sayfası"
+        file: _src/content/pages/blog/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - name: seo_body
+            label: "SEO metni"
+            widget: markdown
+            required: false
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+
+singletons:
+  - name: home
+    label: Ana sayfa vitrinleri
+    icon: home
+    file: _src/content/settings/home.json
+    format: json
+    preview_path: ""
+    fields:
+      - name: fiction_highlights
+        label: Fiction highlights
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        min: 1
+        hint: Sürükleyerek sıralayabilirsiniz.
+      - name: non_fiction_highlights
+        label: Non-fiction highlights
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        min: 1
+        hint: Sürükleyerek sıralayabilirsiniz.
+      - name: for_younger_readers
+        label: For younger readers
+        widget: relation
+        collection: books
+        value_field: "{{slug}}"
+        display_fields: ["{{title}} — {{author}}"]
+        search_fields: [title, author]
+        multiple: true
+        min: 1
+        hint: Sürükleyerek sıralayabilirsiniz.
+
+  - name: site
+    label: Site ayarları
+    icon: settings
+    file: _src/content/settings/site.json
+    format: json
+    fields:
+      - { name: site_name, label: Site adı, widget: string, hint: Sayfa başlıklarının sonunda görünür. }
+      - { name: tagline, label: Slogan, widget: string, hint: Alt bilgide (footer) görünür. }
+      - { name: email, label: E-posta, widget: string, hint: Haklar talebi düğmeleri ve alt bilgi bu adresi kullanır. }
+      - { name: location, label: Konum, widget: string }
+      - { name: instagram, label: Instagram adresi, widget: string }
+      - { name: linkedin, label: LinkedIn adresi, widget: string }
+      - { name: copyright, label: Telif satırı, widget: string }
+      - { name: site_url, label: Site adresi, widget: string, hint: "Canonical adresler ve sitemap için, örn. https://epsilonpublishinggroup.com" }
+      - { name: default_description, label: "Varsayılan SEO açıklaması", widget: text, hint: "Ana sayfanın ve kendi açıklaması olmayan sayfaların Google açıklaması (en fazla ~155 karakter)." }
+      - { name: share_image, label: "Varsayılan paylaşım görseli", widget: image, choose_url: false, hint: "WhatsApp, LinkedIn vb. paylaşımlarda görünen görsel; ideal ölçü 1200×630." }
+      - { name: logo, label: "Logo (Google için)", widget: image, choose_url: false }
+      - { name: founding_year, label: Kuruluş yılı, widget: string }
+      - { name: llms_intro, label: "Yapay zeka asistanları için tanıtım (llms.txt)", widget: text, hint: "ChatGPT, Claude gibi asistanların siteyi tanıması için kısa İngilizce tanıtım." }
+
+  - name: stats
+    label: Rakamlar
+    icon: query_stats
+    file: _src/content/settings/stats.json
+    format: json
+    fields:
+      - name: items
+        label: '"The group in numbers" (ana sayfa ve Hakkımızda)'
+        widget: list
+        fields:
+          - { name: label, label: Başlık, widget: string, hint: Örn. Languages }
+          - { name: value, label: Değer, widget: string, hint: 'Örn. 100+ ya da 70. Ana sayfada sayıya kadar sayarak görünür.' }
+          - { name: note, label: Not, widget: string, required: false, hint: Değerin altındaki küçük açıklama }
+
+  - name: contact_info
+    label: İletişim bilgileri
+    icon: call
+    file: _src/content/settings/contact.json
+    format: json
+    fields:
+      - { name: email, label: E-posta, widget: string, required: false }
+      - { name: rights_email, label: Haklar e-postası, widget: string, required: false }
+      - { name: phone, label: Telefon, widget: string, required: false, hint: "Örn. +90 543 529 93 00" }
+      - { name: address, label: Kısa adres, widget: string, required: false }
+      - name: offices
+        label: Ofisler
+        widget: list
+        fields:
+          - { name: name, label: Ofis adı, widget: string }
+          - { name: city, label: Şehir, widget: string, required: false }
+          - { name: address, label: Adres, widget: text, required: false, hint: Her satır ayrı satırda görünür. }
+          - { name: phone, label: Telefon, widget: string, required: false }
+          - { name: hours, label: Çalışma saatleri, widget: string, required: false }
+          - { name: map_url, label: Harita linki, widget: string, required: false, hint: "Google Maps'te konumu açıp Paylaş › Bağlantıyı kopyala ile alınan adres" }

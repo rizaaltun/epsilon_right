@@ -1,0 +1,56 @@
+{
+  "eyebrow": "Since 1993",
+  "title": "About",
+  "intro": "One of Türkiye's leading publishing groups",
+  "hero_image_alt": "The Epsilon Publishing Group team at work in the Istanbul office",
+  "hero_image": "/assets/images/demo/about-group-intro.jpg",
+  "lead": "Founded in 1993, Epsilon Publishing Group has grown into one of Türkiye's leading publishing groups, bringing together a diverse range of books, authors, and readers through its publishing houses and imprints.",
+  "body": "Today, our group includes Epsilon (home to the Kafka and Uçan Fil imprints) alongside Nemesis and its imprints (Masalperest, Nora, and Serenad), as well as Okuyan Us and Okuyan Koala. Together, we publish across a broad spectrum of genres and age groups, from adult fiction and non-fiction to young adult, picture books, middle-grade fiction, and board books.\n\nIn 2019, we began a new chapter in our publishing journey by representing our authors and home-grown titles in international markets. Since then, we have participated in book fairs and fellowship programmes around the world, building strong and lasting relationships with publishers, editors, literary agents, and rights professionals.\n\nSince 2024, we have also been welcoming the international publishing community at our own stands at the Bologna Children's Book Fair, Frankfurt Book Fair, and Shanghai International Children's Book Fair.\n\nToday, we are proud to have sold the rights to more than 100 of our titles in almost 70 languages across 180 territories. Seeing the stories of our authors travel across languages, cultures, and borders remains one of the most rewarding parts of our work.",
+  "brands": [
+    {
+      "eyebrow": "Epsilon Publishing",
+      "quote": "“A global publishing brand from Türkiye.”",
+      "body": "Founded in 1993, Epsilon Publishing is one of Türkiye's leading publishing houses, with more than 3,000 titles published across a wide range of genres, including fiction, non-fiction, personal development, psychology, philosophy, parenting, and children's literature. Its diverse list brings together distinguished Turkish and international voices and includes acclaimed works honoured with major literary awards such as the Nobel Prize, Pulitzer Prize, National Book Award, Newbery Medal, and Carnegie Medal.\n\nAlongside its broad general trade list, Epsilon publishes literary and upmarket fiction under Kafka, while Uçan Fil focuses on picture books, preschool titles, and early readers. With more than 200 new titles published each year, Epsilon continues to expand its publishing programme by introducing compelling authors, successful translations, and inspiring stories to readers of all ages.",
+      "image": "/assets/images/demo/about-epsilon.jpg",
+      "image_alt": "Epsilon Publishing"
+    },
+    {
+      "eyebrow": "Nemesis Publishing",
+      "quote": "“The only way to exist is to read.”",
+      "body": "Founded in 2007, Nemesis Publishing is one of Türkiye's leading publishing houses, with more than 1,500 titles spanning adult fiction, non-fiction, and children's literature. Nemesis publishes general trade fiction and non-fiction, while Nora focuses on distinguished literary and intellectual works, including historical fiction.\n\nIts children's imprint, Masalperest, publishes board books, picture books, first readers, middle-grade novels, and young adult fiction. Guided by a belief in the timeless power of storytelling, Masalperest seeks out imaginative books that spark curiosity, nurture a lifelong love of reading, and bring stories and illustrations from Türkiye to children around the world.",
+      "image": "/assets/images/demo/about-nemesis.jpg",
+      "image_alt": "Nemesis Publishing"
+    },
+    {
+      "eyebrow": "Okuyan Us Publishing",
+      "quote": "“We create emotions, and we nourish them.”",
+      "body": "Founded in 1997 by psychiatrist, writer, and painter Cem Mumcu, Okuyan Us brings together people who read, question, share, and seek to contribute to the common good. Its wide-ranging list includes psychology, psychiatry, personal growth, communication, literature, philosophy, history, memoir, art, and children's books. Guided by its playful motto, “Readers are never tamed,” Okuyan Us continues to publish thought-provoking books that encourage readers to understand themselves and the world from new perspectives.",
+      "image": "/assets/images/demo/about-okuyan-us.jpg",
+      "image_alt": "Okuyan Us Publishing"
+    }
+  ],
+  "next_eyebrow": "The Next Chapter",
+  "next_title": "Where we are heading",
+  "next_body": "We aim to become a truly global publishing brand, reaching readers of all ages and interests around the world.\n\nWe seek to strengthen our international presence by bringing diverse voices and compelling stories beyond borders.\n\nWe strive to build lasting partnerships and develop long-term relationships across the publishing industry.\n\nOur goal is to connect more books with the readers who deserve to discover them.",
+  "team_title": "The team",
+  "team_intro": "Grouped by department. Open a department to see who to contact.",
+  "departments": [
+    {
+      "name": "The Ink-Credible Team",
+      "people": [
+        {
+          "name": "Pelin Yılmaz",
+          "role": "Foreign Rights Director",
+          "email": "pelin@epsilonyayingrubu.com",
+          "photo": "/assets/images/demo/team-01.jpg"
+        },
+        {
+          "name": "Seval Merve Sarıhan",
+          "role": "Foreign Rights Coordinator",
+          "email": "merve@epsilonyayingrubu.com",
+          "photo": "/assets/images/demo/team-02.jpg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "path": "",
+  "title_html": "Epsilon Publishing Group — We connect stories with the world.",
+  "head_extra": "<link rel=\"stylesheet\" href=\"assets/news-carousel.css?v=20261001\">",
+  "tail_extra": "<script src=\"assets/news-carousel.js?v=20261001\" defer></script>",
+  "lazy_logos": true,
+  "lists": {},
+  "lists_file": "settings/home.json"
+}

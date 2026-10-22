@@ -1,0 +1,32 @@
+{
+  "childrens-titles-2026": {
+    "pdf": "assets/catalogues/children-catalogue-2026.pdf",
+    "revision": "61d307d3",
+    "pages": 12,
+    "ratio": 1.414358
+  },
+  "adult-titles-2026": {
+    "pdf": "assets/catalogues/adult-catalogue-2026.pdf",
+    "revision": "60abc684",
+    "pages": 11,
+    "ratio": 1.414358
+  },
+  "young-adult-titles-2026": {
+    "pdf": "assets/catalogues/ya-catalogue-2026.pdf",
+    "revision": "bddd7d40",
+    "pages": 18,
+    "ratio": 1.414285
+  },
+  "adult-catalogue-2026": {
+    "pdf": "assets/catalogues/adult-full-catalogue-2026.pdf",
+    "revision": "93074f06",
+    "pages": 48,
+    "ratio": 1.414285
+  },
+  "children-catalogue-2026": {
+    "pdf": "assets/catalogues/children-full-catalogue-2026.pdf",
+    "revision": "9666481f",
+    "pages": 70,
+    "ratio": 1.414285
+  }
+}

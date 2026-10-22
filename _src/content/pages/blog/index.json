@@ -1,0 +1,9 @@
+{
+  "path": "blog/",
+  "title_html": "Blog — Epsilon Publishing Group",
+  "head_extra": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Epsilon Publishing Group blog\" href=\"~/blog/feed.xml\">",
+  "tail_extra": "",
+  "lazy_logos": true,
+  "lists": {},
+  "requires": "blog"
+}
