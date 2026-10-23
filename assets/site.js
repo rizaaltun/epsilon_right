@@ -448,31 +448,86 @@
 
   };
 
-  /* ---- book cover lightbox: click a detail-page cover to see it in full ---- */
+  /* ---- lightbox: click a book cover, or an article / gallery image, to see it in full;
+     with several images, arrows (on screen or ←/→) step through them ---- */
   let lightboxEl = null;
   const ensureLightbox = () => {
     if (lightboxEl) return lightboxEl;
     lightboxEl = document.createElement("div");
     lightboxEl.className = "cover-lightbox";
-    lightboxEl.innerHTML = '<button type="button" class="cover-lightbox-close" aria-label="Close">&times;</button><img alt=""/>';
+    lightboxEl.setAttribute("role", "dialog");
+    lightboxEl.setAttribute("aria-modal", "true");
+    lightboxEl.innerHTML =
+      '<button type="button" class="cover-lightbox-close" aria-label="Close">&times;</button>' +
+      '<button type="button" class="cover-lightbox-nav cover-lightbox-prev" aria-label="Previous image">&#8249;</button>' +
+      '<img alt=""/>' +
+      '<button type="button" class="cover-lightbox-nav cover-lightbox-next" aria-label="Next image">&#8250;</button>' +
+      '<p class="cover-lightbox-count" aria-live="polite"></p>';
     document.body.appendChild(lightboxEl);
-    const closeIt = () => lightboxEl.classList.remove("cover-lightbox-on");
-    lightboxEl.addEventListener("click", (e) => {
-      if (e.target === lightboxEl || e.target.closest(".cover-lightbox-close")) closeIt();
+    const lb = lightboxEl;
+    lb._img = lb.querySelector("img");
+    lb._count = lb.querySelector(".cover-lightbox-count");
+    lb._group = [];
+    lb._at = 0;
+    lb._show = (i) => {
+      const n = lb._group.length;
+      lb._at = (i + n) % n;
+      const img = lb._group[lb._at];
+      lb._img.src = img.currentSrc || img.src;
+      lb._img.alt = img.alt || "";
+      lb._count.textContent = n > 1 ? `${lb._at + 1} / ${n}` : "";
+      lb.classList.toggle("cover-lightbox-multi", n > 1);
+    };
+    lb._close = () => {
+      lb.classList.remove("cover-lightbox-on");
+      if (lb._opener) lb._opener.focus();
+    };
+    lb.addEventListener("click", (e) => {
+      if (e.target.closest(".cover-lightbox-prev")) lb._show(lb._at - 1);
+      else if (e.target.closest(".cover-lightbox-next")) lb._show(lb._at + 1);
+      else if (e.target === lb || e.target.closest(".cover-lightbox-close")) lb._close();
     });
-    addEventListener("keydown", (e) => { if (e.key === "Escape") closeIt(); });
-    lightboxEl._img = lightboxEl.querySelector("img");
-    return lightboxEl;
+    addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("cover-lightbox-on")) return;
+      if (e.key === "Escape") lb._close();
+      else if (e.key === "ArrowLeft" && lb._group.length > 1) lb._show(lb._at - 1);
+      else if (e.key === "ArrowRight" && lb._group.length > 1) lb._show(lb._at + 1);
+    });
+    return lb;
+  };
+  const openLightbox = (group, index, opener) => {
+    const lb = ensureLightbox();
+    lb._group = group;
+    lb._opener = opener;
+    lb._show(index);
+    lb.classList.add("cover-lightbox-on");
+    lb.querySelector(".cover-lightbox-close").focus();
+  };
+  const makeZoomable = (img, group, index) => {
+    img.classList.add("lightbox-zoomable");
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    img.setAttribute("aria-label", `Enlarge image${img.alt ? `: ${img.alt}` : ""}`);
+    img.addEventListener("click", () => openLightbox(group, index, img));
+    img.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(group, index, img); }
+    });
   };
   const wireCoverLightbox = (root) => {
     const img = root.querySelector(".cover:not(.lift-object) img");
     if (!img || img.closest("a")) return;
-    img.addEventListener("click", () => {
-      const lb = ensureLightbox();
-      lb._img.src = img.src || img.currentSrc;
-      lb._img.alt = img.alt || "";
-      lb.classList.add("cover-lightbox-on");
-    });
+    img.addEventListener("click", () => openLightbox([img], 0, img));
+  };
+  /* Articles (news, blog), fair pages and their galleries: the main image and the
+     gallery images form one set, so the arrows step through all of them. */
+  const wireGalleryLightbox = (root) => {
+    const main = root.querySelector("main");
+    if (!main) return;
+    const lead = main.querySelector("article > .relative > img, .lg\\:sticky > img");
+    const gallery = [...main.querySelectorAll('ul[aria-label="Gallery"] img, ul[aria-label$=" gallery"] img')];
+    const group = [lead, ...gallery].filter((img) => img && !img.closest("a"));
+    if (!gallery.length) return;
+    group.forEach((img, i) => makeZoomable(img, group, i));
   };
 
   /* Native POST preserves FormSubmit verification and works without JavaScript. */
@@ -508,6 +563,7 @@
     wireMenu(document);
     wireDropdowns(document);
     wireCoverLightbox(document);
+    wireGalleryLightbox(document);
     syncHeader();
 
     const needsMeta = document.querySelector(".cat-index") || document.querySelector("main ul.grid");
