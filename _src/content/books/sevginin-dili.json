@@ -18,5 +18,10 @@
   "rights": "FRANCE, UK, BRAZIL",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/sevginin-dili.pdf"
+    }
+  ]
 }

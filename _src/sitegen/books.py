@@ -3,7 +3,7 @@
 import re
 from urllib.parse import quote
 
-from . import seo, shell
+from . import samples, seo, shell
 from .components import FILL, HERO_SIZES, aspect, book_card, breadcrumb, cover_img, section_heading
 from .html import esc, prefix_for
 
@@ -82,6 +82,8 @@ def render(ctx, slug: str) -> tuple:
         hero = hero_pending and bool(b["cover"])
         hero_pending = hero_pending and not hero
         rail += f'<div class="w-36 sm:w-40 lg:w-44">{book_card(ctx, r, s, b, hero_image=hero)}</div>'
+    enquire = f"mailto:{email}?subject={subject}"
+    english = samples.for_book(ctx, slug)
     main = (
         '<main id="main" class="flex-1">'
         + breadcrumb(r, [("", "Home"), ("books/", "Books")], book["title"])
@@ -91,21 +93,24 @@ def render(ctx, slug: str) -> tuple:
         + _hero(ctx, r, book)
         + '<section aria-label="Rights" class="mt-6"><p class="eyebrow">Rights</p><p class="mt-3 text-sm '
         f'leading-relaxed text-ink-2">{esc(book["rights"])}</p><div class="mt-4 flex flex-col gap-2"><a '
-        f'href="mailto:{email}?subject={subject}" class="btn btn-accent w-full">Enquire about rights</a><a '
-        f'href="{r}catalogues/{book["catalogue"]}/#catalogue-reader" class="btn btn-outline w-full">Read '
+        f'href="{enquire}" class="btn btn-accent w-full">Enquire about rights</a>'
+        + (samples.buttons(english) if english else "")
+        + f'<a href="{r}catalogues/{book["catalogue"]}/#catalogue-reader" class="btn btn-outline w-full">Read '
         'catalogue</a></div></section></div></div><div class="min-w-0"><ul class="mb-5 flex flex-wrap gap-2"><li>'
         f'<a href="{r}books/?category={book["category"]}"><span class="chip">{esc(category_label(ctx, book["category"]))}'
         f'</span></a></li></ul><h1 class="text-display-lg">{esc(book["title"])}</h1><p class="mt-5 '
         f'text-[0.9375rem] text-ink-2">{_author(ctx, r, book)}</p><div class="measure mt-8"><div '
         f'class="prose-editorial">{paragraphs(book["description"])}</div></div><dl class="divide-y divide-rule '
         f'border-y border-rule text-sm mt-10">{rows}</dl></div></div></div></div></section>'
-        '<section class="py-14 md:py-20 ground-paper"><div><div class="shell">'
+        + (samples.readers(r, book["title"], enquire, english) if english else "")
+        + '<section class="py-14 md:py-20 ground-paper"><div><div class="shell">'
         + section_heading("More in this category")
         + '<div class="relative"><div class="rail" role="group" aria-label="More in this category" tabindex="0">'
         f"{rail}</div></div></div></div></section><!--$--><!--/$--></main>"
     )
+    extra = {"head_extra": samples.head_extra(ctx), "tail_extra": samples.tail_extra(ctx)} if english else {}
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, book, book["title"]), main,
-                            seo_html=seo.head_tags(ctx, book_seo(ctx, slug, path)))
+                            seo_html=seo.head_tags(ctx, book_seo(ctx, slug, path)), **extra)
 
 
 def book_seo(ctx, slug: str, path: str):

@@ -18,5 +18,19 @@
   "rights": "ARABIC TERRITORIES, CHINA, TAIWAN, USA, CANADA, BELGIUM, FRANCE, SWITZERLAND, SLOVENIA, ITALY, CROATIA, INDIA, SRI LANKA, POLAND, KOREA, SPAIN (CATALAN, EUSKERA, GALLEGO, ASTURIANO),\nESTONIA, BANGLADESH, NEPAL,\nPHILIPPINES, MACEDONIA",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/a-line.pdf",
+      "title": "A Line"
+    },
+    {
+      "pdf": "/_src/samples/a-sound.pdf",
+      "title": "A Sound"
+    },
+    {
+      "pdf": "/_src/samples/a-color.pdf",
+      "title": "A Color"
+    }
+  ]
 }

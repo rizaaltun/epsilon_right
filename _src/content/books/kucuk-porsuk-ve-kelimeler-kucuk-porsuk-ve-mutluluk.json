@@ -18,5 +18,15 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/little-badger-and-words.pdf",
+      "title": "Little Badger and Words"
+    },
+    {
+      "pdf": "/_src/samples/little-badger-and-happiness.pdf",
+      "title": "Little Badger and Happiness"
+    }
+  ]
 }

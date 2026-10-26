@@ -1,0 +1,408 @@
+{
+  "a-color": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/a-color.pdf",
+    "ratio": 1.0,
+    "revision": "81839321"
+  },
+  "a-line": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/a-line.pdf",
+    "ratio": 1.0,
+    "revision": "2cef7458"
+  },
+  "a-smell": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/a-smell.pdf",
+    "ratio": 1.0,
+    "revision": "c123fd05"
+  },
+  "a-sound": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/a-sound.pdf",
+    "ratio": 1.0,
+    "revision": "a8b55bd8"
+  },
+  "a-taste": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/a-taste.pdf",
+    "ratio": 1.0,
+    "revision": "e7be7942"
+  },
+  "a-touch": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/a-touch.pdf",
+    "ratio": 1.0,
+    "revision": "c6c80623"
+  },
+  "asirilar-apartmani": {
+    "blank": true,
+    "pages": 12,
+    "pdf": "_src/samples/asirilar-apartmani.pdf",
+    "ratio": 1.142857,
+    "revision": "42223eb6"
+  },
+  "astronot-mevsimi": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/astronot-mevsimi.pdf",
+    "ratio": 1.142857,
+    "revision": "193290be"
+  },
+  "atlas-in-origami-gunlugu": {
+    "blank": true,
+    "pages": 12,
+    "pdf": "_src/samples/atlas-in-origami-gunlugu.pdf",
+    "ratio": 1.142857,
+    "revision": "5277b4e5"
+  },
+  "bay-agac-degisiyor": {
+    "blank": true,
+    "pages": 12,
+    "pdf": "_src/samples/bay-agac-degisiyor.pdf",
+    "ratio": 1.142857,
+    "revision": "52b94309"
+  },
+  "beni-dinler-misin-acaba": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/beni-dinler-misin-acaba.pdf",
+    "ratio": 1.0,
+    "revision": "c1409c3d"
+  },
+  "beynimdeki-postaci-leo": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/beynimdeki-postaci-leo.pdf",
+    "ratio": 1.0,
+    "revision": "12248529"
+  },
+  "bir-oyku-nasil-yazilir-ki": {
+    "blank": true,
+    "pages": 12,
+    "pdf": "_src/samples/bir-oyku-nasil-yazilir-ki.pdf",
+    "ratio": 1.272857,
+    "revision": "86420885"
+  },
+  "bir-soru-dustu-yola": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/bir-soru-dustu-yola.pdf",
+    "ratio": 1.142857,
+    "revision": "dc27cbd2"
+  },
+  "canavarlar-da-dunyayi-sever": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/canavarlar-da-dunyayi-sever.pdf",
+    "ratio": 1.0,
+    "revision": "196de017"
+  },
+  "canavarlar-da-kibardir": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/canavarlar-da-kibardir.pdf",
+    "ratio": 1.0,
+    "revision": "dff8152a"
+  },
+  "canavarlarin-da-duygulari-vardir": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/canavarlarin-da-duygulari-vardir.pdf",
+    "ratio": 1.0,
+    "revision": "fb6e8340"
+  },
+  "cup-cis-kaka": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/cup-cis-kaka.pdf",
+    "ratio": 1.0,
+    "revision": "13aa2b63"
+  },
+  "dedemin-mandalina-agaci": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/dedemin-mandalina-agaci.pdf",
+    "ratio": 1.0,
+    "revision": "f205b043"
+  },
+  "duygunuzu-nasil-alirdiniz": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/duygunuzu-nasil-alirdiniz.pdf",
+    "ratio": 1.0,
+    "revision": "69c47e07"
+  },
+  "ekinoks-hayalleri": {
+    "blank": true,
+    "pages": 14,
+    "pdf": "_src/samples/ekinoks-hayalleri.pdf",
+    "ratio": 1.176429,
+    "revision": "2152cafc"
+  },
+  "essiz-mavi": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/essiz-mavi.pdf",
+    "ratio": 1.0,
+    "revision": "e33abfba"
+  },
+  "ezo-and-samba-birthday-party": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/ezo-and-samba-birthday-party.pdf",
+    "ratio": 1.0,
+    "revision": "d36f3dcf"
+  },
+  "ezo-and-samba-colors": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/ezo-and-samba-colors.pdf",
+    "ratio": 1.0,
+    "revision": "9f95a11b"
+  },
+  "ezo-and-samba-summer-holiday": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/ezo-and-samba-summer-holiday.pdf",
+    "ratio": 1.0,
+    "revision": "b2df4838"
+  },
+  "geri-donusum-ulkesi": {
+    "blank": true,
+    "pages": 14,
+    "pdf": "_src/samples/geri-donusum-ulkesi.pdf",
+    "ratio": 1.142857,
+    "revision": "8736ee68"
+  },
+  "gobeklitepe-tilki-gogo-ile-gecmise-yolculuk": {
+    "blank": true,
+    "pages": 14,
+    "pdf": "_src/samples/gobeklitepe-tilki-gogo-ile-gecmise-yolculuk.pdf",
+    "ratio": 1.130714,
+    "revision": "3a3c841c"
+  },
+  "hanako-ve-balinanin-sarkisi": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/hanako-ve-balinanin-sarkisi.pdf",
+    "ratio": 1.0,
+    "revision": "acf5b54d"
+  },
+  "hanako-ve-sedir-agaci": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/hanako-ve-sedir-agaci.pdf",
+    "ratio": 1.0,
+    "revision": "70cd078f"
+  },
+  "hatalarimi-cebime-koydum": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/hatalarimi-cebime-koydum.pdf",
+    "ratio": 1.0,
+    "revision": "edd0e07d"
+  },
+  "hayalperest-koala": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/hayalperest-koala.pdf",
+    "ratio": 1.0,
+    "revision": "75788b32"
+  },
+  "ip-kuyruklu-tavsan": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/ip-kuyruklu-tavsan.pdf",
+    "ratio": 1.0,
+    "revision": "c915db2c"
+  },
+  "isik-kralligi": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/isik-kralligi.pdf",
+    "ratio": 1.142857,
+    "revision": "fae63b30"
+  },
+  "kaya-disler-ulkesinde": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/kaya-disler-ulkesinde.pdf",
+    "ratio": 1.142857,
+    "revision": "8adef5c6"
+  },
+  "kaybolan-dinozor": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/kaybolan-dinozor.pdf",
+    "ratio": 1.0,
+    "revision": "7d3161be"
+  },
+  "kirmizi-baslikli-tina-ve-uc-kurt": {
+    "blank": true,
+    "pages": 14,
+    "pdf": "_src/samples/kirmizi-baslikli-tina-ve-uc-kurt.pdf",
+    "ratio": 1.235,
+    "revision": "53d7c3fc"
+  },
+  "kralice-olmak-istemeyen-patates": {
+    "blank": true,
+    "pages": 14,
+    "pdf": "_src/samples/kralice-olmak-istemeyen-patates.pdf",
+    "ratio": 1.235,
+    "revision": "49ad0e81"
+  },
+  "little-badger-and-happiness": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/little-badger-and-happiness.pdf",
+    "ratio": 1.0,
+    "revision": "b14f8259"
+  },
+  "little-badger-and-words": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/little-badger-and-words.pdf",
+    "ratio": 1.0,
+    "revision": "08e13ea1"
+  },
+  "masal-gezgini-tina": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/masal-gezgini-tina.pdf",
+    "ratio": 1.142857,
+    "revision": "3b8f03c4"
+  },
+  "maya-mutlu-bir-cocugun-hikayesi": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/maya-mutlu-bir-cocugun-hikayesi.pdf",
+    "ratio": 1.0,
+    "revision": "a9bf3322"
+  },
+  "mutlulugun-resmi": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/mutlulugun-resmi.pdf",
+    "ratio": 0.875,
+    "revision": "ef5493c4"
+  },
+  "neden-olmasin": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/neden-olmasin.pdf",
+    "ratio": 1.0,
+    "revision": "a437bcba"
+  },
+  "pirpir-sakinlesiyor": {
+    "blank": false,
+    "pages": 7,
+    "pdf": "_src/samples/pirpir-sakinlesiyor.pdf",
+    "ratio": 1.0,
+    "revision": "9d52ee03"
+  },
+  "pirt": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/pirt.pdf",
+    "ratio": 1.0,
+    "revision": "da915147"
+  },
+  "robotlar-da-corap-giyer": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/robotlar-da-corap-giyer.pdf",
+    "ratio": 1.0,
+    "revision": "7ddc3b0b"
+  },
+  "saatci-bilge": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/saatci-bilge.pdf",
+    "ratio": 1.235,
+    "revision": "7f781be4"
+  },
+  "sebze-olmak-isteyen-domates": {
+    "blank": true,
+    "pages": 12,
+    "pdf": "_src/samples/sebze-olmak-isteyen-domates.pdf",
+    "ratio": 1.4,
+    "revision": "a72ae060"
+  },
+  "sevginin-dili": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/sevginin-dili.pdf",
+    "ratio": 1.0,
+    "revision": "81783f4c"
+  },
+  "sobe-golgemle-tanistigim-gun": {
+    "blank": true,
+    "pages": 12,
+    "pdf": "_src/samples/sobe-golgemle-tanistigim-gun.pdf",
+    "ratio": 1.142857,
+    "revision": "338fa64b"
+  },
+  "the-crab-who-didnt-fit-in-his-shell": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/the-crab-who-didnt-fit-in-his-shell.pdf",
+    "ratio": 1.0,
+    "revision": "03aa45ad"
+  },
+  "the-helpful-kangaroo": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/the-helpful-kangaroo.pdf",
+    "ratio": 1.0,
+    "revision": "6a97c003"
+  },
+  "the-hungry-cat": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/the-hungry-cat.pdf",
+    "ratio": 1.0,
+    "revision": "50102035"
+  },
+  "the-polar-bear-whose-house-melted": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/the-polar-bear-whose-house-melted.pdf",
+    "ratio": 1.0,
+    "revision": "2d9c1869"
+  },
+  "the-sleepless-tortoise": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/the-sleepless-tortoise.pdf",
+    "ratio": 1.0,
+    "revision": "af6d565f"
+  },
+  "the-sweet-smelling-skunk": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/the-sweet-smelling-skunk.pdf",
+    "ratio": 1.0,
+    "revision": "6d5b7041"
+  },
+  "tuvi-nin-desenleri": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/tuvi-nin-desenleri.pdf",
+    "ratio": 1.0,
+    "revision": "79631ebb"
+  },
+  "uzayda-da-oyun-oynanir": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/uzayda-da-oyun-oynanir.pdf",
+    "ratio": 1.0,
+    "revision": "216396d9"
+  }
+}

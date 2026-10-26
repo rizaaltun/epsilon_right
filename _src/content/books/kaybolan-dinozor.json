@@ -18,5 +18,10 @@
   "rights": "Rights Sold to Arabic",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/kaybolan-dinozor.pdf"
+    }
+  ]
 }

@@ -18,5 +18,19 @@
   "rights": "Rights Sold to Mongolian",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/ezo-and-samba-birthday-party.pdf",
+      "title": "Ezo and Samba Birthday Party"
+    },
+    {
+      "pdf": "/_src/samples/ezo-and-samba-colors.pdf",
+      "title": "Ezo and Samba Colors"
+    },
+    {
+      "pdf": "/_src/samples/ezo-and-samba-summer-holiday.pdf",
+      "title": "Ezo and Samba Summer Holiday"
+    }
+  ]
 }

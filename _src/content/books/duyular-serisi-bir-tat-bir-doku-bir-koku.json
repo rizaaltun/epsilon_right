@@ -18,5 +18,19 @@
   "rights": "ARABIC TERRITORIES, CHINA (Simplified Chinese, English), Taiwan (Complex Chinese)",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/a-taste.pdf",
+      "title": "A Taste"
+    },
+    {
+      "pdf": "/_src/samples/a-touch.pdf",
+      "title": "A Touch"
+    },
+    {
+      "pdf": "/_src/samples/a-smell.pdf",
+      "title": "A Smell"
+    }
+  ]
 }

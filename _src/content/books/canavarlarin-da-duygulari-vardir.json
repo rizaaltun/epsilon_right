@@ -17,5 +17,10 @@
   "rights": "ARABIC TERRITORIES, MACEDONIA, MONGOLIA,\nBRAZIL, PHILIPPINES, SLOVENIA, ROMANIA, RUSSIA, SINGAPORE, IRAN, POLAND, CROATIA, TAIWAN, VIETNAM",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/canavarlarin-da-duygulari-vardir.pdf"
+    }
+  ]
 }
