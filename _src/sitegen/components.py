@@ -1,7 +1,10 @@
 """Markup pieces reused across page types: breadcrumbs, covers, book cards."""
 
+from pathlib import Path
+
 from . import covers
 from .html import esc
+from .imagesize import size
 
 FILL = "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"
 HERO_SIZES = "(min-width: 1024px) 420px, 90vw"
@@ -22,8 +25,15 @@ def breadcrumb(r: str, trail: list, current: str) -> str:
     )
 
 
-def aspect(book: dict) -> str:
-    return "1 / 1" if book.get("square_cover") else "2 / 3"
+def cover_size(ctx, book: dict):
+    """(width, height) of the book's cover image, or None."""
+    return size(str(Path(ctx.root, covers.site_path(book["cover"])))) if book["cover"] else None
+
+
+def aspect(ctx, book: dict) -> str:
+    """The cover box takes the image's own shape, so no cover is ever cropped."""
+    dimensions = cover_size(ctx, book)
+    return f"{dimensions[0]} / {dimensions[1]}" if dimensions else "2 / 3"
 
 
 def cover_img(ctx, r: str, book: dict, hero: bool) -> str:
@@ -59,7 +69,7 @@ def book_card(ctx, r: str, slug: str, book: dict, article_class: str = "group", 
     title = esc(book["title"])
     return (
         f'<article class="{article_class}"><a class="lift block" href="{r}books/{slug}/"><div class="cover lift-object" '
-        f'style="aspect-ratio:{aspect(book)}">{art}</div><div class="mt-3.5"><h3 class="clamp-2 font-display '
+        f'style="aspect-ratio:{aspect(ctx, book)}">{art}</div><div class="mt-3.5"><h3 class="clamp-2 font-display '
         'text-[1.0625rem] leading-snug text-balance transition-colors group-hover:text-accent" '
         f'title="{title}">{title}</h3><p class="mt-1 text-[0.8125rem] text-ink-3">{esc(book["author"])}</p></div>'
         "</a></article>"

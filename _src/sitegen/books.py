@@ -41,7 +41,7 @@ def related(ctx, slug: str) -> list:
 
 
 def _hero(ctx, r: str, book: dict) -> str:
-    ratio = aspect(book)
+    ratio = aspect(ctx, book)
     if book["cover"]:
         art = (
             f'<div class="relative overflow-hidden bg-paper-3 h-full w-full" style="aspect-ratio:{ratio}">'
@@ -74,7 +74,7 @@ def _set_slides(ctx, r: str, book: dict, english: list) -> list:
     return slides + [uploaded(c) for c in book.get("set_covers") or [] if c.get("image")]
 
 
-def _set_hero(book: dict, slides: list) -> str:
+def _set_hero(ctx, book: dict, slides: list) -> str:
     """The cover area of a set page: every title's cover, side by side, one in view."""
     items = ""
     for n, (src, srcset, full, label) in enumerate(slides):
@@ -86,7 +86,7 @@ def _set_hero(book: dict, slides: list) -> str:
             f'decoding="async" src="{src}"{extra} {loading}/></div>'
         )
     return (
-        f'<div class="cover" style="aspect-ratio:{aspect(book)}" data-cover-set role="group" aria-roledescription='
+        f'<div class="cover" style="aspect-ratio:{aspect(ctx, book)}" data-cover-set role="group" aria-roledescription='
         f'"carousel" aria-label="Covers in this set"><div class="cover-set-track" tabindex="0">{items}</div><button '
         'type="button" class="cover-set-nav cover-set-prev" aria-label="Previous cover" disabled>‹</button><button '
         'type="button" class="cover-set-nav cover-set-next" aria-label="Next cover">›</button></div><p '
@@ -131,7 +131,7 @@ def render(ctx, slug: str) -> tuple:
         + '<section class="py-14 md:py-20 pt-8 md:pt-10"><div><div class="shell"><div class="grid gap-10 '
         'lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16"><div class="lg:sticky lg:top-24 lg:self-start">'
         '<div class="mx-auto max-w-[19rem]">'
-        + (_set_hero(book, slides) if len(slides) > 1 else _hero(ctx, r, book))
+        + (_set_hero(ctx, book, slides) if len(slides) > 1 else _hero(ctx, r, book))
         + '<section aria-label="Rights" class="mt-6"><p class="eyebrow">Rights</p><p class="mt-3 text-sm '
         f'leading-relaxed text-ink-2">{esc(book["rights"])}</p><div class="mt-4 flex flex-col gap-2"><a '
         f'href="{enquire}" class="btn btn-accent w-full">Enquire about rights</a>'

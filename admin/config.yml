@@ -109,7 +109,6 @@ collections:
         required: false
         choose_url: false
         hint: JPG, PNG veya WebP. Site için küçük ve büyük boyutları otomatik üretilir.
-      - { name: square_cover, label: Kare kapak, widget: boolean, default: false, hint: Kare formatlı (çoğunlukla resimli çocuk kitapları) kapaklar için açın. }
       - name: is_set
         label: Set / seri sayfası
         widget: boolean
