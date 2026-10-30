@@ -250,7 +250,7 @@ collections:
         widget: select
         default: Announcements
         options: [Announcements, Industry, Press, Fairs, Rights deals, Awards]
-      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: Açıksa haber, ana sayfada ve haberler sayfasında yeni haberlerin önünde kalır. }
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: "Açıksa haber, ana sayfanın üstündeki kartta ve haber listelerinde yeni haberlerin önünde kalır. Hem haber hem etkinlik sabitliyse tarihi yeni olan karta gelir." }
       - { name: byline, label: İmza, widget: string, default: Editorial desk, hint: 'Tarihin yanında görünür, örn. "Editorial desk".' }
       - { name: excerpt, label: Özet, widget: text, hint: Haber kartlarında görünen kısa metin (1–2 cümle). }
       - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
@@ -309,7 +309,7 @@ collections:
     fields:
       - { name: title, label: Etkinlik adı, widget: string }
       - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
-      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: Açıksa ana sayfadaki fuar kartı, tarihi geçmiş olsa bile bu etkinliği gösterir. }
+      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: "Açıksa ana sayfanın üstündeki kartta, tarihi geçmiş olsa bile bu etkinlik görünür. Hem haber hem etkinlik sabitliyse tarihi yeni olan gelir." }
       - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
       - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
       - { name: city, label: Şehir, widget: string, required: false }

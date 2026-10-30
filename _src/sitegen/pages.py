@@ -9,7 +9,7 @@ Slots in a fragment are filled from content at build time:
   <!--@news-cards [limit=N]-->   news cards, newest first
   <!--@news-count-->             the number of news articles
   <!--@event-sections-->         the Upcoming / Past lists of fairs & events
-  <!--@event-aside-->            the home page's next-fair card
+  <!--@event-aside-->            the hero card on the home page (a fair or the latest news)
   <!--@publisher-cards [order=titles]-->, <!--@publisher-count-->, <!--@publisher-summary-->,
   <!--@publisher-countries-->    publisher cards, count, summary line and country filter
   <!--@author-cards-->, <!--@author-count-->, <!--@top-authors limit=N-->, <!--@author-letters-->,

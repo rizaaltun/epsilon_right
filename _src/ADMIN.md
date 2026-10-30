@@ -28,6 +28,11 @@ değişmez (değişirse FormSubmit'te yeniden doğrulama gerekir).
 Kitap sayıları (yayınevi kartları, yazarlar listesi, Representations) her derlemede
 kitaplardan hesaplanır; elle güncellenmez.
 
+Ana sayfanın üstündeki kartta sabitlenen içerik görünür: haberde "Vitrine sabitle", fuarda
+"Ana sayfada sabitle". Hem haber hem fuar sabitliyse tarihi yeni olan gelir; bu yüzden karta
+bir şey almak için önceki sabitlemeyi kapatmak en garantisi. Hiçbir şey sabitli değilse son
+haber görünür, ama ondan sonra biten bir fuar varsa fuar kartı gelir.
+
 Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
 çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
 
