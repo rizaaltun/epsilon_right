@@ -36,6 +36,7 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `services/<slug>/index.html` | `content/services/<slug>.json` |
 | `blog/<slug>/index.html`, `blog/feed.xml` | `content/blog/<slug>.json` (`sitegen/blog.py`); `/blog/` and the menu links appear once there is a post |
 | `catalogues/<slug>/index.html` | `content/catalogues/<slug>.json` + its PDF; reader images per `assets/catalogues/readers.json` (`sitegen/catalogues.py`) |
+| English sample readers on book pages | a book's `english_samples` → preview PDFs in `samples/` (not published); page images per `assets/images/samples/readers.json` (`sitegen/samples.py`, previews made with `tools/make_sample_preview.py`) |
 | every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 | `sitemap.xml`, `robots.txt`, `llms.txt`, `404.html` | all pages / settings (`sitegen/seo.py`) |

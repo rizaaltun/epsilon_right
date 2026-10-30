@@ -473,7 +473,7 @@
       const n = lb._group.length;
       lb._at = (i + n) % n;
       const img = lb._group[lb._at];
-      lb._img.src = img.currentSrc || img.src;
+      lb._img.src = img.dataset.full || img.currentSrc || img.src;
       lb._img.alt = img.alt || "";
       lb._count.textContent = n > 1 ? `${lb._at + 1} / ${n}` : "";
       lb.classList.toggle("cover-lightbox-multi", n > 1);
@@ -513,7 +513,43 @@
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(group, index, img); }
     });
   };
+  /* Set pages: every title's cover in one sliding cover area. */
+  const wireCoverSet = (root) => {
+    const set = root.querySelector("[data-cover-set]");
+    if (!set) return;
+    const track = set.querySelector(".cover-set-track");
+    const slides = [...track.children];
+    const prev = set.querySelector(".cover-set-prev");
+    const next = set.querySelector(".cover-set-next");
+    const count = root.querySelector("[data-cover-set-count]");
+    const label = root.querySelector("[data-cover-set-label]");
+    const at = () => Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+    const sync = () => {
+      const i = at();
+      prev.disabled = i <= 0;
+      next.disabled = i >= slides.length - 1;
+      count.textContent = `${i + 1} / ${slides.length}`;
+      label.textContent = slides[i]?.dataset.label || "";
+    };
+    // The slide being moved to, so quick clicks during the slide animation still count.
+    let goal = 0, settle = 0;
+    const go = (step) => {
+      goal = Math.max(0, Math.min(slides.length - 1, goal + step));
+      track.scrollTo({ left: goal * track.clientWidth, behavior: calm.matches ? "auto" : "smooth" });
+    };
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    track.addEventListener("scroll", () => {
+      sync();
+      clearTimeout(settle);
+      settle = setTimeout(() => { goal = at(); }, 150);
+    }, { passive: true });
+    const group = slides.map((slide) => slide.querySelector("img"));
+    group.forEach((img, i) => img.addEventListener("click", () => openLightbox(group, i, img)));
+    sync();
+  };
   const wireCoverLightbox = (root) => {
+    if (root.querySelector("[data-cover-set]")) return;
     const img = root.querySelector(".cover:not(.lift-object) img");
     if (!img || img.closest("a")) return;
     img.addEventListener("click", () => openLightbox([img], 0, img));
@@ -563,6 +599,7 @@
     wireMenu(document);
     wireDropdowns(document);
     wireCoverLightbox(document);
+    wireCoverSet(document);
     wireGalleryLightbox(document);
     syncHeader();
 

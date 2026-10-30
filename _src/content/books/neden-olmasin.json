@@ -18,5 +18,10 @@
   "rights": "Rights Sold to Korean, Arabic, English, Mongolian",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/neden-olmasin.pdf"
+    }
+  ]
 }

@@ -16,5 +16,6 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "is_set": true
 }

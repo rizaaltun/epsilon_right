@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from sitegen import (authors, blog, books, catalogues, content, events, meta, news, pages, publishers,  # noqa: E402
-                     seo, services, shell)
+                     samples, seo, services, shell)
 
 
 def generate(ctx) -> dict:
@@ -152,7 +152,12 @@ def main(argv=None) -> int:
             print(f"  … and {len(differing) - 40} more")
         for rel in stale:
             print("  would remove:", rel)
-        return 1 if differing or stale else 0
+        sample_entries, sample_folders = samples.stale(ctx)
+        for name in sample_entries:
+            print("  would remove English sample:", name)
+        for folder in sample_folders:
+            print("  would remove:", folder.relative_to(ROOT).as_posix())
+        return 1 if differing or stale or sample_entries or sample_folders else 0
 
     written = 0
     for rel, text in files.items():
@@ -167,7 +172,8 @@ def main(argv=None) -> int:
         page.unlink()
         if not any(page.parent.iterdir()):
             page.parent.rmdir()
-    print(f"generated {len(files)} files, {written} changed, {len(removed)} removed")
+    removed_samples = samples.remove_stale(ctx)
+    print(f"generated {len(files)} files, {written} changed, {len(removed) + removed_samples} removed")
     return 0
 
 

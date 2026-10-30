@@ -1,0 +1,11 @@
+/* English sample reader on book pages; the reader itself is styled by catalogue-reader-v3.css. */
+.sample-reader:not(.is-open){display:none!important}
+.sample-reader,.sample-reader:fullscreen,.sample-reader::backdrop{background:#faf9f5!important;color:#141413;color-scheme:light}
+.reader-page.sample-blank{background:#fbfaf7}
+.reader-page.sample-back{background:#153f34;color:#fff}
+.sample-end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:12%;text-align:center}
+.sample-end-eyebrow{margin:0;font:600 .75rem/1.2 "Inter Tight",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.sample-end-title{margin:0;font:400 clamp(1.25rem,3.2vw,2rem)/1.15 Fraunces,Georgia,serif}
+.sample-end-text{margin:0;font:400 clamp(.8rem,1.4vw,.95rem)/1.5 "Inter Tight",Arial,sans-serif;opacity:.85}
+.sample-end-link{margin-top:.75rem;padding:.7rem 1.4rem;border-radius:999px;background:#fff;color:#153f34;font:600 .875rem/1 "Inter Tight",Arial,sans-serif;text-decoration:none}
+.sample-end-link:hover{background:#e9efe9}

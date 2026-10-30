@@ -18,5 +18,32 @@
   "rights": "ARABIC TERRITORIES, RUSSIA",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/the-crab-who-didnt-fit-in-his-shell.pdf",
+      "title": "The Crab Who Didn't Fit in His Shell"
+    },
+    {
+      "pdf": "/_src/samples/the-hungry-cat.pdf",
+      "title": "The Hungry Cat"
+    },
+    {
+      "pdf": "/_src/samples/the-sleepless-tortoise.pdf",
+      "title": "The Sleepless Tortoise"
+    },
+    {
+      "pdf": "/_src/samples/the-helpful-kangaroo.pdf",
+      "title": "The Helpful Kangaroo"
+    },
+    {
+      "pdf": "/_src/samples/the-sweet-smelling-skunk.pdf",
+      "title": "The Sweet-Smelling Skunk"
+    },
+    {
+      "pdf": "/_src/samples/the-polar-bear-whose-house-melted.pdf",
+      "title": "The Polar Bear Whose House Melted"
+    }
+  ],
+  "is_set": true
 }

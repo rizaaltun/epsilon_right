@@ -110,6 +110,21 @@ collections:
         choose_url: false
         hint: JPG, PNG veya WebP. Site için küçük ve büyük boyutları otomatik üretilir.
       - { name: square_cover, label: Kare kapak, widget: boolean, default: false, hint: Kare formatlı (çoğunlukla resimli çocuk kitapları) kapaklar için açın. }
+      - name: is_set
+        label: Set / seri sayfası
+        widget: boolean
+        default: false
+        required: false
+        hint: Bir sayfada birden çok kitap varsa açın. Başlık küçük yazılır, kapak alanı kaydırmalı olur.
+      - name: set_covers
+        label: Setin diğer kapakları
+        widget: list
+        required: false
+        collapsed: true
+        hint: Yalnız set sayfalarında. İngilizce örneği olan kitabın kapağı otomatik gelir; burada yalnızca örneği olmayan kitapların kapağını ekleyin.
+        fields:
+          - { name: image, label: Kapak, widget: image, choose_url: false }
+          - { name: title, label: Kitap adı, widget: string, required: false, hint: Kapağın altında görünür. }
       - name: description
         label: Tanıtım metni
         widget: text
@@ -129,6 +144,26 @@ collections:
       - { name: illustrator, label: Resimleyen, widget: string, required: false }
       - { name: age_group, label: Yaş grubu, widget: string, required: false, hint: Örn. 6+ }
       - { name: isbn, label: ISBN, widget: string, required: false, hint: "Örn. 978-605-173-453-8. Google'ın kitabı tanımasına yardımcı olur." }
+      - name: english_samples
+        label: İngilizce örnek
+        widget: list
+        required: false
+        collapsed: true
+        hint: 'Kitap sayfasına "Read an English Sample" düğmesi ekler; örnek, katalog gibi sayfa çevirmeli okuyucuda açılır ve indirilemez. Seri sayfalarında her kitap için ayrı satır ekleyip başlığını yazın.'
+        fields:
+          - name: pdf
+            label: Önizleme PDF'i
+            widget: file
+            accept: application/pdf
+            choose_url: false
+            media_folder: /_src/samples
+            public_folder: /_src/samples
+            hint: "Kitabın tamamı değil, yalnızca gösterilecek kısım: 1. sayfa ön kapak (ya da arka kapak + sırt + ön kapak), sonra kitabın ilk sayfaları (sayfanın yaklaşık dörtte biri). Okuyucu sayfaları yayına alınırken üretilir (birkaç dakika)."
+            media_libraries:
+              default:
+                config:
+                  max_file_size: 30000000
+          - { name: title, label: "Başlık (yalnız seri sayfalarında)", widget: string, required: false, hint: "Örn. A Line. Düğmenin üzerinde görünür." }
       - name: rights
         label: Haklar
         widget: text

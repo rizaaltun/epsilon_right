@@ -18,5 +18,10 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/hatalarimi-cebime-koydum.pdf"
+    }
+  ]
 }

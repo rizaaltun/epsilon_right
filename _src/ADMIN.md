@@ -31,6 +31,32 @@ kitaplardan hesaplanır; elle güncellenmez.
 Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
 çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
 
+## İngilizce örnekler
+
+Kitabın düzenleme ekranındaki **İngilizce örnek** alanına bir önizleme PDF'i yüklenince
+kitap sayfasında **Read an English Sample** düğmesi çıkar; örnek, katalog gibi sayfa
+çevirmeli okuyucuda açılır. PDF'in kendisi sitede yayınlanmaz (`_src/samples/` altında
+durur), ziyaretçi yalnızca sayfa görsellerini görür ve indirme düğmesi yoktur.
+
+Yüklenecek PDF kitabın tamamı değil, yalnızca gösterilecek kısımdır: 1. sayfa ön kapak
+(ya da arka kapak + sırt + ön kapak tek parça), ardından kitabın ilk sayfaları; kural
+olarak sayfa sayısının yaklaşık dörtte biri (32 sayfalık kitapta 8). Çift sayfa (yan yana
+iki sayfa) olarak kaydedilmiş PDF'ler otomatik ikiye bölünür. Seri sayfalarında her kitap
+için ayrı satır eklenir ve **Başlık** yazılır (düğmede görünür).
+
+Baskı dosyalarından (iç sayfalar + kapak PDF'i) bu önizlemeyi üretmek için:
+`python3 _src/tools/make_sample_preview.py İÇ.pdf KAPAK.pdf ÇIKTI.pdf` (PyMuPDF ve
+Pillow gerekir). Kesim payları ve baskı işaretleri kırpılır, sayfalar web boyutuna
+indirilir; sonuç birkaç MB olur.
+
+## Set / seri sayfaları
+
+Bir sayfada birden çok kitap gösteriliyorsa (örneğin 8'li hayvan serisi) kitabın düzenleme
+ekranında **Set / seri sayfası** açılır. Başlık küçük yazılır ve kapak alanı kaydırmalı olur.
+İngilizce örneği olan kitapların kapağı otomatik gelir; örneği olmayanların kapağı **Setin
+diğer kapakları** alanından eklenir. Listelerdeki kart görseli **Kapak** alanından gelmeye
+devam eder.
+
 ## Blog
 
 **Blog** bölümünden yazı eklenir: başlık, tarih, yazar, etiketler, özet, kapak, metin

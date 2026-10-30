@@ -18,5 +18,10 @@
   "rights": "Rights Sold to Arabic, Persian",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "english_samples": [
+    {
+      "pdf": "/_src/samples/hayalperest-koala.pdf"
+    }
+  ]
 }
