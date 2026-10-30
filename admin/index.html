@@ -8,6 +8,17 @@
 <title>Yönetim — Epsilon Publishing Group</title>
 </head>
 <body>
+<script>
+// Sveltia lowercases a new entry's address last, in the browser's language, so in a
+// Turkish browser "International" became "ınternational". Addresses are plain ASCII
+// by then, so ASCII text is lowercased as English; other text (search) is unchanged.
+(() => {
+  const lower = String.prototype.toLocaleLowerCase;
+  String.prototype.toLocaleLowerCase = function (locales) {
+    return lower.call(this, locales ?? (/^[\x00-\x7f]*$/.test(this) ? "en" : undefined));
+  };
+})();
+</script>
 <!-- Sveltia CMS, pinned and integrity-checked. To upgrade, change the version
      and the sha384 hash together (see _src/ADMIN.md). -->
 <script src="https://unpkg.com/@sveltia/cms@0.229.0/dist/sveltia-cms.js"
