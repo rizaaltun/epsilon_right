@@ -4,6 +4,12 @@ import json
 import re
 
 from . import covers
+from .components import cover_size
+
+
+def _is_square(ctx, book) -> bool:
+    dimensions = cover_size(ctx, book)
+    return bool(dimensions) and dimensions[1] / dimensions[0] < 1.1
 
 
 def year(publication_year: str):
@@ -23,7 +29,7 @@ def render(ctx) -> str:
             "f": bool(book.get("featured")),
             "n": bool(book.get("new")),
             "p": "/" + covers.resolve(ctx, book["cover"])[0] if book["cover"] else None,
-            "sq": bool(book.get("square_cover")),
+            "sq": _is_square(ctx, book),
         }
         for slug, book in ctx.books.items()
     }
