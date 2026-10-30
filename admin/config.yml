@@ -309,7 +309,7 @@ collections:
     fields:
       - { name: title, label: Etkinlik adı, widget: string }
       - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
-      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: Açıksa ana sayfadaki fuar kartı, tarihi geçmiş olsa bile bu etkinliği gösterir. }
+      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: "Açıksa ana sayfanın üstündeki kart, haberlerin yerine ve tarihi geçmiş olsa bile bu etkinliği gösterir." }
       - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
       - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
       - { name: city, label: Şehir, widget: string, required: false }

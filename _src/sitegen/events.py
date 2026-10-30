@@ -1,11 +1,11 @@
 """Fairs & events: /fairs-events/<slug>/, the lists on /fairs-events/ and the
-home page's "Upcoming fair" card.
+card in the home page's hero, which shows a fair or the latest news.
 
 An event is upcoming until its end date has passed, so the site needs a
 rebuild each day (the Build site workflow runs daily) to move events to "Past".
 """
 
-from . import dates, markdown, seo, shell
+from . import covers, dates, markdown, news, seo, shell
 from .components import FILL
 from .html import esc, prefix_for
 
@@ -93,11 +93,44 @@ def sections(ctx, r: str) -> str:
     return out
 
 
+def _card_news(ctx):
+    """The article for the hero card, if it beats the fairs: the first in the news
+    order when it is pinned or not older than the last fair that has ended."""
+    articles = news.ordered(ctx)
+    if not articles:
+        return None
+    slug, item = articles[0]
+    ended = past(ctx)
+    if item.get("pinned") or not ended or dates.parse(item["date"]) >= _span(ended[0][1])[1]:
+        return slug, item
+    return None
+
+
+def _news_aside(ctx, r: str, slug: str, item: dict) -> str:
+    image = ""
+    if item.get("image"):
+        src, variants = covers.resolve(ctx, item["image"])
+        small = variants[0][0] if variants else src
+        image = (f'<img class="hb-news-image" alt="{esc(item.get("image_alt") or item["title"])}" loading="lazy" '
+                 f'decoding="async" src="{r}{esc(small)}"/>')
+    d = dates.parse(item["date"])
+    return (
+        f'<p class="eyebrow mb-3">Latest news</p><a class="hb-news" href="{r}news/{slug}/">{image}<span><span '
+        f'class="hb-news-title clamp-3">{esc(item["title"])}</span><time class="mt-1.5 block text-xs text-ink-3" '
+        f'dateTime="{d.isoformat()}">{dates.long(d)}</time></span></a><a class="link-arrow mt-4 text-sm" '
+        f'href="{r}news/">View all news{ARROW}</a>'
+    )
+
+
 def aside(ctx, r: str) -> str:
-    """Contents of the home page's fair card: a pinned event if there is one
-    (the soonest upcoming pinned one, else the latest pinned one), otherwise
-    the next fair, otherwise the latest one."""
+    """Contents of the hero card on the home page: a pinned event (the soonest
+    upcoming one, else the latest), otherwise the latest news unless a fair has
+    ended since, otherwise the next fair, otherwise the latest one."""
     pinned = [kv for kv in upcoming(ctx) + past(ctx) if kv[1].get("pinned")]
+    if not pinned:
+        article = _card_news(ctx)
+        if article:
+            return _news_aside(ctx, r, *article)
     items = pinned or upcoming(ctx) or past(ctx)
     label = "Upcoming fair" if items and is_upcoming(items[0][1]) else "Latest fair"
     if not items:

@@ -55,7 +55,7 @@ changed in one file updates every page that shows it:
 - `<!--@cards select="RULE" wrap=li|none [article="…"]-->` a run of book cards
 - `<!--@count select="RULE"-->` the number of books selected
 - `<!--@news-cards [limit=N]-->`, `<!--@news-count-->` news cards / count
-- `<!--@event-sections-->`, `<!--@event-aside-->` fairs lists / home fair card
+- `<!--@event-sections-->`, `<!--@event-aside-->` fairs lists / home hero card (a fair or the latest news)
 - publisher and author cards, counts and filters: see the list in `sitegen/pages.py`
 
 Before the slots, a fragment is rendered as a small template (`sitegen/template.py`):
