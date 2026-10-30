@@ -59,19 +59,19 @@ def _hero(ctx, r: str, book: dict) -> str:
 def _set_slides(ctx, r: str, book: dict, english: list) -> list:
     """(src, srcset, full-size src, label) for each cover on a set page.
 
-    Titles with an English sample bring their own cover, which replaces the page's
-    main cover (that is the first title's). Covers added in "set_covers" follow.
+    The page's main cover comes first, then the cover of each title with an English
+    sample, then any added in "set_covers".
     """
-    slides = []
+    def uploaded(item):
+        src, variants = covers.resolve(ctx, item["image"])
+        srcset = ", ".join(f"{r}{path} {w}w" for path, w in variants)
+        return (f"{r}{src}", srcset, "", item.get("title", ""))
+
+    slides = [uploaded({"image": book["cover"]})] if book["cover"] else []
     for _, label, sample_id, info in english:
         folder = f'{r}{samples.PAGES_DIR}/{sample_id}-{info["revision"]}/'
         slides.append((f"{folder}cover.webp", "", f"{folder}001.webp", label))
-    extra = [{"image": book["cover"]}] if book["cover"] and not slides else []
-    for item in extra + [c for c in book.get("set_covers") or [] if c.get("image")]:
-        src, variants = covers.resolve(ctx, item["image"])
-        srcset = ", ".join(f"{r}{path} {w}w" for path, w in variants)
-        slides.append((f"{r}{src}", srcset, "", item.get("title", "")))
-    return slides
+    return slides + [uploaded(c) for c in book.get("set_covers") or [] if c.get("image")]
 
 
 def _set_hero(book: dict, slides: list) -> str:
