@@ -9,6 +9,8 @@
 Standard library only, so it runs anywhere with Python 3.9+.
 """
 import argparse
+import html
+import json
 import sys
 from pathlib import Path
 
@@ -59,6 +61,24 @@ def generate(ctx) -> dict:
     out["robots.txt"] = seo.robots(ctx)
     out["llms.txt"] = llms_txt(ctx)
     out["404.html"] = not_found(ctx)
+    out.update(redirects(ctx))
+    return out
+
+
+def redirects(ctx) -> dict:
+    """Pages for addresses that moved: content/redirects.json, {old path: new path}.
+    They are added after the sitemap, so search engines only see the new address."""
+    path = ROOT / "_src/content/redirects.json"
+    moved = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    out = {}
+    for old, new in moved.items():
+        link = html.escape("/" + new)
+        out[old + "index.html"] = (
+            f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>This page has moved</title>'
+            f'<meta name="robots" content="noindex"><link rel="canonical" href="{html.escape(seo.url(ctx, new))}">'
+            f'<meta http-equiv="refresh" content="0; url={link}"><script>location.replace("{link}"+location.search'
+            f'+location.hash)</script></head><body><p><a href="{link}">This page has moved.</a></p></body></html>\n'
+        )
     return out
 
 

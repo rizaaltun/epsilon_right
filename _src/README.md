@@ -38,6 +38,7 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | `catalogues/<slug>/index.html` | `content/catalogues/<slug>.json` + its PDF; reader images per `assets/catalogues/readers.json` (`sitegen/catalogues.py`) |
 | English sample readers on book pages | a book's `english_samples` → preview PDFs in `samples/` (not published); page images per `assets/images/samples/readers.json` (`sitegen/samples.py`, previews made with `tools/make_sample_preview.py`) |
 | every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
+| redirect pages for moved addresses | `content/redirects.json`, `{old path: new path}`; not in the sitemap |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 | `sitemap.xml`, `robots.txt`, `llms.txt`, `404.html` | all pages / settings (`sitegen/seo.py`) |
 
