@@ -49,6 +49,14 @@ Baskı dosyalarından (iç sayfalar + kapak PDF'i) bu önizlemeyi üretmek için
 Pillow gerekir). Kesim payları ve baskı işaretleri kırpılır, sayfalar web boyutuna
 indirilir; sonuç birkaç MB olur.
 
+## Set / seri sayfaları
+
+Bir sayfada birden çok kitap gösteriliyorsa (örneğin 8'li hayvan serisi) kitabın düzenleme
+ekranında **Set / seri sayfası** açılır. Başlık küçük yazılır ve kapak alanı kaydırmalı olur.
+İngilizce örneği olan kitapların kapağı otomatik gelir; örneği olmayanların kapağı **Setin
+diğer kapakları** alanından eklenir. Listelerdeki kart görseli **Kapak** alanından gelmeye
+devam eder.
+
 ## Blog
 
 **Blog** bölümünden yazı eklenir: başlık, tarih, yazar, etiketler, özet, kapak, metin

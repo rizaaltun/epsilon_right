@@ -3,7 +3,7 @@
 import re
 from urllib.parse import quote
 
-from . import samples, seo, shell
+from . import covers, samples, seo, shell
 from .components import FILL, HERO_SIZES, aspect, book_card, breadcrumb, cover_img, section_heading
 from .html import esc, prefix_for
 
@@ -56,6 +56,45 @@ def _hero(ctx, r: str, book: dict) -> str:
     return f'<div class="cover" style="aspect-ratio:{ratio}">{art}</div>'
 
 
+def _set_slides(ctx, r: str, book: dict, english: list) -> list:
+    """(src, srcset, full-size src, label) for each cover on a set page.
+
+    Titles with an English sample bring their own cover, which replaces the page's
+    main cover (that is the first title's). Covers added in "set_covers" follow.
+    """
+    slides = []
+    for _, label, sample_id, info in english:
+        folder = f'{r}{samples.PAGES_DIR}/{sample_id}-{info["revision"]}/'
+        slides.append((f"{folder}cover.webp", "", f"{folder}001.webp", label))
+    extra = [{"image": book["cover"]}] if book["cover"] and not slides else []
+    for item in extra + [c for c in book.get("set_covers") or [] if c.get("image")]:
+        src, variants = covers.resolve(ctx, item["image"])
+        srcset = ", ".join(f"{r}{path} {w}w" for path, w in variants)
+        slides.append((f"{r}{src}", srcset, "", item.get("title", "")))
+    return slides
+
+
+def _set_hero(book: dict, slides: list) -> str:
+    """The cover area of a set page: every title's cover, side by side, one in view."""
+    items = ""
+    for n, (src, srcset, full, label) in enumerate(slides):
+        loading = 'loading="eager" fetchpriority="high"' if n == 0 else 'loading="lazy"'
+        extra = f' srcset="{srcset}" sizes="{HERO_SIZES}"' if srcset else ""
+        extra += f' data-full="{full}"' if full else ""
+        items += (
+            f'<div class="cover-set-slide" data-label="{esc(label)}"><img alt="{esc(label or book["title"])} — cover" '
+            f'decoding="async" src="{src}"{extra} {loading}/></div>'
+        )
+    return (
+        f'<div class="cover" style="aspect-ratio:{aspect(book)}" data-cover-set role="group" aria-roledescription='
+        f'"carousel" aria-label="Covers in this set"><div class="cover-set-track" tabindex="0">{items}</div><button '
+        'type="button" class="cover-set-nav cover-set-prev" aria-label="Previous cover" disabled>‹</button><button '
+        'type="button" class="cover-set-nav cover-set-next" aria-label="Next cover">›</button></div><p '
+        f'class="cover-set-caption" aria-live="polite"><span data-cover-set-count>1 / {len(slides)}</span><span '
+        f'data-cover-set-label>{esc(slides[0][3])}</span></p>'
+    )
+
+
 def _author(ctx, r: str, book: dict) -> str:
     if book["author_slug"] in ctx.authors:
         return f'<span><a class="link" href="{r}authors/{book["author_slug"]}/">{esc(book["author"])}</a></span>'
@@ -84,13 +123,15 @@ def render(ctx, slug: str) -> tuple:
         rail += f'<div class="w-36 sm:w-40 lg:w-44">{book_card(ctx, r, s, b, hero_image=hero)}</div>'
     enquire = f"mailto:{email}?subject={subject}"
     english = samples.for_book(ctx, slug)
+    slides = _set_slides(ctx, r, book, english) if book.get("is_set") else []
+    title_size = "text-display-sm" if book.get("is_set") else "text-display-lg"
     main = (
         '<main id="main" class="flex-1">'
         + breadcrumb(r, [("", "Home"), ("books/", "Books")], book["title"])
         + '<section class="py-14 md:py-20 pt-8 md:pt-10"><div><div class="shell"><div class="grid gap-10 '
         'lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16"><div class="lg:sticky lg:top-24 lg:self-start">'
         '<div class="mx-auto max-w-[19rem]">'
-        + _hero(ctx, r, book)
+        + (_set_hero(book, slides) if len(slides) > 1 else _hero(ctx, r, book))
         + '<section aria-label="Rights" class="mt-6"><p class="eyebrow">Rights</p><p class="mt-3 text-sm '
         f'leading-relaxed text-ink-2">{esc(book["rights"])}</p><div class="mt-4 flex flex-col gap-2"><a '
         f'href="{enquire}" class="btn btn-accent w-full">Enquire about rights</a>'
@@ -98,7 +139,7 @@ def render(ctx, slug: str) -> tuple:
         + f'<a href="{r}catalogues/{book["catalogue"]}/#catalogue-reader" class="btn btn-outline w-full">Read '
         'catalogue</a></div></section></div></div><div class="min-w-0"><ul class="mb-5 flex flex-wrap gap-2"><li>'
         f'<a href="{r}books/?category={book["category"]}"><span class="chip">{esc(category_label(ctx, book["category"]))}'
-        f'</span></a></li></ul><h1 class="text-display-lg">{esc(book["title"])}</h1><p class="mt-5 '
+        f'</span></a></li></ul><h1 class="{title_size}">{esc(book["title"])}</h1><p class="mt-5 '
         f'text-[0.9375rem] text-ink-2">{_author(ctx, r, book)}</p><div class="measure mt-8"><div '
         f'class="prose-editorial">{paragraphs(book["description"])}</div></div><dl class="divide-y divide-rule '
         f'border-y border-rule text-sm mt-10">{rows}</dl></div></div></div></div></section>'

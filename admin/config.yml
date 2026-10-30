@@ -110,6 +110,21 @@ collections:
         choose_url: false
         hint: JPG, PNG veya WebP. Site için küçük ve büyük boyutları otomatik üretilir.
       - { name: square_cover, label: Kare kapak, widget: boolean, default: false, hint: Kare formatlı (çoğunlukla resimli çocuk kitapları) kapaklar için açın. }
+      - name: is_set
+        label: Set / seri sayfası
+        widget: boolean
+        default: false
+        required: false
+        hint: Bir sayfada birden çok kitap varsa açın. Başlık küçük yazılır, kapak alanı kaydırmalı olur.
+      - name: set_covers
+        label: Setin diğer kapakları
+        widget: list
+        required: false
+        collapsed: true
+        hint: Yalnız set sayfalarında. İngilizce örneği olan kitabın kapağı otomatik gelir; burada yalnızca örneği olmayan kitapların kapağını ekleyin.
+        fields:
+          - { name: image, label: Kapak, widget: image, choose_url: false }
+          - { name: title, label: Kitap adı, widget: string, required: false, hint: Kapağın altında görünür. }
       - name: description
         label: Tanıtım metni
         widget: text

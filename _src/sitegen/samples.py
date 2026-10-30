@@ -15,7 +15,8 @@ closing page points to the rights enquiry.
 The PDFs stay under _src/ (Jekyll does not publish folders starting with "_"),
 so only page images are on the site. As for the catalogue reader (catalogues.py)
 they are made with PyMuPDF + Pillow when a PDF changes, into
-assets/images/samples/<id>-<revision>/NNN.webp (001 = cover), and recorded in
+assets/images/samples/<id>-<revision>/NNN.webp (001 = cover, cover.webp = its
+small copy for the carousel on set pages), and recorded in
 assets/images/samples/readers.json.
 """
 
@@ -31,6 +32,7 @@ from .html import esc
 MANIFEST = "assets/images/samples/readers.json"
 PAGES_DIR = "assets/images/samples"
 PAGE_PX = 1400  # image width of one page
+COVER_PX = 700  # cover.webp, shown in the carousel on set pages
 WIDE = 1.3      # width / height at or above this: two pages side by side
 ANCHOR = "english-sample"
 
@@ -85,6 +87,8 @@ def _render(ctx, sample_id, pdf, revision):
                 images.append(picture)
     for n, picture in enumerate(images, 1):
         picture.resize(size, Image.LANCZOS).save(page_dir / f"{n:03d}.webp", "WEBP", quality=85, method=4)
+    images[0].resize((COVER_PX, round(COVER_PX * size[1] / size[0])), Image.LANCZOS).save(
+        page_dir / "cover.webp", "WEBP", quality=85, method=4)
     for old in Path(ctx.root, PAGES_DIR).glob(f"{sample_id}-*"):
         if old != page_dir and old.is_dir() and len(old.name) == len(sample_id) + 9:
             shutil.rmtree(old)
