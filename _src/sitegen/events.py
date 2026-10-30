@@ -93,17 +93,19 @@ def sections(ctx, r: str) -> str:
     return out
 
 
-def _card_news(ctx):
-    """The article for the hero card, if it beats the fairs: the first in the news
-    order when it is pinned or not older than the last fair that has ended."""
+def _card_news(ctx, pinned_fairs: list):
+    """The article for the hero card, if it beats the fairs. What is pinned comes
+    first; a pinned article and a pinned fair are decided by date. With nothing
+    pinned, the newest article unless a fair has ended since."""
     articles = news.ordered(ctx)
     if not articles:
         return None
     slug, item = articles[0]
+    day = dates.parse(item["date"])
+    if item.get("pinned"):
+        return (slug, item) if not pinned_fairs or day >= _span(pinned_fairs[0][1])[0] else None
     ended = past(ctx)
-    if item.get("pinned") or not ended or dates.parse(item["date"]) >= _span(ended[0][1])[1]:
-        return slug, item
-    return None
+    return (slug, item) if not pinned_fairs and (not ended or day >= _span(ended[0][1])[1]) else None
 
 
 def _news_aside(ctx, r: str, slug: str, item: dict) -> str:
@@ -123,14 +125,13 @@ def _news_aside(ctx, r: str, slug: str, item: dict) -> str:
 
 
 def aside(ctx, r: str) -> str:
-    """Contents of the hero card on the home page: a pinned event (the soonest
-    upcoming one, else the latest), otherwise the latest news unless a fair has
-    ended since, otherwise the next fair, otherwise the latest one."""
+    """Contents of the hero card on the home page: whatever is pinned, news or
+    fair (see _card_news), otherwise the newer of the latest news and the last
+    fair, with the next fair taking that fair's place if there is one."""
     pinned = [kv for kv in upcoming(ctx) + past(ctx) if kv[1].get("pinned")]
-    if not pinned:
-        article = _card_news(ctx)
-        if article:
-            return _news_aside(ctx, r, *article)
+    article = _card_news(ctx, pinned)
+    if article:
+        return _news_aside(ctx, r, *article)
     items = pinned or upcoming(ctx) or past(ctx)
     label = "Upcoming fair" if items and is_upcoming(items[0][1]) else "Latest fair"
     if not items:
