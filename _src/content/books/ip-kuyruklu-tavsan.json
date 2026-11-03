@@ -2,6 +2,9 @@
   "title": "İp Kuyruklu Tavşan",
   "author": "Onur Erol",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 95,
   "cover": "/assets/images/covers/c9148c7890d56282db11-1000.webp",

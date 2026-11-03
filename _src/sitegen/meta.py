@@ -3,7 +3,7 @@
 import json
 import re
 
-from . import covers
+from . import covers, genres
 from .components import cover_size
 
 
@@ -24,6 +24,7 @@ def render(ctx) -> str:
             "t": book["title"],
             "a": book["author"],
             "c": book["category"],
+            "g": genres.of(book),
             "y": year(book.get("publication_year")),
             "l": book.get("rights_sold", []),
             "f": bool(book.get("featured")),

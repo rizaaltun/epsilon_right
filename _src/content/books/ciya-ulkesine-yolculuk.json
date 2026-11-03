@@ -2,6 +2,9 @@
   "title": "Çiya Ülkesine Yolculuk",
   "author": "Banu Bozdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 116,
   "cover": "/assets/images/covers/97c877eb8bce7449962e-1000.webp",

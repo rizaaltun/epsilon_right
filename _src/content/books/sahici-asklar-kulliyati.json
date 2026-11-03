@@ -1,7 +1,10 @@
 {
   "title": "Sahici Aşklar Külliyatı",
   "author": "Cem Mumcu",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 195,
   "cover": "/assets/images/covers/3468c1d5999f1aa18256-1000.webp",

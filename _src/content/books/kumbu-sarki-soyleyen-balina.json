@@ -2,6 +2,9 @@
   "title": "Kumbu: Şarkı Söyleyen Balina",
   "author": "Gülçağ Konçe",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 26,
   "cover": "/assets/images/covers/03786ab5d7f9ae295f8f-1000.webp",

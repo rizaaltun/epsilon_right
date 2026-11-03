@@ -2,6 +2,9 @@
   "title": "Meraklı Gugu",
   "author": "Övgü Tahberer Terleç",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 85,
   "cover": "/assets/images/covers/98807a8754ca50b01df4-708.webp",

@@ -2,6 +2,9 @@
   "title": "Uzayda da Oyun Oynanır",
   "author": "Resul Aydoğan",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 89,
   "cover": "/assets/images/covers/08dbfe3d6751717e59b8-777.webp",

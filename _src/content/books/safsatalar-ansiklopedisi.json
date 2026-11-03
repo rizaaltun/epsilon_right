@@ -2,6 +2,9 @@
   "title": "Safsatalar Ansiklopedisi",
   "author": "Immanuel Tolstoyevski",
   "category": "non-fiction",
+  "genres": [
+    "Philosophy"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 173,
   "cover": "/assets/images/covers/644ec8668232047e2eca-545.webp",

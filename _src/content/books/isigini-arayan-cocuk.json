@@ -2,6 +2,9 @@
   "title": "Işığını Arayan Çocuk",
   "author": "Yasemin Meriç Kazdal & Buket Yükseker",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 59,
   "cover": "/assets/images/covers/5cae9a6297da20d9b643-583.webp",

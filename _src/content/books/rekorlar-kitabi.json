@@ -2,6 +2,9 @@
   "title": "Rekorlar Kitabı",
   "author": "Rıfat Batur",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 75,
   "cover": "/assets/images/covers/53d33d9aac1c7b7b7904-1000.webp",

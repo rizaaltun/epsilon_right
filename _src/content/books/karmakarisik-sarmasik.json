@@ -1,7 +1,10 @@
 {
   "title": "Karmakarışık Sarmaşık",
   "author": "Cem Mumcu",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 198,
   "cover": "/assets/images/covers/fd30b38aeac2dc1ba083-1000.webp",

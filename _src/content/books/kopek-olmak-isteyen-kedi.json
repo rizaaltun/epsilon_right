@@ -2,6 +2,9 @@
   "title": "Köpek Olmak İsteyen Kedi",
   "author": "Öznur Karaeloğlu",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 55,
   "cover": "/assets/images/covers/793dd834772019b139f8-1000.webp",

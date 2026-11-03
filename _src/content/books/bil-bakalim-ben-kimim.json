@@ -2,6 +2,9 @@
   "title": "Bil Bakalım Ben Kimim?",
   "author": "Övgü Tahberer Terleç",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 29,
   "cover": "/assets/images/covers/3e61875e47e80edf6e2e-697.webp",

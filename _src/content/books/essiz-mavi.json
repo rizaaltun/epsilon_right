@@ -2,6 +2,9 @@
   "title": "Eşsiz Mavi",
   "author": "Serap Şahin",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 144,
   "cover": "/assets/images/covers/0e4bf02806862097f2fc-1000.webp",

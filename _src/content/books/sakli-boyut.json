@@ -2,6 +2,9 @@
   "title": "Saklı Boyut",
   "author": "Serap Şahin",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 145,
   "cover": "/assets/images/covers/0fdc409de8c4c873f49c-1000.webp",

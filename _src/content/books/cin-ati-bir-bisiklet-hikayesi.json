@@ -2,6 +2,9 @@
   "title": "Cin Ati: Bir Bisiklet Hikayesi",
   "author": "Banu Bozdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 114,
   "cover": "/assets/images/covers/155b8056ee79f082bc00-1000.webp",

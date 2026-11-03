@@ -95,6 +95,13 @@ collections:
           - { label: Adult Fiction, value: adult-fiction }
           - { label: Non-Fiction, value: non-fiction }
           - { label: Young Adult, value: young-adult }
+      - name: genres
+        label: Alt kategori
+        widget: select
+        multiple: true
+        required: false
+        hint: "Kitap sayfasında etiket olarak görünür ve Books sayfasındaki Category filtresinde ana kategorinin altında listelenir. Birden çok seçilebilir. Romanlar: Literary Fiction … Crime & Mystery; Non-Fiction: Psychology … Food & Drink; çocuk kitapları: Picture Book, Early Readers, Middle Grade."
+        options: ["Literary Fiction", "Historical Fiction", "Fantasy", "Crime & Mystery", "Psychology", "Self-Help", "Health & Wellness", "Parenting & Education", "Popular Science", "Philosophy", "Essays", "Art", "History & Archaeology", "Cultural History", "Food & Drink", "Picture Book", "Early Readers", "Middle Grade"]
       - name: catalogue
         label: Katalog
         widget: relation

@@ -2,6 +2,9 @@
   "title": "Bulunması İmkansız Orman",
   "author": "Övgü Tahberer Terleç",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 84,
   "cover": "/assets/images/covers/facfe85c776776ce22ee-1000.webp",

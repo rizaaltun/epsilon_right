@@ -2,6 +2,11 @@
   "title": "Yazma Cesareti",
   "author": "Nihan Kaya",
   "category": "non-fiction",
+  "genres": [
+    "Psychology",
+    "Popular Science",
+    "Art"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 168,
   "cover": "/assets/images/covers/3d11dfaa7146d68a82e3-1000.webp",

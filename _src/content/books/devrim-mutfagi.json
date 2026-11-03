@@ -2,6 +2,10 @@
   "title": "Devrim Mutfağı",
   "author": "Bengi Başaran, Umur Talu",
   "category": "non-fiction",
+  "genres": [
+    "Cultural History",
+    "Food & Drink"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 164,
   "cover": "/assets/images/covers/feea34222b015de2d88f-1000.webp",

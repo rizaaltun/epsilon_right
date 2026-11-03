@@ -1,7 +1,10 @@
 {
   "title": "Büyü Dükkanı Üçüncü Bahar",
   "author": "Yeşim Türköz",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 186,
   "cover": "/assets/images/covers/e47e46511fbc786a22f1-1000.webp",

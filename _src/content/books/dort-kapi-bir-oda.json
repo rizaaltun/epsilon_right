@@ -2,6 +2,11 @@
   "title": "Dört Kapı Bir Oda",
   "author": "Dilek Yeşilbaş",
   "category": "non-fiction",
+  "genres": [
+    "Psychology",
+    "Parenting & Education",
+    "Popular Science"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 170,
   "cover": "/assets/images/covers/4857873965b211b4fc6d-1000.webp",

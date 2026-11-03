@@ -2,6 +2,9 @@
   "title": "Mutluluğun Resmi",
   "author": "Pelin Öney",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 21,
   "cover": "/assets/images/covers/d15b419ee5ae517b3a64-1000.webp",

@@ -2,6 +2,9 @@
   "title": "Geceye Uyananlar",
   "author": "Cahide Birgül",
   "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 149,
   "cover": "/assets/images/covers/71811b2319a5449f961e-1000.webp",

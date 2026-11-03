@@ -3,7 +3,7 @@
 import re
 from urllib.parse import quote
 
-from . import covers, samples, seo, shell
+from . import covers, genres, samples, seo, shell
 from .components import FILL, HERO_SIZES, aspect, book_card, breadcrumb, cover_img, section_heading
 from .html import esc, prefix_for
 
@@ -139,7 +139,7 @@ def render(ctx, slug: str) -> tuple:
         + f'<a href="{r}catalogues/{book["catalogue"]}/#catalogue-reader" class="btn btn-outline w-full">Read '
         'catalogue</a></div></section></div></div><div class="min-w-0"><ul class="mb-5 flex flex-wrap gap-2"><li>'
         f'<a href="{r}books/?category={book["category"]}"><span class="chip">{esc(category_label(ctx, book["category"]))}'
-        f'</span></a></li></ul><h1 class="{title_size}">{esc(book["title"])}</h1><p class="mt-5 '
+        f'</span></a></li>{genres.chips(r, book)}</ul><h1 class="{title_size}">{esc(book["title"])}</h1><p class="mt-5 '
         f'text-[0.9375rem] text-ink-2">{_author(ctx, r, book)}</p><div class="measure mt-8"><div '
         f'class="prose-editorial">{paragraphs(book["description"])}</div></div><dl class="divide-y divide-rule '
         f'border-y border-rule text-sm mt-10">{rows}</dl></div></div></div></div></section>'
@@ -167,7 +167,7 @@ def book_seo(ctx, slug: str, path: str):
         "name": book["title"],
         "url": seo.url(ctx, path),
         "author": {"@type": "Person", "name": book["author"]},
-        "genre": category,
+        "genre": [category] + genres.of(book) if genres.of(book) else category,
         "publisher": {"@type": "Organization", "name": book.get("imprint") or ctx.settings["site_name"]},
     }
     for pub_slug, pub in ctx.publishers.items():

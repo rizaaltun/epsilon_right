@@ -54,6 +54,15 @@ Baskı dosyalarından (iç sayfalar + kapak PDF'i) bu önizlemeyi üretmek için
 Pillow gerekir). Kesim payları ve baskı işaretleri kırpılır, sayfalar web boyutuna
 indirilir; sonuç birkaç MB olur.
 
+## Kategoriler
+
+Her kitabın bir ana kategorisi (Adult Fiction, Non-Fiction, Children's Books, Young Adult) ve
+isteğe bağlı **Alt kategori**leri vardır (Psychology, Picture Book gibi; birden çok seçilebilir).
+Alt kategoriler kitap sayfasında etiket olarak görünür; etikete tıklayınca Books sayfası o alt
+kategoriyle filtrelenmiş açılır. Books sayfasındaki Category filtresinde her ana kategorinin
+altında, kitapları olan alt kategoriler sayılarıyla listelenir. İlk liste "Kitap Kategorileri"
+Excel dosyalarından alındı (Kasım 2026).
+
 ## Set / seri sayfaları
 
 Bir sayfada birden çok kitap gösteriliyorsa (örneğin 8'li hayvan serisi) kitabın düzenleme

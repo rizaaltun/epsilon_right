@@ -2,6 +2,9 @@
   "title": "Sevginin Dili",
   "author": "Esat Zorkirişçi",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 11,
   "cover": "/assets/images/covers/56c5920db3408b633db6-1000.webp",

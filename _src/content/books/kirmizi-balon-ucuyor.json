@@ -2,6 +2,9 @@
   "title": "Kırmızı Balon Uçuyor",
   "author": "Seda Aksoy Evren",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 101,
   "cover": "/assets/images/covers/41b58af826234b4a2147-1000.webp",

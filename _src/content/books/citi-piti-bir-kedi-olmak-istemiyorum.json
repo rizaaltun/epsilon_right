@@ -2,6 +2,9 @@
   "title": "Çıtı Pıtı Bir Kedi Olmak İstemiyorum",
   "author": "Renan Özdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 118,
   "cover": "/assets/images/covers/6e2b834bfae8fd0a0f7d-504.webp",

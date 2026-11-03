@@ -2,6 +2,11 @@
   "title": "Başarının Pin Kodu",
   "author": "Cevher Sönmez",
   "category": "non-fiction",
+  "genres": [
+    "Psychology",
+    "Parenting & Education",
+    "Popular Science"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 176,
   "cover": "/assets/images/covers/ded0fdf6437b6a536740-1000.webp",

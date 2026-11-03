@@ -2,6 +2,9 @@
   "title": "Geri Dönüşüm Ülkesi",
   "author": "Meryem Ermeydan",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 23,
   "cover": "/assets/images/covers/8a12b75a1933cf1600d0-1000.webp",

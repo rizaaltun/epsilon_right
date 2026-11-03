@@ -1,7 +1,10 @@
 {
   "title": "Direksiyon",
   "author": "Üstün Dökmen",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 189,
   "cover": "/assets/images/covers/5ea218460a4441f17aba-531.webp",

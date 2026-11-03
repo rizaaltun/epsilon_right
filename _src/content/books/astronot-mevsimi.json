@@ -2,6 +2,9 @@
   "title": "Astronot Mevsimi",
   "author": "Nurdan Bağrıaçık",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 15,
   "cover": "/assets/images/covers/49419aff0779e8a1940b-1000.webp",

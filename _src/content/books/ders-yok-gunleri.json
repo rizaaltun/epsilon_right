@@ -2,6 +2,9 @@
   "title": "Ders Yok Günleri",
   "author": "Övgü Tahberer Terleç",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 30,
   "cover": "/assets/images/covers/ab78599d9cdcfd4492bf-1000.webp",

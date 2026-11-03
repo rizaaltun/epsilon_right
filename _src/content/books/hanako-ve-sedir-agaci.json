@@ -2,6 +2,9 @@
   "title": "Hanako ve Sedir Ağacı",
   "author": "Akasya Asıltürkmen",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 19,
   "cover": "/assets/images/covers/76650cc4353e6ba4b712-1000.webp",

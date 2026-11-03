@@ -2,6 +2,9 @@
   "title": "Atlas'ın Origami Günlüğü",
   "author": "Hülya Biyan",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 40,
   "cover": "/assets/images/covers/1587415255aed28a40a4-1000.webp",

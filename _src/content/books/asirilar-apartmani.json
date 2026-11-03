@@ -2,6 +2,9 @@
   "title": "Aşırılar Apartmanı",
   "author": "Öznur Duyum",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 42,
   "cover": "/assets/images/covers/8d1e1b3a0d461089a3b9-764.webp",

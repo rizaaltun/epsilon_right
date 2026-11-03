@@ -2,6 +2,9 @@
   "title": "Koko: Korkunç Komik",
   "author": "Rıfat Batur",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 74,
   "cover": "/assets/images/covers/9d9cfb8e12c242795277-1000.webp",

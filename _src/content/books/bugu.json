@@ -2,6 +2,9 @@
   "title": "Buğu",
   "author": "Nihan Kaya",
   "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 157,
   "cover": "",

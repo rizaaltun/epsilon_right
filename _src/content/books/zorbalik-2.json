@@ -2,6 +2,9 @@
   "title": "Zorbalık 2",
   "author": "Rıfat Batur",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 72,
   "cover": "/assets/images/covers/1cceccd57c278869b065-1000.webp",

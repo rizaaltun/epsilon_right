@@ -2,6 +2,9 @@
   "title": "Çöl Prensi ve Buz",
   "author": "Tuğçe Büyükuğurlu",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 130,
   "cover": "/assets/images/covers/1ecfc6339afba5bb1074-1000.webp",

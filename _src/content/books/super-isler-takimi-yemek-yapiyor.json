@@ -2,6 +2,9 @@
   "title": "Süper İşler Takımı Yemek Yapıyor",
   "author": "Esat Zorkirişçi",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 64,
   "cover": "/assets/images/covers/f302aa9fd2c8afb49934-1000.webp",

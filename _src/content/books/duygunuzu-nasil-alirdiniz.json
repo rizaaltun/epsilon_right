@@ -2,6 +2,9 @@
   "title": "Duygunuzu Nasıl Alırdınız?",
   "author": "Ezo Sunal",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 1,
   "cover": "/assets/images/covers/4ff1b660d39d33a5de27-1000.webp",

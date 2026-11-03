@@ -1,7 +1,10 @@
 {
   "title": "İç Dünya Oyunları",
   "author": "Yeşim Türköz",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 188,
   "cover": "/assets/images/covers/7b995b796bb36d548c56-1000.webp",

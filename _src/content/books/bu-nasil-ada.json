@@ -2,6 +2,9 @@
   "title": "Bu Nasıl Ada?",
   "author": "Doğan Akdoğan",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 37,
   "cover": "/assets/images/covers/8e1cd8c332e803c2a1bd-1000.webp",

@@ -2,6 +2,9 @@
   "title": "Kütüphanemdeki Sesler",
   "author": "Serdar Turgut",
   "category": "non-fiction",
+  "genres": [
+    "Essays"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 233,
   "cover": "/assets/images/covers/ec86619e8e5efddbf78b-585.webp",

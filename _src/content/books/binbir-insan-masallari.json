@@ -1,7 +1,10 @@
 {
   "title": "Binbir İnsan Masalları",
   "author": "Cem Mumcu",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 194,
   "cover": "/assets/images/covers/715ffdb1598da3a82f06-1000.webp",

@@ -2,6 +2,9 @@
   "title": "Doğadaki Sağlık 1-2",
   "author": "Ayhan Ercan",
   "category": "non-fiction",
+  "genres": [
+    "Health & Wellness"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 167,
   "cover": "/assets/images/covers/4f9ec4a5e29b6bb9cbfe-1000.webp",

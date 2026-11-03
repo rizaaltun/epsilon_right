@@ -2,6 +2,9 @@
   "title": "Yeni Bir Sen Yaratmak",
   "author": "Deniz Bağan",
   "category": "non-fiction",
+  "genres": [
+    "Psychology"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 221,
   "cover": "/assets/images/covers/d9564ebf43895bb20356-807.webp",

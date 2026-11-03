@@ -2,6 +2,9 @@
   "title": "Renkli Eldivenler ve Küçük Kar Tanesi",
   "author": "Banu Bozdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 105,
   "cover": "/assets/images/covers/397da8c7da1c3957b4cc-1000.webp",

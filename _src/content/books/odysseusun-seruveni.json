@@ -2,6 +2,9 @@
   "title": "Odysseusun Serüveni",
   "author": "Tuğçe Büyükuğurlu",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 132,
   "cover": "/assets/images/covers/71d656461ee237f6aef1-797.webp",

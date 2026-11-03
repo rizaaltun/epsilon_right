@@ -2,6 +2,9 @@
   "title": "Kadıköy Sevgilim",
   "author": "Ahmet Erol",
   "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 155,
   "cover": "/assets/images/covers/18f74834d38b6fcb5597-1000.webp",

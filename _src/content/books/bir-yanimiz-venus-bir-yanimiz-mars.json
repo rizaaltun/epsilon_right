@@ -2,6 +2,9 @@
   "title": "Bir Yanımız Venüs Bir Yanımız Mars",
   "author": "Başak Sözer & Öykü Akarca",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 81,
   "cover": "/assets/images/covers/1a78c8e070c86e27f7cb-852.webp",

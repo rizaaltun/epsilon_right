@@ -2,6 +2,9 @@
   "title": "Bu Ne Biçim Pinokyo?",
   "author": "Nurdan Bağrıaçık",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 103,
   "cover": "/assets/images/covers/67f5b3f091d56be915b2-1000.webp",

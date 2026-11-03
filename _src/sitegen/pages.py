@@ -15,6 +15,7 @@ Slots in a fragment are filled from content at build time:
   <!--@author-cards-->, <!--@author-count-->, <!--@top-authors limit=N-->, <!--@author-letters-->,
   <!--@authors-with-titles-->    author cards (A–Z), count, most-published rail, A–Z jump list
   <!--@featured-filter kind=publishers|authors-->  the "Featured" filter row, if any are featured
+  <!--@category-filter-->        the Category list on /books/, with each category's subcategories
 
 Before the slots are filled, the fragment is rendered as a template (see
 sitegen/template.py) with the page's editable texts (texts.json next to the
@@ -31,14 +32,14 @@ from pathlib import Path
 
 import html
 
-from . import blog, catalogues, events, news, publishers, seo, services, shell, template
+from . import blog, catalogues, events, genres, news, publishers, seo, services, shell, template
 from .components import book_card
 from .html import prefix_for
 
 COUNT = re.compile(r'<!--@count select="([^"]+)"-->')
 OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside|publisher-cards|publisher-count|"
                    r"publisher-summary|publisher-countries|author-cards|author-count|top-authors|author-letters|"
-                   r"authors-with-titles|featured-filter|service-cards|catalogue-cards|catalogue-count|blog-cards|blog-count)((?: \w+=\S+?)*)-->")
+                   r"authors-with-titles|featured-filter|category-filter|service-cards|catalogue-cards|catalogue-count|blog-cards|blog-count)((?: \w+=\S+?)*)-->")
 SLOT = re.compile(r'<!--@cards select="([^"]+)" wrap=(li|none)(?: article="([^"]+)")?-->')
 
 
@@ -91,6 +92,8 @@ def render(ctx, record: dict) -> tuple:
             return events.sections(ctx, r)
         if name == "event-aside":
             return events.aside(ctx, r)
+        if name == "category-filter":
+            return genres.category_filter(ctx)
         if name == "publisher-cards":
             return publishers.cards(ctx, r, args.get("order", "panel"))
         if name == "publisher-count":

@@ -2,6 +2,9 @@
   "title": "Gizemli Hikaye Küpleri: Vahşi Orman",
   "author": "Fatih Cem Gülbent",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 33,
   "cover": "/assets/images/covers/994dc84cb3223582a8b4-1000.webp",

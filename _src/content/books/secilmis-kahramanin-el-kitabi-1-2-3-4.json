@@ -2,6 +2,9 @@
   "title": "Seçilmiş Kahramanın El Kitabı 1 -2 -3-4",
   "author": "Resul Aydoğan",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 134,
   "cover": "/assets/images/covers/330f38c2f441097cb008-1000.webp",

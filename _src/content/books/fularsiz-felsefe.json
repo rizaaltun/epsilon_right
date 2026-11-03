@@ -2,6 +2,9 @@
   "title": "Fularsız Felsefe",
   "author": "Immanuel Tolstoyevski",
   "category": "non-fiction",
+  "genres": [
+    "Philosophy"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 172,
   "cover": "/assets/images/covers/53187883f34803ecc798-543.webp",
