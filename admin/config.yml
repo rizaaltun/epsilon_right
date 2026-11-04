@@ -596,8 +596,8 @@ collections:
           - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
-          - { name: hero_image, label: "Üst görsel", widget: image, choose_url: false }
-          - { name: hero_image_alt, label: "Üst görsel açıklaması", widget: string }
+          - { name: hero_image, label: "Üst görsel", widget: image, required: false, choose_url: false, hint: "Başlığın altında geniş (21:9) görünür. Boşsa gösterilmez." }
+          - { name: hero_image_alt, label: "Üst görsel açıklaması", widget: string, required: false }
           - { name: lead, label: "Öne çıkan giriş paragrafı", widget: text }
           - name: body
             label: Metin
@@ -605,6 +605,8 @@ collections:
             required: false
             buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
             editor_components: []
+          - { name: side_image, label: "Metnin yanındaki görsel", widget: image, required: false, choose_url: false, media_folder: /assets/images/uploads/about, public_folder: /assets/images/uploads/about, hint: "Giriş metninin sağında dikey (4:5) görünür; telefonda metnin altına iner. Boşsa metin tek sütun kalır." }
+          - { name: side_image_alt, label: "Metnin yanındaki görselin açıklaması", widget: string, required: false }
           - name: brands
             label: Yayınevi blokları
             widget: list

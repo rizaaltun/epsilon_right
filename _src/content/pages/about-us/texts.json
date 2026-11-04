@@ -2,10 +2,12 @@
   "eyebrow": "Since 1993",
   "title": "About",
   "intro": "One of Türkiye's leading publishing groups",
-  "hero_image_alt": "The Epsilon Publishing Group team at work in the Istanbul office",
-  "hero_image": "/assets/images/demo/about-group-intro.jpg",
+  "hero_image_alt": "",
+  "hero_image": "",
   "lead": "Founded in 1993, Epsilon Publishing Group has grown into one of Türkiye's leading publishing groups, bringing together a diverse range of books, authors, and readers through its publishing houses and imprints.",
   "body": "Today, our group includes Epsilon (home to the Kafka and Uçan Fil imprints) alongside Nemesis and its imprints (Masalperest, Nora, and Serenad), as well as Okuyan Us and Okuyan Koala. Together, we publish across a broad spectrum of genres and age groups, from adult fiction and non-fiction to young adult, picture books, middle-grade fiction, and board books.\n\nIn 2019, we began a new chapter in our publishing journey by representing our authors and home-grown titles in international markets. Since then, we have participated in book fairs and fellowship programmes around the world, building strong and lasting relationships with publishers, editors, literary agents, and rights professionals.\n\nSince 2024, we have also been welcoming the international publishing community at our own stands at the Bologna Children's Book Fair, Frankfurt Book Fair, and Shanghai International Children's Book Fair.\n\nToday, we are proud to have sold the rights to more than 100 of our titles in almost 70 languages across 180 territories. Seeing the stories of our authors travel across languages, cultures, and borders remains one of the most rewarding parts of our work.",
+  "side_image": "/assets/images/uploads/about/frankfurt-2025-team.webp",
+  "side_image_alt": "The Epsilon Publishing Group team at its stand at the Frankfurt Book Fair 2025",
   "brands": [
     {
       "eyebrow": "Epsilon Publishing",
