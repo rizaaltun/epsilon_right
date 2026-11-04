@@ -74,6 +74,10 @@ category, wrapping round to the start of the list.
 Covers: a book stores the path of its largest WebP variant; the `srcset` is
 built from every `<stem>-<width>.webp` found in `assets/images/covers/`.
 
+Every page links `assets/styles.css` and `assets/site.js` with `?v=<hash of the file>`
+(`sitegen/shell.py`), so after a deploy a browser never shows a new page with a cached old
+stylesheet; editing either file changes every page.
+
 Set `SITE_TODAY=YYYY-MM-DD` to build as of another date (fair status depends on it).
 
 ## Phase 1 guarantee
