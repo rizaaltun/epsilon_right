@@ -617,8 +617,19 @@ collections:
                 required: false
                 buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
                 editor_components: []
-              - { name: image, label: "Görsel", widget: image, choose_url: false }
-              - { name: image_alt, label: "Görsel açıklaması", widget: string }
+              - { name: logo, label: "Logo", widget: image, choose_url: false, media_folder: /assets/images/uploads/brands, public_folder: /assets/images/uploads/brands, hint: "Metnin yanındaki kutuda büyük görünür. Arka planı saydam PNG/WebP ya da SVG, en az 1200 piksel genişlik." }
+              - { name: logo_alt, label: "Logo açıklaması", widget: string, required: false, hint: "Örn. Epsilon logo" }
+              - { name: link, label: "Logo linki", widget: string, required: false, hint: "İsteğe bağlı, örn. /publishers/epsilon/" }
+              - name: imprints
+                label: Alt markalar
+                label_singular: Alt marka
+                widget: list
+                required: false
+                hint: Logonun altındaki şeritte yan yana görünür.
+                fields:
+                  - { name: imprint, label: "Ad", widget: string }
+                  - { name: imprint_logo, label: "Logo", widget: image, choose_url: false, media_folder: /assets/images/uploads/brands, public_folder: /assets/images/uploads/brands }
+                  - { name: imprint_link, label: "Link", widget: string, required: false, hint: "İsteğe bağlı, örn. /publishers/kafka-kitap/" }
           - { name: next_eyebrow, label: "Hedefler: üst etiket", widget: string }
           - { name: next_title, label: "Hedefler: başlık", widget: string }
           - name: next_body
