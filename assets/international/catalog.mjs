@@ -62,9 +62,9 @@ function render(){
  $('fuzzy-note').hidden=tab==='stores'||!$('search').value||!matches.length||matches[0].score>=85;
  document.querySelectorAll('[data-tab]').forEach(b=>{if(b.dataset.tab===tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
  updateLocation();
- $('results-status').textContent=tab==='books'?`${matches.length} books · ${escape(destinationName())}`:tab==='stores'?`${scope().length} bookshops · ISBN search`:`${new Set(matches.map(r=>r.book[tab==='authors'?'author':'brand'])).size} ${tab==='authors'?'author / contributor credits':'publishers'}`;
+ $('results-status').textContent=tab==='books'?`${matches.length} ${matches.length===1?'book':'books'} · ${escape(destinationName())}`:tab==='stores'?`${scope().length} bookshops · ISBN search`:`${new Set(matches.map(r=>r.book[tab==='authors'?'author':'brand'])).size} ${tab==='authors'?'author / contributor credits':'publishers'}`;
  $('more').hidden=tab!=='books'||matches.length<=limit;
- $('results').innerHTML=tab==='stores'?retailerDirectory():!matches.length?'<div class="ic-empty"><h2>No matches this time.</h2><p>Try a shorter title or reset the filters.</p></div>':tab==='books'?`<div class="ic-grid">${matches.slice(0,limit).map(r=>card(r.book)).join('')}</div>`:directory(tab);
+ $('results').innerHTML=tab==='stores'?retailerDirectory():!matches.length?'<div class="ic-empty"><h2>No matches this time.</h2><p>Try a shorter title or reset the filters.</p></div>':tab==='books'?`<div class="ic-grid${matches.length===1?' ic-single':''}">${matches.slice(0,limit).map(r=>card(r.book)).join('')}</div>`:directory(tab);
  syncURL();
 }
 function suggestions(){

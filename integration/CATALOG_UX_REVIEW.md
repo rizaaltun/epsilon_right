@@ -20,7 +20,7 @@ A reader arrives with a book, author or topic in mind and needs a relevant retai
 
 1. A valid explicit link destination wins, so review/demo URLs are deterministic.
 2. A saved deliberate selection wins over a new connection estimate: a reader may be shopping for someone abroad.
-3. Otherwise query `/api/location` using same-origin, no-store HTTP. The edge handler uses `request.cf.country` and `request.cf.continent`, never visitor-supplied query parameters or CF-IPCountry headers.
+3. Otherwise query `/api/location` using same-origin, no-store HTTP. The edge handler uses `request.cf.country` and `request.cf.continent`, never query-parameter country overrides. An opt-in `CF-IPCountry` fallback is used only on the review host, where the Cloudflare proxy overwrites this header. The published endpoint returned US both normally and when a test request attempted to supply FI, confirming that the caller could not override the country. A standalone adapter keeps this header fallback off unless `TRUST_CLOUDFLARE_COUNTRY_HEADER=true` is explicitly configured behind a trusted proxy.
 4. Only country + continent + source are returned. No IP address, city, coordinates, street address or GPS request is exposed or stored by this module.
 5. If the edge country is not in the retailer list but its region is supported (Spain → Europe), show that fact and regional exploration, without presenting another country's store as local. Japan is not automatically labelled Middle East.
 6. If network lookup fails or times out, use a clearly labelled device suggestion. If neither works, ask the reader to choose; do not invent a destination.
@@ -35,11 +35,12 @@ Network location is approximate; VPNs/proxies may change it. The algorithm is no
 - `integration/catalog-location/location.mjs` is the coarse Cloudflare country endpoint.
 - The separate review Site now includes an edge handler plus the catalogue assets, so `/api/location` is available alongside the UI.
 - The main GitHub Pages site remains unchanged. To activate network country lookup there, host the endpoint on an edge route or separate approved origin and set `catalog_location_endpoint` in site settings. For a separate origin configure `ALLOWED_ORIGINS` to the exact live site origin. Without this endpoint the UI clearly falls back to device settings.
+- The published `/api/location` endpoint was checked end to end: HTTP 200, private/no-store caching, coarse country only. This was a US cloud test, not a physical Finland session.
 - The review site's build embeds its static assets into a self-contained Worker. Source images on the main repository remain untouched; the review copy uses smaller book images.
 
 ## Scenario checks
 
-Automated: 10 tests cover the original catalogue/search checks plus Finland vs US device settings, saved/shared destination priority, region scope, unknown/sentinel countries, Japan fallback, and coarse endpoint privacy/header spoof protection. Main-site build check still matches all 367 existing pages.
+Automated: 11 tests cover the original catalogue/search checks plus Finland vs US device settings, saved/shared destination priority, region scope, unknown/sentinel countries, Japan fallback, and coarse endpoint privacy/header spoof protection. Main-site build check still matches all 367 existing pages.
 
 Desktop browser: Finland → `kurk mantlu` → Kürk Mantolu Madonna → Adlibris FI ISBN link; modal's first group is Europe · Finland; selecting Europe removes country-specific primary CTAs; deliberate selection updates the location strip. A 390px layout and keyboard close/focus behavior are checked before publication. No Finland-based human session, retailer stock feed or physical mobile device was tested.
 

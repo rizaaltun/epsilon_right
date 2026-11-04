@@ -7,7 +7,8 @@ export const REGIONS = [
 ];
 export const countryName = code => {try{return new Intl.DisplayNames(['en'],{type:'region'}).of(code==='UK'?'GB':code);}catch{return code;}};
 export const normalizeCountry = code => code==='GB'?'UK':/^[A-Z]{2}$/.test(code||'')&&!['XX','T1'].includes(code)?code:null;
-export function regionFor(country,continent){return REGIONS.find(r=>r.countries.includes(country)) || REGIONS.find(r=>r.continent===continent&&continent!=='AS');}
+const additionalCountries={EUROPE:['AL','AD','AM','AZ','BY','BA','BG','HR','CY','CZ','EE','FO','GE','GI','GR','GL','HU','IS','IE','IT','XK','LV','LI','LT','LU','MT','MD','MC','ME','MK','PL','PT','RO','RU','SM','RS','SK','SI','ES','TR','UA','VA'],NORTH_AMERICA:['CA','MX'],MIDDLE_EAST:['BH','IQ','IL','JO','KW','LB','OM','PS','QA','SA','SY','YE'],OCEANIA:['NZ']};
+export function regionFor(country,continent){return REGIONS.find(r=>r.countries.includes(country)||(additionalCountries[r.id]||[]).includes(country)) || REGIONS.find(r=>r.continent===continent&&continent!=='AS');}
 export function isMarket(value){return value==='ALL'||REGIONS.some(r=>r.id===value||r.countries.includes(value));}
 export function marketFromGeo(data){
  const country=normalizeCountry(data?.country), region=regionFor(country,data?.continent);

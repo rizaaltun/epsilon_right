@@ -72,3 +72,12 @@ test('location endpoint exposes coarse edge country only and cannot be overridde
  assert.equal(locationData(noEdge).country,null);
  assert.equal(locationResponse(new Request('https://example.test/api/location',{headers:{Origin:'https://untrusted.example'}})).status,403);
 });
+test('opt-in trusted country header supports Sites proxy without overriding direct edge metadata',()=>{
+ const req=new Request('https://example.test/api/location',{headers:{'CF-IPCountry':'FI'}});
+ assert.equal(locationData(req).country,null);
+ assert.equal(locationData(req,{trustCloudflareHeader:true}).country,'FI');
+ Object.defineProperty(req,'cf',{value:{country:'DE',continent:'EU'}});
+ assert.equal(locationData(req,{trustCloudflareHeader:true}).country,'DE');
+ assert.equal(marketFromGeo({country:'ES',continent:null}).market,'EUROPE');
+ assert.equal(marketFromGeo({country:'JP',continent:null}).market,'ALL');
+});

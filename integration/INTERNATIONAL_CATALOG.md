@@ -46,6 +46,6 @@ API reference used: https://ai.google.dev/api/generate-content and https://ai.go
 
 ## Validation
 
-`node --test tests/international-catalog.test.mjs` now runs 10 tests and covers counts, ISBN checksums, sample typo searches, routing, URL encoding, proxy input/configuration/rate-limit guards, upstream failure handling, and output ISBN allowlisting.
+`node --test tests/international-catalog.test.mjs` now runs 11 tests and covers counts, ISBN checksums, sample typo searches, routing, URL encoding, proxy input/configuration/rate-limit guards, upstream failure handling, and output ISBN allowlisting.
 
 Browser QA: desktop rendering; `kurk mantlu` → Kürk Mantolu Madonna; Germany → Thalia and Dussmann; detail modal has 19 retailer links; Masalperest + Turkish authors → 27 titles; corresponding author-credit directory → 8 entries; Germany bookshop directory → 2 shops; unconfigured adviser state. A 390px iframe layout was checked with no horizontal body overflow; this is not a physical mobile-device session. Live retailer stock/API calls were not tested.
