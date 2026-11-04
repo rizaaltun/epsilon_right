@@ -1,6 +1,23 @@
 """The page shell every page shares: <head>, site header, footer, scripts."""
 
+import hashlib
+from pathlib import Path
+
 from .html import esc, home_href
+
+ASSETS = Path(__file__).resolve().parents[2] / "assets"
+_versions = {}
+
+
+def version(name: str) -> str:
+    """A short hash of an asset's bytes for its URL (?v=…). Pages and the
+    stylesheet are cached separately (10 minutes on GitHub Pages), so without it
+    a new page could be shown with the old stylesheet."""
+    stat = (ASSETS / name).stat()
+    key = (name, stat.st_mtime_ns, stat.st_size)
+    if key not in _versions:
+        _versions[key] = hashlib.sha256((ASSETS / name).read_bytes()).hexdigest()[:10]
+    return _versions[key]
 
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;"
@@ -44,7 +61,7 @@ def head(r: str, title_html: str, extra: str = "", seo_html: str = "") -> str:
         f'<link rel="stylesheet" href="{FONTS}">\n'
         "<style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,"
         "BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style>\n"
-        f'<link rel="stylesheet" href="{r}assets/styles.css">{extra.replace("~/", r)}</head>'
+        f'<link rel="stylesheet" href="{r}assets/styles.css?v={version("styles.css")}">{extra.replace("~/", r)}</head>'
         '<body><div hidden=""><!--$--><!--/$--></div><div class="flex min-h-dvh flex-col">'
     )
 
@@ -214,7 +231,7 @@ def footer(r: str, settings: dict, lazy_logo: bool = True) -> str:
 
 def tail(r: str, extra: str = "") -> str:
     return (
-        f'</div>\n<script>window.__PREFIX="{r}";</script><script src="{r}assets/site.js" defer></script>'
+        f'</div>\n<script>window.__PREFIX="{r}";</script><script src="{r}assets/site.js?v={version("site.js")}" defer></script>'
         f'{extra.replace("~/", r)}{CF_ANALYTICS}</body></html>'
     )
 
