@@ -124,27 +124,51 @@ def _news_aside(ctx, r: str, slug: str, item: dict) -> str:
     )
 
 
-def aside(ctx, r: str) -> str:
-    """Contents of the hero card on the home page: whatever is pinned, news or
-    fair (see _card_news), otherwise the newer of the latest news and the last
-    fair, with the next fair taking that fair's place if there is one."""
-    pinned = [kv for kv in upcoming(ctx) + past(ctx) if kv[1].get("pinned")]
-    article = _card_news(ctx, pinned)
-    if article:
-        return _news_aside(ctx, r, *article)
-    items = pinned or upcoming(ctx) or past(ctx)
-    label = "Upcoming fair" if items and is_upcoming(items[0][1]) else "Latest fair"
-    if not items:
-        return (
-            '<p class="eyebrow mb-3">Fairs</p><p class="font-display text-display-sm leading-tight text-balance">'
-            f'Where to meet us</p><a class="link-arrow mt-4 text-sm" href="{r}fairs-events/">View all fairs{ARROW}</a>'
-        )
-    item = items[0][1]
+def _fair_aside(r: str, item: dict) -> str:
+    label = "Upcoming fair" if is_upcoming(item) else "Latest fair"
     return (
         f'<p class="eyebrow mb-3">{label}</p><p class="font-display text-display-sm leading-tight text-balance">'
         f'{esc(item["title"])}</p><p class="mt-2 text-sm text-ink-2">{dates.span(*_span(item))}</p>'
         f'<a class="link-arrow mt-4 text-sm" href="{r}fairs-events/">View all fairs{ARROW}</a>'
     )
+
+
+def _slides(parts: list) -> str:
+    """Several pinned items take turns in the card (assets/site.js), newest first."""
+    n = len(parts)
+    slides = "".join(
+        f'<div class="hb-slide{" is-active" if i == 0 else ""}" role="group" aria-roledescription="slide" '
+        f'aria-label="{i + 1} of {n}">{part}</div>'
+        for i, part in enumerate(parts)
+    )
+    return (
+        '<div class="hb-slides" data-hb-slides><div class="hb-slides-nav"><button type="button" class="hb-slides-prev" '
+        f'aria-label="Previous">‹</button><span class="hb-slides-count">1 / {n}</span><button type="button" '
+        f'class="hb-slides-next" aria-label="Next">›</button></div><div class="hb-slides-track">{slides}</div></div>'
+    )
+
+
+def aside(ctx, r: str) -> str:
+    """Contents of the hero card on the home page: whatever is pinned, news or
+    fair, taking turns when there are several (see _card_news for one of each),
+    otherwise the newer of the latest news and the last fair, with the next fair
+    taking that fair's place if there is one."""
+    pinned = [kv for kv in upcoming(ctx) + past(ctx) if kv[1].get("pinned")]
+    pinned_news = [kv for kv in news.ordered(ctx) if kv[1].get("pinned")]
+    if len(pinned) + len(pinned_news) > 1:
+        items = [(dates.parse(n["date"]), _news_aside(ctx, r, s, n)) for s, n in pinned_news]
+        items += [(_span(e)[0], _fair_aside(r, e)) for _, e in pinned]
+        return _slides([html for _, html in sorted(items, key=lambda kv: kv[0], reverse=True)])
+    article = _card_news(ctx, pinned)
+    if article:
+        return _news_aside(ctx, r, *article)
+    items = pinned or upcoming(ctx) or past(ctx)
+    if not items:
+        return (
+            '<p class="eyebrow mb-3">Fairs</p><p class="font-display text-display-sm leading-tight text-balance">'
+            f'Where to meet us</p><a class="link-arrow mt-4 text-sm" href="{r}fairs-events/">View all fairs{ARROW}</a>'
+        )
+    return _fair_aside(r, items[0][1])
 
 
 def render(ctx, slug: str) -> tuple:

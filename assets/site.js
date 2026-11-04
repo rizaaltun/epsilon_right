@@ -557,6 +557,33 @@
     group.forEach((img, i) => img.addEventListener("click", () => openLightbox(group, i, img)));
     sync();
   };
+  /* Home hero card: several pinned items take turns, every few seconds unless
+     the pointer or focus is on the card (or motion is reduced), or by the arrows. */
+  const wireHeroSlides = (root) => {
+    const box = root.querySelector("[data-hb-slides]");
+    if (!box) return;
+    const slides = [...box.querySelectorAll(".hb-slide")];
+    const count = box.querySelector(".hb-slides-count");
+    const card = box.closest(".hb-aside") || box;
+    let at = 0, timer = 0, held = false;
+    const show = (i) => {
+      at = (i + slides.length) % slides.length;
+      slides.forEach((slide, k) => slide.classList.toggle("is-active", k === at));
+      count.textContent = `${at + 1} / ${slides.length}`;
+    };
+    const restart = () => {
+      clearInterval(timer);
+      if (!calm.matches && !held) timer = setInterval(() => { if (!document.hidden) show(at + 1); }, 6000);
+    };
+    box.querySelector(".hb-slides-prev").addEventListener("click", () => { show(at - 1); restart(); });
+    box.querySelector(".hb-slides-next").addEventListener("click", () => { show(at + 1); restart(); });
+    const hold = (on) => () => { held = on; restart(); };
+    card.addEventListener("pointerenter", hold(true));
+    card.addEventListener("pointerleave", hold(false));
+    card.addEventListener("focusin", hold(true));
+    card.addEventListener("focusout", hold(false));
+    restart();
+  };
   const wireCoverLightbox = (root) => {
     if (root.querySelector("[data-cover-set]")) return;
     const img = root.querySelector(".cover:not(.lift-object) img");
@@ -602,6 +629,7 @@
   const boot = () => {
     wireContact();
     wireHero(document);
+    wireHeroSlides(document);
     wireReveal(document);
     wireCountUp(document);
     wireSpotlight(document);
