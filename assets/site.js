@@ -443,7 +443,7 @@
   const trim = (root, isBrowsePage) => {
     if (!isBrowsePage) {
       for (const el of root.querySelectorAll("input[type=search], select"))
-        if (el.closest("div")?.parentElement) el.disabled = true;
+        if (!el.closest("[data-live-controls]") && el.closest("div")?.parentElement) el.disabled = true;
     }
 
   };

@@ -1,0 +1,9 @@
+{
+  "name": "epsilon-catalog-advisor",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-01",
+  "vars": {
+    "ALLOWED_ORIGINS": "https://epsilonpublishinggroup.com"
+  },
+  "ratelimits": [{"name": "AI_RATE_LIMITER", "namespace_id": "1001", "simple": {"limit": 10, "period": 60}}]
+}

@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from sitegen import (authors, blog, books, catalogues, content, events, meta, news, pages, publishers,  # noqa: E402
-                     samples, seo, services, shell)
+                     samples, seo, services, shell, international_catalog)
 
 
 def generate(ctx) -> dict:
@@ -55,6 +55,7 @@ def generate(ctx) -> dict:
             continue
         path, text = pages.render(ctx, record)
         out[path + "index.html"] = text
+    out.update(international_catalog.outputs(ROOT, ctx.settings))
     out["assets/meta.json"] = meta.render(ctx)
     page_paths = [rel[: -len("index.html")] for rel in out if rel.endswith("index.html")]
     out["sitemap.xml"] = seo.sitemap(ctx, page_paths)

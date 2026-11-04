@@ -1,0 +1,3442 @@
+[
+  {
+    "isbn": "9786259386607",
+    "title": "Her Şeyin Şafağı",
+    "author": "David Graeber,David Wengrow",
+    "brand": "Diplomat",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254148057",
+    "title": "Teknofeodalizm: Kapitalizmi Öldüren Neydi?",
+    "author": "Yanis Varoufakis",
+    "brand": "Diplomat",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146312",
+    "title": "9 Kasım",
+    "author": "Colleen Hoover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254142048",
+    "title": "Agapi Ölümsüz Aşk",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051733838",
+    "title": "Akıllı Yatırımcı",
+    "author": "Benjamin Graham",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944821094",
+    "title": "Alacakaranlık",
+    "author": "Stephenie Meyer",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145087",
+    "title": "Alaska Tatili",
+    "author": "Debbie Macomber",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147791",
+    "title": "Anlam, Cesaret, Ölüm, Hiçlik",
+    "author": "Ferhat Jak İçöz",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/80557429ffaf280689af-480.webp"
+  },
+  {
+    "isbn": "9786051738642",
+    "title": "Anne Babayı İstismar",
+    "author": "Üstün Dökmen",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/d566a937d12b648ec49c-480.webp"
+  },
+  {
+    "isbn": "9789944824514",
+    "title": "Anne Frank’ın Hatıra Defteri",
+    "author": "Anne Frank",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147449",
+    "title": "Anılar Solmadan Önce",
+    "author": "Toshikazu Kawaguchi",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145551",
+    "title": "Aranızdan Biri",
+    "author": "Holly Jackson",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736556",
+    "title": "Ateş ve Kan",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736921",
+    "title": "Açık Yaralar ve Dikiş İzleri",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140471",
+    "title": "Açık Yaralar ve Dikiş İzleri (Sert Kapak)",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140525",
+    "title": "Açık Yaralar ve Dikiş İzleri 2 - Vern (Sert Kapak)",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140518",
+    "title": "Açık Yaralar ve Dikiş İzleri 2 -Ver (Karton Kapak)",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736099",
+    "title": "Aşırı Seven Kadınlar",
+    "author": "Robin Norwood",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738598",
+    "title": "Batı Resminde Aşk ve Bazı Küçük Felaketler",
+    "author": "Celil Sadık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145568",
+    "title": "Batı Resminde Korku #1 - Şeytanlar ve Cadılar",
+    "author": "Celil Sadık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789753312394",
+    "title": "Bebeğinizi Beklerken Sizi Neler Bekler(Sert Kap)",
+    "author": "Heidi E. Murkoff,Sharon Mazel",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789753312400",
+    "title": "Bebeğinizin Ilk Yılında Sizi Neler Bekler(Sert K",
+    "author": "Heidi E. Murkoff,Arlene Eisenberg,Sandee E. Hathaway",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145872",
+    "title": "Benim Hatam",
+    "author": "Mercedes Ron",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737553",
+    "title": "Beslenme Uzmanı Yalamış Yutmuş",
+    "author": "Rıfat Batur",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143526",
+    "title": "Bir Güvercinin Hazin Hayatı",
+    "author": "Üstün Dökmen",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/4defc5edf2dd1ee9a6ae-480.webp"
+  },
+  {
+    "isbn": "9789944826563",
+    "title": "Biz Evleniyoruz",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146916",
+    "title": "Bizim Hatamız",
+    "author": "Mercedes Ron",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143144",
+    "title": "Bizimle Başladı",
+    "author": "Colleen Hoover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051739939",
+    "title": "Bizimle Başladı Bizimle Bitti",
+    "author": "Colleen Hoover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736242",
+    "title": "Bu Ne Biçim Pinokyo",
+    "author": "Nurdan Bağrıaçık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/67f5b3f091d56be915b2-480.webp"
+  },
+  {
+    "isbn": "9786254143496",
+    "title": "Bu Takıntılı Düşüncelerle Ne Yapacağım? (Hayatı 5)",
+    "author": "Kadir Özdel",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/b0de12c026ee276f3bf2-480.webp"
+  },
+  {
+    "isbn": "9786254145490",
+    "title": "Buz ve Ateşin Dünyası",
+    "author": "George R. R. Martin,  Elio Garcia ve Linda Antonsson",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254144462",
+    "title": "Bölünmüş Dünya",
+    "author": "Ziya Selçuk",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/ebbe5ed9bb4448e964a0-480.webp"
+  },
+  {
+    "isbn": "9786254145698",
+    "title": "Böğürtlen Kışı",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736938",
+    "title": "Bülbülü Öldürmek",
+    "author": "Harper Lee",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738710",
+    "title": "Bülbülü Öldürmek (Çizgi Roman)",
+    "author": "Harper Lee",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944821056",
+    "title": "Büyü Dükkanı",
+    "author": "Yeşim Türköz",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/6b7d0b12e0b3378aa8db-480.webp"
+  },
+  {
+    "isbn": "9786254140495",
+    "title": "Büyük Panda ve Küçük Ejderha",
+    "author": "James Norbury",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051733968",
+    "title": "Coğrafya Mahkûmları",
+    "author": "Tim Marshall",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143694",
+    "title": "Cumhuriyetin İlk Çocukları",
+    "author": "Renan Özdemir",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254148194",
+    "title": "Dale Carnegie Toplu Eserleri",
+    "author": "Dale Carnegie",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737942",
+    "title": "Depresyondan Çıkış Yolu (Hayatı Anlamak 1)",
+    "author": "M. Hakan Türkçapar",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/a56baf447f69ce5ab181-480.webp"
+  },
+  {
+    "isbn": "9786051737775",
+    "title": "Direksiyon",
+    "author": "Üstün Dökmen",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/5ea218460a4441f17aba-480.webp"
+  },
+  {
+    "isbn": "9789753311212",
+    "title": "Dost Kazanma ve Insanları Etkileme",
+    "author": "Dale Carnegie",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141980",
+    "title": "Efendi Adamın Toksik Kırılganlığı",
+    "author": "Robert A.Glover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735764",
+    "title": "Efe’nin Mutluluk Ölçeri",
+    "author": "Nilay Şanlı",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/849e1027c1d42e59b35d-480.webp"
+  },
+  {
+    "isbn": "9789944826976",
+    "title": "Ejderhaların Dansı Kısım 1",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944826983",
+    "title": "Ejderhaların Dansı Kısım 2",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141898",
+    "title": "Ejderhanı Nasıl Eğitirsin 1 (Karton Kapak)",
+    "author": "Cressida Cowell",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146954",
+    "title": "Ejderhanı Nasıl Eğitirsin 2 - Nasıl Korsan Olursun",
+    "author": "Cressida Cowell",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147005",
+    "title": "Ejderhanı Nasıl Eğitirsin 3 - Ejderhaca Nasıl Konu",
+    "author": "Cressida Cowell",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147456",
+    "title": "Elveda Demeden Önce",
+    "author": "Toshikazu Kawaguchi",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737645",
+    "title": "Elveda Haziran",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254144608",
+    "title": "Emin Olmak Ya da Olamamak (Hayatı Anlamak 6)",
+    "author": "Aslıhan Dönmez",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/bf25d0579bc233f13ccf-480.webp"
+  },
+  {
+    "isbn": "9789944824385",
+    "title": "En Çok Beni Sev",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146831",
+    "title": "Fularsız Felsefe",
+    "author": "Immanuel Tolstoyevski",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/53187883f34803ecc798-480.webp"
+  },
+  {
+    "isbn": "9786051737706",
+    "title": "Gece Yarısı Güneşi",
+    "author": "Stephenie Meyer",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737669",
+    "title": "Gündüzsefası",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738963",
+    "title": "Hayli Duyarlı Kişi",
+    "author": "Elaine N. Aron",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141188",
+    "title": "Isadora Moon 1 - Okula Gidiyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141508",
+    "title": "Isadora Moon 10 - Pijama Partisine Gidiyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145254",
+    "title": "Isadora Moon 11: Tatile Gidiyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145193",
+    "title": "Isadora Moon 12 - Düğüne Gidiyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145964",
+    "title": "Isadora Moon 13 -  Diş Perisiyle Tanışıyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141430",
+    "title": "Isadora Moon 14 - Isadora Moon ve Kayanyıldız",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147166",
+    "title": "Isadora Moon 15 - Sihirli Suçiçeği Geçiriyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147272",
+    "title": "Isadora Moon 16 - Denizler Altında",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141164",
+    "title": "Isadora Moon 2 - Bale Yapıyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143939",
+    "title": "Isadora Moon 3 - Kampta",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145162",
+    "title": "Isadora Moon 4 - Doğum Gününü Kutluyor - Karton ka",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143946",
+    "title": "Isadora Moon 5 - Okul Gezisinde",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141157",
+    "title": "Isadora Moon 6 - Okula Ejderha Götürüyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141171",
+    "title": "Isadora Moon 7 -  Lunaparka Gidiyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141140",
+    "title": "Isadora Moon 8 - Sihirli Bir Kış Günü",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141492",
+    "title": "Isadora Moon 9 - Gösteri Yapıyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254148200",
+    "title": "Isadora Moon Hemşire Oluyor",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147715",
+    "title": "Isadora Moon ve Peri Ayazı Festivali",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147685",
+    "title": "Isadora Moon ve Sınıftaki Yeni Kız",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145926",
+    "title": "Kadehte Rakı Beyazı",
+    "author": "Burkay Adalığ",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/5bf256588b98fdf6036d-480.webp"
+  },
+  {
+    "isbn": "9786051738956",
+    "title": "Kahve Soğumadan Önce",
+    "author": "Toshikazu Kawaguchi",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143458",
+    "title": "Kahve Soğumadan Önce 2  Kafeden Hikayeler",
+    "author": "Toshikazu Kawaguchi",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944825948",
+    "title": "Kargaların Ziyafeti Kısım 1",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944825955",
+    "title": "Kargaların Ziyafeti Kısım 2",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145063",
+    "title": "Keşif Atlası",
+    "author": "Thiago de Moraes",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147937",
+    "title": "Kim Bunlar: Tarih",
+    "author": "Mahir Ünsal Eriş,Töre Sivrioğlu",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/e9dbb9570df61c5db179-480.webp"
+  },
+  {
+    "isbn": "9786254144882",
+    "title": "Koca Kafa Nate Bangır Bangır",
+    "author": "Lincoln Peirce",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145018",
+    "title": "Koca Kafa Nate ve Arkadaşları",
+    "author": "Lincoln Peirce",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254144783",
+    "title": "Koca Kafa Nate Çokbilmiş Bir Haylaz",
+    "author": "Lincoln Peirce",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254145025",
+    "title": "Koca Kafa Nate: Sınıf Atlıyor",
+    "author": "Lincoln Peirce",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944824644",
+    "title": "Kralların Çarpışması Kısım 1",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944824651",
+    "title": "Kralların Çarpışması Kısım 2",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735177",
+    "title": "Kuyucaklı Yusuf",
+    "author": "Sabahattin Ali",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735153",
+    "title": "Kürk Mantolu Madonna",
+    "author": "Sabahattin Ali",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789944825337",
+    "title": "Kılıçların Fırtınası Kısım 1",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944825344",
+    "title": "Kılıçların Fırtınası Kısım 2",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141911",
+    "title": "Kırmızı Teleskop (Karton Kapak)",
+    "author": "Nurdan Bağrıaçık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/cceae722fd446b955749-480.webp"
+  },
+  {
+    "isbn": "9786254147463",
+    "title": "Kıyıya Vuran Düşler",
+    "author": "Debbie Macomber",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735320",
+    "title": "Kızımla Ekonomi Sohbetleri - Kapitalizmin Kısa Tar",
+    "author": "Yanis Varoufakis",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140907",
+    "title": "Londra’dan Sevgilerle",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254142765",
+    "title": "Maltın Peşinde (Karton Kapak)",
+    "author": "Burkay Adalığ",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/38ea73113fff0fd16d46-480.webp"
+  },
+  {
+    "isbn": "9786254145124",
+    "title": "Mandal",
+    "author": "Üstün Dökmen",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/a6fb4d8442c37d5b3e57-480.webp"
+  },
+  {
+    "isbn": "9786254145865",
+    "title": "Mart Menekşeleri",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944829670",
+    "title": "Martı (Genişletilmiş Baskı)",
+    "author": "Richard Bach",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140648",
+    "title": "Medeniyetlerin Şafağı - Akdenizin Öyküsü",
+    "author": "Töre Sivrioğlu",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/9e75050a45aeb837f3e4-480.webp"
+  },
+  {
+    "isbn": "9786051736679",
+    "title": "Meleklerin Payı - Bir Viski Macerası",
+    "author": "Burkay Adalığ",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/3f162b49fbcd0d8eb249-480.webp"
+  },
+  {
+    "isbn": "9786051736686",
+    "title": "Meleklerin Payı - Viski Tadım Defteri",
+    "author": "Burkay Adalığ",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147760",
+    "title": "Merhaba Ben Merhaba Evladım",
+    "author": "Ziya Selçuk",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/30e7ac75d26278f275c5-480.webp"
+  },
+  {
+    "isbn": "9786254144561",
+    "title": "Mirabelle 4 - Çifte Bela",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254148101",
+    "title": "Mirabelle Yaramazlık Peşinde karton kapak",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254148330",
+    "title": "Mirabelle ve Misafirlikte Curcuna",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147500",
+    "title": "Mirabelle ve Yaramaz Yarasakedicikler 5",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147739",
+    "title": "Mirabelle2: Kuralları Çiğniyor Karton Kapak",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254148118",
+    "title": "Mirabelle3: Kötü Bir Gün Geçiriyor  Karton Kapak",
+    "author": "Harriet Muncaster",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146886",
+    "title": "Mitoloji Atlası",
+    "author": "Thiago de Moraes",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735740",
+    "title": "Müthiş Arkadaş Rowley’nin Günlüğü",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143663",
+    "title": "Nasıl Temizlenebilirim? (Hayatı Anlamak 4)",
+    "author": "M. Hakan Türkçapar",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/4b0536bf99bef6e2cd0a-480.webp"
+  },
+  {
+    "isbn": "9786254147845",
+    "title": "Noel Şarkısı",
+    "author": "Debbie Macomber",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141751",
+    "title": "Palandöken",
+    "author": "Üstün Dökmen",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/61d95b5e298464ee489a-480.webp"
+  },
+  {
+    "isbn": "9786254140259",
+    "title": "Rowley’nin Müthiş Korku Hikayeleri",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738062",
+    "title": "Rowley’nin Müthiş Macerası",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944823814",
+    "title": "Rüyalar Gerçek Olsa",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735245",
+    "title": "Sabahattin Ali - Tüm Eserleri Oyunlar, Şiirler, Me",
+    "author": "Sabahattin Ali",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735207",
+    "title": "Sabahattin Ali - Tüm Eserleri Romanlar",
+    "author": "Sabahattin Ali",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735214",
+    "title": "Sabahattin Ali - Tüm Eserleri Öyküler",
+    "author": "Sabahattin Ali",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737690",
+    "title": "Safsatalar Ansiklopedisi",
+    "author": "Immanuel Tolstoyevski",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/644ec8668232047e2eca-480.webp"
+  },
+  {
+    "isbn": "9789944821117",
+    "title": "Saftirik 1 - Greg’in Günlügü",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051730585",
+    "title": "Saftirik 10 - Hey Gidi Günler",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051731872",
+    "title": "Saftirik 11 - Karısık Isler Bunlar",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051733173",
+    "title": "Saftirik 12 - Tam Bir felaket",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051734897",
+    "title": "Saftirik 13 - Eridik Bittik!",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736372",
+    "title": "Saftirik 14 - Yıktı Geçti",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738406",
+    "title": "Saftirik 15 - Çıkmaza Girdik",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140327",
+    "title": "Saftirik 16 - Tam İsabet! (Sert Kapak)",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254142482",
+    "title": "Saftirik 17 -  Pis Kokulu Şarkılar (Sert Kapak)",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254144677",
+    "title": "Saftirik 18: Beyin Bedava",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146305",
+    "title": "Saftirik 19: Olanlar Oldu!",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944821889",
+    "title": "Saftirik 2 - Rodrick Kuralları",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147807",
+    "title": "Saftirik 20: Parti Aşkına!",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944822534",
+    "title": "Saftirik 3 - Türünün Son Örnegi",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944823579",
+    "title": "Saftirik 4 - İşte Şimdi Yandık",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944823869",
+    "title": "Saftirik 5 - Ama Bu Haksızlık",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944824675",
+    "title": "Saftirik 6 - Panik Yok",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944826129",
+    "title": "Saftirik 7 - Ah Kalbim",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944827461",
+    "title": "Saftirik 8 - Batsın Bu Dünya",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944829359",
+    "title": "Saftirik 9 - Bende Bu Şans Varken",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944822718",
+    "title": "Saftirik Kendin Yap Kitabı",
+    "author": "Jeff Kinney",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944825269",
+    "title": "Sana Muhtacım",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146497",
+    "title": "Senin Hatan",
+    "author": "Mercedes Ron",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147029",
+    "title": "Serçeler Ağladığında",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/4d5e586cba05e627e3ee-480.webp"
+  },
+  {
+    "isbn": "9786051732411",
+    "title": "Siyah Kuğu 1",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786051733265",
+    "title": "Siyah Kuğu 2 - Ruh Kadehi",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147876",
+    "title": "Siyah Kuğu 3 Göğü Kafes",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/665bb32d8d4fa15195bd-480.webp"
+  },
+  {
+    "isbn": "9786254143175",
+    "title": "Siyam II: Kanbeyaz",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/1aaab938b367ef616bcb-480.webp"
+  },
+  {
+    "isbn": "9786254144424",
+    "title": "Siyam III: Küllerinden",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146268",
+    "title": "Siyam IV Mare",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/f60d227889566048af50-480.webp"
+  },
+  {
+    "isbn": "9786254142253",
+    "title": "Siyam Kış Güneşi (Karton Kapak)",
+    "author": "Beyza Aksoy",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789944822831",
+    "title": "Son Söz Aşkın",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944824613",
+    "title": "Sonsuz Sevgilerimle",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738437",
+    "title": "Sosyal Fobiden Hayata Yolculuk (Hayatı Anlamak 2)",
+    "author": "Kadir Özdel",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/1cf230f95bf3afb64e59-480.webp"
+  },
+  {
+    "isbn": "9786254146107",
+    "title": "Soyu Tükenmiş Otuz Muhteşem Hayvan",
+    "author": "Töre Sivrioğlu",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789753311236",
+    "title": "Söz Söyleme ve İş Başarma Sanatı",
+    "author": "Dale Carnegie",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944824354",
+    "title": "Taht Oyunları",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140587",
+    "title": "Tarih Atlası",
+    "author": "Thiago de Moraes",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141836",
+    "title": "Tatilde Tanıştığımız İnsanlar",
+    "author": "Emily Henry",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737683",
+    "title": "Tespih Ağacının Gölgesinde",
+    "author": "Harper Lee",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944821230",
+    "title": "Tutulma",
+    "author": "Stephenie Meyer",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736396",
+    "title": "Uygarlığın Ayak İzleri",
+    "author": "Celil Sadık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/3007fd0574765168ab2f-480.webp"
+  },
+  {
+    "isbn": "9786051738123",
+    "title": "Uygarlığın Ayak İzleri 2 - Krallar ve Tanrılar",
+    "author": "Celil Sadık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141300",
+    "title": "Uygarlığın Ayak İzleri 4 Batı Resim Sanatında Mito",
+    "author": "Celil Sadık",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254140709",
+    "title": "Verity: Gerçeğin Diğer Kıyısı",
+    "author": "Colleen Hoover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147869",
+    "title": "Viski Tutkununun El Kitabı",
+    "author": "Burkay Adalığ",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/b5baf8ff895de061c0c9-480.webp"
+  },
+  {
+    "isbn": "9786254147340",
+    "title": "Yaşanmamış Hayatlar",
+    "author": "Sarah Jio",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051739519",
+    "title": "Yedi Krallık Şövalyesi",
+    "author": "George R. R. Martin",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738475",
+    "title": "Yeme Bozukluğunun Üstesinden Gelme (Hayatı 3)",
+    "author": "Aslıhan Dönmez",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/66e851bedf868de02197-480.webp"
+  },
+  {
+    "isbn": "9786254140396",
+    "title": "Yeni Yıl Yeni Hayat",
+    "author": "Debbie Macomber",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944821100",
+    "title": "Yeniay",
+    "author": "Stephenie Meyer",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254146558",
+    "title": "Yeonnam-dongun Neşeli Çamaşırhanesi",
+    "author": "Kim Jiyun",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051736518",
+    "title": "Yere Yakın Yıldızlara Uzak (Karton Kapak)",
+    "author": "Emine Tavuz",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143472",
+    "title": "Yolculuk - Bir Büyük Panda ve Küçük Ejderha",
+    "author": "James Norbury",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944820813",
+    "title": "Yüreğe Söz Geçmiyor",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141522",
+    "title": "Zorbalık (Karton Kapak)",
+    "author": "Rıfat Batur",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/7ac5413b67d9146201f4-480.webp"
+  },
+  {
+    "isbn": "9786254147913",
+    "title": "Zorbalık 2",
+    "author": "Rıfat Batur",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/1cceccd57c278869b065-480.webp"
+  },
+  {
+    "isbn": "9786051730295",
+    "title": "Çirkin Ask",
+    "author": "Colleen Hoover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051739410",
+    "title": "Çıtı Pıtı Bir Kedi Olmak İstemiyorum",
+    "author": "Renan Özdemir",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/6e2b834bfae8fd0a0f7d-480.webp"
+  },
+  {
+    "isbn": "9786254148033",
+    "title": "Ölüm Beni Bulana Dek",
+    "author": "Holly Jackson",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944826044",
+    "title": "Öpüşünde Saklı",
+    "author": "Julia Quinn",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254147821",
+    "title": "Özgür Gölge",
+    "author": "Üstün Dökmen",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/dc5be23d6633c2561d11-480.webp"
+  },
+  {
+    "isbn": "9789753317658",
+    "title": "Üzüntüyü Bırak Yaşamaya Bak",
+    "author": "Dale Carnegie",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051738314",
+    "title": "İmbikten Kadehe",
+    "author": "Burkay Adalığ",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/6c47c5e42d5d4b851f1b-480.webp"
+  },
+  {
+    "isbn": "9786254142727",
+    "title": "İtiraf",
+    "author": "Colleen Hoover",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254141515",
+    "title": "İyi Bir Kızın Cinayet Rehberi - Kapanmış Bir Dava",
+    "author": "Holly Jackson",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254142642",
+    "title": "İyi Kız Kötü Son",
+    "author": "Holly Jackson",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254143922",
+    "title": "İyi Kız, Ölüme Çok Yakın",
+    "author": "Holly Jackson",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051735160",
+    "title": "İçimizdeki Şeytan",
+    "author": "Sabahattin Ali",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789753311007",
+    "title": "İşten ve Yaşamdan Zevk Almanın Yolları",
+    "author": "Dale Carnegie",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789944821551",
+    "title": "Şafak Vakti",
+    "author": "Stephenie Meyer",
+    "brand": "Epsilon Yayınevi",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786051737898",
+    "title": "Şair ve Matematikçi Ömer Hayyam",
+    "author": "Sadık Usta",
+    "brand": "Epsilon Yayınevi",
+    "turkish": true,
+    "cover": "assets/images/covers/1b026fe19e32d911faee-480.webp"
+  },
+  {
+    "isbn": "9786256256194",
+    "title": "Almanya Masalımız",
+    "author": "Dinçer Güçyeter",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994958",
+    "title": "Atatürk ve Arkeoloji: Osmanlı’dan Cumhuriyet’e Bir",
+    "author": "Töre Sivrioğlu",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994828",
+    "title": "Babil Kulesi Kitabı",
+    "author": "Mahir Ünsal Eriş",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/40a820a9884d2bea49f7-480.webp"
+  },
+  {
+    "isbn": "9786054820689",
+    "title": "Dünyayı Değiştiren Düşünürler 1",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054820702",
+    "title": "Dünyayı Değiştiren Düşünürler 2",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054820726",
+    "title": "Dünyayı Değiştiren Düşünürler 3",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054820733",
+    "title": "Dünyayı Değiştiren Düşünürler 4",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994026",
+    "title": "Dünyayı Değiştiren Düşünürler 5",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256256101",
+    "title": "Gençlerle Felsefe Sohbetleri",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256256071",
+    "title": "Geri Dönüyoruz",
+    "author": "Mahir Ünsal Eriş,Töre Sivrioğlu",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994798",
+    "title": "Kayıp Uygarlıklar - Büyük Arkeolojik Keşiflerin Öy",
+    "author": "Töre Sivrioğlu",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256256132",
+    "title": "Kutsal Geyiği Vurmak - LaRose",
+    "author": "Louise Erdrich",
+    "brand": "Kafka Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994361",
+    "title": "Normal Olmak Varken Neden Mutlu Olasın",
+    "author": "Jeanette Winterson",
+    "brand": "Kafka Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054820740",
+    "title": "Sekiz Dağ",
+    "author": "Paolo Cognetti",
+    "brand": "Kafka Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994774",
+    "title": "Tek Meyve Portakal Değildir",
+    "author": "Jeanette Winterson",
+    "brand": "Kafka Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994187",
+    "title": "Vişnenin Cinsiyeti",
+    "author": "Jeanette Winterson",
+    "brand": "Kafka Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054820382",
+    "title": "İkinci El Zaman - Kızıl Insanın Sonu",
+    "author": "Svetlana Aleksiyeviç",
+    "brand": "Kafka Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257994712",
+    "title": "Şamanlar, Tanrılar ve Ateistler - İnancın ve İnanç",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/38e17a46d6300c51b9fb-480.webp"
+  },
+  {
+    "isbn": "9786257994408",
+    "title": "Şüphenin Tarihi",
+    "author": "Sadık Usta",
+    "brand": "Kafka Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/ea60a3078745fb939acf-480.webp"
+  },
+  {
+    "isbn": "9786256322073",
+    "title": "1 Yaş Hikayeleri",
+    "author": "Ayça Atci",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322080",
+    "title": "2 Yaş Hikayeleri",
+    "author": "Ayça Atci",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322097",
+    "title": "3 Yaş Hikayeleri",
+    "author": "Ayça Atci",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786258690323",
+    "title": "Beynimdeki Postacı Leo",
+    "author": "Ömer Faruk Tavşanlı",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/d275c7be11601343f193-480.webp"
+  },
+  {
+    "isbn": "9786256322455",
+    "title": "Bir Doku",
+    "author": "Gülşah Yemen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322028",
+    "title": "Bir Koku",
+    "author": "Gülşah Yemen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786052164648",
+    "title": "Bir Renk",
+    "author": "Gülşah Yemen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786058068544",
+    "title": "Bir Ses",
+    "author": "Gülşah Yemen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322790",
+    "title": "Bir Tat",
+    "author": "Gülşah Yemen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/e598a405a6cbc912cda5-480.webp"
+  },
+  {
+    "isbn": "9786052164426",
+    "title": "Bir Çizgi",
+    "author": "Gülşah Yemen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/6a2082211725c9661c71-480.webp"
+  },
+  {
+    "isbn": "9786258690194",
+    "title": "Canavarlar da Dünyayı Sever!",
+    "author": "Özlem Fedai Korçak",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/6914024cb6e956cd7570-480.webp"
+  },
+  {
+    "isbn": "9786258113839",
+    "title": "Canavarlar da Kibardır!",
+    "author": "Özlem Fedai Korçak",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/53a3f1c7983633707e15-480.webp"
+  },
+  {
+    "isbn": "9786052164945",
+    "title": "Canavarların da Duyguları Var",
+    "author": "Özlem Fedai Korçak",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/5e8c704455e21497c30f-480.webp"
+  },
+  {
+    "isbn": "9786258690309",
+    "title": "Duygunuzu Nasıl Alırdınız?",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/4ff1b660d39d33a5de27-480.webp"
+  },
+  {
+    "isbn": "9786257032599",
+    "title": "Evi Eriyen Kutup Ayısı",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786059545327",
+    "title": "Göl Çocukları",
+    "author": "Ibrahim Örs",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322301",
+    "title": "Hanako ve Balinanın Şarkısı",
+    "author": "Akasya Asıltürkmen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/dd1cc24b120f7af94ce2-480.webp"
+  },
+  {
+    "isbn": "9786258113938",
+    "title": "Hanako ve Sedir Ağacı",
+    "author": "Akasya Asıltürkmen",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/76650cc4353e6ba4b712-480.webp"
+  },
+  {
+    "isbn": "9786058043091",
+    "title": "Kabuğuna Sığmayan Yengeç",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/b00161eaef6906301b95-480.webp"
+  },
+  {
+    "isbn": "9786058043084",
+    "title": "Karnı Acıkan Kedi",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786258113372",
+    "title": "Kral Olmak İstemeyen Aslan",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322462",
+    "title": "Kültürlü Kurt",
+    "author": "Becky Bloom",
+    "brand": "Masalperest",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257032582",
+    "title": "Mis Kokulu Kokarca",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257032698",
+    "title": "Sesini Arayan Zürafa",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256322523",
+    "title": "Sevginin Dili",
+    "author": "Esat Zorkirişçi",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/56c5920db3408b633db6-480.webp"
+  },
+  {
+    "isbn": "9786258690088",
+    "title": "Tuvinin Desenleri",
+    "author": "Esat Zorkirişçi",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": "assets/images/covers/be387d37bb7bc397e1ee-480.webp"
+  },
+  {
+    "isbn": "9786058043077",
+    "title": "Uykusu Kaçan Kaplumbağa",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257032575",
+    "title": "Yardımsever Kanguru",
+    "author": "Ezo Sunal",
+    "brand": "Masalperest",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256947276",
+    "title": "Akılcı ve Bilimsel Takviye Kullanım Rehberi",
+    "author": "Mustafa Kalkan",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/02061cf0cae72eec6821-480.webp"
+  },
+  {
+    "isbn": "9786256947337",
+    "title": "Aralıklı Oruç ve Düşük Karbonhidratlı Beslenme",
+    "author": "Alican Demiroğlu",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/98148c25a7cb4de665d9-480.webp"
+  },
+  {
+    "isbn": "9786259592152",
+    "title": "Beyin Kurtarıcı",
+    "author": "Anthony William",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259551692",
+    "title": "Beyinden Bağırsağa",
+    "author": "Mustafa Kalkan",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/9d70e91c8726cfae70d9-480.webp"
+  },
+  {
+    "isbn": "9786259728513",
+    "title": "Bir Çift Yürek",
+    "author": "Marlo Morgan",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649416",
+    "title": "Birim",
+    "author": "Deniz Şimşek",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/f7ff866c554f71887936-480.webp"
+  },
+  {
+    "isbn": "9786259273563",
+    "title": "Doğadaki Sağlık 1",
+    "author": "Ayhan Ercan",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/4f9ec4a5e29b6bb9cbfe-480.webp"
+  },
+  {
+    "isbn": "9786259295411",
+    "title": "Doğadaki Sağlık 2",
+    "author": "Ayhan Ercan",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786259273525",
+    "title": "Düşün ve Zengin Ol!",
+    "author": "Napoleon Hill",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259663296",
+    "title": "Evlilik İnsanları",
+    "author": "Alison Espach",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259325439",
+    "title": "Eyvah Boşandım",
+    "author": "Özgür Uçanok",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256755963",
+    "title": "Gece Günlüğü",
+    "author": "Elif Erdenay",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786052164372",
+    "title": "Guguk Kuşu",
+    "author": "Ken Kesey",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259325446",
+    "title": "Gömülü Rüyalar Ülkesi",
+    "author": "Kasım Hasan Ünal",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786259663203",
+    "title": "Hamilelik Doğum ve Bebek Bakım Kitabı",
+    "author": "Ayşe Öner",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649140",
+    "title": "Hayat Değiştiren Yiyecekler",
+    "author": "Anthony William",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259325491",
+    "title": "Her Şeyin Değitiği O Yaz",
+    "author": "Carley Fortune",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259325422",
+    "title": "HİT Hızlı İyileşme Teknikleri",
+    "author": "M. Türker Pabuccu",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786259295497",
+    "title": "James",
+    "author": "Percival Everett",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257359283",
+    "title": "La Fortuna - Kaderin Dönüşümü",
+    "author": "Anıl Can",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256947436",
+    "title": "Medikal Medyum - Kronik Ve Çözümsüz Görünen Hasta",
+    "author": "Anthony William",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256947573",
+    "title": "Medikal Medyum - İyileşmek İçin Arınma",
+    "author": "Anthony William",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259728537",
+    "title": "Mucizeler Kendini Sevmekle Başlar",
+    "author": "Murat Tavlı",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786259663227",
+    "title": "Ruhum Sana Emanet",
+    "author": "Mehmet Ercan",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256755093",
+    "title": "Sıfırı Görmek",
+    "author": "Bill Perkins",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649430",
+    "title": "Thetahealing - Derin İnançları Bulun",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649867",
+    "title": "Thetahealing - Duanın Kanatlarında",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649225",
+    "title": "Thetahealing - Varoluşun Yedi Seviyesi",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786052164549",
+    "title": "Thetahealing Hastalıklar ve Rahatsızlıklar",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786052164112",
+    "title": "Thetahealing Ritim",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649935",
+    "title": "Thetahealing Sen ve Yaratıcı",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649737",
+    "title": "Thetahealing İle Ruh Eşinizi Bulun",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059809238",
+    "title": "Tibetin Gençlik Pınarı - 2",
+    "author": "Peter Kelder",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649270",
+    "title": "Tiroit Tedavisi",
+    "author": "Anthony William",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059961899",
+    "title": "TİBET'İN GENÇLİK PINARI",
+    "author": "Peter Kelder",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259592121",
+    "title": "Ukde",
+    "author": "Mehmet Ercan",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256947559",
+    "title": "Uslu Çocuk Olmayı Bırak",
+    "author": "Aşkım Kapışmak",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786057649560",
+    "title": "Yenilenen Beden Vücudun Mucizesi Karaciğer",
+    "author": "Anthony William",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256755000",
+    "title": "Çocukluğuna İyi Bak",
+    "author": "Deniz Şimşek",
+    "brand": "Nemesis Kitap",
+    "turkish": true,
+    "cover": "assets/images/covers/b7624f21c521ab155cfd-480.webp"
+  },
+  {
+    "isbn": "9786059545730",
+    "title": "İleri Theta Healing: Var Olan Her Seyin Gücünü Kul",
+    "author": "Vianna Stibal",
+    "brand": "Nemesis Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259273501",
+    "title": "Profesör Do'nun Göz Kliniği",
+    "author": "Yoonha Byun",
+    "brand": "Nora Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256755970",
+    "title": "Sol Ayağım",
+    "author": "Christy Brown",
+    "brand": "Nora Kitap",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466654",
+    "title": "100 İngilizce Kelime",
+    "author": "Kolektif",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466906",
+    "title": "Bir Fıskiye Gibi Ağlarsan Ne Olur?",
+    "author": "Noemi Vola",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634177",
+    "title": "Doğanın Tadı",
+    "author": "Jesuso Ortiz,Louna Demir",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318716",
+    "title": "Duygular Mutfağı",
+    "author": "Marc Nemiroff,Jane Annunziata",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318457",
+    "title": "Duygularıyla Arkadaş Olan Çocuk",
+    "author": "Lauren Rubenstein",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344340",
+    "title": "Etrafımızdaki Çemberler",
+    "author": "Brad Montague",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318556",
+    "title": "Ezik Kokarca",
+    "author": "Catherine Depino",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634757",
+    "title": "Hata Partisi",
+    "author": "Brad Montague,Kristi Montague",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318099",
+    "title": "Kaka Yaparken Acıtıyor",
+    "author": "Howard J. Bennett",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318464",
+    "title": "Kaybedince Kızan Selin",
+    "author": "Frank J. Sileo",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634474",
+    "title": "Korkan Kitap",
+    "author": "Cédric Ramadier",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466487",
+    "title": "Renkli Duygular Oteli",
+    "author": "Lidia Branković",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634207",
+    "title": "Rüyanın Tadı",
+    "author": "Jesuso Ortiz,Louna Demir",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318433",
+    "title": "Uyumak İsteyen Tavşan",
+    "author": "Carl-Johan Forssen Ehrlin",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318532",
+    "title": "Uçup Giden Battaniye",
+    "author": "Allan Peterkin",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634542",
+    "title": "Yaramaz Kitap",
+    "author": "Cédric Ramadier",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634191",
+    "title": "Özgürlüğün Tadı",
+    "author": "Jesuso Ortiz,Louna Demir",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466579",
+    "title": "Şapkasız Girilmez",
+    "author": "Simon Philip,Kate Hindley",
+    "brand": "Okuyan Koala",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786055134778",
+    "title": "8 - 9 Senedir Kendimi İyi Hissetmiyorum",
+    "author": "Feyyaz Yiğit",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634450",
+    "title": "Anlam, Özgürlük ve Sorumluluk",
+    "author": "Viktor E. Frankl",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789756287996",
+    "title": "Anne Baba Ve Çocuk Arasında",
+    "author": "Haim G. Ginott,Alice Ginott,W, Wallece Goddard",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318976",
+    "title": "Anneler, Kızları ve Beden Algısı",
+    "author": "Hillary L. McBride",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786055134136",
+    "title": "Aptal",
+    "author": "Feyyaz Yiğit",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054718",
+    "title": "Atlarla Yaşayan Kadın",
+    "author": "Vamık D. Volkan",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344777",
+    "title": "Aşiyan’daki Kahin",
+    "author": "Serol Teber",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789756287989",
+    "title": "Aşk ve İrade",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786055134655",
+    "title": "Beden Asla Yalan Söylemez",
+    "author": "Alice Miller",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054749",
+    "title": "Ben Ok’im Sen Ok’sin",
+    "author": "Thomas A. Harris",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466326",
+    "title": "Beni Zorla Sağma Bırak Ben Emzireyim Seni",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/f2b48f97d0d4b10b48a6-480.webp"
+  },
+  {
+    "isbn": "9789758420896",
+    "title": "Bilimsel Bir Peri Masalı Ferud’un Aile ve Tarihsel",
+    "author": "Serol Teber",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344784",
+    "title": "Bozuk Parçan Yok",
+    "author": "Richard Schwartz",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318594",
+    "title": "Boş Ayna",
+    "author": "Karyl McBride",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466722",
+    "title": "Buğu",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634580",
+    "title": "Bütün O Yalnız İnsanlar",
+    "author": "Sam Carr",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466883",
+    "title": "Bütün Çocuklar İyidir",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466494",
+    "title": "Disparöni ya da Yaşama Korkusu",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/1a36684435d5d8f36dbf-480.webp"
+  },
+  {
+    "isbn": "9786255634351",
+    "title": "Dört Kapı Bir Oda: Bipolar Bozukluk Hikâyeleri",
+    "author": "Dilek Yeşilbaş",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/4857873965b211b4fc6d-480.webp"
+  },
+  {
+    "isbn": "9786255634658",
+    "title": "Dünya Batıyı Nasıl Yarattı?",
+    "author": "Josephine Quinn",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634498",
+    "title": "Düşkün Bir Psikanalistin Günlüğü",
+    "author": "Masud Khan",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344104",
+    "title": "Düşler ve Aktif Hayal Gücüyle Bilinç Dışına Yolcul",
+    "author": "Robert A. Johnson",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466401",
+    "title": "Fildişi Kuyu 1. Cilt",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/a623547e0ca08b4aae3b-480.webp"
+  },
+  {
+    "isbn": "9786256466418",
+    "title": "Fildişi Kuyu 2. Cilt",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634702",
+    "title": "Filtredünya",
+    "author": "Kyle Chayka",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466531",
+    "title": "Gizli Özne",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/eb55e05baa02627010bd-480.webp"
+  },
+  {
+    "isbn": "9786055134846",
+    "title": "Gölgene Sahip Çık",
+    "author": "Robert A. Johnson",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318709",
+    "title": "Güç ve Masumiyet",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634122",
+    "title": "Hamamböceğine Dokunmak",
+    "author": "Matthew Maxwell",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054039",
+    "title": "Hayat Gerçeğe Perde",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/b38e15974cb859245937-200.webp"
+  },
+  {
+    "isbn": "9789756287514",
+    "title": "Hayat Kırıklığı",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634696",
+    "title": "Herkes İçin Ruh Sağlığı Bozuklukları Rehberi",
+    "author": "Sidney Bloch,Nick Haslam",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318617",
+    "title": "Kafese Konan Adam",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634009",
+    "title": "Kar ve İnci",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/cda9088ee3de69b0bbd1-480.webp"
+  },
+  {
+    "isbn": "9786257344258",
+    "title": "Kaygı Döngüsünü Kırmak",
+    "author": "Judson Brewer",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634726",
+    "title": "Kaygı Döngüsünü Kırmak Çalışma Kitabı",
+    "author": "Judson Brewer",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318778",
+    "title": "Kaygının Anlamı",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054534",
+    "title": "Kendine Bakma Kitabı",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/3458ee6c22d05bf6f032-480.webp"
+  },
+  {
+    "isbn": "9786055134020",
+    "title": "Kendini Arayan İnsan",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054510",
+    "title": "Kişi Olmaya Dair",
+    "author": "Carl R. Rogers",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9789758420742",
+    "title": "Kozmik Kahkaha",
+    "author": "Vamık D. Volkan",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054961",
+    "title": "Kusursuz Kadının Peşinde (Genişletilmiş Baskı)",
+    "author": "Vamık D. Volkan,J. Christopher Fowler",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466470",
+    "title": "Kırgınlık ve Sonrası Artık Neden Kırgın Değilim?",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344364",
+    "title": "Kıyamıyorum Derken",
+    "author": "Yadigar Işıldar",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344548",
+    "title": "Melankoli",
+    "author": "Serol Teber",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9789758420414",
+    "title": "Muallakta Arafta Düşlerde",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054855",
+    "title": "Olduğu Kadar",
+    "author": "Feyyaz Yiğit",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786055134365",
+    "title": "Olmak Cesareti",
+    "author": "Paul Tillich",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786055134228",
+    "title": "Psiko 101",
+    "author": "Paul Kleinman",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318730",
+    "title": "Psikolojik İlk Yardım",
+    "author": "Tülay Kök",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318020",
+    "title": "Psikoterapist ve Mitlere Yolculuk",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466074",
+    "title": "Sana Aşktan Soruyorlar",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466753",
+    "title": "Sanatsal Yaratıcılık ve Duygudurum Bozukluğu",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/cb0c60ce16a5325b7064-260.webp"
+  },
+  {
+    "isbn": "9786255634139",
+    "title": "Schopenhauerın Kirpileri",
+    "author": "Deborah Anna Luepnitz",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634573",
+    "title": "Sevmek, Sevilmek, Cinsellik",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318952",
+    "title": "Sezgisel Yeme Uygulama Kitabı",
+    "author": "Evelyn Tribole, Elyse Resch",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318235",
+    "title": "Sufi’nin Bilgi Yolu",
+    "author": "William C. Chittick",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786059318877",
+    "title": "Terapi Odası Konuları",
+    "author": "Tülay Kök",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054657",
+    "title": "Varoluşun Keşfi",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466937",
+    "title": "Yazma Cesareti",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/3d11dfaa7146d68a82e3-480.webp"
+  },
+  {
+    "isbn": "9786257344470",
+    "title": "Yaşamı Karşılamak",
+    "author": "Viktor E. Frankl",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634641",
+    "title": "Yeme Döngüsünü Kırmak",
+    "author": "Judson Brewer",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255634719",
+    "title": "Çağımızın Mutsuzları",
+    "author": "Thomas O. St-Pierre",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257344142",
+    "title": "Ölmeden Önce Mümkünse Yaşamanız Gereken 1 Hayat",
+    "author": "Cem Mumcu",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/d13a6a0c0d641378734a-400.webp"
+  },
+  {
+    "isbn": "9786255634504",
+    "title": "Öteki Yol",
+    "author": "Asena Yurtsever",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054527",
+    "title": "Özgürlük Ve Kader",
+    "author": "Rollo May",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786055134587",
+    "title": "İnsanın 8 Evresi",
+    "author": "Erik H. Erikson",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786054054206",
+    "title": "İnsanın Anlam Arayışı",
+    "author": "Viktor E. Frankl",
+    "brand": "Okuyan Us",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786256466814",
+    "title": "İyi Aile Yoktur",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": "assets/images/covers/f1826d54e83dd44b47b5-480.webp"
+  },
+  {
+    "isbn": "9786256466845",
+    "title": "İyi Toplum Yoktur",
+    "author": "Nihan Kaya",
+    "brand": "Okuyan Us",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773575",
+    "title": "Adanın Odası",
+    "author": "Sharon Dodua Otoo",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259314228",
+    "title": "Akaşik Kayıtlar Aracılığıyla İyileşme",
+    "author": "Linda Howe",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773544",
+    "title": "Bilge Kadının Doğuşu",
+    "author": "Helen Knott",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057221674",
+    "title": "Bilinçli Ebeveynlik",
+    "author": "Pedram Shojaı Omd & Nick Polizzi",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057388902",
+    "title": "Bırakmak",
+    "author": "Peter Russell",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259314211",
+    "title": "Can Sıkıntısının Tarihi",
+    "author": "Peter Toohey",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057330468",
+    "title": "Cesur Büyüyen Çocuklar",
+    "author": "Donna B. Pincus",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902562",
+    "title": "Duyarlılıktan Doğan Güç",
+    "author": "Jane Novak",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902531",
+    "title": "Duygusal Tükenmişlik",
+    "author": "Nancy Colier",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773599",
+    "title": "Duygusal İyileşme",
+    "author": "Pete Walker",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902524",
+    "title": "George: Bir Saksağanın Anıları",
+    "author": "Frieda Hughes",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773537",
+    "title": "Geç Çiçek Açanlar",
+    "author": "Rich Karlgaard",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902548",
+    "title": "Geçinmek",
+    "author": "Amy Gallo",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057388933",
+    "title": "Hayat Boyu İyileşme",
+    "author": "Pete Walker",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057388957",
+    "title": "Her Şeyi Düşünme",
+    "author": "Anne Bogel",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902555",
+    "title": "Kadınlarda DEHB İçin Radikal Bir Rehber",
+    "author": "Sari Solden & MS ve Michelle Frank & PsyD",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773551",
+    "title": "Kaybolduğum Yerde Bulundum",
+    "author": "Şila Servet Yıldız",
+    "brand": "Serenad",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773513",
+    "title": "Kediler ve Zen",
+    "author": "Carla Francis",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057330406",
+    "title": "Kendini Kabule Giden Yol",
+    "author": "Lisa Olivera",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773568",
+    "title": "Küçük İnsanlar Büyük Duygular",
+    "author": "Alyssa Campbell,Lauren Elizabeth Stauble",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057330437",
+    "title": "Kızlarım Büyürken",
+    "author": "Matteo Bussola",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259862712",
+    "title": "Lobotomistin Karısı",
+    "author": "Samantha Greene Woodruff",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057221698",
+    "title": "Mutluluk Bir Alışkanlıktır",
+    "author": "Maxwell Maltz",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057330413",
+    "title": "Myung Sung: Kore Yaşam Sanatı",
+    "author": "Jenelle Kim",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057330420",
+    "title": "Nietzsche Bir Denizgergedanı Olsaydı",
+    "author": "Justin Gregg",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057388971",
+    "title": "Okuma Listesi",
+    "author": "Sara Nisha Adams",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057221629",
+    "title": "Otizm İçin Pozitif Ebeveynlik",
+    "author": "Leigh Merryday Porch",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057388919",
+    "title": "Sağlam Temelli Olmak",
+    "author": "Brad Stulberg",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057221681",
+    "title": "Sıkışmışlık Psikolojisi",
+    "author": "Britt Frank",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057221636",
+    "title": "Zihin Tasarımı",
+    "author": "Ryan A Bush",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057330451",
+    "title": "Zihnimizde ve Ruhumuzda Bahçıvanlık",
+    "author": "Sue Stuart Smith",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773520",
+    "title": "Çocuklarda Narsisizm",
+    "author": "Childhood Narcissism",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259773506",
+    "title": "Çocuklarda Yas",
+    "author": "Corienne Masur",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786057388926",
+    "title": "Öfke Terbiyesi",
+    "author": "Aaron Karmin",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902500",
+    "title": "Özün Seni Uyandırsın",
+    "author": "Şila Servet Yıldız",
+    "brand": "Serenad",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786057221605",
+    "title": "İkna Etmenin Psikolojisi",
+    "author": "Jon Levy",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259862729",
+    "title": "İyileştirici Sezginin Temelleri",
+    "author": "Wendie Colter",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786259902593",
+    "title": "İçimizdeki Şifa",
+    "author": "Katie Beecher, MS, LPC",
+    "brand": "Serenad",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255511621",
+    "title": "Astronot Mevsimi",
+    "author": "Nurdan Bağrıaçık",
+    "brand": "Uçan Fil",
+    "turkish": true,
+    "cover": "assets/images/covers/49419aff0779e8a1940b-480.webp"
+  },
+  {
+    "isbn": "9786257662031",
+    "title": "Cesur Koala",
+    "author": "Rachel Bright",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662413",
+    "title": "Evini Arayan Yavrukurt",
+    "author": "Rachel Bright",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662048",
+    "title": "Minik Fare Kükredi",
+    "author": "Rachel Bright",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786254142338",
+    "title": "Palto İsteyen Gezegen",
+    "author": "Nurdan Bağrıaçık",
+    "brand": "Uçan Fil",
+    "turkish": true,
+    "cover": "assets/images/covers/cc84638bc378ac995a97-480.webp"
+  },
+  {
+    "isbn": "9786257662222",
+    "title": "Türkçe ve İngilizce - Hayvanlar",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255511140",
+    "title": "Türkçe ve İngilizce - Kıyafetler",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662215",
+    "title": "Türkçe ve İngilizce - Meyveler",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255511171",
+    "title": "Türkçe ve İngilizce - Müzik Aletleri",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662208",
+    "title": "Türkçe ve İngilizce - Renkler",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662192",
+    "title": "Türkçe ve İngilizce - Sayılar",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662185",
+    "title": "Türkçe ve İngilizce - Sebzeler",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662178",
+    "title": "Türkçe ve İngilizce - Taşıtlar",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255511157",
+    "title": "Türkçe ve İngilizce - Uzay",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786255511164",
+    "title": "Türkçe ve İngilizce - Zıtlıklar",
+    "author": "Kolektif",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662130",
+    "title": "Çiçek Tutulması",
+    "author": "Nurdan Bağrıaçık",
+    "brand": "Uçan Fil",
+    "turkish": true,
+    "cover": "assets/images/covers/c1fba875530cd96de926-480.webp"
+  },
+  {
+    "isbn": "9786059933797",
+    "title": "Çınar Ağacı ve Yürüyen Köşk",
+    "author": "İlknur Güntürkün Kalıpçı",
+    "brand": "Uçan Fil",
+    "turkish": true,
+    "cover": null
+  },
+  {
+    "isbn": "9786257662420",
+    "title": "İki sincap Bir Kozalak",
+    "author": "Rachel Bright",
+    "brand": "Uçan Fil",
+    "turkish": false,
+    "cover": null
+  }
+]
