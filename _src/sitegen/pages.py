@@ -147,7 +147,7 @@ def page_seo(ctx, record: dict):
                                ctx.settings.get("default_description"))
     if path == "":
         description = seo.describe(texts, ctx.settings.get("default_description"))
-    image = texts.get("hero_image") or ""
+    image = texts.get("hero_image") or texts.get("side_image") or ""
     org = seo.organization(ctx)
     page_url = seo.url(ctx, path)
     if path == "":
