@@ -2,6 +2,9 @@
   "title": "Nereden Çıktı Bu Zorba Canavar?",
   "author": "Rıfat Batur",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 70,
   "cover": "/assets/images/covers/ec3ea3dda1d1fc024891-1000.webp",

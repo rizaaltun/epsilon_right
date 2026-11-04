@@ -1,7 +1,10 @@
 {
   "title": "Üçüncü Sayfa Güzeli",
   "author": "Cem Mumcu",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 196,
   "cover": "/assets/images/covers/63b71aab09c297198ba7-200.webp",

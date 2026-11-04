@@ -2,6 +2,9 @@
   "title": "Tuvi'nin Desenleri",
   "author": "Esat Zorkirişçi",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 12,
   "cover": "/assets/images/covers/be387d37bb7bc397e1ee-838.webp",

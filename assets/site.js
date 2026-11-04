@@ -363,7 +363,9 @@
     });
     if (!cards.some((c) => c.m)) return false;
 
-    const state = { q: "", cat: new Set(), lang: new Set(), dec: new Set() };
+    const state = { q: "", cat: new Set(), genre: new Set(), lang: new Set(), dec: new Set() };
+    // ?genre=<slug> (from a book page's subcategory chip) selects that subcategory alone.
+    const preselectGenre = new URLSearchParams(location.search).get("genre");
     const countEl = [...root.querySelectorAll("p,span,div")].find((el) =>
       /^\d+\s+titles?$/.test(el.textContent.trim()));
 
@@ -374,7 +376,9 @@
         const m = c.m || {};
         let ok = true;
         if (q) ok = (m.t || "").toLowerCase().includes(q) || (m.a || "").toLowerCase().includes(q);
-        if (ok && state.cat.size) ok = state.cat.has(m.c);
+        // A checked category shows all its books; a checked subcategory adds its own.
+        if (ok && (state.cat.size || state.genre.size))
+          ok = state.cat.has(m.c) || (m.g || []).some((g) => state.genre.has(`${m.c}|${g}`));
         if (ok && state.lang.size) ok = (m.l || []).some((x) => state.lang.has(x));
         if (ok && state.dec.size) ok = state.dec.has(m.y);
         c.li.style.display = ok ? "" : "none";
@@ -394,15 +398,20 @@
           || label.textContent.replace(/\d+$/, "")).trim();
         input.addEventListener("change", () => {
           let set, val;
-          if (kind === "Category") { set = state.cat; val = CAT_LABELS[text] || text; }
+          if (kind === "Category" && input.dataset.genre) { set = state.genre; val = `${input.dataset.cat}|${input.dataset.genre}`; }
+          else if (kind === "Category") { set = state.cat; val = input.dataset.cat || CAT_LABELS[text] || text; }
           else if (kind === "Translated into") { set = state.lang; val = text; }
           else { set = state.dec; val = text.replace(/s$/, "") + "s"; }
           if (input.checked) set.add(val); else set.delete(val);
           apply();
         });
-        if (kind === "Category" && preselectCat && CAT_LABELS[text] === preselectCat) {
-          input.checked = true;
-          state.cat.add(preselectCat);
+        const cat = input.dataset.cat || CAT_LABELS[text];
+        if (kind === "Category" && preselectCat && cat === preselectCat) {
+          if (preselectGenre ? input.dataset.slug === preselectGenre : !input.dataset.genre) {
+            input.checked = true;
+            if (input.dataset.genre) state.genre.add(`${cat}|${input.dataset.genre}`);
+            else state.cat.add(cat);
+          }
         }
       }
     }
@@ -548,6 +557,33 @@
     group.forEach((img, i) => img.addEventListener("click", () => openLightbox(group, i, img)));
     sync();
   };
+  /* Home hero card: several pinned items take turns, every few seconds unless
+     the pointer or focus is on the card (or motion is reduced), or by the arrows. */
+  const wireHeroSlides = (root) => {
+    const box = root.querySelector("[data-hb-slides]");
+    if (!box) return;
+    const slides = [...box.querySelectorAll(".hb-slide")];
+    const count = box.querySelector(".hb-slides-count");
+    const card = box.closest(".hb-aside") || box;
+    let at = 0, timer = 0, held = false;
+    const show = (i) => {
+      at = (i + slides.length) % slides.length;
+      slides.forEach((slide, k) => slide.classList.toggle("is-active", k === at));
+      count.textContent = `${at + 1} / ${slides.length}`;
+    };
+    const restart = () => {
+      clearInterval(timer);
+      if (!calm.matches && !held) timer = setInterval(() => { if (!document.hidden) show(at + 1); }, 6000);
+    };
+    box.querySelector(".hb-slides-prev").addEventListener("click", () => { show(at - 1); restart(); });
+    box.querySelector(".hb-slides-next").addEventListener("click", () => { show(at + 1); restart(); });
+    const hold = (on) => () => { held = on; restart(); };
+    card.addEventListener("pointerenter", hold(true));
+    card.addEventListener("pointerleave", hold(false));
+    card.addEventListener("focusin", hold(true));
+    card.addEventListener("focusout", hold(false));
+    restart();
+  };
   const wireCoverLightbox = (root) => {
     if (root.querySelector("[data-cover-set]")) return;
     const img = root.querySelector(".cover:not(.lift-object) img");
@@ -593,6 +629,7 @@
   const boot = () => {
     wireContact();
     wireHero(document);
+    wireHeroSlides(document);
     wireReveal(document);
     wireCountUp(document);
     wireSpotlight(document);

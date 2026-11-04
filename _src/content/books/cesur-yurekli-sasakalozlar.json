@@ -2,6 +2,9 @@
   "title": "Cesur Yürekli Şaşakalozlar",
   "author": "Renan Özdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 121,
   "cover": "/assets/images/covers/6095bfdded891eeb31c6-699.webp",

@@ -2,6 +2,9 @@
   "title": "Efe'nin Mutluluk Ölçeri",
   "author": "Nilay Şanlı",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 46,
   "cover": "/assets/images/covers/849e1027c1d42e59b35d-1000.webp",

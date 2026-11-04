@@ -2,6 +2,9 @@
   "title": "Dedemin Büyük Sırrı",
   "author": "Merve Edeer",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 8,
   "cover": "/assets/images/covers/a1bc6ac866aeb831509f-1000.webp",

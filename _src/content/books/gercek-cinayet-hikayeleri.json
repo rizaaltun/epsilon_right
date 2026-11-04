@@ -2,6 +2,9 @@
   "title": "Gerçek Cinayet Hikayeleri",
   "author": "Burak Saytekin",
   "category": "non-fiction",
+  "genres": [
+    "Cultural History"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 212,
   "cover": "/assets/images/covers/618ee4e914bc76b0bac8-1000.webp",

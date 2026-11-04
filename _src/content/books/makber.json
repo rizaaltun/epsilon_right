@@ -1,7 +1,10 @@
 {
   "title": "Makber",
   "author": "Cem Mumcu",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 193,
   "cover": "/assets/images/covers/dae30c1c705c125933cf-580.webp",

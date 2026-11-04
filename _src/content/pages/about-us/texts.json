@@ -11,22 +11,71 @@
       "eyebrow": "Epsilon Publishing",
       "quote": "“A global publishing brand from Türkiye.”",
       "body": "Founded in 1993, Epsilon Publishing is one of Türkiye's leading publishing houses, with more than 3,000 titles published across a wide range of genres, including fiction, non-fiction, personal development, psychology, philosophy, parenting, and children's literature. Its diverse list brings together distinguished Turkish and international voices and includes acclaimed works honoured with major literary awards such as the Nobel Prize, Pulitzer Prize, National Book Award, Newbery Medal, and Carnegie Medal.\n\nAlongside its broad general trade list, Epsilon publishes literary and upmarket fiction under Kafka, while Uçan Fil focuses on picture books, preschool titles, and early readers. With more than 200 new titles published each year, Epsilon continues to expand its publishing programme by introducing compelling authors, successful translations, and inspiring stories to readers of all ages.",
-      "image": "/assets/images/demo/about-epsilon.jpg",
-      "image_alt": "Epsilon Publishing"
+      "logo": "/assets/images/uploads/brands/epsilon.webp",
+      "logo_alt": "Epsilon logo",
+      "link": "/publishers/epsilon/",
+      "imprints": [
+        {
+          "imprint": "Kafka",
+          "imprint_logo": "/assets/images/uploads/brands/kafka.webp",
+          "imprint_link": "/publishers/kafka-kitap/"
+        },
+        {
+          "imprint": "Uçan Fil",
+          "imprint_logo": "/assets/images/uploads/brands/ucan-fil.webp",
+          "imprint_link": "/publishers/ucan-fil/"
+        },
+        {
+          "imprint": "Barometre",
+          "imprint_logo": "/assets/images/uploads/brands/barometre.webp",
+          "imprint_link": ""
+        },
+        {
+          "imprint": "Diplomat",
+          "imprint_logo": "/assets/images/uploads/brands/diplomat.webp",
+          "imprint_link": ""
+        }
+      ]
     },
     {
       "eyebrow": "Nemesis Publishing",
       "quote": "“The only way to exist is to read.”",
       "body": "Founded in 2007, Nemesis Publishing is one of Türkiye's leading publishing houses, with more than 1,500 titles spanning adult fiction, non-fiction, and children's literature. Nemesis publishes general trade fiction and non-fiction, while Nora focuses on distinguished literary and intellectual works, including historical fiction.\n\nIts children's imprint, Masalperest, publishes board books, picture books, first readers, middle-grade novels, and young adult fiction. Guided by a belief in the timeless power of storytelling, Masalperest seeks out imaginative books that spark curiosity, nurture a lifelong love of reading, and bring stories and illustrations from Türkiye to children around the world.",
-      "image": "/assets/images/demo/about-nemesis.jpg",
-      "image_alt": "Nemesis Publishing"
+      "logo": "/assets/images/uploads/brands/nemesis.webp",
+      "logo_alt": "Nemesis logo",
+      "link": "/publishers/nemesis-kitap/",
+      "imprints": [
+        {
+          "imprint": "Masalperest",
+          "imprint_logo": "/assets/images/uploads/brands/masalperest.webp",
+          "imprint_link": "/publishers/masalperest/"
+        },
+        {
+          "imprint": "Nora",
+          "imprint_logo": "/assets/images/uploads/brands/nora.webp",
+          "imprint_link": ""
+        },
+        {
+          "imprint": "Serenad",
+          "imprint_logo": "/assets/images/uploads/brands/serenad.webp",
+          "imprint_link": ""
+        }
+      ]
     },
     {
       "eyebrow": "Okuyan Us Publishing",
       "quote": "“We create emotions, and we nourish them.”",
       "body": "Founded in 1997 by psychiatrist, writer, and painter Cem Mumcu, Okuyan Us brings together people who read, question, share, and seek to contribute to the common good. Its wide-ranging list includes psychology, psychiatry, personal growth, communication, literature, philosophy, history, memoir, art, and children's books. Guided by its playful motto, “Readers are never tamed,” Okuyan Us continues to publish thought-provoking books that encourage readers to understand themselves and the world from new perspectives.",
-      "image": "/assets/images/demo/about-okuyan-us.jpg",
-      "image_alt": "Okuyan Us Publishing"
+      "logo": "/assets/images/uploads/brands/okuyan-us.webp",
+      "logo_alt": "Okuyan Us logo",
+      "link": "/publishers/okuyan-us/",
+      "imprints": [
+        {
+          "imprint": "Okuyan Koala",
+          "imprint_logo": "/assets/images/uploads/brands/okuyan-koala.webp",
+          "imprint_link": ""
+        }
+      ]
     }
   ],
   "next_eyebrow": "The Next Chapter",

@@ -2,9 +2,12 @@
   "title": "Seçilmiş Kahramanın El Kitabı 1 -2 -3-4",
   "author": "Resul Aydoğan",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 134,
-  "cover": "/assets/images/covers/330f38c2f441097cb008-1000.webp",
+  "cover": "/assets/images/covers/5edd98444ef85e51f773-1000.webp",
   "square_cover": false,
   "description": "Published by Masalperest in 2023, illustrated by Gökçe Yavaş Önal - Ege Karadayı, 144- 120 pages.",
   "original_title": "Seçilmiş Kahramanın El Kitabı 1 -2 -3-4",

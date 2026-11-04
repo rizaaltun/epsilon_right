@@ -1,7 +1,10 @@
 {
   "title": "Büyü Dükkanı",
   "author": "Yeşim Türköz",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 185,
   "cover": "/assets/images/covers/6b7d0b12e0b3378aa8db-1000.webp",

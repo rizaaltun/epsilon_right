@@ -2,6 +2,9 @@
   "title": "Sebze Olmak İsteyen Domates",
   "author": "Esat Zorkirişçi",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 47,
   "cover": "/assets/images/covers/e110a101f32fe10b4403-1000.webp",

@@ -2,6 +2,9 @@
   "title": "Ekinoks Hayalleri",
   "author": "Nurdan Bağrıaçık",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 52,
   "cover": "/assets/images/covers/595776de72ee76378f0b-1000.webp",

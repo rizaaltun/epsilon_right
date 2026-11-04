@@ -2,9 +2,12 @@
   "title": "Ajan Bilbo",
   "author": "Banu Bozdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 110,
-  "cover": "/assets/images/covers/63de97559a89a66c9ff0-1000.webp",
+  "cover": "/assets/images/covers/9f02f6942d2e1d8696ec-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by Beyza Tükel, 55 pages.",
   "original_title": "Ajan Bilbo",

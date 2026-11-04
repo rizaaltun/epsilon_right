@@ -3,6 +3,9 @@
   "title": "Eflatun Koza",
   "author": "Cahide Birgül",
   "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "cover": "/assets/images/covers/0ddb05916ec4cb069337-1000.webp",
   "square_cover": false,

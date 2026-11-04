@@ -2,6 +2,9 @@
   "title": "Şüphenin Tarihi",
   "author": "Sadık Usta",
   "category": "non-fiction",
+  "genres": [
+    "Philosophy"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 214,
   "cover": "/assets/images/covers/ea60a3078745fb939acf-1000.webp",

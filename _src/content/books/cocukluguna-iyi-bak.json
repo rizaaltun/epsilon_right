@@ -2,6 +2,9 @@
   "title": "Çocukluğuna İyi Bak",
   "author": "Deniz Şimşek",
   "category": "non-fiction",
+  "genres": [
+    "Self-Help"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 231,
   "cover": "/assets/images/covers/b7624f21c521ab155cfd-1000.webp",

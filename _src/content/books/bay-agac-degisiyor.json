@@ -2,6 +2,9 @@
   "title": "Bay Ağaç Değişiyor",
   "author": "Hülya Biyan",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 41,
   "cover": "/assets/images/covers/bbe690020265b95024cc-1000.webp",

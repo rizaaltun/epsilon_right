@@ -2,6 +2,9 @@
   "title": "Gizli Özne",
   "author": "Nihan Kaya",
   "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 158,
   "cover": "/assets/images/covers/eb55e05baa02627010bd-1000.webp",

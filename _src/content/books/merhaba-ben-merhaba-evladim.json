@@ -2,6 +2,9 @@
   "title": "Merhaba Ben Merhaba Evladım",
   "author": "Ziya Selçuk",
   "category": "non-fiction",
+  "genres": [
+    "Parenting & Education"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 174,
   "cover": "/assets/images/covers/30e7ac75d26278f275c5-1000.webp",

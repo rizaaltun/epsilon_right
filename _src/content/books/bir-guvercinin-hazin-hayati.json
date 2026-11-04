@@ -1,7 +1,10 @@
 {
   "title": "Bir Güvercinin Hazin Hayatı",
   "author": "Üstün Dökmen",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 191,
   "cover": "/assets/images/covers/4defc5edf2dd1ee9a6ae-1000.webp",

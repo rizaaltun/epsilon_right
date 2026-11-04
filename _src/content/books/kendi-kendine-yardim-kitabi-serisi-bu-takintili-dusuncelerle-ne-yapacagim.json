@@ -2,6 +2,9 @@
   "title": "Kendi Kendine Yardım Kitabı Serisi: Bu Takıntılı Düşüncelerle Ne Yapacağım?",
   "author": "Kadir Özdel",
   "category": "non-fiction",
+  "genres": [
+    "Psychology"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 227,
   "cover": "/assets/images/covers/b0de12c026ee276f3bf2-1000.webp",

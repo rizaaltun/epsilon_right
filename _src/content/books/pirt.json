@@ -2,9 +2,12 @@
   "title": "Pırt!",
   "author": "Özlem Fedai Korçak",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 88,
-  "cover": "/assets/images/covers/5c7d4dace97491b9b0ce-1000.webp",
+  "cover": "/assets/images/covers/2ad4ed3830ace28a90d7-1000.webp",
   "square_cover": true,
   "description": "Published by Masalperest in 2020, 32 pages.",
   "original_title": "Pırt!",

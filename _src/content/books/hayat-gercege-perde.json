@@ -1,7 +1,10 @@
 {
   "title": "Hayat Gerçeğe Perde",
   "author": "Cem Mumcu",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 199,
   "cover": "/assets/images/covers/b38e15974cb859245937-200.webp",

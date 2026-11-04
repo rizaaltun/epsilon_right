@@ -2,6 +2,9 @@
   "title": "Uçangöz",
   "author": "Lider Hepgenç",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 97,
   "cover": "/assets/images/covers/cc45309954a921281d03-1000.webp",

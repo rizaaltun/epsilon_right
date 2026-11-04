@@ -2,6 +2,9 @@
   "title": "Birim",
   "author": "Deniz Şimşek",
   "category": "non-fiction",
+  "genres": [
+    "Self-Help"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 230,
   "cover": "/assets/images/covers/f7ff866c554f71887936-544.webp",

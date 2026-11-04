@@ -2,9 +2,12 @@
   "title": "Çam Sakız",
   "author": "Banu Bozdemir",
   "category": "childrens-books",
+  "genres": [
+    "Middle Grade"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 115,
-  "cover": "/assets/images/covers/2f3e3efc1917d441ac2b-1000.webp",
+  "cover": "/assets/images/covers/be34ef824a7d74285577-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by Rukiye Ulusan, 56 pages.",
   "original_title": "Çam Sakız",

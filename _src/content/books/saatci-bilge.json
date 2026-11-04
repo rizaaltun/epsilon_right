@@ -2,6 +2,9 @@
   "title": "Saatçi Bilge",
   "author": "Hülya Biyan",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 39,
   "cover": "/assets/images/covers/df191a24e72f541bcb69-669.webp",

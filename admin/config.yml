@@ -95,6 +95,13 @@ collections:
           - { label: Adult Fiction, value: adult-fiction }
           - { label: Non-Fiction, value: non-fiction }
           - { label: Young Adult, value: young-adult }
+      - name: genres
+        label: Alt kategori
+        widget: select
+        multiple: true
+        required: false
+        hint: "Kitap sayfasında etiket olarak görünür ve Books sayfasındaki Category filtresinde ana kategorinin altında listelenir. Birden çok seçilebilir. Romanlar: Literary Fiction … Crime & Mystery; Non-Fiction: Psychology … Food & Drink; çocuk kitapları: Picture Book, Early Readers, Middle Grade."
+        options: ["Literary Fiction", "Historical Fiction", "Fantasy", "Crime & Mystery", "Psychology", "Self-Help", "Health & Wellness", "Parenting & Education", "Popular Science", "Philosophy", "Essays", "Art", "History & Archaeology", "Cultural History", "Food & Drink", "Picture Book", "Early Readers", "Middle Grade"]
       - name: catalogue
         label: Katalog
         widget: relation
@@ -249,7 +256,7 @@ collections:
         widget: select
         default: Announcements
         options: [Announcements, Industry, Press, Fairs, Rights deals, Awards]
-      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: "Açıksa haber, ana sayfanın üstündeki kartta ve haber listelerinde yeni haberlerin önünde kalır. Hem haber hem etkinlik sabitliyse tarihi yeni olan karta gelir." }
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: "Açıksa haber, ana sayfanın üstündeki kartta ve haber listelerinde yeni haberlerin önünde kalır. Birden fazla haber ya da etkinlik sabitliyse kartta sırayla kayarak görünürler." }
       - { name: byline, label: İmza, widget: string, default: Editorial desk, hint: 'Tarihin yanında görünür, örn. "Editorial desk".' }
       - { name: excerpt, label: Özet, widget: text, hint: Haber kartlarında görünen kısa metin (1–2 cümle). }
       - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
@@ -308,7 +315,7 @@ collections:
     fields:
       - { name: title, label: Etkinlik adı, widget: string }
       - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
-      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: "Açıksa ana sayfanın üstündeki kartta, tarihi geçmiş olsa bile bu etkinlik görünür. Hem haber hem etkinlik sabitliyse tarihi yeni olan gelir." }
+      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: "Açıksa ana sayfanın üstündeki kartta, tarihi geçmiş olsa bile bu etkinlik görünür. Birden fazla haber ya da etkinlik sabitliyse kartta sırayla kayarak görünürler." }
       - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
       - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
       - { name: city, label: Şehir, widget: string, required: false }
@@ -610,8 +617,19 @@ collections:
                 required: false
                 buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
                 editor_components: []
-              - { name: image, label: "Görsel", widget: image, choose_url: false }
-              - { name: image_alt, label: "Görsel açıklaması", widget: string }
+              - { name: logo, label: "Logo", widget: image, choose_url: false, media_folder: /assets/images/uploads/brands, public_folder: /assets/images/uploads/brands, hint: "Metnin yanındaki kutuda büyük görünür. Arka planı saydam PNG/WebP ya da SVG, en az 1200 piksel genişlik." }
+              - { name: logo_alt, label: "Logo açıklaması", widget: string, required: false, hint: "Örn. Epsilon logo" }
+              - { name: link, label: "Logo linki", widget: string, required: false, hint: "İsteğe bağlı, örn. /publishers/epsilon/" }
+              - name: imprints
+                label: Alt markalar
+                label_singular: Alt marka
+                widget: list
+                required: false
+                hint: Logonun altındaki şeritte yan yana görünür.
+                fields:
+                  - { name: imprint, label: "Ad", widget: string }
+                  - { name: imprint_logo, label: "Logo", widget: image, choose_url: false, media_folder: /assets/images/uploads/brands, public_folder: /assets/images/uploads/brands }
+                  - { name: imprint_link, label: "Link", widget: string, required: false, hint: "İsteğe bağlı, örn. /publishers/kafka-kitap/" }
           - { name: next_eyebrow, label: "Hedefler: üst etiket", widget: string }
           - { name: next_title, label: "Hedefler: başlık", widget: string }
           - name: next_body
@@ -861,7 +879,7 @@ singletons:
     fields:
       - { name: site_name, label: Site adı, widget: string, hint: Sayfa başlıklarının sonunda görünür. }
       - { name: tagline, label: Slogan, widget: string, hint: Alt bilgide (footer) görünür. }
-      - { name: email, label: E-posta, widget: string, hint: Haklar talebi düğmeleri ve alt bilgi bu adresi kullanır. }
+      - { name: email, label: E-posta, widget: string, hint: "Alt bilgi (footer) bu adresi kullanır. Kitap sayfalarındaki haklar düğmesi İletişim bilgileri › Haklar e-postası'na gider." }
       - { name: location, label: Konum, widget: string }
       - { name: instagram, label: Instagram adresi, widget: string }
       - { name: linkedin, label: LinkedIn adresi, widget: string }
@@ -894,7 +912,7 @@ singletons:
     format: json
     fields:
       - { name: email, label: E-posta, widget: string, required: false }
-      - { name: rights_email, label: Haklar e-postası, widget: string, required: false }
+      - { name: rights_email, label: Haklar e-postası, widget: string, required: false, hint: "Kitap sayfalarındaki \"Enquire about rights\" düğmesi ve İletişim sayfasındaki \"Rights enquiries\" bu adresi kullanır. Boşsa site e-postası kullanılır." }
       - { name: phone, label: Telefon, widget: string, required: false, hint: "Örn. +90 543 529 93 00" }
       - { name: address, label: Kısa adres, widget: string, required: false }
       - name: offices

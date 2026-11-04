@@ -2,6 +2,9 @@
   "title": "Madalyonun Sırrı",
   "author": "Mehmet Yavuz",
   "category": "adult-fiction",
+  "genres": [
+    "Crime & Mystery"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 151,
   "cover": "/assets/images/covers/d10efe6ed320e74b6902-1000.webp",

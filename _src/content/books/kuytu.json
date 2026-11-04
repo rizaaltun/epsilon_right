@@ -1,7 +1,10 @@
 {
   "title": "Kuytu",
   "author": "Murat Tavlı",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 202,
   "cover": "/assets/images/covers/089c82b72978f40fa1c0-1000.webp",

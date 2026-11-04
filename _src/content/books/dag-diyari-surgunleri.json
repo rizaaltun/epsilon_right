@@ -1,7 +1,10 @@
 {
   "title": "Dağ Diyarı Sürgünleri",
   "author": "Mehmet Çimen",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Fantasy"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 184,
   "cover": "/assets/images/covers/211577c4d339bceb149c-796.webp",

@@ -12,6 +12,7 @@ the uploaded file is shown as it is.
 """
 
 import hashlib
+import io
 import re
 import sys
 from functools import lru_cache
@@ -51,6 +52,25 @@ def _pillow():
     return Image, ImageOps
 
 
+def to_rgb(image):
+    """An uploaded image as sRGB: print (CMYK) files through their embedded colour
+    profile, transparent areas on white."""
+    from PIL import Image, ImageCms, ImageOps
+
+    image = ImageOps.exif_transpose(image)
+    icc = image.info.get("icc_profile")
+    if image.mode in ("CMYK", "RGB") and icc:
+        try:
+            profile = ImageCms.ImageCmsProfile(io.BytesIO(icc))
+            return ImageCms.profileToProfile(image, profile, ImageCms.createProfile("sRGB"), outputMode="RGB")
+        except (OSError, ImageCms.PyCMSError):
+            pass
+    if image.mode in ("RGBA", "LA", "P", "PA"):
+        image = image.convert("RGBA")
+        return Image.alpha_composite(Image.new("RGBA", image.size, (255, 255, 255, 255)), image).convert("RGB")
+    return image.convert("RGB")
+
+
 @lru_cache(maxsize=None)
 def make_variants(root: str, rel: str, write: bool) -> list:
     """Variants [(path, width)] for an uploaded cover, creating them if ``write``.
@@ -63,11 +83,11 @@ def make_variants(root: str, rel: str, write: bool) -> list:
             _warned.add(rel)
             print(f"warning: Pillow is not installed; {rel} is used without resized variants", file=sys.stderr)
         return []
-    Image, ImageOps = pil
+    Image, _ = pil
     source = Path(root, rel)
     stem = hashlib.sha256(source.read_bytes()).hexdigest()[:20]
     with Image.open(source) as original:
-        image = ImageOps.exif_transpose(original).convert("RGB")
+        image = to_rgb(original)
     width, height = image.size
     out = []
     for target in sorted({min(w, width) for w in WIDTHS}):

@@ -1,7 +1,10 @@
 {
   "title": "Vazgeçtim Sanma Sadece Büyüdüm",
   "author": "Murat Tavlı",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 204,
   "cover": "/assets/images/covers/fda18c5f7a5e9e88701f-1000.webp",

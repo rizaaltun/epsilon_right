@@ -2,6 +2,9 @@
   "title": "Işık Krallığı",
   "author": "Nurdan Bağrıaçık",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 3,
   "cover": "/assets/images/covers/7ee9e56deeb01e11f3e9-1000.webp",

@@ -2,6 +2,9 @@
   "title": "Pırpır Sakinleşiyor",
   "author": "Çağrı Odabaşı",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 4,
   "cover": "/assets/images/covers/4a27cd96f353e91dfeb8-1000.webp",

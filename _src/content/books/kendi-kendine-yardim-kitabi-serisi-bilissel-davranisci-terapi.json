@@ -2,6 +2,9 @@
   "title": "Kendi Kendine Yardım Kitabı Serisi: Bilişsel Davranışçı Terapi",
   "author": "M. Hakan Türkçapar",
   "category": "non-fiction",
+  "genres": [
+    "Psychology"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 223,
   "cover": "/assets/images/covers/13d19d3bbd756d76b491-548.webp",

@@ -2,6 +2,9 @@
   "title": "Zaman Yolcusu Kalmasın",
   "author": "Seda Aksoy Evren",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 100,
   "cover": "/assets/images/covers/ccd8973f3e129f1b6500-1000.webp",

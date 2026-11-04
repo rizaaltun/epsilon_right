@@ -29,9 +29,9 @@ Kitap sayıları (yayınevi kartları, yazarlar listesi, Representations) her de
 kitaplardan hesaplanır; elle güncellenmez.
 
 Ana sayfanın üstündeki kartta sabitlenen içerik görünür: haberde "Vitrine sabitle", fuarda
-"Ana sayfada sabitle". Hem haber hem fuar sabitliyse tarihi yeni olan gelir; bu yüzden karta
-bir şey almak için önceki sabitlemeyi kapatmak en garantisi. Hiçbir şey sabitli değilse son
-haber görünür, ama ondan sonra biten bir fuar varsa fuar kartı gelir.
+"Ana sayfada sabitle". Birden fazla haber ya da fuar sabitliyse kartta sırayla kayarak görünürler
+(en yenisi önce, birkaç saniyede bir; ziyaretçi oklarla da geçebilir). Hiçbir şey sabitli değilse
+son haber görünür, ama ondan sonra biten bir fuar varsa fuar kartı gelir.
 
 Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
 çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
@@ -53,6 +53,15 @@ Baskı dosyalarından (iç sayfalar + kapak PDF'i) bu önizlemeyi üretmek için
 `python3 _src/tools/make_sample_preview.py İÇ.pdf KAPAK.pdf ÇIKTI.pdf` (PyMuPDF ve
 Pillow gerekir). Kesim payları ve baskı işaretleri kırpılır, sayfalar web boyutuna
 indirilir; sonuç birkaç MB olur.
+
+## Kategoriler
+
+Her kitabın bir ana kategorisi (Adult Fiction, Non-Fiction, Children's Books, Young Adult) ve
+isteğe bağlı **Alt kategori**leri vardır (Psychology, Picture Book gibi; birden çok seçilebilir).
+Alt kategoriler kitap sayfasında etiket olarak görünür; etikete tıklayınca Books sayfası o alt
+kategoriyle filtrelenmiş açılır. Books sayfasındaki Category filtresinde her ana kategorinin
+altında, kitapları olan alt kategoriler sayılarıyla listelenir. İlk liste "Kitap Kategorileri"
+Excel dosyalarından alındı (Kasım 2026).
 
 ## Set / seri sayfaları
 

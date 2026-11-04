@@ -2,6 +2,9 @@
   "title": "Keşke Horoz Olsam",
   "author": "Faruk Uğur",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 92,
   "cover": "/assets/images/covers/912d953275541c5954a3-1000.webp",

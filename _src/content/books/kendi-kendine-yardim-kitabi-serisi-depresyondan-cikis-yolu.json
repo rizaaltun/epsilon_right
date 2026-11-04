@@ -2,6 +2,9 @@
   "title": "Kendi Kendine Yardım Kitabı Serisi: Depresyondan Çıkış Yolu",
   "author": "M. Hakan Türkçapar",
   "category": "non-fiction",
+  "genres": [
+    "Psychology"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 224,
   "cover": "/assets/images/covers/a56baf447f69ce5ab181-1000.webp",

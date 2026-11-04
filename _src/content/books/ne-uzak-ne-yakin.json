@@ -2,6 +2,9 @@
   "title": "Ne Uzak Ne Yakın",
   "author": "Nihan Akkocaoğlu Çayır",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 99,
   "cover": "/assets/images/covers/caf853a5f4ac6400fd9d-1000.webp",

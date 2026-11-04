@@ -2,6 +2,9 @@
   "title": "Babil Kulesi Kitabı",
   "author": "Mahir Ünsal Eriş",
   "category": "non-fiction",
+  "genres": [
+    "Cultural History"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 211,
   "cover": "/assets/images/covers/40a820a9884d2bea49f7-1000.webp",

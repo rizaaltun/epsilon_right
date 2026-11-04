@@ -1,7 +1,10 @@
 {
   "title": "Rastlantı",
   "author": "Murat Tavlı",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 203,
   "cover": "/assets/images/covers/d5cc68eef42ab80d04bd-1000.webp",

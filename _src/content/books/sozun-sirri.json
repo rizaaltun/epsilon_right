@@ -2,6 +2,9 @@
   "title": "Sözün Sırrı",
   "author": "Demet Özdemir",
   "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 152,
   "cover": "/assets/images/covers/df697c07a98d03653db2-1000.webp",

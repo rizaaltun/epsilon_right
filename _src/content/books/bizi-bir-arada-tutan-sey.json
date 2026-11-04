@@ -2,6 +2,9 @@
   "title": "Bizi Bir Arada Tutan Şey",
   "author": "Gülçağ Konçe",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 27,
   "cover": "/assets/images/covers/52811eaf7694a7d2f7dd-1000.webp",

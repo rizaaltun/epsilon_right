@@ -2,6 +2,9 @@
   "title": "Ron ve Rubi Kurtarma Operasyonu",
   "author": "Fatih Cem Gülbent",
   "category": "childrens-books",
+  "genres": [
+    "Early Readers"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 35,
   "cover": "/assets/images/covers/afd1bf83ffcbafd50b93-886.webp",

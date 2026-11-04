@@ -2,6 +2,9 @@
   "title": "Kendi Kendine Yardım Kitabı Serisi: Nasıl Temizlenebilirim?",
   "author": "M. Hakan Türkçapar",
   "category": "non-fiction",
+  "genres": [
+    "Psychology"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 225,
   "cover": "/assets/images/covers/4b0536bf99bef6e2cd0a-1000.webp",

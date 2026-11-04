@@ -2,6 +2,9 @@
   "title": "Ütopya ve MasalBilim",
   "author": "Sadık Usta",
   "category": "non-fiction",
+  "genres": [
+    "Cultural History"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 216,
   "cover": "/assets/images/covers/261208b46adb1436e9e4-1000.webp",

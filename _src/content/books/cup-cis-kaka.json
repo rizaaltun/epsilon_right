@@ -2,6 +2,9 @@
   "title": "Cup Çiş Kaka",
   "author": "Şeyma Göksay",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 93,
   "cover": "/assets/images/covers/88b4d65aa557619fbd88-996.webp",

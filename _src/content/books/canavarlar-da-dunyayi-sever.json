@@ -2,6 +2,9 @@
   "title": "Canavarlar da Dünyayı Sever",
   "author": "Özlem Fedai Korçak",
   "category": "childrens-books",
+  "genres": [
+    "Picture Book"
+  ],
   "catalogue": "childrens-titles-2026",
   "order": 18,
   "cover": "/assets/images/covers/6914024cb6e956cd7570-1000.webp",

@@ -1,7 +1,10 @@
 {
   "title": "Büyü Dükkanında İki Çınar",
   "author": "Yeşim Türköz",
-  "category": "non-fiction",
+  "category": "adult-fiction",
+  "genres": [
+    "Literary Fiction"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 187,
   "cover": "/assets/images/covers/b38409e955090329d515-531.webp",

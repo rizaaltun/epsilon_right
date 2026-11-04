@@ -2,6 +2,9 @@
   "title": "Ömer Hayyam",
   "author": "Sadık Usta",
   "category": "non-fiction",
+  "genres": [
+    "History & Archaeology"
+  ],
   "catalogue": "adult-titles-2026",
   "order": 215,
   "cover": "/assets/images/covers/1b026fe19e32d911faee-964.webp",
