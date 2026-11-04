@@ -105,7 +105,7 @@ def render(ctx, slug: str) -> tuple:
     book = ctx.books[slug]
     path = f"books/{slug}/"
     r = prefix_for(path)
-    email = ctx.settings["email"]
+    email = ctx.shared.get("contact", {}).get("rights_email") or ctx.settings["email"]
     subject = quote("Rights enquiry: " + book["title"])
     rows = "".join(
         f'<div class="grid grid-cols-[minmax(7rem,9rem)_1fr] gap-4 py-3"><dt class="text-ink-3">{label}</dt>'

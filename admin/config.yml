@@ -868,7 +868,7 @@ singletons:
     fields:
       - { name: site_name, label: Site adı, widget: string, hint: Sayfa başlıklarının sonunda görünür. }
       - { name: tagline, label: Slogan, widget: string, hint: Alt bilgide (footer) görünür. }
-      - { name: email, label: E-posta, widget: string, hint: Haklar talebi düğmeleri ve alt bilgi bu adresi kullanır. }
+      - { name: email, label: E-posta, widget: string, hint: "Alt bilgi (footer) bu adresi kullanır. Kitap sayfalarındaki haklar düğmesi İletişim bilgileri › Haklar e-postası'na gider." }
       - { name: location, label: Konum, widget: string }
       - { name: instagram, label: Instagram adresi, widget: string }
       - { name: linkedin, label: LinkedIn adresi, widget: string }
@@ -901,7 +901,7 @@ singletons:
     format: json
     fields:
       - { name: email, label: E-posta, widget: string, required: false }
-      - { name: rights_email, label: Haklar e-postası, widget: string, required: false }
+      - { name: rights_email, label: Haklar e-postası, widget: string, required: false, hint: "Kitap sayfalarındaki \"Enquire about rights\" düğmesi ve İletişim sayfasındaki \"Rights enquiries\" bu adresi kullanır. Boşsa site e-postası kullanılır." }
       - { name: phone, label: Telefon, widget: string, required: false, hint: "Örn. +90 543 529 93 00" }
       - { name: address, label: Kısa adres, widget: string, required: false }
       - name: offices
