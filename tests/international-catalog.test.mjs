@@ -42,3 +42,33 @@ test('AI output allows only real catalogue ISBNs and handles failures',async()=>
  const result=await handle(req({mode:'recommend',query:'a novel'}),env,mock);assert.equal(result.status,200);assert.deepEqual((await result.json()).isbns,['9786254143144']);
  const fail=await handle(req({mode:'recommend',query:'a novel'}),env,async()=>new Response('',{status:503}));assert.equal(fail.status,502);
 });
+
+const {chooseMarket,primaryRetailers,scopedRetailers,marketLabel,marketFromGeo} = await import('../assets/international/market.mjs');
+const {locationData,locationResponse} = await import('../integration/catalog-location/location.mjs');
+test('Finland connection takes priority over language/timezone and ranks only Adlibris FI',()=>{
+ const state=chooseMarket({geo:{country:'FI',continent:'EU'},device:'US'});
+ assert.equal(state.market,'FI');assert.equal(marketLabel(state),'Europe · Finland');
+ assert.deepEqual(primaryRetailers(RETAILERS,state.market).map(r=>r.id),['adlibris_fi']);
+});
+test('deliberate destination and shared links survive automatic detection',()=>{
+ assert.equal(chooseMarket({saved:'DE',geo:{country:'FI'},device:'US'}).market,'DE');
+ assert.equal(chooseMarket({shared:'EUROPE',saved:'DE',geo:{country:'FI'}}).market,'EUROPE');
+ assert.equal(chooseMarket({shared:'INVALID',saved:'INVALID',geo:null,device:'FI'}).source,'device');
+});
+test('region browsing never presents another country as a local store',()=>{
+ assert.equal(primaryRetailers(RETAILERS,'EUROPE').length,0);
+ assert.ok(scopedRetailers(RETAILERS,'EUROPE').every(r=>!['US','AE','AU'].includes(r.countryCode)));
+ assert.equal(marketFromGeo({country:'ES',continent:'EU'}).market,'EUROPE');
+ assert.equal(marketLabel(marketFromGeo({country:'ES',continent:'EU'})),'Europe · Spain');
+ assert.equal(marketFromGeo({country:'JP',continent:'AS'}).market,'ALL');
+ assert.equal(marketFromGeo({country:'XX',continent:'EU'}),null);
+});
+test('location endpoint exposes coarse edge country only and cannot be overridden by visitor input',()=>{
+ const request=new Request('https://example.test/api/location?country=US',{headers:{'CF-IPCountry':'US'}});
+ Object.defineProperty(request,'cf',{value:{country:'FI',continent:'EU',city:'Helsinki',latitude:'60',longitude:'25'}});
+ assert.deepEqual(locationData(request),{country:'FI',continent:'EU',source:'network'});
+ assert.match(locationResponse(request).headers.get('Cache-Control'),/no-store/);
+ const noEdge=new Request('https://example.test/api/location',{headers:{'CF-IPCountry':'FI'}});
+ assert.equal(locationData(noEdge).country,null);
+ assert.equal(locationResponse(new Request('https://example.test/api/location',{headers:{Origin:'https://untrusted.example'}})).status,403);
+});

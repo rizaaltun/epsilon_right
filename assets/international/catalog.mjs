@@ -1,18 +1,20 @@
 import {RETAILERS} from './retailers.mjs';
 import {normalizeTurkish, searchBooks, score, detectMarket} from './search.mjs';
+import {REGIONS,countryName,chooseMarket,isMarket,primaryRetailers,scopedRetailers,marketLabel,regionFor} from './market.mjs';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const base = new URL('.',import.meta.url);
 const config = {advisorEndpoint: '', ...window.EPSILON_CATALOG_CONFIG};
 let books = [], tab = 'books', limit = 24;
 const countries = [...new Map(RETAILERS.map(r=>[r.countryCode,{code:r.countryCode,name:new Intl.DisplayNames(['en'],{type:'region'}).of(r.countryCode==='UK'?'GB':r.countryCode),flag:r.flag}])).values()].sort((a,b)=>a.name.localeCompare(b.name));
-let market = 'ALL';
-try { market = localStorage.getItem('epsilon.catalog.market') || detectMarket(Intl.DateTimeFormat().resolvedOptions().timeZone,navigator.language); } catch {}
-if (market !== 'ALL' && !countries.some(c=>c.code===market)) market='ALL';
 const params = new URLSearchParams(location.search);
-let restoreMarket = params.get('market');
-if (restoreMarket==='ALL'||countries.some(c=>c.code===restoreMarket)) market=restoreMarket;
-const stores = () => market==='ALL' ? [] : RETAILERS.filter(r=>r.countryCode===market);
+let savedMarket;try{savedMarket=localStorage.getItem('epsilon.catalog.destination.v2');}catch{}
+let deviceMarket='ALL';try{deviceMarket=detectMarket(Intl.DateTimeFormat().resolvedOptions().timeZone,navigator.language);}catch{}
+let destination=chooseMarket({shared:params.get('market'),saved:savedMarket,device:deviceMarket});
+let market=destination.market,geoData=null,manualRevision=0,filtersOpen=false;
+const stores=()=>primaryRetailers(RETAILERS,market);
+const scope=()=>scopedRetailers(RETAILERS,market);
+const destinationName=()=>marketLabel(destination);
 const link = (r,q,primary=false) => `<a class="ic-store-link${primary?' primary':''}" href="${escape(r.buildUrl(q))}" target="_blank" rel="noopener noreferrer" aria-label="Search ${escape(r.name)} for ${escape(q)} (opens a new tab)">${escape(r.name)} <span aria-hidden="true">↗</span></a>`;
 const palette=['#123b31','#ad6d45','#424e64','#877444','#6b4142','#345e59'];
 function cover(book){
@@ -20,10 +22,14 @@ function cover(book){
  const color=palette[Number(book.isbn.slice(-2))%palette.length];
  return `<div class="ic-cover" style="background:${color}" aria-label="${escape(book.title)} — typographic placeholder"><small>${escape(book.brand)}</small><strong lang="tr">${escape(book.title)}</strong><small>${escape(book.author)}</small><span class="ic-cover-label">Turkish edition · Cover unavailable</span></div>`;
 }
-function card(book){return `<article class="ic-card"><div class="ic-card-cover">${cover(book)}</div><div class="ic-meta"><span>${escape(book.brand)}</span><span>${book.turkish?'Turkish author':'Translated author'}</span></div><h3 lang="tr">${escape(book.title)}</h3><button class="ic-author" data-author="${escape(book.author)}">${escape(book.author)}</button><p class="ic-isbn">ISBN ${book.isbn}</p><div class="ic-stores">${stores().slice(0,3).map((r,i)=>link(r,book.isbn,i===0)).join('')}</div><div class="ic-card-actions"><button data-detail="${book.isbn}">${market==='ALL'?'Find a bookshop':'All destinations'} · ${RETAILERS.length} stores ↗</button><button data-analysis="${book.isbn}">About this book · AI</button></div></article>`;}
+function card(book){
+ const primary=stores();
+ return `<article class="ic-card"><div class="ic-card-cover">${cover(book)}</div><div class="ic-meta"><span>${escape(book.brand)}</span></div><h3 lang="tr">${escape(book.title)}</h3><button class="ic-author" data-author="${escape(book.author)}">${escape(book.author)}</button><div class="ic-stores">${primary.slice(0,3).map((r,i)=>link(r,book.isbn,i===0)).join('')}</div><div class="ic-card-actions"><button data-detail="${book.isbn}" class="${primary.length?'':'ic-find-store'}">${primary.length?'More destinations →':market==='ALL'?'Find a bookshop →':'Bookshops in '+escape(destinationName())+' →'}</button>${config.advisorEndpoint?`<button data-analysis="${book.isbn}">About this book · AI</button>`:''}</div></article>`;
+}
 function filtered(){
  return searchBooks(books,$('search').value).filter(({book:b})=>(!$('brand').value||b.brand===$('brand').value)&&(!$('author').value||b.author===$('author').value)&&(!$('origin').value||b.turkish===($('origin').value==='tr'))).sort((a,b)=> {
  if($('search').value && a.score!==b.score) return b.score-a.score;
+ if($('sort').value==='collection')return Number(Boolean(b.book.cover))-Number(Boolean(a.book.cover)) || books.indexOf(a.book)-books.indexOf(b.book);
  return a.book[$('sort').value].localeCompare(b.book[$('sort').value],'tr');
  });
 }
@@ -36,23 +42,27 @@ function directory(type){
  }).join('')+'</div>';
 }
 function retailerDirectory(){
- const selected = market==='ALL'?RETAILERS:stores();
+ const selected = scope();
  const q=$('search').value.trim();
  const list=selected.filter(r=>!q||normalizeTurkish(`${r.name} ${r.countryName} ${countries.find(c=>c.code===r.countryCode).name}`).includes(normalizeTurkish(q)));
- return `<form id="isbn-test" class="ic-test"><label for="test-isbn">Try an ISBN across these bookshops</label><input id="test-isbn" inputmode="numeric" placeholder="13-digit ISBN" value="9786254143144" required pattern="[0-9]{13}" maxlength="13"><button class="btn btn-secondary">Create search links</button><p class="ic-fine">Links open retailer search results. A search result does not confirm availability.</p><div id="test-links" class="ic-stores"></div></form><div class="ic-directory">${list.map(r=>`<article><p class="eyebrow">${r.flag} ${escape(countries.find(c=>c.code===r.countryCode).name)}</p><h3>${escape(r.name)}</h3><p>${escape(r.region)}</p>${link(r,'Turkish books')}</article>`).join('')}</div>`;
+ return `<p class="ic-directory-intro">${market==='ALL'?'Explore the international network. Choose a destination to narrow the list.':'Bookshops for '+escape(destinationName())+'. Search a book in the Books tab to open its ISBN at these stores.'}</p><div class="ic-directory">${list.map(r=>`<article><p class="eyebrow">${r.flag} ${escape(countries.find(c=>c.code===r.countryCode).name)}</p><h3>${escape(r.name)}</h3><p>${escape(regionFor(r.countryCode)?.name||'International')}</p>${link(r,'Turkish books')}</article>`).join('')}</div>`;
+
 }
 function syncURL(){
- const next=new URLSearchParams();for(const id of ['search','brand','author','origin','sort']) if($(id).value && !(id==='sort'&&$(id).value==='title'))next.set(id,$(id).value);
- next.set('market',market);if(tab!=='books')next.set('view',tab);
+ const next=new URLSearchParams();for(const id of ['search','brand','author','origin','sort']) if($(id).value && !(id==='sort'&&$(id).value==='collection'))next.set(id,$(id).value);
+ if(['manual','shared','saved'].includes(destination.source))next.set('market',market);if(tab!=='books')next.set('view',tab);
  history.replaceState(null,'',location.pathname+'?'+next.toString()+location.hash);
 }
 function render(){
  const matches=filtered();
- $('filters').hidden=tab==='stores';
+ $('filters').hidden=tab==='stores'||!filtersOpen;
+ $('filter-toggle').hidden=tab==='stores';
+ $('filter-toggle').setAttribute('aria-expanded',String(filtersOpen));
+ const active=['brand','author','origin'].filter(id=>$(id).value).length;$('active-filters').textContent=active?`(${active})`:'';
  $('fuzzy-note').hidden=tab==='stores'||!$('search').value||!matches.length||matches[0].score>=85;
  document.querySelectorAll('[data-tab]').forEach(b=>{if(b.dataset.tab===tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
- $('market-note').textContent=market==='ALL'?'Choose a country for local bookshop links.':'Suggested from your device or saved choice. You can change it.';
- $('results-status').textContent=tab==='books'?`${matches.length} books · ${market==='ALL'?'All destinations':countries.find(c=>c.code===market).name}`:tab==='stores'?`${market==='ALL'?RETAILERS.length:stores().length} bookshops · ISBN search`:`${new Set(matches.map(r=>r.book[tab==='authors'?'author':'brand'])).size} ${tab==='authors'?'author / contributor credits':'publishers'}`;
+ updateLocation();
+ $('results-status').textContent=tab==='books'?`${matches.length} books · ${escape(destinationName())}`:tab==='stores'?`${scope().length} bookshops · ISBN search`:`${new Set(matches.map(r=>r.book[tab==='authors'?'author':'brand'])).size} ${tab==='authors'?'author / contributor credits':'publishers'}`;
  $('more').hidden=tab!=='books'||matches.length<=limit;
  $('results').innerHTML=tab==='stores'?retailerDirectory():!matches.length?'<div class="ic-empty"><h2>No matches this time.</h2><p>Try a shorter title or reset the filters.</p></div>':tab==='books'?`<div class="ic-grid">${matches.slice(0,limit).map(r=>card(r.book)).join('')}</div>`:directory(tab);
  syncURL();
@@ -68,10 +78,44 @@ function suggestions(){
  box.hidden=false;$('search').setAttribute('aria-expanded','true');
 }
 function hideSuggestions(){ $('suggestions').hidden=true;$('search').setAttribute('aria-expanded','false'); }
+function countrySection(code,isbn){
+ const c=countries.find(c=>c.code===code);if(!c)return '';
+ return `<section><h3>${c.flag} ${escape(c.name)}</h3><div class="ic-stores">${RETAILERS.filter(r=>r.countryCode===code).map(r=>link(r,isbn)).join('')}</div></section>`;
+}
 function openDetail(isbn){
  const b=books.find(b=>b.isbn===isbn);if(!b)return;
- $('detail-body').innerHTML=`<h2 id="detail-title" lang="tr">${escape(b.title)}</h2><p>${escape(b.author)} · ${escape(b.brand)}</p><p class="ic-isbn">ISBN ${b.isbn} <button class="ic-text-button" data-copy="${b.isbn}">Copy ISBN</button><span id="copy-status" role="status"></span></p><p class="ic-fine">Turkish-language edition. Links open an ISBN search. Check format, stock, price and delivery with the bookshop.</p><div class="ic-country-list">${countries.map(c=>`<section><h3>${c.flag} ${escape(c.name)}</h3><div class="ic-stores">${RETAILERS.filter(r=>r.countryCode===c.code).map(r=>link(r,b.isbn)).join('')}</div></section>`).join('')}</div>`;
+ const primary=stores(),region=regionFor(market)||REGIONS.find(r=>r.id===market);
+ const regional=countries.filter(c=>region?.countries.includes(c.code)&&c.code!==market);
+ $('detail-body').innerHTML=`<h2 id="detail-title" lang="tr">${escape(b.title)}</h2><p>${escape(b.author)} · ${escape(b.brand)}</p><p class="ic-isbn">ISBN ${b.isbn} <button class="ic-text-button" data-copy="${b.isbn}">Copy ISBN</button><span id="copy-status" role="status"></span></p><section class="ic-local-stores"><p class="eyebrow">${primary.length?'Your destination':'Explore bookshops'}</p><h3>${escape(destinationName())}</h3>${primary.length?`<div class="ic-stores">${primary.map((r,i)=>link(r,b.isbn,i===0)).join('')}</div>`:`<p>Choose a country below to check this title with a bookshop.</p>`}</section><p class="ic-fine">This opens a retailer’s ISBN search, not a confirmed stock listing. Check the Turkish edition, price and delivery at the bookshop.</p>${regional.length?`<h3 class="ic-detail-region">Other bookshops in ${escape(region.name)}</h3><div class="ic-country-list">${regional.map(c=>countrySection(c.code,b.isbn)).join('')}</div>`:''}<details class="ic-world-stores" ${market==='ALL'?'open':''}><summary>All ${countries.length} destinations · ${RETAILERS.length} bookshops</summary><div class="ic-country-list">${countries.map(c=>countrySection(c.code,b.isbn)).join('')}</div></details>`;
  hideSuggestions();$('detail').showModal();
+}
+function updateLocation(){
+ $('location-label').textContent=destinationName();
+ const unsupported=destination.country&&destination.country!==market&&!countries.some(c=>c.code===destination.country);
+ $('market-note').textContent=unsupported?`No listed partner in ${countryName(destination.country)} yet. Explore ${REGIONS.find(r=>r.id===market)?.name||'other destinations'} and check delivery with the bookshop.`:destination.source==='network'?`Suggested from your connection. ${stores().length?`Local bookshops shown first.`:'Choose a country for local bookshops.'} You can change this anytime.`:destination.source==='device'?'Suggested from your device settings. Change it if you are shopping elsewhere.':['manual','saved','shared'].includes(destination.source)?`Your ${destination.source==='saved'?'saved ':''}shopping destination. ${stores().length?'Local bookshops shown first.':'Choose a country to narrow the bookshops.'}`:'We couldn’t suggest your country. Choose a destination to see local bookshops.';
+}
+function destinationOptions(){
+ $('destination-options').innerHTML=REGIONS.map(r=>`<section class="ic-destination-region"><div><h3>${r.name}</h3><button data-market="${r.id}" aria-pressed="${market===r.id}">Explore region →</button></div><div class="ic-country-choices">${countries.filter(c=>r.countries.includes(c.code)).map(c=>`<button data-market="${c.code}" aria-pressed="${market===c.code}"><span>${c.flag} ${escape(c.name)}</span><small>${RETAILERS.filter(r=>r.countryCode===c.code).length} ${RETAILERS.filter(r=>r.countryCode===c.code).length===1?'bookshop':'bookshops'}${market===c.code?' · Selected':''}</small></button>`).join('')}</div></section>`).join('')+`<button data-market="ALL" class="ic-text-button">Explore all destinations →</button>`;
+}
+function selectMarket(value){
+ if(!isMarket(value))return;manualRevision++;destination={market:value,source:'manual'};market=value;
+ try{localStorage.setItem('epsilon.catalog.destination.v2',value);}catch{}
+ $('destination').close();render();hideSuggestions();
+}
+async function locate(force=false){
+ const revision=manualRevision;
+ if(!force&&['saved','shared'].includes(destination.source))return;
+ $('geo-status').textContent='Looking up your approximate country…';
+ try{
+  const response=await fetch(config.locationEndpoint||new URL('/api/location',location.origin),{cache:'no-store',signal:AbortSignal.timeout(2500)});
+  if(!response.ok)throw Error();geoData=await response.json();
+ }catch{geoData=null;}
+ if(revision!==manualRevision)return;
+ const selected=chooseMarket({geo:geoData,device:deviceMarket});
+ if(force){manualRevision++;try{localStorage.removeItem('epsilon.catalog.destination.v2');}catch{}params.delete('market');}
+ destination=selected;market=selected.market;render();destinationOptions();
+ $('geo-status').textContent=selected.source==='network'?`Suggested destination: ${destinationName()}.`:selected.source==='device'?`Connection lookup unavailable. Suggested from device: ${destinationName()}.`:'Your country could not be suggested. Please choose below.';
+ if(force&&selected.source!=='unknown')$('destination').close();
 }
 let aiController;
 async function askAI(payload,output){
@@ -95,6 +139,10 @@ function showAdvisor(isbn){
 }
 document.addEventListener('click',async event=>{
  const el=event.target.closest('button');if(!el)return;
+ if(el.dataset.market)selectMarket(el.dataset.market);
+ if(el.id==='location-open'){destinationOptions();$('destination').showModal();}
+ if(el.id==='detect-again')locate(true);
+ if(el.id==='filter-toggle'){filtersOpen=!filtersOpen;render();}
  if(el.dataset.close){$(el.dataset.close).close();if(aiController)aiController.abort();}
  if(el.dataset.tab){tab=el.dataset.tab;limit=24;hideSuggestions();render();}
  if(el.dataset.detail){if($('advisor').open)$('advisor').close();openDetail(el.dataset.detail);}
@@ -104,25 +152,24 @@ document.addEventListener('click',async event=>{
  if(el.id==='advisor-open')showAdvisor();
 });
 document.addEventListener('click',e=>{if(!e.target.closest('.ic-search-wrap'))hideSuggestions();});
-$('search').addEventListener('keydown',e=>{if(e.key==='Escape')hideSuggestions();if(e.key==='ArrowDown'&&!$('suggestions').hidden){e.preventDefault();$('suggestions').querySelector('button,a')?.focus();}if(e.key==='Enter'){hideSuggestions();$('search').blur();}});
+$('search').addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();hideSuggestions();}if(e.key==='ArrowDown'&&!$('suggestions').hidden){e.preventDefault();$('suggestions').querySelector('button,a')?.focus();}if(e.key==='Enter'){hideSuggestions();$('search').blur();}});
 $('suggestions').addEventListener('keydown',e=>{if(e.key==='Escape'){hideSuggestions();$('search').focus();}if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();const items=[...$('suggestions').querySelectorAll('button,a')];const i=items.indexOf(document.activeElement);items[(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}});
 $('search').addEventListener('input',()=>{limit=24;render();suggestions();});
 $('search').addEventListener('focus',suggestions);
 for(const id of ['brand','author','origin','sort'])$(id).addEventListener('change',()=>{limit=24;render();});
-$('market').innerHTML='<option value="ALL">All destinations</option>'+countries.map(c=>`<option value="${c.code}">${c.flag} ${escape(c.name)}</option>`).join('');$('market').value=market;
-$('market').addEventListener('change',()=>{market=$('market').value;try{localStorage.setItem('epsilon.catalog.market',market);}catch{}render();hideSuggestions();});
 $('clear-search').addEventListener('click',()=>{$('search').value='';hideSuggestions();limit=24;render();$('search').focus();});
-$('reset').addEventListener('click',()=>{for(const id of ['search','brand','author','origin'])$(id).value='';$('sort').value='title';limit=24;render();hideSuggestions();});
+$('reset').addEventListener('click',()=>{for(const id of ['search','brand','author','origin'])$(id).value='';$('sort').value='collection';limit=24;render();hideSuggestions();});
 $('more').addEventListener('click',()=>{limit+=24;render();});
 $('advisor-form').addEventListener('submit',e=>{e.preventDefault();askAI({mode:'recommend',query:$('advisor-query').value},$('advisor-response'));});
 $('advisor').addEventListener('close',()=>{if(aiController)aiController.abort();});
-document.addEventListener('submit',e=>{if(e.target.id==='isbn-test'){e.preventDefault();$('test-links').innerHTML=(market==='ALL'?RETAILERS:stores()).map(r=>link(r,$('test-isbn').value)).join('');}});
+document.addEventListener('submit',e=>{if(e.target.id==='isbn-test'){e.preventDefault();$('test-links').innerHTML=scope().map(r=>link(r,$('test-isbn').value)).join('');}});
 try{
  const response=await fetch(new URL('books.json',base));if(!response.ok)throw Error('Catalogue unavailable');books=await response.json();
  $('book-count').textContent=books.length;$('author-count').textContent=new Set(books.map(b=>b.author)).size;
- $('facts').innerHTML=[[books.length,'Turkish-language books'],[new Set(books.map(b=>b.brand)).size,'publishers'],[countries.length,'destinations'],[RETAILERS.length,'bookshops']].map(([n,l])=>`<span><b>${n}</b>${l}</span>`).join('');
+ /* Removed summary stats from the primary shopping path. */
  const hero=['9786254143144','9786258690309','9786054054206'].map(isbn=>books.find(b=>b.isbn===isbn));$('hero-books').innerHTML=hero.map(b=>'<div>'+cover(b)+'</div>').join('');
  for(const id of ['brand','author'])$(id).insertAdjacentHTML('beforeend',[...new Set(books.map(b=>b[id]))].sort((a,b)=>a.localeCompare(b,'tr')).map(v=>`<option value="${escape(v)}">${escape(v)}</option>`).join(''));
- for(const id of ['search','brand','author','origin','sort'])if(params.has(id))$(id).value=params.get(id);
- if(['authors','brands','stores'].includes(params.get('view')))tab=params.get('view');render();
+ for(const id of ['search','brand','author','origin','sort'])if(params.has(id)&&($(id).tagName!=='SELECT'||[...$(id).options].some(o=>o.value===params.get(id))))$(id).value=params.get(id);
+ if(['authors','brands','stores'].includes(params.get('view')))tab=params.get('view');
+ filtersOpen=['brand','author','origin'].some(id=>$(id).value);$('advisor-open').hidden=!config.advisorEndpoint;render();locate();
 }catch{$('results-status').textContent='The collection could not be loaded. Please refresh the page.';$('results').innerHTML='<p>Check your connection and try again.</p>';}

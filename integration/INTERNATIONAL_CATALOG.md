@@ -16,7 +16,7 @@ The page reuses the existing shell, compiled CSS, fonts, buttons, colours and lo
 - **14 countries, 19 retailers** in the supplied list, despite the handoff's “13 countries” claim.
 - 73 covers matched by ISBN to the existing local cover manifest. Remaining covers use clearly labelled typographic placeholders, not fabricated cover art. No external image requests are needed.
 - Retailer templates are supplied ISBN/keyword **search** URLs; no live stock, direct product match, Gardners feed or distribution agreement has been verified. Retailer templates still need live checks before release.
-- Device timezone/language gives a suggestion, not verified physical location. Unsupported countries (including Türkiye) default to all destinations. Manual choice persists locally and is also shareable in the URL.
+- The review now uses an approximate edge country lookup, device settings as fallback, and region + country labelling. See CATALOG_UX_REVIEW.md for precedence, coverage and main-site endpoint activation. Manual shopping destination persists locally and is shareable in the URL.
 
 ## Activation after design approval
 
@@ -46,6 +46,6 @@ API reference used: https://ai.google.dev/api/generate-content and https://ai.go
 
 ## Validation
 
-`node --test tests/international-catalog.test.mjs` covers counts, ISBN checksums, sample typo searches, routing, URL encoding, proxy input/configuration/rate-limit guards, upstream failure handling, and output ISBN allowlisting.
+`node --test tests/international-catalog.test.mjs` now runs 10 tests and covers counts, ISBN checksums, sample typo searches, routing, URL encoding, proxy input/configuration/rate-limit guards, upstream failure handling, and output ISBN allowlisting.
 
 Browser QA: desktop rendering; `kurk mantlu` → Kürk Mantolu Madonna; Germany → Thalia and Dussmann; detail modal has 19 retailer links; Masalperest + Turkish authors → 27 titles; corresponding author-credit directory → 8 entries; Germany bookshop directory → 2 shops; unconfigured adviser state. A 390px iframe layout was checked with no horizontal body overflow; this is not a physical mobile-device session. Live retailer stock/API calls were not tested.

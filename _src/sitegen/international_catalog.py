@@ -12,7 +12,7 @@ def render(root, settings, preview=False):
         end = main.index('</div></div>', start) + len('</div></div>')
         main = main[:start] + main[end:]
     endpoint = settings.get('catalog_advisor_endpoint', '')
-    config = json.dumps({'advisorEndpoint': endpoint}).replace('<', '\\u003c')
+    config = json.dumps({'advisorEndpoint': endpoint, 'locationEndpoint': settings.get('catalog_location_endpoint', '')}).replace('<', '\\u003c')
     meta = '<meta name="robots" content="noindex,nofollow">' if preview else '<link rel="canonical" href="https://epsilonpublishinggroup.com/international-catalog/">'
     return shell.page(prefix, 'international-catalog/', settings,
         'International Bookshops — Epsilon Publishing Group', main,
