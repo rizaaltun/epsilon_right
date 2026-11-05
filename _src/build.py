@@ -51,7 +51,7 @@ def generate(ctx) -> dict:
     if ctx.blog:
         out["blog/feed.xml"] = blog.feed(ctx)
     for record in pages.load_pages(ctx.root):
-        if record.get("requires") == "blog" and not ctx.blog:
+        if record.get("requires") and not getattr(ctx, record["requires"]):
             continue
         path, text = pages.render(ctx, record)
         out[path + "index.html"] = text

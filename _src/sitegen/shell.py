@@ -104,15 +104,18 @@ def _mobile_item(r, path, href, label, children=None, exact=False):
     return out + "</li>"
 
 
-def header(r: str, path: str, lazy_logo: bool = True, has_blog: bool = False) -> str:
-    """Site header; ``path`` (e.g. ``"books/x/"``) decides the active menu item."""
+def header(r: str, path: str, lazy_logo: bool = True, has_blog: bool = False, has_spotlight: bool = False) -> str:
+    """Site header; ``path`` (e.g. ``"books/x/"``) decides the active menu item. Spotlight and
+    Blog join "News & Events" once they have posts."""
     lazy = ' loading="lazy"' if lazy_logo else ""
+    news_links = (NEWS_LINKS + ([("spotlight/", "Spotlight")] if has_spotlight else [])
+                  + ([("blog/", "Blog")] if has_blog else []))
     desktop = (
         _desktop_link(r, path, "", "Home", exact=True)
         + _desktop_link(r, path, "about-us/", "About")
         + _desktop_menu(path, "Books & Rights", ["books/"])
         + _desktop_link(r, path, "catalogues/", "Catalogues")
-        + _desktop_menu(path, "News & Events", ["fairs-events/", "news/", "blog/"] if has_blog else ["fairs-events/", "news/"])
+        + _desktop_menu(path, "News & Events", ["fairs-events/"] + [href for href, _ in news_links])
         + _desktop_link(r, path, "contact/", "Contact")
     )
     mobile = (
@@ -120,7 +123,7 @@ def header(r: str, path: str, lazy_logo: bool = True, has_blog: bool = False) ->
         + _mobile_item(r, path, "about-us/", "About")
         + _mobile_item(r, path, "books/", "Books & Rights", BOOK_CATEGORY_LINKS)
         + _mobile_item(r, path, "catalogues/", "Catalogues")
-        + _mobile_item(r, path, "fairs-events/", "News & Events", NEWS_LINKS + ([("blog/", "Blog")] if has_blog else []))
+        + _mobile_item(r, path, "fairs-events/", "News & Events", news_links)
         + _mobile_item(r, path, "contact/", "Contact")
     )
     return (
@@ -242,7 +245,7 @@ def page(r: str, path: str, settings: dict, title_html: str, main: str, *, head_
     ``seo_html`` comes from seo.head_tags()."""
     return (
         head(r, title_html, head_extra, seo_html)
-        + header(r, path, lazy_logos, bool(settings.get("_has_blog")))
+        + header(r, path, lazy_logos, bool(settings.get("_has_blog")), bool(settings.get("_has_spotlight")))
         + main
         + footer(r, settings, lazy_logos)
         + tail(r, tail_extra)

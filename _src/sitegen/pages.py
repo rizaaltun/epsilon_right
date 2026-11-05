@@ -23,7 +23,8 @@ page record) and the shared settings: {{stats.items}}, {{contact.â€¦}}, {{site.â
   <!--@service-cards-->          all service cards
   <!--@catalogue-cards-->, <!--@catalogue-count-->   catalogue cards and count on /catalogues/
   <!--@blog-cards [limit=N]-->, <!--@blog-count-->     blog post cards (pinned first, then newest) and count
-A record with "requires": "blog" is only built while the blog has posts.
+  <!--@spotlight-cards [limit=N] [sizes=home|page]-->  Instagram post cards, newest first
+A record with "requires": "blog" (or "spotlight") is only built while that collection has items.
 """
 
 import json
@@ -32,14 +33,14 @@ from pathlib import Path
 
 import html
 
-from . import blog, catalogues, events, genres, news, publishers, seo, services, shell, template
+from . import blog, catalogues, events, genres, news, publishers, seo, services, shell, spotlight, template
 from .components import book_card
 from .html import prefix_for
 
 COUNT = re.compile(r'<!--@count select="([^"]+)"-->')
 OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside|publisher-cards|publisher-count|"
                    r"publisher-summary|publisher-countries|author-cards|author-count|top-authors|author-letters|"
-                   r"authors-with-titles|featured-filter|category-filter|service-cards|catalogue-cards|catalogue-count|blog-cards|blog-count)((?: \w+=\S+?)*)-->")
+                   r"authors-with-titles|featured-filter|category-filter|service-cards|catalogue-cards|catalogue-count|blog-cards|blog-count|spotlight-cards)((?: \w+=\S+?)*)-->")
 SLOT = re.compile(r'<!--@cards select="([^"]+)" wrap=(li|none)(?: article="([^"]+)")?-->')
 
 
@@ -112,6 +113,8 @@ def render(ctx, record: dict) -> tuple:
             return publishers.letter_nav(ctx)
         if name == "service-cards":
             return services.cards(ctx, r)
+        if name == "spotlight-cards":
+            return spotlight.cards(ctx, r, args.get("limit"), args.get("sizes", "page"))
         if name == "blog-cards":
             return blog.cards(ctx, r, args.get("limit"))
         if name == "blog-count":

@@ -35,6 +35,7 @@ class Context:
     services: dict = field(default_factory=dict)   # slug -> service
     catalogues: dict = field(default_factory=dict) # slug -> catalogue (PDF + reader)
     blog: dict = field(default_factory=dict)       # slug -> blog post
+    spotlight: dict = field(default_factory=dict)  # slug -> Instagram post (home Spotlight, /spotlight/)
     shared: dict = field(default_factory=dict)     # settings files usable in page templates
 
     def books_by_author(self, author_slug: str) -> list:
@@ -65,6 +66,8 @@ def load(root: Path, write: bool = False) -> Context:
     catalogues = _load_folder(content / "catalogues") if (content / "catalogues").exists() else {}
     blog = _load_folder(content / "blog") if (content / "blog").exists() else {}
     settings["_has_blog"] = bool(blog)   # menus link to the blog only once it has posts
+    spotlight = _load_folder(content / "spotlight") if (content / "spotlight").exists() else {}
+    settings["_has_spotlight"] = bool(spotlight)   # the home Spotlight shows only once there are posts
     shared = {"site": settings}
     for name in ("stats", "contact"):
         path = content / "settings" / f"{name}.json"
@@ -72,4 +75,4 @@ def load(root: Path, write: bool = False) -> Context:
             shared[name] = json.loads(path.read_text(encoding="utf-8"))
     return Context(root=str(root), settings=settings, write=write, books=books, authors=authors,
                    news=news, events=events, publishers=publishers, services=services,
-                   catalogues=catalogues, blog=blog, shared=shared)
+                   catalogues=catalogues, blog=blog, spotlight=spotlight, shared=shared)
