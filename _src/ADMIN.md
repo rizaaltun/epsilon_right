@@ -33,6 +33,12 @@ Ana sayfanın üstündeki kartta sabitlenen içerik görünür: haberde "Vitrine
 (en yenisi önce, birkaç saniyede bir; ziyaretçi oklarla da geçebilir). Hiçbir şey sabitli değilse
 son haber görünür, ama ondan sonra biten bir fuar varsa fuar kartı gelir.
 
+Instagram gönderileri **Spotlight (Instagram)** bölümünden eklenir: görsel, gönderi linki, tarih ve
+isteğe bağlı kısa satır (tarih sitede görünmez, yalnızca sıralamayı belirler). Ana sayfadaki Spotlight ("For younger readers"ın altında) en yeni 5 gönderiyi,
+/spotlight/ sayfası hepsini tarihe göre gösterir; karta tıklayınca gönderi Instagram'da yeni sekmede
+açılır. Görsel kartta dikey (4:5) görünür; derleme 480/960 piksellik küçük kopyalarını kendisi üretir.
+Hiç gönderi yoksa ana sayfadaki bölüm ve /spotlight/ sayfası görünmez.
+
 Fuarlar bitiş tarihlerine göre "Upcoming" ya da "Past" görünür; workflow her sabah da
 çalıştığı için bir etkinlik bittiğinde ertesi sabah kendiliğinden "Past"a geçer.
 

@@ -72,8 +72,9 @@ def to_rgb(image):
 
 
 @lru_cache(maxsize=None)
-def make_variants(root: str, rel: str, write: bool) -> list:
+def make_variants(root: str, rel: str, write: bool, folder: str = COVERS_DIR, widths: tuple = WIDTHS) -> list:
     """Variants [(path, width)] for an uploaded cover, creating them if ``write``.
+    Other uploads (Spotlight posts) pass their own ``folder`` and ``widths``.
 
     Returns [] when Pillow is missing, so the caller can fall back to the upload.
     """
@@ -90,14 +91,14 @@ def make_variants(root: str, rel: str, write: bool) -> list:
         image = to_rgb(original)
     width, height = image.size
     out = []
-    for target in sorted({min(w, width) for w in WIDTHS}):
-        dest = Path(root, COVERS_DIR, f"{stem}-{target}.webp")
+    for target in sorted({min(w, width) for w in widths}):
+        dest = Path(root, folder, f"{stem}-{target}.webp")
         if write and not dest.exists():
             resized = image.copy()
             resized.thumbnail((target, round(height * target / width)), Image.Resampling.LANCZOS)
             dest.parent.mkdir(parents=True, exist_ok=True)
             resized.save(dest, "WEBP", quality=86, method=6)
-        out.append((f"{COVERS_DIR}/{stem}-{target}.webp", target))
+        out.append((f"{folder}/{stem}-{target}.webp", target))
     return out
 
 

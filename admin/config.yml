@@ -543,6 +543,33 @@ collections:
       - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
+  - name: spotlight
+    label: Spotlight (Instagram)
+    label_singular: Gönderi
+    description: Ana sayfadaki Spotlight bölümü en yeni 5 gönderiyi, /spotlight/ sayfası hepsini tarihe göre (en yeni önde) gösterir. Karta tıklayınca gönderi Instagram'da yeni sekmede açılır.
+    icon: photo_camera
+    folder: _src/content/spotlight
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: caption
+    slug:
+      template: "{{year}}-{{month}}-{{day}}-{{uuid_short}}"
+    summary: "{{date}} — {{caption}}"
+    sortable_fields:
+      fields: [date]
+      default: { field: date, direction: descending }
+    thumbnail: image
+    media_folder: /assets/images/uploads/spotlight
+    public_folder: /assets/images/uploads/spotlight
+    fields:
+      - { name: image, label: Görsel, widget: image, choose_url: false, hint: "Gönderinin ana görseli. Kartta dikey (4:5) görünür; kare görsellerin kenarları biraz kırpılır." }
+      - { name: link, label: Instagram gönderi linki, widget: string, pattern: ['^https://(www\.)?instagram\.com/', "https://www.instagram.com/ ile başlayan bir gönderi linki girin."], hint: "Instagram'da gönderinin ⋯ menüsünden \"Bağlantıyı kopyala\"." }
+      - { name: date, label: Tarih, widget: datetime, type: date, format: YYYY-MM-DD, default: "{{now}}", hint: "Gönderinin Instagram'daki tarihi. Sitede görünmez; kartlar buna göre sıralanır (en yeni önde)." }
+      - { name: caption, label: Kısa satır, widget: string, required: false, hint: "İsteğe bağlı; görselin altında en fazla iki satır (yaklaşık 70 karakter) görünür." }
+      - { name: image_alt, label: Görsel açıklaması, widget: string, required: false, hint: "Görme engelliler ve Google için. Boşsa kısa satır kullanılır." }
+
   - name: pages
     label: Sayfa metinleri
     icon: description
@@ -573,6 +600,9 @@ collections:
           - { name: fiction_title, label: "Vitrin 1 başlığı", widget: string }
           - { name: non_fiction_title, label: "Vitrin 2 başlığı", widget: string }
           - { name: younger_title, label: "Vitrin 3 başlığı", widget: string }
+          - { name: spotlight_eyebrow, label: "Spotlight: üst etiket", widget: string, required: false, hint: "\"For younger readers\" vitrininin altındaki bölüm; en yeni 5 Instagram gönderisini gösterir. Hiç gönderi yoksa bölüm görünmez." }
+          - { name: spotlight_title, label: "Spotlight: başlık", widget: string }
+          - { name: spotlight_link, label: "Spotlight: tümünü gör linki", widget: string, hint: "Başlığın sağındaki link; tüm gönderilerin listelendiği /spotlight/ sayfasını açar. Gönderiler \"Spotlight (Instagram)\" bölümünden eklenir." }
           - { name: news_eyebrow, label: "Haberler: üst etiket", widget: string }
           - { name: news_title, label: "Haberler: başlık", widget: string }
           - { name: stats_title, label: "Rakamlar: başlık", widget: string, hint: "Rakamların kendisi \"Ayarlar › Rakamlar\"dan düzenlenir." }
@@ -762,6 +792,17 @@ collections:
           - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
+      - name: spotlight_page
+        label: "Spotlight sayfası"
+        file: _src/content/pages/spotlight/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string, hint: "Başlığın üstündeki küçük yazı" }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: follow_button, label: "Instagram düğmesi", widget: string, hint: "Instagram hesabını açar (adres \"Site ayarları › Instagram adresi\" alanından gelir)." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
       - name: catalogues
         label: "Kataloglar sayfası"
         file: _src/content/pages/catalogues/texts.json
