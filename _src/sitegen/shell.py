@@ -226,7 +226,8 @@ def footer(r: str, settings: dict, lazy_logo: bool = True) -> str:
         f'<p>{esc(settings["copyright"])}</p><p>Site by<!-- --> <a href="https://www.rizaaltun.com" '
         'target="_blank" rel="noopener noreferrer" class="underline decoration-ink-inverse/30 '
         'underline-offset-2 hover:text-ink-inverse">rizaaltun.com</a></p><ul class="flex flex-wrap gap-x-5 '
-        f'gap-y-1"><li><a class="hover:text-ink-inverse" href="{r}privacy-policy/">Privacy policy</a></li>'
+        f'gap-y-1"><li><a class="hover:text-ink-inverse" href="{r}satis/" lang="tr">Yurt dışı satış noktaları</a></li>'
+        f'<li><a class="hover:text-ink-inverse" href="{r}privacy-policy/">Privacy policy</a></li>'
         f'<li><a class="hover:text-ink-inverse" href="{r}terms/">Terms of use</a></li></ul></div></div>'
         "</footer>"
     )
