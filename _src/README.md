@@ -94,7 +94,8 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
   `/representations/` showed stale title counts (e.g. Epsilon 22 instead of 101).
 - The search, sort and filter controls on `/authors/` and `/publishers/` are not
   wired up (site.js only implements them on `/books/`).
-- One author appears under three spellings: Şöhret Doğruyol Sağbaş / Şağbaş / Şabaş.
+- Fixed in the Backlist step: one author appeared under three spellings (Sağbaş / Şağbaş / Şabaş);
+  every book now says Sağbaş, and the empty Şabaş author page redirects to the Sağbaş one.
 - The "Okuyan Koala" imprint (3 books) has no publisher page.
 - Fixed in the SEO step: footer category links used slugs that don't exist; "worlwide"
   (94 books) and other rights typos; rights-sold languages mixed Turkish and English.
