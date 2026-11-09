@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 194,
+  "order": 206,
   "cover": "/assets/images/covers/7bc0f0a9fee6f914714b-1000.webp",
   "square_cover": false,
   "description": "A Thousand and One Tales to be Human",
@@ -18,5 +18,6 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "backlist": true
 }

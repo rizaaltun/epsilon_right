@@ -6,7 +6,7 @@
     "Psychology"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 220,
+  "order": 232,
   "cover": "/assets/images/covers/f2b48f97d0d4b10b48a6-1000.webp",
   "square_cover": false,
   "description": "Don’t Force me to Milk You, Let me Nurse You",
@@ -18,5 +18,6 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "backlist": true
 }

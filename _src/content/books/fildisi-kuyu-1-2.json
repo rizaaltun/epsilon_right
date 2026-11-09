@@ -6,7 +6,7 @@
     "Psychology"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 217,
+  "order": 229,
   "cover": "/assets/images/covers/a623547e0ca08b4aae3b-1000.webp",
   "square_cover": false,
   "description": "The Ivory Well 1 & 2",
@@ -19,5 +19,6 @@
   "rights_sold": [],
   "featured": false,
   "new": false,
+  "backlist": true,
   "is_set": true
 }

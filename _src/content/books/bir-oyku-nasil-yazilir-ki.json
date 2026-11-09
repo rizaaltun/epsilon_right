@@ -22,6 +22,7 @@
   "rights_sold": [],
   "featured": false,
   "new": false,
+  "backlist": true,
   "english_samples": [
     {
       "pdf": "/_src/samples/bir-oyku-nasil-yazilir-ki.pdf"

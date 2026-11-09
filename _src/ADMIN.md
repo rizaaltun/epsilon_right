@@ -69,6 +69,15 @@ kategoriyle filtrelenmiş açılır. Books sayfasındaki Category filtresinde he
 altında, kitapları olan alt kategoriler sayılarıyla listelenir. İlk liste "Kitap Kategorileri"
 Excel dosyalarından alındı (Kasım 2026).
 
+**Board Book**, Picture Book'tan ayrı bir alt kategoridir; filtrede Picture Book'un hemen altında
+listelenir.
+
+**Backlist** bir kategori değil, kitaptaki bir kutucuktur: işaretli kitap kendi kategorisinde kalır,
+ayrıca Books sayfasındaki Backlist filtresinde (tümü ya da Adult Fiction / Non-Fiction / Children's
+Books) ve menüdeki "Books & Rights › Backlist"te görünür; kitap sayfasına Backlist etiketi gelir.
+İlk liste Merve'nin "Backlist" Excel dosyasından alındı (Kasım 2026); panelde Kitaplar listesinde
+"Backlist" görünümüyle işaretli kitaplar süzülebilir.
+
 ## Set / seri sayfaları
 
 Bir sayfada birden çok kitap gösteriliyorsa (örneğin 8'li hayvan serisi) kitabın düzenleme

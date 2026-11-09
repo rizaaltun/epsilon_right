@@ -363,9 +363,12 @@
     });
     if (!cards.some((c) => c.m)) return false;
 
-    const state = { q: "", cat: new Set(), genre: new Set(), lang: new Set(), dec: new Set() };
-    // ?genre=<slug> (from a book page's subcategory chip) selects that subcategory alone.
-    const preselectGenre = new URLSearchParams(location.search).get("genre");
+    const state = { q: "", cat: new Set(), genre: new Set(), bl: new Set(), lang: new Set(), dec: new Set() };
+    // ?genre=<slug> (from a book page's subcategory chip) selects that subcategory alone;
+    // ?backlist=all|<category> (menu, Backlist chip) selects that Backlist option.
+    const params = new URLSearchParams(location.search);
+    const preselectGenre = params.get("genre");
+    const preselectBacklist = params.get("backlist");
     const countEl = [...root.querySelectorAll("p,span,div")].find((el) =>
       /^\d+\s+titles?$/.test(el.textContent.trim()));
 
@@ -379,6 +382,8 @@
         // A checked category shows all its books; a checked subcategory adds its own.
         if (ok && (state.cat.size || state.genre.size))
           ok = state.cat.has(m.c) || (m.g || []).some((g) => state.genre.has(`${m.c}|${g}`));
+        // Backlist narrows whatever else is chosen: all backlist titles, or those of a category.
+        if (ok && state.bl.size) ok = !!m.b && (state.bl.has("all") || state.bl.has(m.c));
         if (ok && state.lang.size) ok = (m.l || []).some((x) => state.lang.has(x));
         if (ok && state.dec.size) ok = state.dec.has(m.y);
         c.li.style.display = ok ? "" : "none";
@@ -389,7 +394,7 @@
 
     for (const fs of root.querySelectorAll("main fieldset")) {
       const kind = (fs.querySelector("legend")?.textContent || "").trim();
-      if (!/^(Category|Translated into|Published)$/.test(kind)) continue;
+      if (!/^(Category|Backlist|Translated into|Published)$/.test(kind)) continue;
       for (const label of fs.querySelectorAll("label")) {
         const input = label.querySelector('input[type="checkbox"]');
         if (!input) continue;
@@ -398,13 +403,18 @@
           || label.textContent.replace(/\d+$/, "")).trim();
         input.addEventListener("change", () => {
           let set, val;
-          if (kind === "Category" && input.dataset.genre) { set = state.genre; val = `${input.dataset.cat}|${input.dataset.genre}`; }
+          if (kind === "Backlist") { set = state.bl; val = input.dataset.backlist; }
+          else if (kind === "Category" && input.dataset.genre) { set = state.genre; val = `${input.dataset.cat}|${input.dataset.genre}`; }
           else if (kind === "Category") { set = state.cat; val = input.dataset.cat || CAT_LABELS[text] || text; }
           else if (kind === "Translated into") { set = state.lang; val = text; }
           else { set = state.dec; val = text.replace(/s$/, "") + "s"; }
           if (input.checked) set.add(val); else set.delete(val);
           apply();
         });
+        if (kind === "Backlist" && preselectBacklist && input.dataset.backlist === preselectBacklist) {
+          input.checked = true;
+          state.bl.add(preselectBacklist);
+        }
         const cat = input.dataset.cat || CAT_LABELS[text];
         if (kind === "Category" && preselectCat && cat === preselectCat) {
           if (preselectGenre ? input.dataset.slug === preselectGenre : !input.dataset.genre) {

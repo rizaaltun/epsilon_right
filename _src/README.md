@@ -40,6 +40,7 @@ python3 _src/build.py           # writes changed pages, removes pages of deleted
 | every other page | `content/pages/<path>/index.{json,html}`; editable texts in `texts.json` next to it |
 | redirect pages for moved addresses | `content/redirects.json`, `{old path: new path}`; not in the sitemap |
 | subcategory chips on book pages, the nested Category filter on /books/ | a book's `genres` (`sitegen/genres.py`) |
+| the Backlist filter on /books/ (`?backlist=all\|<category>`), the Backlist chip | a book's `backlist` (`sitegen/genres.py`) |
 | `assets/meta.json` | all books (used by the /books search and filters) |
 | `sitemap.xml`, `robots.txt`, `llms.txt`, `404.html` | all pages / settings (`sitegen/seo.py`) |
 

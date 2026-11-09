@@ -77,6 +77,7 @@ collections:
       - { label: Adult Fiction, field: category, eq: adult-fiction }
       - { label: Non-Fiction, field: category, eq: non-fiction }
       - { label: Young Adult, field: category, eq: young-adult }
+      - { label: Backlist, field: backlist, eq: true }
       - { label: Kapağı olmayanlar, field: cover, empty: true }
     view_groups:
       - { label: Kategori, field: category }
@@ -100,8 +101,8 @@ collections:
         widget: select
         multiple: true
         required: false
-        hint: "Kitap sayfasında etiket olarak görünür ve Books sayfasındaki Category filtresinde ana kategorinin altında listelenir. Birden çok seçilebilir. Romanlar: Literary Fiction … Crime & Mystery; Non-Fiction: Psychology … Food & Drink; çocuk kitapları: Picture Book, Early Readers, Middle Grade."
-        options: ["Literary Fiction", "Historical Fiction", "Fantasy", "Crime & Mystery", "Psychology", "Self-Help", "Health & Wellness", "Parenting & Education", "Popular Science", "Philosophy", "Essays", "Art", "History & Archaeology", "Cultural History", "Food & Drink", "Picture Book", "Early Readers", "Middle Grade"]
+        hint: "Kitap sayfasında etiket olarak görünür ve Books sayfasındaki Category filtresinde ana kategorinin altında listelenir. Birden çok seçilebilir. Romanlar: Literary Fiction … Short Stories; Non-Fiction: Psychology … Food & Drink; çocuk kitapları: Picture Book, Board Book, Early Readers, Middle Grade."
+        options: ["Literary Fiction", "Historical Fiction", "Fantasy", "Crime & Mystery", "Short Stories", "Psychology", "Self-Help", "Health & Wellness", "Parenting & Education", "Popular Science", "Philosophy", "Essays", "Art", "History & Archaeology", "Cultural History", "Food & Drink", "Picture Book", "Board Book", "Early Readers", "Middle Grade"]
       - name: catalogue
         label: Katalog
         widget: relation
@@ -182,6 +183,7 @@ collections:
         hint: Kitaplar sayfasındaki dil filtresinde kullanılır.
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
       - { name: new, label: Yeni, widget: boolean, default: false }
+      - { name: backlist, label: Backlist, widget: boolean, default: false, required: false, hint: "Açıksa kitap kendi kategorisinde kalır, ayrıca Books sayfasındaki Backlist filtresinde ve menüdeki Books & Rights › Backlist'te görünür; sayfasına Backlist etiketi gelir." }
       - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 

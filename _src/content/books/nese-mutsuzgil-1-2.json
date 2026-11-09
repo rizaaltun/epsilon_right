@@ -21,5 +21,6 @@
   "rights_sold": [],
   "featured": false,
   "new": false,
+  "backlist": true,
   "is_set": true
 }

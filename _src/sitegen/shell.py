@@ -44,6 +44,7 @@ BOOK_CATEGORY_LINKS = [
     ("books/?category=adult-fiction", "Adult Fiction"),
     ("books/?category=non-fiction", "Non-Fiction"),
     ("books/?category=young-adult", "Young Adult"),
+    ("books/?backlist=all", "Backlist"),
 ]
 NEWS_LINKS = [("fairs-events/", "Where to Meet Us"), ("news/", "Latest News")]
 
