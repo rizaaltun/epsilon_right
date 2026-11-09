@@ -9,7 +9,7 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 ## Start here
 
 - [About the group](https://epsilonpublishinggroup.com/about-us/): history, imprints and the rights team
-- [All titles](https://epsilonpublishinggroup.com/books/): 281 titles available for translation, with filters
+- [All titles](https://epsilonpublishinggroup.com/books/): 283 titles available for translation, with filters
 - [Catalogues](https://epsilonpublishinggroup.com/catalogues/): rights catalogues to read online or download as PDF
 - [Contact](https://epsilonpublishinggroup.com/contact/): rights enquiries
 
@@ -23,14 +23,14 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 
 ## Books by category
 
-- [Children's Books](https://epsilonpublishinggroup.com/books/?category=childrens-books): 145 titles
+- [Children's Books](https://epsilonpublishinggroup.com/books/?category=childrens-books): 147 titles
 - [Adult Fiction](https://epsilonpublishinggroup.com/books/?category=adult-fiction): 47 titles
 - [Non-Fiction](https://epsilonpublishinggroup.com/books/?category=non-fiction): 60 titles
 - [Young Adult](https://epsilonpublishinggroup.com/books/?category=young-adult): 29 titles
 
 ## Publishers
 
-- [Epsilon](https://epsilonpublishinggroup.com/publishers/epsilon/): 106 titles
+- [Epsilon](https://epsilonpublishinggroup.com/publishers/epsilon/): 108 titles
 - [Kafka Kitap](https://epsilonpublishinggroup.com/publishers/kafka-kitap/): 18 titles
 - [Masalperest](https://epsilonpublishinggroup.com/publishers/masalperest/): 71 titles
 - [Nemesis Kitap](https://epsilonpublishinggroup.com/publishers/nemesis-kitap/): 24 titles
@@ -126,7 +126,6 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 - [Seda Aksoy Evren](https://epsilonpublishinggroup.com/authors/seda-aksoy-evren/)
 - [Sefa Ceran Öztürk](https://epsilonpublishinggroup.com/authors/sefa-ceran-ozturk/)
 - [Serap Şahin](https://epsilonpublishinggroup.com/authors/serap-sahin/)
-- [Şöhret Doğruyol Şabaş](https://epsilonpublishinggroup.com/authors/sohret-dogruyol-sabas/)
 - [Şöhret Doğruyol Sağbaş](https://epsilonpublishinggroup.com/authors/sohret-dogruyol-sagbas/)
 - [Töre Sivrioğlu](https://epsilonpublishinggroup.com/authors/tore-sivrioglu/)
 - [Tuğçe Büyükuğurlu](https://epsilonpublishinggroup.com/authors/tugce-buyukugurlu/)
@@ -258,12 +257,14 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 - [Boş Ders İtirafları](https://epsilonpublishinggroup.com/books/bos-ders-itiraflari/): Renan Özdemir — Children's Books — English title: Confessions From A Free Period
 - [Cesur Yürekli Şaşakalozlar](https://epsilonpublishinggroup.com/books/cesur-yurekli-sasakalozlar/): Renan Özdemir — Children's Books — English title: Brave Goofballs
 - [Kantin İtirafları](https://epsilonpublishinggroup.com/books/kantin-itiraflari/): Renan Özdemir — Children's Books — English title: Confessions From Canteen
-- [Yeraltı Günlükleri](https://epsilonpublishinggroup.com/books/yeralti-gunlukleri/): Şöhret Doğruyol Şağbaş — Children's Books — English title: Underground Diaries
-- [Yeraltı Günlükleri II Yaşam Taşı](https://epsilonpublishinggroup.com/books/yeralti-gunlukleri-ii-yasam-tasi/): Şöhret Doğruyol Şağbaş — Children's Books — English title: Underground Diaries II
-- [Ütopyaya Yolculuk](https://epsilonpublishinggroup.com/books/utopyaya-yolculuk/): Şöhret Doğruyol Şağbaş — Children's Books — English title: Journey to Utopia
-- [Androtopyaya Yolculuk](https://epsilonpublishinggroup.com/books/androtopyaya-yolculuk/): Şöhret Doğruyol Şağbaş — Children's Books — English title: Journey to Androtopia
-- [Silgi Ruhu](https://epsilonpublishinggroup.com/books/silgi-ruhu/): Şöhret Doğruyol Şağbaş — Children's Books — English title: The Spirit of An Eraser
-- [Organize Tesadüfler Platform](https://epsilonpublishinggroup.com/books/organize-tesadufler-platform/): Şöhret Doğruyol Şağbaş — Children's Books — English title: The Organized Coincidences: Platform
+- [Yeraltı Günlükleri](https://epsilonpublishinggroup.com/books/yeralti-gunlukleri/): Şöhret Doğruyol Sağbaş — Children's Books — English title: Underground Diaries
+- [Yeraltı Günlükleri II Yaşam Taşı](https://epsilonpublishinggroup.com/books/yeralti-gunlukleri-ii-yasam-tasi/): Şöhret Doğruyol Sağbaş — Children's Books — English title: Underground Diaries II
+- [Ütopyaya Yolculuk](https://epsilonpublishinggroup.com/books/utopyaya-yolculuk/): Şöhret Doğruyol Sağbaş — Children's Books — English title: Journey to Utopia
+- [Androtopyaya Yolculuk](https://epsilonpublishinggroup.com/books/androtopyaya-yolculuk/): Şöhret Doğruyol Sağbaş — Children's Books — English title: Journey to Androtopia
+- [Distopyaya Yolculuk](https://epsilonpublishinggroup.com/books/distopyaya-yolculuk/): Şöhret Doğruyol Sağbaş — Children's Books — English title: Journey to Distopia
+- [Silgi Ruhu](https://epsilonpublishinggroup.com/books/silgi-ruhu/): Şöhret Doğruyol Sağbaş — Children's Books — English title: The Spirit of An Eraser
+- [Organize Tesadüfler Platform](https://epsilonpublishinggroup.com/books/organize-tesadufler-platform/): Şöhret Doğruyol Sağbaş — Children's Books — English title: The Organized Coincidences: Platform
+- [Organize Tesadüfler 2: Yeşil Balıklar](https://epsilonpublishinggroup.com/books/organize-tesadufler-2-yesil-baliklar/): Şöhret Doğruyol Sağbaş — Children's Books — English title: The Organized Coincidences 2: Green Fish
 - [Uç ve Bitsin](https://epsilonpublishinggroup.com/books/uc-ve-bitsin/): Gülşah Yemen — Children's Books — English title: Just Fly: Ayda's School Diary
 - [Çöl Prensi ve Buz](https://epsilonpublishinggroup.com/books/col-prensi-ve-buz/): Tuğçe Büyükuğurlu — Children's Books — English title: The Prince of the Desert and Ice
 - [Ne İstersen Makinesi](https://epsilonpublishinggroup.com/books/ne-istersen-makinesi/): Tuğçe Büyükuğurlu — Children's Books — English title: Whatever You Want Machine
