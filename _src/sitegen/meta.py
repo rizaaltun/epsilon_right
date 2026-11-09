@@ -29,6 +29,7 @@ def render(ctx) -> str:
             "l": book.get("rights_sold", []),
             "f": bool(book.get("featured")),
             "n": bool(book.get("new")),
+            "b": bool(book.get("backlist")),
             "p": "/" + covers.resolve(ctx, book["cover"])[0] if book["cover"] else None,
             "sq": _is_square(ctx, book),
         }

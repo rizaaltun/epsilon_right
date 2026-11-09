@@ -16,6 +16,7 @@ Slots in a fragment are filled from content at build time:
   <!--@authors-with-titles-->    author cards (A–Z), count, most-published rail, A–Z jump list
   <!--@featured-filter kind=publishers|authors-->  the "Featured" filter row, if any are featured
   <!--@category-filter-->        the Category list on /books/, with each category's subcategories
+  <!--@backlist-filter-->        the Backlist filter on /books/ (a whole <fieldset>; empty with no backlist books)
 
 Before the slots are filled, the fragment is rendered as a template (see
 sitegen/template.py) with the page's editable texts (texts.json next to the
@@ -40,7 +41,7 @@ from .html import prefix_for
 COUNT = re.compile(r'<!--@count select="([^"]+)"-->')
 OTHER = re.compile(r"<!--@(news-cards|news-count|event-sections|event-aside|publisher-cards|publisher-count|"
                    r"publisher-summary|publisher-countries|author-cards|author-count|top-authors|author-letters|"
-                   r"authors-with-titles|featured-filter|category-filter|service-cards|catalogue-cards|catalogue-count|blog-cards|blog-count|spotlight-cards)((?: \w+=\S+?)*)-->")
+                   r"authors-with-titles|featured-filter|category-filter|backlist-filter|service-cards|catalogue-cards|catalogue-count|blog-cards|blog-count|spotlight-cards)((?: \w+=\S+?)*)-->")
 SLOT = re.compile(r'<!--@cards select="([^"]+)" wrap=(li|none)(?: article="([^"]+)")?-->')
 
 
@@ -95,6 +96,8 @@ def render(ctx, record: dict) -> tuple:
             return events.aside(ctx, r)
         if name == "category-filter":
             return genres.category_filter(ctx)
+        if name == "backlist-filter":
+            return genres.backlist_filter(ctx)
         if name == "publisher-cards":
             return publishers.cards(ctx, r, args.get("order", "panel"))
         if name == "publisher-count":

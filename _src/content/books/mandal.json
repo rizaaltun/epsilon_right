@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 190,
+  "order": 202,
   "cover": "/assets/images/covers/a6fb4d8442c37d5b3e57-1000.webp",
   "square_cover": false,
   "description": "Clothespin",
@@ -18,5 +18,6 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "backlist": true
 }

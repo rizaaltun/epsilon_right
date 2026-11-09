@@ -6,7 +6,7 @@
     "Health & Wellness"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 236,
+  "order": 248,
   "cover": "/assets/images/covers/9d70e91c8726cfae70d9-1000.webp",
   "square_cover": false,
   "description": "The Rational and Scientific Supplementation Guide 2 - From Brain to Gut",
@@ -18,5 +18,6 @@
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "backlist": true
 }

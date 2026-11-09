@@ -21,5 +21,6 @@
   "rights": "Rights Sold to Russian",
   "rights_sold": [],
   "featured": false,
-  "new": false
+  "new": false,
+  "backlist": true
 }
