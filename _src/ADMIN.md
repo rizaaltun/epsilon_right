@@ -28,10 +28,12 @@ değişmez (değişirse FormSubmit'te yeniden doğrulama gerekir).
 Kitap sayıları (yayınevi kartları, yazarlar listesi, Representations) her derlemede
 kitaplardan hesaplanır; elle güncellenmez.
 
-Ana sayfanın üstündeki kartta sabitlenen içerik görünür: haberde "Vitrine sabitle", fuarda
-"Ana sayfada sabitle". Birden fazla haber ya da fuar sabitliyse kartta sırayla kayarak görünürler
-(en yenisi önce, birkaç saniyede bir; ziyaretçi oklarla da geçebilir). Hiçbir şey sabitli değilse
-son haber görünür, ama ondan sonra biten bir fuar varsa fuar kartı gelir.
+Ana sayfanın üstündeki kartta haberler sırayla kayarak geçer (birkaç saniyede bir; ziyaretçi oklarla
+da geçebilir): önce sabitlenenler (haberde "Vitrine sabitle", fuarda "Ana sayfada sabitle"; en yenisi
+önce), ardından en son haberler, toplam 4 slayt (daha fazlası sabitliyse hepsi). Hiç haber yoksa
+sıradaki ya da son fuar görünür.
+
+Ana sayfanın açılış kartındaki **bülten alanına** girilen adresler, "Sayfa metinleri › Ana sayfa › Bülten: kayıtların gideceği e-posta" adresine e-posta olarak gelir (FormSubmit ile, İletişim formu gibi); oradan elle Setrow'a eklenir. Adres ilk kez kullanıldığında ya da değiştirildiğinde FormSubmit o adrese bir kez "Activate Form" e-postası gönderir, düğmesine basılmadan kayıtlar gelmez. Alan boşsa kartta bülten yerine açılış başlığı görünür.
 
 Instagram gönderileri **Spotlight (Instagram)** bölümünden eklenir: görsel, gönderi linki, tarih ve
 isteğe bağlı kısa satır (tarih sitede görünmez, yalnızca sıralamayı belirler). Ana sayfadaki Spotlight ("For younger readers"ın altında) en yeni 5 gönderiyi,

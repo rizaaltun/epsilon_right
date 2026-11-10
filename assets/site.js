@@ -169,6 +169,39 @@
     if (calm.matches) el.style.height = "100svh";
   };
 
+  /* ---- newsletter sign-up in the hero card: FormSubmit e-mails the address to the panel's
+     newsletter address (no page change; without JS the form posts to FormSubmit's own page) ---- */
+  const wireNewsletter = (root) => {
+    for (const form of root.querySelectorAll("form[data-newsletter]")) {
+      const status = form.querySelector(".hb-signup-status");
+      const button = form.querySelector('button[type="submit"]');
+      const email = form.elements.email;
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!email.checkValidity()) { email.reportValidity(); return; }
+        button.disabled = true;
+        form.classList.remove("is-done", "is-error");
+        status.textContent = "";
+        try {
+          // A form-encoded POST is a "simple" request: no CORS preflight.
+          const res = await fetch(form.dataset.endpoint || form.action, {
+            method: "POST", headers: { Accept: "application/json" }, body: new URLSearchParams(new FormData(form)),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || String(data.success) === "false") throw new Error(data.message || `HTTP ${res.status}`);
+          form.classList.add("is-done");
+          status.textContent = form.dataset.success || "Thank you!";
+          email.value = "";
+        } catch {
+          form.classList.add("is-error");
+          status.textContent = form.dataset.error || "Something went wrong.";
+        } finally {
+          button.disabled = false;
+        }
+      });
+    }
+  };
+
   /* ---- scroll reveal ---- */
   const wireReveal = (root) => {
     if (calm.matches) return;
@@ -644,6 +677,7 @@
     wireCountUp(document);
     wireSpotlight(document);
     wireMenu(document);
+    wireNewsletter(document);
     wireDropdowns(document);
     wireCoverLightbox(document);
     wireCoverSet(document);
