@@ -258,7 +258,7 @@ collections:
         widget: select
         default: Announcements
         options: [Announcements, Industry, Press, Fairs, Rights deals, Awards]
-      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: "Açıksa haber, ana sayfanın üstündeki kartta ve haber listelerinde yeni haberlerin önünde kalır. Birden fazla haber ya da etkinlik sabitliyse kartta sırayla kayarak görünürler." }
+      - { name: pinned, label: Vitrine sabitle, widget: boolean, default: false, hint: "Açıksa haber, ana sayfanın üstündeki kartta ilk sırada ve haber listelerinde yeni haberlerin önünde kalır. Kartta sabitlenenlerden sonra son haberler sırayla kayarak geçer (toplam 4)." }
       - { name: byline, label: İmza, widget: string, default: Editorial desk, hint: 'Tarihin yanında görünür, örn. "Editorial desk".' }
       - { name: excerpt, label: Özet, widget: text, hint: Haber kartlarında görünen kısa metin (1–2 cümle). }
       - { name: image, label: Görsel, widget: image, required: false, choose_url: false }
@@ -317,7 +317,7 @@ collections:
     fields:
       - { name: title, label: Etkinlik adı, widget: string }
       - { name: start_date, label: Başlangıç tarihi, widget: datetime, type: date, format: YYYY-MM-DD }
-      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: "Açıksa ana sayfanın üstündeki kartta, tarihi geçmiş olsa bile bu etkinlik görünür. Birden fazla haber ya da etkinlik sabitliyse kartta sırayla kayarak görünürler." }
+      - { name: pinned, label: Ana sayfada sabitle, widget: boolean, default: false, hint: "Açıksa ana sayfanın üstündeki kartta, tarihi geçmiş olsa bile bu etkinlik görünür (sabitlenenler ilk sırada, ardından son haberler kayarak geçer)." }
       - { name: end_date, label: Bitiş tarihi, widget: datetime, type: date, format: YYYY-MM-DD, required: false, hint: Tek günlük etkinlikte boş bırakın. }
       - { name: venue, label: Mekân, widget: string, required: false, hint: Örn. Messe Frankfurt }
       - { name: city, label: Şehir, widget: string, required: false }
@@ -583,9 +583,16 @@ collections:
         format: json
         fields:
           - { name: h1, label: "Gizli ana başlık (H1)", widget: string, hint: "Ekranda görünmez; Google ve ekran okuyucular için sayfanın ana başlığıdır." }
-          - { name: hero_title, label: "Açılış başlığı", widget: string }
+          - { name: hero_title, label: "Açılış başlığı", widget: string, hint: "Bülten e-postası girildiğinde kartta bunun yerine bülten alanı görünür." }
           - { name: hero_text, label: "Açılış metni", widget: text }
           - { name: hero_button, label: "Açılış düğmesi", widget: string }
+          - { name: newsletter_email, label: "Bülten: kayıtların gideceği e-posta", widget: string, required: false, hint: "Ziyaretçinin girdiği adres bu adrese e-posta olarak gelir (FormSubmit ile, İletişim formu gibi). Adres değişirse ilk kayıtta FormSubmit bu adrese bir kez onay e-postası gönderir; içindeki düğmeye basılmalı. Boşsa kartta bülten alanı yerine Açılış başlığı görünür." }
+          - { name: newsletter_title, label: "Bülten: kutunun üstündeki yazı", widget: string }
+          - { name: newsletter_placeholder, label: "Bülten: kutudaki yazı", widget: string }
+          - { name: newsletter_button, label: "Bülten: düğme", widget: string }
+          - { name: newsletter_note, label: "Bülten: alt not", widget: string, required: false, hint: "Formun altında küçük yazıyla görünür." }
+          - { name: newsletter_success, label: "Bülten: kayıt mesajı", widget: string }
+          - { name: newsletter_error, label: "Bülten: hata mesajı", widget: string }
           - { name: intro_eyebrow, label: "Tanıtım: üst etiket", widget: string }
           - { name: intro_title, label: "Tanıtım: başlık", widget: string }
           - name: intro_body
