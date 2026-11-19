@@ -99,7 +99,8 @@ Quirks of the export were therefore reproduced on purpose, not fixed.
 - The "Okuyan Koala" imprint (3 books) has no publisher page.
 - Fixed in the SEO step: footer category links used slugs that don't exist; "worlwide"
   (94 books) and other rights typos; rights-sold languages mixed Turkish and English.
-- Footer links to `/privacy-policy/` and `/terms/` return 404.
+- Fixed in the SEO step: footer links to `/privacy-policy/` and `/terms/` returned 404. They now show only
+  once those pages exist; draft texts wait in `_src/drafts/legal/` (see its README).
 - Fixed in the page-texts step: the contact page "View on map" pointed to
   `https://maps.example.com`; it now searches the office address on Google Maps.
 - Services pages and cards use the template's abstract placeholder images (scene-0x.jpg).

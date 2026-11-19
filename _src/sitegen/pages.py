@@ -167,6 +167,10 @@ def page_seo(ctx, record: dict):
                                 "email": contact.get("rights_email") or ctx.settings["email"],
                                 **({"telephone": contact["phone"]} if contact.get("phone") else {})}]
         jsonld = [org, {"@type": "ContactPage", "name": name, "url": page_url, "mainEntity": {"@id": org["@id"]}}]
+    elif path in ("privacy-policy/", "terms/"):
+        jsonld = [{"@type": "WebPage", "name": name, "url": page_url, "description": description,
+                   "isPartOf": {"@type": "WebSite", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")}},
+                  seo.breadcrumbs(ctx, [("Home", ""), (name, path)])]
     else:
         trail = [("Home", "")]
         parent = path.rsplit("/", 2)[0] + "/" if path.count("/") > 1 else ""
