@@ -68,6 +68,9 @@ def load(root: Path, write: bool = False) -> Context:
     settings["_has_blog"] = bool(blog)   # menus link to the blog only once it has posts
     spotlight = _load_folder(content / "spotlight") if (content / "spotlight").exists() else {}
     settings["_has_spotlight"] = bool(spotlight)   # the home Spotlight shows only once there are posts
+    # The footer links to the legal pages only while they exist (drafts wait in _src/drafts/legal/).
+    settings["_has_privacy"] = (content / "pages/privacy-policy/index.json").exists()
+    settings["_has_terms"] = (content / "pages/terms/index.json").exists()
     shared = {"site": settings}
     for name in ("stats", "contact"):
         path = content / "settings" / f"{name}.json"

@@ -154,12 +154,30 @@ def render(ctx, slug: str) -> tuple:
                             seo_html=seo.head_tags(ctx, book_seo(ctx, slug, path)), **extra)
 
 
+def _shared_descriptions(ctx) -> set:
+    """Meta descriptions that more than one book would get from its text (so search
+    engines would see duplicates); worked out once per build."""
+    if not hasattr(ctx, "_shared_book_descriptions"):
+        seen, shared = set(), set()
+        for book in ctx.books.values():
+            if book.get("seo_description"):
+                continue
+            text = seo.describe(book, book.get("description"), "")
+            if text:
+                (shared if text in seen else seen).add(text)
+        ctx._shared_book_descriptions = shared
+    return ctx._shared_book_descriptions
+
+
 def book_seo(ctx, slug: str, path: str):
     from .covers import resolve
     book = ctx.books[slug]
     category = category_label(ctx, book["category"])
     fallback = f'{book["title"]} by {book["author"]} — {category}. {book.get("rights") or "Translation rights available"}.'
     description = seo.describe(book, book.get("description"), fallback)
+    if not book.get("seo_description") and description in _shared_descriptions(ctx):
+        # Series and short bibliographic texts repeat across books: lead with the book itself.
+        description = seo.clip(f'{book["title"]} by {book["author"]}: {book.get("description") or fallback}')
     image = "/" + resolve(ctx, book["cover"])[0] if book["cover"] else ""
     data = {
         "@type": "Book",

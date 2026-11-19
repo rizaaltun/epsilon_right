@@ -1,0 +1,35 @@
+# Paste under collections > pages > files in admin/config.yml (before the catalogues entry)
+      - name: privacy_page
+        label: "Gizlilik politikası (Privacy Policy)"
+        file: _src/content/pages/privacy-policy/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: updated, label: "Son güncelleme tarihi", widget: string, required: false, hint: "Başlığın altında \"Last updated: …\" olarak görünür. Metni değiştirince güncelleyin, örn. 19 November 2026." }
+          - name: body
+            label: "Metin"
+            widget: markdown
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İngilizce. Ara başlıklar için Başlık 2 kullanın."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
+      - name: terms_page
+        label: "Kullanım koşulları (Terms of Use)"
+        file: _src/content/pages/terms/texts.json
+        format: json
+        fields:
+          - { name: eyebrow, label: "Üst etiket", widget: string }
+          - { name: title, label: "Başlık (H1)", widget: string }
+          - { name: intro, label: "Giriş cümlesi", widget: text }
+          - { name: updated, label: "Son güncelleme tarihi", widget: string, required: false, hint: "Başlığın altında \"Last updated: …\" olarak görünür. Metni değiştirince güncelleyin, örn. 19 November 2026." }
+          - name: body
+            label: "Metin"
+            widget: markdown
+            buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
+            editor_components: []
+            hint: "İngilizce. Ara başlıklar için Başlık 2 kullanın."
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }

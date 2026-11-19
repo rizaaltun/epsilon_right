@@ -188,11 +188,15 @@
             method: "POST", headers: { Accept: "application/json" }, body: new URLSearchParams(new FormData(form)),
           });
           const data = await res.json().catch(() => ({}));
-          if (!res.ok || String(data.success) === "false") throw new Error(data.message || `HTTP ${res.status}`);
+          // Until the newsletter address is activated, FormSubmit answers "needs Activation" but keeps
+          // the sign-up and delivers it once the address is confirmed: that is a success for the visitor.
+          const pending = /activat/i.test(String(data.message || ""));
+          if (!res.ok || (String(data.success) === "false" && !pending)) throw new Error(data.message || `HTTP ${res.status}`);
           form.classList.add("is-done");
           status.textContent = form.dataset.success || "Thank you!";
           email.value = "";
-        } catch {
+        } catch (err) {
+          console.warn("Newsletter sign-up failed:", err);
           form.classList.add("is-error");
           status.textContent = form.dataset.error || "Something went wrong.";
         } finally {

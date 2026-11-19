@@ -228,8 +228,11 @@ def footer(r: str, settings: dict, lazy_logo: bool = True) -> str:
         'target="_blank" rel="noopener noreferrer" class="underline decoration-ink-inverse/30 '
         'underline-offset-2 hover:text-ink-inverse">rizaaltun.com</a></p><ul class="flex flex-wrap gap-x-5 '
         f'gap-y-1"><li><a class="hover:text-ink-inverse" href="{r}satis/" lang="tr">Yurt dışı satış noktaları</a></li>'
-        f'<li><a class="hover:text-ink-inverse" href="{r}privacy-policy/">Privacy policy</a></li>'
-        f'<li><a class="hover:text-ink-inverse" href="{r}terms/">Terms of use</a></li></ul></div></div>'
+        + (f'<li><a class="hover:text-ink-inverse" href="{r}privacy-policy/">Privacy policy</a></li>'
+           if settings.get("_has_privacy") else "")
+        + (f'<li><a class="hover:text-ink-inverse" href="{r}terms/">Terms of use</a></li>'
+           if settings.get("_has_terms") else "")
+        + '</ul></div></div>'
         "</footer>"
     )
 
