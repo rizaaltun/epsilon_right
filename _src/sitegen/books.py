@@ -154,6 +154,21 @@ def render(ctx, slug: str) -> tuple:
                             seo_html=seo.head_tags(ctx, book_seo(ctx, slug, path)), **extra)
 
 
+SHORT_DESCRIPTION = 70   # characters; shorter book texts get a fuller meta description
+
+
+def _rich_description(ctx, book: dict, category: str) -> str:
+    """"Title (English title) by Author — Category · Imprint. Rights…" plus the book's own short text."""
+    english = book.get("english_title") or ""
+    head = book["title"] + (f" ({english})" if english and english.strip().lower() != book["title"].strip().lower() else "")
+    imprint = f' · {book["imprint"]}' if book.get("imprint") else ""
+    text = f'{head} by {book["author"]} — {category}{imprint}. {book.get("rights") or "Translation rights available"}.'
+    own = (book.get("description") or "").strip()
+    if own and own.rstrip(".").lower() not in text.lower():
+        text += " " + own
+    return seo.clip(text)
+
+
 def _shared_descriptions(ctx) -> set:
     """Meta descriptions that more than one book would get from its text (so search
     engines would see duplicates); worked out once per build."""
@@ -175,7 +190,10 @@ def book_seo(ctx, slug: str, path: str):
     category = category_label(ctx, book["category"])
     fallback = f'{book["title"]} by {book["author"]} — {category}. {book.get("rights") or "Translation rights available"}.'
     description = seo.describe(book, book.get("description"), fallback)
-    if not book.get("seo_description") and description in _shared_descriptions(ctx):
+    if not book.get("seo_description") and len(description) < SHORT_DESCRIPTION:
+        # A text of a few words (often just the English title) says little in search results.
+        description = _rich_description(ctx, book, category)
+    elif not book.get("seo_description") and description in _shared_descriptions(ctx):
         # Series and short bibliographic texts repeat across books: lead with the book itself.
         description = seo.clip(f'{book["title"]} by {book["author"]}: {book.get("description") or fallback}')
     image = "/" + resolve(ctx, book["cover"])[0] if book["cover"] else ""
