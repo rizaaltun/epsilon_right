@@ -9,7 +9,7 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 ## Start here
 
 - [About the group](https://epsilonpublishinggroup.com/about-us/): history, imprints and the rights team
-- [All titles](https://epsilonpublishinggroup.com/books/): 283 titles available for translation, with filters
+- [All titles](https://epsilonpublishinggroup.com/books/): 284 titles available for translation, with filters
 - [Catalogues](https://epsilonpublishinggroup.com/catalogues/): rights catalogues to read online or download as PDF
 - [Contact](https://epsilonpublishinggroup.com/contact/): rights enquiries
 
@@ -26,11 +26,11 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 - [Children's Books](https://epsilonpublishinggroup.com/books/?category=childrens-books): 147 titles
 - [Adult Fiction](https://epsilonpublishinggroup.com/books/?category=adult-fiction): 47 titles
 - [Non-Fiction](https://epsilonpublishinggroup.com/books/?category=non-fiction): 60 titles
-- [Young Adult](https://epsilonpublishinggroup.com/books/?category=young-adult): 29 titles
+- [Young Adult](https://epsilonpublishinggroup.com/books/?category=young-adult): 30 titles
 
 ## Publishers
 
-- [Epsilon](https://epsilonpublishinggroup.com/publishers/epsilon/): 108 titles
+- [Epsilon](https://epsilonpublishinggroup.com/publishers/epsilon/): 109 titles
 - [Kafka Kitap](https://epsilonpublishinggroup.com/publishers/kafka-kitap/): 18 titles
 - [Masalperest](https://epsilonpublishinggroup.com/publishers/masalperest/): 71 titles
 - [Nemesis Kitap](https://epsilonpublishinggroup.com/publishers/nemesis-kitap/): 24 titles
@@ -390,6 +390,7 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 - [Ölmeden Önce Mümkünse Yaşamanız Gereken Bir Hayat](https://epsilonpublishinggroup.com/books/olmeden-once-mumkunse-yasamaniz-gereken-bir-hayat/): Cem Mumcu — Non-Fiction
 - [Kendine Bakma Kitabı](https://epsilonpublishinggroup.com/books/kendine-bakma-kitabi/): Cem Mumcu — Non-Fiction
 - [Anne Babayı İstismar](https://epsilonpublishinggroup.com/books/anne-babayi-istismar/): Üstün Dökmen — Non-Fiction
+- [Gece Yarısı Resitali](https://epsilonpublishinggroup.com/books/gece-yarisi-resitali/): Beyza Aksoy — Young Adult — English title: Midnight Recital
 - [Var Mısın?](https://epsilonpublishinggroup.com/books/var-misin/): Beyza Özaydın — Young Adult — English title: Do You Dare?
 - [Siyam 1](https://epsilonpublishinggroup.com/books/siyam-1/): Beyza Aksoy — Young Adult
 - [Siyam 2](https://epsilonpublishinggroup.com/books/siyam-2/): Beyza Aksoy — Young Adult

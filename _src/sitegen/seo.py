@@ -110,10 +110,15 @@ def head_tags(ctx, seo: Seo) -> str:
     return "\n" + "\n".join(t for t in tags if t) + _jsonld(seo.jsonld)
 
 
+TITLE_LIMIT = 60   # longer titles are cut off in search results
+
+
 def title_html(ctx, item: dict, name: str) -> str:
-    """<title>: the item's SEO title if set, else "<name> — <site name>"."""
+    """<title>: the item's SEO title if set, else "<name> — <site name>", or just the
+    name when the site name would push it past TITLE_LIMIT characters."""
     from .html import esc_title
-    return esc_title(item.get("seo_title") or f"{name} — {ctx.settings['site_name']}")
+    full = f"{name} — {ctx.settings['site_name']}"
+    return esc_title(item.get("seo_title") or (full if len(full) <= TITLE_LIMIT else name))
 
 
 def describe(item: dict, *fallbacks) -> str:
