@@ -6,7 +6,7 @@
     "Middle Grade"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 124,
+  "order": 126,
   "cover": "/assets/images/covers/3b14c1b8a7f13b502aa6-383.webp",
   "square_cover": false,
   "description": "Published by Epsilon in 2023, 168 pages.",
@@ -17,6 +17,7 @@
   "pages": "168",
   "publication_year": "2023",
   "age_group": "Middle Grade",
+  "isbn": "9786254144660",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

@@ -6,7 +6,7 @@
     "Health & Wellness"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 249,
+  "order": 251,
   "cover": "/assets/images/covers/02061cf0cae72eec6821-501.webp",
   "square_cover": false,
   "description": "The Rational and Scientific Supplementation Guide 1",
@@ -15,6 +15,7 @@
   "imprint": "Nemesis",
   "pages": "168",
   "publication_year": "2023",
+  "isbn": "9786256947276",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

@@ -6,7 +6,7 @@
     "Middle Grade"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 116,
+  "order": 118,
   "cover": "/assets/images/covers/ef4ffe6668bccbafbb8f-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by Funda Mengilli, 56 pages.",
@@ -17,6 +17,7 @@
   "pages": "56",
   "illustrator": "Funda Mengilli",
   "age_group": "Middle Grade",
+  "isbn": "9786254144738",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

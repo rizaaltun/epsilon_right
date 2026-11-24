@@ -6,7 +6,7 @@
     "Middle Grade"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 115,
+  "order": 117,
   "cover": "/assets/images/covers/be34ef824a7d74285577-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by Rukiye Ulusan, 56 pages.",
@@ -17,6 +17,7 @@
   "pages": "56",
   "illustrator": "Rukiye Ulusan",
   "age_group": "Middle Grade",
+  "isbn": "9786051739274",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

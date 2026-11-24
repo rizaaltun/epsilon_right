@@ -6,7 +6,7 @@
     "Philosophy"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 228,
+  "order": 230,
   "cover": "/assets/images/covers/ea60a3078745fb939acf-1000.webp",
   "square_cover": false,
   "description": "The History of Doubt - Introduction to Philosophy",
@@ -15,6 +15,7 @@
   "imprint": "Kafka",
   "pages": "400",
   "publication_year": "2021",
+  "isbn": "9786257994408",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

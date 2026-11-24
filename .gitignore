@@ -1,2 +1,5 @@
 __pycache__/
 .DS_Store
+# iCloud sync conflict copies ("name 2.json", "folder 2/")
+* 2.*
+* 2/

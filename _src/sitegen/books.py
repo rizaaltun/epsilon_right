@@ -16,8 +16,7 @@ DETAIL_ROWS = [
     ("publication_year", "Publication year"),
     ("illustrator", "Illustrator"),
     ("age_group", "Age group"),
-    ("isbn", "ISBN"),
-]
+]   # the ISBN is not shown on the page; it goes only into the structured data
 RAIL_SIZE = 8
 
 
@@ -227,8 +226,12 @@ def book_seo(ctx, slug: str, path: str):
         data["datePublished"] = year.group(1)
     if book.get("illustrator"):
         data["illustrator"] = {"@type": "Person", "name": book["illustrator"]}
-    if book.get("isbn"):
-        data["isbn"] = re.sub(r"[^0-9Xx]", "", book["isbn"])
+    isbns = re.findall(r"97[89][0-9-]{10,14}", book.get("isbn") or "")
+    isbns = [re.sub(r"\D", "", x) for x in isbns]
+    if len(isbns) == 1:
+        data["isbn"] = isbns[0]
+    elif isbns:   # a set page: one Book per volume
+        data["hasPart"] = [{"@type": "Book", "isbn": x} for x in isbns]
     ages = seo.age_range(book.get("age_group"))
     if ages:
         data["typicalAgeRange"] = ages

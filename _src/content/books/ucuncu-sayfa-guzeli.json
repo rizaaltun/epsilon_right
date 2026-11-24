@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 210,
+  "order": 212,
   "cover": "/assets/images/covers/63b71aab09c297198ba7-200.webp",
   "square_cover": false,
   "description": "Miss Back Page",
@@ -15,6 +15,7 @@
   "imprint": "Okuyan Us",
   "pages": "115",
   "publication_year": "2009",
+  "isbn": "9789758420209",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

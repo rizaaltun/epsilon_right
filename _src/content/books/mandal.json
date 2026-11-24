@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 204,
+  "order": 206,
   "cover": "/assets/images/covers/a6fb4d8442c37d5b3e57-1000.webp",
   "square_cover": false,
   "description": "Clothespin",
@@ -15,6 +15,7 @@
   "imprint": "Epsilon",
   "pages": "120",
   "publication_year": "2024",
+  "isbn": "9786254145124",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

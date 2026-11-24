@@ -6,7 +6,7 @@
     "Middle Grade"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 117,
+  "order": 119,
   "cover": "/assets/images/covers/1613da34b144ef6ee6a7-797.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by S. Burcu Karacalar, 32 pages.",
@@ -17,6 +17,7 @@
   "pages": "32",
   "illustrator": "S. Burcu Karacalar",
   "age_group": "Middle Grade",
+  "isbn": "9786254141607",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

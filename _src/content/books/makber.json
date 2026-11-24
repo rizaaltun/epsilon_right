@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 207,
+  "order": 209,
   "cover": "/assets/images/covers/dae30c1c705c125933cf-580.webp",
   "square_cover": false,
   "description": "The Grave",
@@ -15,6 +15,7 @@
   "imprint": "Okuyan Us",
   "pages": "128",
   "publication_year": "2016",
+  "isbn": "9786054054817",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
