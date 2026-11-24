@@ -180,4 +180,4 @@ def page_seo(ctx, record: dict):
         jsonld = [{"@type": "CollectionPage", "name": name, "url": page_url, "description": description,
                    "isPartOf": {"@type": "WebSite", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")}},
                   seo.breadcrumbs(ctx, trail)]
-    return seo.Seo(path=path, title=name, description=description, image=image, jsonld=jsonld)
+    return seo.Seo(path=path, title=seo.share_title(texts, name), description=description, image=image, jsonld=jsonld)

@@ -63,7 +63,7 @@ def render(ctx, slug: str) -> tuple:
     if author.get("bio"):
         person["description"] = seo.clip(author["bio"], 500)
     profile = {"@type": "ProfilePage", "url": seo.url(ctx, path), "mainEntity": person}
-    meta = seo.Seo(path=path, title=author["name"], description=seo.describe(author, author.get("bio"), fallback),
+    meta = seo.Seo(path=path, title=seo.share_title(author, author["name"]), description=seo.describe(author, author.get("bio"), fallback),
                    image=author.get("photo") or "", type="profile", jsonld=[profile, seo.breadcrumbs(ctx, [("Home", ""), ("Authors", "authors/"),
                                                                             (author["name"], path)])])
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, author, author["name"]), main,

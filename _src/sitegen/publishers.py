@@ -149,7 +149,7 @@ def render(ctx, slug: str) -> tuple:
     if pub.get("website"):
         org["sameAs"] = pub["website"]
     fallback = f'{pub["name"]} — {_summary(pub)} {len(books)} titles available for translation rights.'
-    meta = seo.Seo(path=path, title=pub["name"], description=seo.describe(pub, pub.get("summary"), fallback),
+    meta = seo.Seo(path=path, title=seo.share_title(pub, pub["name"]), description=seo.describe(pub, pub.get("summary"), fallback),
                    jsonld=[org, seo.breadcrumbs(ctx, [("Home", ""), ("Publishers", "publishers/"), (pub["name"], path)])])
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, pub, pub["name"]), main,
                             seo_html=seo.head_tags(ctx, meta))

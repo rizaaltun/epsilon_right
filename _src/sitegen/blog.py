@@ -117,7 +117,7 @@ def render(ctx, slug: str) -> tuple:
         post["keywords"] = ", ".join(item["tags"])
     if books:
         post["mentions"] = [{"@type": "Book", "name": b["title"], "url": seo.url(ctx, f"books/{s}/")} for s, b in books]
-    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("excerpt"), item.get("body")),
+    meta = seo.Seo(path=path, title=seo.share_title(item, item["title"]), description=seo.describe(item, item.get("excerpt"), item.get("body")),
                    image=image, type="article",
                    jsonld=[post, seo.breadcrumbs(ctx, [("Home", ""), ("Blog", "blog/"), (item["title"], path)])])
     head_extra = f'<link rel="alternate" type="application/rss+xml" title="{esc(ctx.settings["site_name"])} blog" href="~/blog/feed.xml">'

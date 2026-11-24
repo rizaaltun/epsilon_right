@@ -236,5 +236,5 @@ def book_seo(ctx, slug: str, path: str):
     if ages:
         data["typicalAgeRange"] = ages
     crumbs = seo.breadcrumbs(ctx, [("Home", ""), ("Books", "books/"), (book["title"], path)])
-    return seo.Seo(path=path, title=book["title"], description=description, image=image, type="book",
+    return seo.Seo(path=path, title=seo.share_title(book, book["title"]), description=description, image=image, type="book",
                    jsonld=[data, crumbs])

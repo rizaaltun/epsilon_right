@@ -38,7 +38,7 @@ def url(ctx, path: str) -> str:
 @dataclass
 class Seo:
     path: str                     # page path, e.g. "books/eflatun-koza/" ("" for home)
-    title: str                    # plain-text title for sharing (the <title> is set separately)
+    title: str                    # plain-text title for sharing (the <title> is set separately); see share_title
     description: str = ""
     image: str = ""               # site path of the share image
     type: str = "website"         # og:type
@@ -111,6 +111,11 @@ def head_tags(ctx, seo: Seo) -> str:
 
 
 TITLE_LIMIT = 60   # longer titles are cut off in search results
+
+
+def share_title(item: dict, name: str) -> str:
+    """og:title: the item's SEO title if set, else its name (share cards cut long titles too)."""
+    return item.get("seo_title") or name
 
 
 def title_html(ctx, item: dict, name: str) -> str:

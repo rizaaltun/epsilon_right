@@ -84,7 +84,7 @@ def render(ctx, slug: str) -> tuple:
     service = {"@type": "Service", "name": item["title"], "serviceType": item["title"], "url": seo.url(ctx, path),
                "description": item.get("summary", ""),
                "provider": {"@type": "Organization", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")}}
-    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("summary"), item.get("body")),
+    meta = seo.Seo(path=path, title=seo.share_title(item, item["title"]), description=seo.describe(item, item.get("summary"), item.get("body")),
                    image=hero or "",
                    jsonld=[service, seo.breadcrumbs(ctx, [("Home", ""), ("Services", "services/"), (item["title"], path)])])
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main,
