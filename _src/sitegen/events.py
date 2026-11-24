@@ -72,6 +72,25 @@ def row(r: str, slug: str, item: dict) -> str:
     )
 
 
+OTHERS = 4   # other fairs listed under a fair's page: the nearest in time
+
+
+def _others(ctx, r: str, slug: str, item: dict) -> str:
+    start = _span(item)[0]
+    near = sorted(((s, x) for s, x in ctx.events.items() if s != slug),
+                  key=lambda kv: (abs((_span(kv[1])[0] - start).days), kv[0]))[:OTHERS]
+    if not near:
+        return ""
+    near.sort(key=lambda kv: (str(kv[1]["start_date"]), kv[0]), reverse=True)
+    return (
+        '<section class="py-14 md:py-20 ground-paper" aria-labelledby="other-fairs"><div><div class="shell"><div '
+        'class="mb-8 flex flex-col gap-4 md:mb-11 md:flex-row md:items-end md:justify-between"><div class="max-w-2xl">'
+        '<h2 id="other-fairs" class="text-display-md">Other fairs &amp; events</h2></div><div class="shrink-0"><a '
+        f'class="link-arrow text-sm" href="{r}fairs-events/">All fairs &amp; events{ARROW}</a></div></div>'
+        f'<div class="border-t border-rule">{"".join(row(r, s, x) for s, x in near)}</div></div></div></section>'
+    )
+
+
 def _section(r, anchor, heading, items, empty_text):
     count = f'{len(items)} event' + ("" if len(items) == 1 else "s")
     body = "".join(row(r, s, e) for s, e in items) if items else (
@@ -109,11 +128,12 @@ def _news_aside(ctx, r: str, slug: str, item: dict) -> str:
     )
 
 
-def _fair_aside(r: str, item: dict) -> str:
+def _fair_aside(r: str, slug: str, item: dict) -> str:
     label = "Upcoming fair" if is_upcoming(item) else "Latest fair"
     return (
         f'<p class="eyebrow mb-3">{label}</p><p class="font-display text-display-sm leading-tight text-balance">'
-        f'{esc(item["title"])}</p><p class="mt-2 text-sm text-ink-2">{dates.span(*_span(item))}</p>'
+        f'<a class="transition-colors hover:text-accent" href="{r}fairs-events/{slug}/">{esc(item["title"])}</a></p>'
+        f'<p class="mt-2 text-sm text-ink-2">{dates.span(*_span(item))}</p>'
         f'<a class="link-arrow mt-4 text-sm" href="{r}fairs-events/">View all fairs{ARROW}</a>'
     )
 
@@ -144,7 +164,7 @@ def aside(ctx, r: str) -> str:
     pinned_fairs = [kv for kv in upcoming(ctx) + past(ctx) if kv[1].get("pinned")]
     pinned_news = [kv for kv in news.ordered(ctx) if kv[1].get("pinned")]
     items = [(dates.parse(n["date"]), _news_aside(ctx, r, s, n)) for s, n in pinned_news]
-    items += [(_span(e)[0], _fair_aside(r, e)) for _, e in pinned_fairs]
+    items += [(_span(e)[0], _fair_aside(r, s, e)) for s, e in pinned_fairs]
     parts = [html for _, html in sorted(items, key=lambda kv: kv[0], reverse=True)]
     others = [(s, n) for s, n in news.ordered(ctx) if not n.get("pinned")]
     parts += [_news_aside(ctx, r, s, n) for s, n in others[:max(0, SLIDES - len(parts))]]
@@ -158,7 +178,7 @@ def aside(ctx, r: str) -> str:
             '<p class="eyebrow mb-3">Fairs</p><p class="font-display text-display-sm leading-tight text-balance">'
             f'Where to meet us</p><a class="link-arrow mt-4 text-sm" href="{r}fairs-events/">View all fairs{ARROW}</a>'
         )
-    return _fair_aside(r, fairs[0][1])
+    return _fair_aside(r, *fairs[0])
 
 
 def render(ctx, slug: str) -> tuple:
@@ -199,7 +219,7 @@ def render(ctx, slug: str) -> tuple:
         f'text-accent">{dates.span(start, end)}</p><h1 class="mt-3 text-display-lg">{title}</h1><p class="mt-4 text-lg '
         f'text-ink-2">{_place(item, ", ")}</p><div class="mt-6 flex flex-wrap gap-2">{_chips(item)}</div><div '
         f'class="prose-editorial mt-8 measure">{markdown.to_html(item.get("body", ""))}</div>{website}</div>{image}'
-        f"</div>{gallery}</div></div></section><!--$--><!--/$--></main>"
+        f"</div>{gallery}</div></div></section>{_others(ctx, r, slug, item)}<!--$--><!--/$--></main>"
     )
     event = {
         "@type": "Event",

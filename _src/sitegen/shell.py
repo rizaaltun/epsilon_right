@@ -160,6 +160,7 @@ FOOTER_CATALOGUE = [
 FOOTER_AGENCY = [
     ("authors/", "Authors"),
     ("publishers/", "Publishers"),
+    ("representations/", "Representations"),
     ("fairs-events/", "Fairs & events"),
     ("news/", "News"),
     ("about-us/", "About us"),
@@ -181,7 +182,7 @@ LINKEDIN_ICON = (
 
 def _footer_nav(r, label, links, settings=None):
     if settings and settings.get("_has_blog") and label == "Agency":
-        links = links[:4] + [("blog/", "Blog")] + links[4:]
+        links = links[:5] + [("blog/", "Blog")] + links[5:]
     items = "".join(
         f'<li><a class="text-sm text-ink-inverse/80 transition-colors hover:text-ink-inverse" '
         f'href="{r}{href}">{esc(text)}</a></li>'
