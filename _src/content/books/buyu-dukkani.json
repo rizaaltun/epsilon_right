@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 199,
+  "order": 201,
   "cover": "/assets/images/covers/6b7d0b12e0b3378aa8db-1000.webp",
   "square_cover": false,
   "description": "Magic Shop",
@@ -15,6 +15,7 @@
   "imprint": "Epsilon",
   "pages": "136",
   "publication_year": "2020",
+  "isbn": "9789944821056",
   "rights": "Rights are available worldwide",
   "rights_sold": [
     "Arabic"

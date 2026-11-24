@@ -2,6 +2,7 @@
 
 import json
 import re
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -15,9 +16,17 @@ def slugify(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
 
 
+SLUG = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
+
+
 def _load_folder(folder: Path) -> dict:
+    """Every <slug>.json in ``folder``. Other names are skipped with a warning: a
+    sync conflict copy such as "kodex 2.json" (iCloud) must not become a second page."""
     items = {}
     for path in sorted(folder.glob("*.json")):
+        if not SLUG.fullmatch(path.stem):
+            print(f"warning: skipped {path.relative_to(folder.parents[1])}: not a slug file name", file=sys.stderr)
+            continue
         items[path.stem] = json.loads(path.read_text(encoding="utf-8"))
     return items
 

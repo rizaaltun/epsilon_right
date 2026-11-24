@@ -6,7 +6,7 @@
     "Self-Help"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 253,
+  "order": 255,
   "cover": "/assets/images/covers/3458ee6c22d05bf6f032-1000.webp",
   "square_cover": false,
   "description": "A Book to Look At Yourself",
@@ -15,6 +15,7 @@
   "imprint": "Okuyan Us",
   "pages": "370",
   "publication_year": "2013",
+  "isbn": "9786054054534",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

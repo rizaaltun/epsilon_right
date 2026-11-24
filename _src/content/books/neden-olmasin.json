@@ -6,7 +6,7 @@
     "Picture Book"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 87,
+  "order": 89,
   "cover": "/assets/images/covers/61f0add761fad46de81e-1000.webp",
   "square_cover": true,
   "description": "Published by Masalperest in 2021, illustrated by Çağrı Odabaşı, 24 pages.",
@@ -18,6 +18,7 @@
   "publication_year": "2021",
   "illustrator": "Çağrı Odabaşı",
   "age_group": "Picture Book",
+  "isbn": "9786257032544",
   "rights": "Rights Sold to Korean, Arabic, English, Mongolian",
   "rights_sold": [],
   "featured": false,

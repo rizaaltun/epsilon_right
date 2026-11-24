@@ -6,7 +6,7 @@
     "Art"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 222,
+  "order": 224,
   "cover": "/assets/images/covers/6af2a63876f81540f052-1000.webp",
   "square_cover": false,
   "description": "Footsteps of Civilization: Love and Some Minor Disasters in the Western Art",
@@ -15,6 +15,7 @@
   "imprint": "Epsilon",
   "pages": "212",
   "publication_year": "2023",
+  "isbn": "9786051738598",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

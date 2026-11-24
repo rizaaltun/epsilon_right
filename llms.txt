@@ -9,7 +9,7 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 ## Start here
 
 - [About the group](https://epsilonpublishinggroup.com/about-us/): history, imprints and the rights team
-- [All titles](https://epsilonpublishinggroup.com/books/): 284 titles available for translation, with filters
+- [All titles](https://epsilonpublishinggroup.com/books/): 286 titles available for translation, with filters
 - [Catalogues](https://epsilonpublishinggroup.com/catalogues/): rights catalogues to read online or download as PDF
 - [Contact](https://epsilonpublishinggroup.com/contact/): rights enquiries
 
@@ -23,7 +23,7 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 
 ## Books by category
 
-- [Children's Books](https://epsilonpublishinggroup.com/books/?category=childrens-books): 147 titles
+- [Children's Books](https://epsilonpublishinggroup.com/books/?category=childrens-books): 149 titles
 - [Adult Fiction](https://epsilonpublishinggroup.com/books/?category=adult-fiction): 47 titles
 - [Non-Fiction](https://epsilonpublishinggroup.com/books/?category=non-fiction): 60 titles
 - [Young Adult](https://epsilonpublishinggroup.com/books/?category=young-adult): 30 titles
@@ -32,7 +32,7 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 
 - [Epsilon](https://epsilonpublishinggroup.com/publishers/epsilon/): 109 titles
 - [Kafka Kitap](https://epsilonpublishinggroup.com/publishers/kafka-kitap/): 18 titles
-- [Masalperest](https://epsilonpublishinggroup.com/publishers/masalperest/): 71 titles
+- [Masalperest](https://epsilonpublishinggroup.com/publishers/masalperest/): 73 titles
 - [Nemesis Kitap](https://epsilonpublishinggroup.com/publishers/nemesis-kitap/): 24 titles
 - [Okuyan Us](https://epsilonpublishinggroup.com/publishers/okuyan-us/): 22 titles
 - [Uçan Fil](https://epsilonpublishinggroup.com/publishers/ucan-fil/): 37 titles
@@ -136,6 +136,8 @@ Rights enquiries: pelin@epsilonyayingrubu.com
 
 ## Titles
 
+- [Heves'in Minik Kıvılcımı](https://epsilonpublishinggroup.com/books/heves-in-minik-kivilcimi/): Yasemin Erkek — Children's Books — English title: Little Sparks of Curiosity
+- [Hangi Süper Kahraman Olsam?](https://epsilonpublishinggroup.com/books/hangi-super-kahraman-olsam/): Doğan Akdoğan — Children's Books — English title: Which Superhero Should I Be?
 - [Duygunuzu Nasıl Alırdınız?](https://epsilonpublishinggroup.com/books/duygunuzu-nasil-alirdiniz/): Ezo Sunal — Children's Books — English title: How Would You Like Your Feeling?
 - [Hatalarımı Cebime Koydum](https://epsilonpublishinggroup.com/books/hatalarimi-cebime-koydum/): Esat Zorkirişçi — Children's Books — English title: A Pocketful of Mistakes
 - [Işık Krallığı](https://epsilonpublishinggroup.com/books/isik-kralligi/): Nurdan Bağrıaçık — Children's Books — English title: Kingdom of Light

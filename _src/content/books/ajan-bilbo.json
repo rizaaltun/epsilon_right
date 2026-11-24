@@ -6,7 +6,7 @@
     "Middle Grade"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 110,
+  "order": 112,
   "cover": "/assets/images/covers/9f02f6942d2e1d8696ec-1000.webp",
   "square_cover": false,
   "description": "Published by Epsilon, illustrated by Beyza Tükel, 55 pages.",
@@ -17,6 +17,7 @@
   "pages": "55",
   "illustrator": "Beyza Tükel",
   "age_group": "Middle Grade",
+  "isbn": "9786051739212",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

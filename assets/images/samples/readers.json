@@ -202,6 +202,13 @@
     "ratio": 1.0,
     "revision": "70cd078f"
   },
+  "hangi-super-kahraman-olsam": {
+    "blank": true,
+    "pages": 8,
+    "pdf": "_src/samples/hangi-super-kahraman-olsam.pdf",
+    "ratio": 1.0,
+    "revision": "67172db5"
+  },
   "hatalarimi-cebime-koydum": {
     "blank": true,
     "pages": 10,
@@ -215,6 +222,13 @@
     "pdf": "_src/samples/hayalperest-koala.pdf",
     "ratio": 1.0,
     "revision": "75788b32"
+  },
+  "heves-in-minik-kivilcimi": {
+    "blank": true,
+    "pages": 10,
+    "pdf": "_src/samples/heves-in-minik-kivilcimi.pdf",
+    "ratio": 1.0,
+    "revision": "346d89bc"
   },
   "ip-kuyruklu-tavsan": {
     "blank": true,

@@ -6,7 +6,7 @@
     "Picture Book"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 82,
+  "order": 84,
   "cover": "/assets/images/covers/f506f34fb11b1dd806b6-1000.webp",
   "square_cover": true,
   "description": "Published by Uçan Fil in 2023, illustrated by Berk Öztürk, 38 pages.",
@@ -18,6 +18,7 @@
   "publication_year": "2023",
   "illustrator": "Berk Öztürk",
   "age_group": "Picture Book",
+  "isbn": "9786257662499",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

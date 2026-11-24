@@ -6,7 +6,7 @@
     "Early Readers"
   ],
   "catalogue": "childrens-titles-2026",
-  "order": 145,
+  "order": 147,
   "cover": "/assets/images/covers/4cf4c06b0a714a06edeb-653.webp",
   "square_cover": true,
   "description": "Published by Masalperest in 2024, illustrated by Beyza Toprak, 40 pages.",
@@ -18,6 +18,7 @@
   "publication_year": "2024",
   "illustrator": "Beyza Toprak",
   "age_group": "Early Readers",
+  "isbn": "9786258113945",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,

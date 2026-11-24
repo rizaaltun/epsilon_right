@@ -150,7 +150,7 @@ collections:
       - { name: publication_year, label: Yayın yılı, widget: string, required: false, hint: Örn. 2024 ya da 2024-2025 }
       - { name: illustrator, label: Resimleyen, widget: string, required: false }
       - { name: age_group, label: Yaş grubu, widget: string, required: false, hint: Örn. 6+ }
-      - { name: isbn, label: ISBN, widget: string, required: false, hint: "Örn. 978-605-173-453-8. Google'ın kitabı tanımasına yardımcı olur." }
+      - { name: isbn, label: "ISBN / barkod", widget: string, required: false, hint: "Sitede görünmez; yalnızca Google'ın kitabı tanıması için. Örn. 9786051734538. Set sayfalarında her cildin barkodu virgülle ayrılarak yazılır." }
       - name: english_samples
         label: İngilizce örnek
         widget: list

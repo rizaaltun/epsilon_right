@@ -6,7 +6,7 @@
     "Literary Fiction"
   ],
   "catalogue": "adult-titles-2026",
-  "order": 217,
+  "order": 219,
   "cover": "/assets/images/covers/d5cc68eef42ab80d04bd-1000.webp",
   "square_cover": false,
   "description": "Coincidence",
@@ -15,6 +15,7 @@
   "imprint": "Nemesis",
   "pages": "264",
   "publication_year": "2020",
+  "isbn": "9786057649751",
   "rights": "Rights are available worldwide",
   "rights_sold": [],
   "featured": false,
