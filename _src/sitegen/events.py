@@ -242,7 +242,7 @@ def render(ctx, slug: str) -> tuple:
     place = ", ".join(v for v in (item.get("venue"), item.get("city"), item.get("country")) if v)
     stand = f' Stand {item["stand"]}.' if item.get("stand") else ""
     fallback = f'{item["title"]}, {dates.span(start, end)}{", " + place if place else ""}.{stand} Meet the {ctx.settings["site_name"]} rights team.'
-    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("summary"), fallback),
+    meta = seo.Seo(path=path, title=seo.share_title(item, item["title"]), description=seo.describe(item, item.get("summary"), fallback),
                    image=item.get("image") or "",
                    jsonld=[event, seo.breadcrumbs(ctx, [("Home", ""), ("Fairs & Events", "fairs-events/"), (item["title"], path)])])
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main,

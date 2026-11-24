@@ -230,7 +230,7 @@ def render(ctx, slug: str) -> tuple:
            "image": seo.url(ctx, cover(ctx, slug)), "encodingFormat": "application/pdf",
            "publisher": {"@type": "Organization", "name": ctx.settings["site_name"], "url": seo.url(ctx, "")},
            "associatedMedia": {"@type": "MediaObject", "contentUrl": seo.url(ctx, item["pdf"]), "encodingFormat": "application/pdf"}}
-    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("description"), fallback),
+    meta = seo.Seo(path=path, title=seo.share_title(item, item["title"]), description=seo.describe(item, item.get("description"), fallback),
                    image="/" + cover(ctx, slug),
                    jsonld=[doc, seo.breadcrumbs(ctx, [("Home", ""), ("Catalogues", "catalogues/"), (item["title"], path)])])
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main, head_extra=head_extra,

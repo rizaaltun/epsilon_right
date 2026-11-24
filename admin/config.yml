@@ -184,7 +184,7 @@ collections:
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
       - { name: new, label: Yeni, widget: boolean, default: false }
       - { name: backlist, label: Backlist, widget: boolean, default: false, required: false, hint: "Açıksa kitap kendi kategorisinde kalır, ayrıca Books sayfasındaki Backlist filtresinde ve menüdeki Books & Rights › Backlist'te görünür; sayfasına Backlist etiketi gelir." }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: authors
@@ -223,7 +223,7 @@ collections:
         required: false
         hint: İngilizce. Paragrafları boş bir satırla ayırın.
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: news
@@ -287,7 +287,7 @@ collections:
           - { name: image, label: Görsel, widget: image, choose_url: false }
           - { name: alt, label: Açıklama, widget: string, required: false }
       - { name: source, label: Kaynak notu, widget: string, required: false, hint: Haberin altında küçük yazıyla görünür. }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: events
@@ -340,7 +340,7 @@ collections:
         fields:
           - { name: image, label: Görsel, widget: image, choose_url: false }
           - { name: alt, label: Açıklama, widget: string, required: false }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: publishers
@@ -384,7 +384,7 @@ collections:
       - { name: email, label: E-posta, widget: string, required: false, hint: Boşsa site e-postası kullanılır. }
       - { name: website, label: Web sitesi, widget: string, required: false }
       - { name: featured, label: Öne çıkan, widget: boolean, default: false }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: services
@@ -420,7 +420,7 @@ collections:
       - { name: image, label: Kart görseli, widget: image, required: false, choose_url: false }
       - { name: hero_image, label: Sayfa üst görseli, widget: image, required: false, choose_url: false, hint: Boşsa kart görseli kullanılır. }
       - { name: image_alt, label: Görsel açıklaması, widget: string, required: false }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: blog
@@ -488,7 +488,7 @@ collections:
         fields:
           - { name: image, label: Görsel, widget: image, choose_url: false }
           - { name: alt, label: Açıklama, widget: string, required: false }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: catalogues
@@ -542,7 +542,7 @@ collections:
         public_folder: /assets/images/uploads/catalogues
         hint: Boş bırakılırsa PDF'in ilk sayfasından otomatik üretilir.
       - { name: new, label: '"New" etiketi', widget: boolean, default: false }
-      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+      - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
       - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
   - name: spotlight
@@ -624,7 +624,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
             editor_components: []
           - { name: cta_button, label: "Kapanış: düğme", widget: string }
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: about
@@ -694,7 +694,7 @@ collections:
                   - { name: role, label: "Görev", widget: string }
                   - { name: email, label: "E-posta", widget: string }
                   - { name: photo, label: "Fotoğraf", widget: image, choose_url: false }
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: contact
@@ -708,7 +708,7 @@ collections:
           - { name: form_title, label: "Form başlığı", widget: string }
           - { name: details_title, label: "İletişim bilgileri başlığı", widget: string }
           - { name: office_title, label: "Ofis başlığı", widget: string }
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: books
@@ -726,7 +726,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: authors
@@ -744,7 +744,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: publishers
@@ -762,7 +762,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: news_page
@@ -780,7 +780,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: events_page
@@ -798,7 +798,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: spotlight_page
@@ -810,7 +810,7 @@ collections:
           - { name: title, label: "Başlık (H1)", widget: string }
           - { name: intro, label: "Giriş cümlesi", widget: text }
           - { name: follow_button, label: "Instagram düğmesi", widget: string, hint: "Instagram hesabını açar (adres \"Site ayarları › Instagram adresi\" alanından gelir)." }
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
       - name: catalogues
         label: "Kataloglar sayfası"
@@ -827,7 +827,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: representations
@@ -845,7 +845,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: services_page
@@ -863,7 +863,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
       - name: blog_page
@@ -881,7 +881,7 @@ collections:
             buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, numbered-list]
             editor_components: []
             hint: "İsteğe bağlı. Sayfanın altında görünen birkaç paragraflık İngilizce tanıtım; ara başlık ve linklerle aramalarda öne çıkmaya yardımcı olur. Boşsa hiçbir şey görünmez."
-          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da ve sekme başlığında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
+          - { name: seo_title, label: "SEO başlığı", widget: string, required: false, hint: "Google'da, sekme başlığında ve paylaşım kartlarında görünür (en fazla ~60 karakter). Boşsa ad + site adı kullanılır." }
           - { name: seo_description, label: "SEO açıklaması", widget: text, required: false, hint: "Google'da başlığın altında ve paylaşım önizlemelerinde görünen 1–2 cümle (en fazla ~155 karakter). Boşsa metinden otomatik oluşturulur." }
 
 singletons:

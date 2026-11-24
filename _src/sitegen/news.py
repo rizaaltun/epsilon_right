@@ -121,7 +121,7 @@ def render(ctx, slug: str) -> tuple:
         article["image"] = [seo.url(ctx, image)]
     if item.get("excerpt"):
         article["description"] = item["excerpt"]
-    meta = seo.Seo(path=path, title=item["title"], description=seo.describe(item, item.get("excerpt"), item.get("body")),
+    meta = seo.Seo(path=path, title=seo.share_title(item, item["title"]), description=seo.describe(item, item.get("excerpt"), item.get("body")),
                    image=image, type="article",
                    jsonld=[article, seo.breadcrumbs(ctx, [("Home", ""), ("News", "news/"), (item["title"], path)])])
     return path, shell.page(r, path, ctx.settings, seo.title_html(ctx, item, item["title"]), main, lazy_logos=False,
