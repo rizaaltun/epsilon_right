@@ -53,6 +53,27 @@ def gallery(r: str, images: list) -> str:
     )
 
 
+MORE = 3   # other articles under an article: the nearest in date
+_ARROW = ('<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" '
+          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9.5 4l4 4-4 4"></path></svg>')
+
+
+def _more(ctx, r: str, slug: str) -> str:
+    day = dates.parse(ctx.news[slug]["date"])
+    near = sorted(((s, n) for s, n in ctx.news.items() if s != slug),
+                  key=lambda kv: (abs((dates.parse(kv[1]["date"]) - day).days), kv[0]))[:MORE]
+    if not near:
+        return ""
+    near.sort(key=lambda kv: (str(kv[1]["date"]), kv[0]), reverse=True)
+    return (
+        '<section class="py-14 md:py-20 ground-paper" aria-labelledby="more-news"><div><div class="shell"><div '
+        'class="mb-8 flex flex-col gap-4 md:mb-11 md:flex-row md:items-end md:justify-between"><div class="max-w-2xl">'
+        '<h2 id="more-news" class="text-display-md">More news</h2></div><div class="shrink-0"><a class="link-arrow '
+        f'text-sm" href="{r}news/">All news{_ARROW}</a></div></div><div class="grid grid-cols-1 gap-x-8 gap-y-10 '
+        f'sm:grid-cols-2 lg:grid-cols-3">{"".join(card(ctx, r, s, n) for s, n in near)}</div></div></div></section>'
+    )
+
+
 def render(ctx, slug: str) -> tuple:
     item = ctx.news[slug]
     path = f"news/{slug}/"
@@ -81,7 +102,9 @@ def render(ctx, slug: str) -> tuple:
         f'<div class="prose-editorial">{markdown.to_html(item.get("body", ""))}</div>'
         + gallery(r, item.get("gallery", []))
         + source
-        + "</div></article></div></div></section></main>"
+        + "</div></article></div></div></section>"
+        + _more(ctx, r, slug)
+        + "</main>"
     )
     image = item.get("image") or ""
     article = {
